@@ -15,7 +15,6 @@ class CreateUnitsTable extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->string('rent');
             $table->string('rent_escalation')->nullable();
             $table->string('water_meter')->nullable();
             $table->string('billing_cycle')->nullable();//monthy,quartely,bi-annually,annually
@@ -25,8 +24,10 @@ class CreateUnitsTable extends Migration
             $table->string('service_charge')->nullable();
             $table->string('management_fee')->nullable();
             $table->integer('property_id');
+            $table->integer('user_id')->nullable();
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
-            $table->string('')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
 
             $table->timestamps();
         });

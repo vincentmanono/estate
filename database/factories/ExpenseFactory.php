@@ -8,8 +8,8 @@ use Faker\Generator as Faker;
 $factory->define(Expense::class, function (Faker $faker) {
     return [
 
-            'occurance'=>$faker()->randomElement(['regular','once']),
-            'type'=>$faker()->randomElement(['rent','waterbill','electricitybill','repair']),
+            'occurance'=>$faker->randomElement (['regular','once']),
+            'type'=>$faker->randomElement (['rent','waterbill','electricitybill','repair']),
             'date'=>$faker->date(),
             'amount'=>$faker->numberBetween(200,1000),
             'description'=>$faker->paragraph($nbSentences = 3, $variableNbSentences = true),

@@ -24,7 +24,7 @@ class Unit extends Model
         return $this->hasMany(Rent::class);
     }
     public function maintenances(){
-        return $this->hasMany(Manitenance::class);
+        return $this->hasMany(Maintenance::class);
     }
     public function leases(){
         return $this->hasMany(Lease::class);
@@ -34,5 +34,8 @@ class Unit extends Model
     }
     public function smss(){
         return $this->hasMany(Sms::class);
+    }
+    public function waters(){
+        return $this->hasMany(Water::class);
     }
 }

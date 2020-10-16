@@ -11,6 +11,6 @@ class MaintenanceSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Maintenance::class,50)->create();
     }
 }

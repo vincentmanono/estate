@@ -11,6 +11,6 @@ class WaterSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Water::class,50)->create();
     }
 }

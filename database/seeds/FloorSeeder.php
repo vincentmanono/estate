@@ -11,6 +11,6 @@ class FloorSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Floor::class,50)->create();
     }
 }

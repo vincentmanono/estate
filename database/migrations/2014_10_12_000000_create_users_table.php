@@ -19,12 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('kra_pin')->nullable();
-            $table->string('unit_no')->nullable();
+            // $table->string('unit_no')->nullable();
             $table->string('id_no')->nullable();
             $table->string('image')->nullable();
             $table->string('type');//tenant/admin/manager
             $table->string('email')->unique();
-            $table->foreign('unit_no')->references('id')->on('units')->onDelete('cascade');
+            // $table->foreign('unit_no')->references('id')->on('units')->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

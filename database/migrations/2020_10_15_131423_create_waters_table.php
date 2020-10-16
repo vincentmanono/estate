@@ -8,6 +8,7 @@ class CreateWatersTable extends Migration
 {
     /**
      * Run the migrations.
+     * $table->foreign('')->references('')->on('')->onDelete('');
      *
      * @return void
      */
@@ -21,6 +22,8 @@ class CreateWatersTable extends Migration
             $table->string('read_date')->nullable();
             $table->string('new_reading')->nullable();
             $table->string('description')->nullable();
+            $table->integer('unit_id');
+            $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
             $table->timestamps();
         });
     }
