@@ -61,5 +61,9 @@ class User extends Authenticatable
     public function smss(){
         return $this->hasMany(Sms::class);
     }
+    public function rents(){
+        return $this->hasMany(Deposit::class);
+    }
+
 
 }
