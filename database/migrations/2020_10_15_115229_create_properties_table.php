@@ -28,6 +28,8 @@ class CreatePropertiesTable extends Migration
             $table->string('l_r_no')->nullable();
             $table->integer('branch_id')->nullable();
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
 
             $table->timestamps();
         });

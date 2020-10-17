@@ -19,6 +19,7 @@ $factory->define(Property::class, function (Faker $faker) {
         'water_bill_rate'=>$faker->numberBetween(1,10),
         'l_r_no'=>$faker->numberBetween(1,10),
         'branch_id'=>function(){return App\Branch::all()->random();},
+        'user_id'=>function(){return App\User::all()->random();},
 
     ];
 });

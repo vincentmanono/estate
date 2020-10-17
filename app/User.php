@@ -37,17 +37,11 @@ class User extends Authenticatable
     ];
 
 
-    public function units(){
-        return $this->hasMany(Unit::class);
-    }
     public function properties(){
         return $this->hasMany(Property::class);
     }
     public function deposits(){
         return $this->hasMany(Deposit::class);
-    }
-    public function waters(){
-        return $this->hasMany(Water::class);
     }
     public function maintenances(){
         return $this->hasMany(Maintenance::class);

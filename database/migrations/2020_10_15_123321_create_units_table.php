@@ -24,9 +24,8 @@ class CreateUnitsTable extends Migration
             $table->string('service_charge')->nullable();
             $table->string('management_fee')->nullable();
             $table->integer('property_id');
-            $table->integer('user_id')->nullable();
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
 
 
             $table->timestamps();
