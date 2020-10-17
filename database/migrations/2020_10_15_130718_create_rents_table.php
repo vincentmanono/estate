@@ -19,9 +19,9 @@ class CreateRentsTable extends Migration
             $table->string('no_months');
             $table->string('date');
             $table->string('description')->nullable();
-            $table->integer('user_id');
-            $table->integer('unit_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('user_id')->unsigned()->nullable() ;
+            $table->integer('unit_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
             $table->timestamps();
         });

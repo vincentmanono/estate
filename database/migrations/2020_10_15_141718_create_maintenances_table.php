@@ -18,6 +18,9 @@ class CreateMaintenancesTable extends Migration
             $table->string('subject');
             $table->string('body');
             $table->string('cost');
+
+            $table->boolean('status')->nullable()->default(false);
+
             $table->integer('user_id');
             $table->integer('unit_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

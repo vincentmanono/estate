@@ -7,6 +7,9 @@ use Faker\Generator as Faker;
 
 $factory->define(Book::class, function (Faker $faker) {
     return [
-        //
+        'name'=>$faker->name(),
+        'phone'=>$faker->phoneNumber,
+        'email'=>$faker->email,
+        'description'=>$faker->realText(150,2)
     ];
 });
