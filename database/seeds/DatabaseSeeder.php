@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DepositSeeder::class);
         $this->call(ExpenseSeeder::class);
         $this->call(LeaseSeeder::class);
-        $this->call(GuestSeeder::class);
         $this->call(WaterSeeder::class);
         $this->call(FloorSeeder::class);
         $this->call(RentSeeder::class);
