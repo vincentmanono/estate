@@ -24,4 +24,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/users', 'UserController@allUsers')->name('allUsers');
     Route::get('/all-tenants', 'UserController@allTenants')->name('allTenants');
+    Route::get('/branches','BranchController@allBranches')->name('allBranches');
+    Route::get('/branch/{id}','BranchController@show')->name('singleBranch');
+    Route::get('/editbranch/{id}','BranchController@edit')->name('editBranch');
+    Route::put('/updatebranch/{id}','BranchController@update')->name('update.branch');
+    Route::delete('deletebranch/{id}','BranchController@destroy')->name('destroy.branch');
+    Route::get('/createbranch','BranchController@create')->name('create.branch');
+    Route::post('/newbranch','BranchController@store')->name('store.branch');
 });

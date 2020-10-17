@@ -24,8 +24,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">Branch Information</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-calendar.html">View Branches</a></li>
-                        <li><a href="app-chat.html">Add Branch</a></li>
+                        <li><a href="{{ route('allBranches') }}">View Branches</a></li>
+                        <li><a href="{{ route('create.branch') }}">Add Branch</a></li>
 
                     </ul>
                 </li>
