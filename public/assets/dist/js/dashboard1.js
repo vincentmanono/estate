@@ -1,15 +1,15 @@
 $(function() {
     "use strict";
     //This is for the Notification top right
-    $.toast({
-        heading: 'Welcome to Elite admin',
-        text: 'Use the predefined ones, or specify a custom position object.',
-        position: 'top-right',
-        loaderBg: '#ff6849',
-        icon: 'info',
-        hideAfter: 3500,
-        stack: 6
-    })
+    // $.toast({
+    //     heading: 'Welcome to Chief Properties',
+    //     text: 'Use the predefined ones, or specify a custom position object.',
+    //     position: 'top-right',
+    //     loaderBg: '#ff6849',
+    //     icon: 'info',
+    //     hideAfter: 3500,
+    //     stack: 6
+    // })
     // Morris bar chart
     Morris.Bar({
         element: 'morris-bar-chart',

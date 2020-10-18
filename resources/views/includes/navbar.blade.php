@@ -8,9 +8,9 @@
                 <!-- Logo icon --><b>
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                    <img  src="/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
                     <!-- Light Logo icon -->
-                    <img src="/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                    <img src="src="{{ (Str::contains($user->image,'http') ? $user->image:'/storage/users/' . $user->image ) }}"" alt="homepage" class="light-logo" />
                 </b>
                 <!--End Logo icon -->
                 <span class="hidden-xs"><span class="font-bold">Chief</span>properties</span>
@@ -122,8 +122,8 @@
                                 <div class="message-center">
                                     <!-- Message -->
                                     <a href="javascript:void(0)">
-                                        <div class="user-img"> <img src="/assets/images/users/1.jpg" alt="user"
-                                                class="img-circle"> <span
+                                        <div class="user-auth()->user()"> <auth()->user() src="/assets/images/users/1.jpg" alt="user"
+                                                class="auth()->user()-circle"> <span
                                                 class="profile-status online pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my
@@ -132,8 +132,8 @@
                                     </a>
                                     <!-- Message -->
                                     <a href="javascript:void(0)">
-                                        <div class="user-img"> <img src="/assets/images/users/2.jpg" alt="user"
-                                                class="img-circle"> <span
+                                        <div class="user-auth()->user()"> <auth()->user() src="/assets/images/users/2.jpg" alt="user"
+                                                class="auth()->user()-circle"> <span
                                                 class="profile-status busy pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Sonu Nigam</h5> <span class="mail-desc">Ive sung a song! See
@@ -142,8 +142,8 @@
                                     </a>
                                     <!-- Message -->
                                     <a href="javascript:void(0)">
-                                        <div class="user-img"> <img src="/assets/images/users/3.jpg" alt="user"
-                                                class="img-circle"> <span
+                                        <div class="user-auth()->user()"> <auth()->user() src="/assets/images/users/3.jpg" alt="user"
+                                                class="auth()->user()-circle"> <span
                                                 class="profile-status away pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span>
@@ -152,8 +152,8 @@
                                     </a>
                                     <!-- Message -->
                                     <a href="javascript:void(0)">
-                                        <div class="user-img"> <img src="/assets/images/users/4.jpg" alt="user"
-                                                class="img-circle"> <span
+                                        <div class="user-auth()->user()"> <auth()->user() src="/assets/images/users/4.jpg" alt="user"
+                                                class="auth()->user()-circle"> <span
                                                 class="profile-status offline pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my
@@ -186,16 +186,16 @@
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner" role="listbox">
                                         <div class="carousel-item active">
-                                            <div class="container"> <img class="d-block img-fluid"
-                                                    src="/assets/images/big/img1.jpg" alt="First slide"></div>
+                                            <div class="container"> <auth()->user() class="d-block auth()->user()-fluid"
+                                                    src="/assets/images/big/auth()->user()1.jpg" alt="First slide"></div>
                                         </div>
                                         <div class="carousel-item">
-                                            <div class="container"><img class="d-block img-fluid"
-                                                    src="/assets/images/big/img2.jpg" alt="Second slide"></div>
+                                            <div class="container"><auth()->user() class="d-block auth()->user()-fluid"
+                                                    src="/assets/images/big/auth()->user()2.jpg" alt="Second slide"></div>
                                         </div>
                                         <div class="carousel-item">
-                                            <div class="container"><img class="d-block img-fluid"
-                                                    src="/assets/images/big/img3.jpg" alt="Third slide"></div>
+                                            <div class="container"><auth()->user() class="d-block auth()->user()-fluid"
+                                                    src="/assets/images/big/auth()->user()3.jpg" alt="Third slide"></div>
                                         </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleControls"
@@ -311,8 +311,13 @@
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown u-pro">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href=""
+<<<<<<< HEAD
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
                         src="/assets/images/comment.png" alt="user" class=""> <span
+=======
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><auth()->user()
+                            src="/assets/images/users/1.jpg" alt="user" class=""> <span
+>>>>>>> f8c5fe8f85c977fe9c36e092cf7cd11cb6d80884
                             class="hidden-md-down">{{ auth()->user()->name }} &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                     <div class="dropdown-menu dropdown-menu-right animated flipInY">
                         <!-- text-->
