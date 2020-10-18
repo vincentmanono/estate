@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -87,6 +89,49 @@ class UserController extends Controller
                 return redirect()->back();
             }
         }
+
+        if (file_exists($request->file('avatar'))) {
+
+
+
+            $old_avatar = $user->avatar;
+            $avatar = $request->avatar;
+            if ($old_avatar != 'avatar.png' && !Str::contains(auth()->user()->avatar, 'http')) {
+                $imagepath = public_path('/storage/users/') . '/' . $old_avatar;
+                File::delete($imagepath);
+            }
+
+
+
+            // Get filename with extension
+            $filenameWithExt = $request->file('avatar')->getClientOriginalName();
+
+            // Get just the filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+            // Get extension
+            $extension = $request->file('avatar')->getClientOriginalExtension();
+
+            // Create new filename
+            $filenameToStore = $filename . '_' . time() . '.' . $extension;
+
+            // Uplaod image
+            $path = $request->file('avatar')->storeAs('public/users', $filenameToStore);
+
+            // Upload image
+            $user->image = $filenameToStore;
+        }
+
+
+
+        if ( $user->save()) {
+            Session::flash('success', 'User Profile updated successfully');
+            return redirect()->back();
+        } else {
+            Session::flash('error', 'Please try again');
+            return redirect()->back();
+        }
+
 
 
 

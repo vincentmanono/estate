@@ -41,23 +41,23 @@
             <div class="row">
 
                 <div class="card col-md-6 col-xs-12 ">
-                    <img class="card-img-top" height="200" width="100" src="/assets/images/big/img4.jpg" alt="">
+                    <img class="card-img-top" height="200" width="100"src="{{ (Str::contains($user->image,'http') ? $user->image:'/storage/users/' . $user->image ) }}" alt="">
                     <div class="card-body">
                         <h5 class="card-title text text-capitalize">{{ $user->name }} - <strong>{{ $user->type }}</strong>
                         </h5>
                         <p class="card-text">
                         <ul class="list-group ">
-                            <li class="list-group-item active">Phone <span
+                            <li class="list-group-item ">Phone <span
                                     class="float-right text text-bold text-capitalize"> {{ $user->phone }}</span> </li>
-                            <li class="list-group-item active">Email <span
+                            <li class="list-group-item ">Email <span
                                     class="float-right text text-bold text-capitalize"> {{ $user->email }}</span> </li>
-                            <li class="list-group-item active">Address <span
+                            <li class="list-group-item ">Address <span
                                     class="float-right text text-bold text-capitalize"> {{ $user->address }}</span>
                             </li>
-                            <li class="list-group-item active">KRA Number <span
+                            <li class="list-group-item ">KRA Number <span
                                     class="float-right text text-bold text-capitalize"> {{ $user->kra_pin }}</span>
                             </li>
-                            <li class="list-group-item active">ID Number <span
+                            <li class="list-group-item ">ID Number <span
                                     class="float-right text text-bold text-capitalize"> {{ $user->id_no }}</span> </li>
                         </ul>
                         </p>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                     </div>
-                    @else
+                @else
 
                     <div class="card col-md-6 col-xs-12">
                         <div class="card-body">
@@ -120,18 +120,19 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($user->properties as $property)
-                                            <tr >
-                                                <td> <img src="/assets/images/property/prop6.jpg" width="80" alt="" sizes=""></td>
-                                                <td>{{  $property ->branch->name}}</td>
-                                                <td>{{  $property->name }}</td>
-                                                <td>{{  $property->type }}</td>
-                                                <td> {{  $property->year_of_construction }} </td>
-                                                <td class="row" >
+                                            <tr>
+                                                <td> <img src="/assets/images/property/prop6.jpg" width="80" alt=""
+                                                        sizes=""></td>
+                                                <td>{{ $property->branch->name }}</td>
+                                                <td>{{ $property->name }}</td>
+                                                <td>{{ $property->type }}</td>
+                                                <td> {{ $property->year_of_construction }} </td>
+                                                <td class="row">
                                                     <a name="" id="" class="btn btn-info col" href="#"
-                                                    role="button">View</a>
+                                                        role="button">View</a>
 
                                                     <a name="" id="" class="btn btn-danger col " href="#"
-                                                    role="button">Fire</a>
+                                                        role="button">Fire</a>
 
                                                 </td>
                                             </tr>
@@ -150,27 +151,34 @@
                 @endif
 
 
-
-                <a name="" id="" class="btn waves-effect waves-light btn-info" href="{{ route('editUser',$user->id) }}" role="button"> Edit User </a>
+                <div class="row">
+                     <a name="" id="" class="btn waves-effect waves-light btn-info" href="{{ route('editUser', $user->id) }}"
+                    role="button"> Edit User </a>
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modelId">
-                  Delete Account
+                <button type="button" class="btn waves-effect waves-light btn-danger" data-toggle="modal" data-target="#modelId">
+                    Delete Account
                 </button>
+                </div>
+
+
+
+
 
                 <!-- Modal -->
-                <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                    aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Delete User</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                             <div class="modal-body">
                                 <div>Are you sure you need to delete this account ?</div>
-                                <form action="{{ route('deleteUser',$user->id) }}" method="post">
+                                <form action="{{ route('deleteUser', $user->id) }}" method="post">
                                     @method("DELETE")
                                     @csrf
 
@@ -178,7 +186,8 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-danger">Delete</button>
-                            </div></form>
+                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
