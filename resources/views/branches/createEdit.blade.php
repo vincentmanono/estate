@@ -103,7 +103,10 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Branch Status</label>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" name="status" placeholder="Active/Inactive" aria-label="Email">
+                                          <select name="status">
+                                                <option value="Active">Active</option>
+                                                <option value="Inactive">Inactive</option>
+                                              </select>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-success mr-2">Create</button>

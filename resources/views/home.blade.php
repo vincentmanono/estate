@@ -20,8 +20,8 @@
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         <li class="breadcrumb-item active">Real Estate Dashboard</li>
                     </ol>
-                    <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
-                            class="fa fa-plus-circle"></i> Create New</button>
+                    {{-- <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
+                            class="fa fa-plus-circle"></i> Create New</button> --}}
                 </div>
             </div>
         </div>
@@ -38,9 +38,10 @@
                     <div class="card-body">
                         <h5 class="card-title text-uppercase">All Branches</h5>
                         <div class="d-flex align-items-center no-block m-t-20 m-b-10">
-                            <h1><i class="ti-home text-info"></i></h1>
+                            <h1><i class="ti-control-shuffle text-info"></i></h1>
+
                             <div class="ml-auto">
-                                <h1 class="text-muted">{</h1>
+                                <h1 class="text-muted">{{ $branchcount }}</h1>
                             </div>
                         </div>
                     </div>
@@ -51,7 +52,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-uppercase">All Properties </h5>
                         <div class="d-flex align-items-center no-block m-t-20 m-b-10">
-                            <h1><i class="icon-tag text-purple"></i></h1>
+                            <h1><i class="ti-home text-purple"></i></h1>
                             <div class="ml-auto">
                                 <h1 class="text-muted">{{ $propertycount }}</h1>
                             </div>
@@ -64,9 +65,9 @@
                     <div class="card-body">
                         <h5 class="card-title text-uppercase">Occupied Units</h5>
                         <div class="d-flex align-items-center no-block m-t-20 m-b-10">
-                            <h1><i class="icon-basket text-danger"></i></h1>
+                            <h1><i class="ti-lock text-danger"></i></h1>
                             <div class="ml-auto">
-                                <h1 class="text-muted">311</h1>
+                                <h1 class="text-muted">{{ $leasecount }}</h1>
                             </div>
                         </div>
                     </div>
@@ -77,9 +78,9 @@
                     <div class="card-body">
                         <h5 class="card-title text-uppercase">Vacant Units</h5>
                         <div class="d-flex align-items-center no-block m-t-20 m-b-10">
-                            <h1><i class="ti-wallet text-success"></i></h1>
+                            <h1><i class="ti-unlock text-success"></i></h1>
                             <div class="ml-auto">
-                                <h1 class="text-muted">$8170</h1>
+                                <h1 class="text-muted">{{ $unleasecount }}</h1>
                             </div>
                         </div>
                     </div>
@@ -94,23 +95,31 @@
         <!-- Over Visitor, Our income , slaes different and  sales prediction -->
         <!-- ============================================================== -->
         <!-- .row -->
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="card">
+        <div class="row ">
+            <div class="col-lg-8 ">
+
+               <div class="row card card-body">
+                   <h5 class="card-title">Landlords</h5>
+                   <div class="row">
+                   @foreach ($managers as $manager)
+                   <div class="col-md-4">
                     <div class="card-body">
-                        <div class="d-flex m-b-40 align-items-center">
-                            <h5 class="card-title">PROPERTIES STATS</h5>
-                            <div class="ml-auto">
-                                <ul class="list-inline font-12">
-                                    <li><i class="fa fa-circle text-cyan"></i> For Sale</li>
-                                    <li><i class="fa fa-circle text-primary"></i> For Rent</li>
-                                    <li><i class="fa fa-circle text-purple"></i> All</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div id="morris-bar-chart" style="height:352px;"></div>
+                        <center class="m-t-30"> <img src="/assets/images/users/agent.jpg" class="img-circle" width="150" />
+                            <h4 class="card-title m-t-10">{{ $manager->name }}</h4><small class="text-muted p-t-30 db">Phone</small>
+                            <h6 class="card-subtitle">{{ $manager->phone }}</h6><hr>
+                            <h5 class="card-title">Property(s) In Charge</h5>
+
+                            @foreach ($manager->properties as $property)
+                            <small class="text-muted p-t-30 db">{{ $property->name }}</small>
+                            @endforeach
+
+                        </center>
                     </div>
+               </div>
+                   @endforeach
                 </div>
+               </div>
+
             </div>
             <div class="col-lg-4">
                 <div class="row">
@@ -206,6 +215,9 @@
                                 </thead>
                             </table>
                         </div>
+                        <div style="margin-left: 40%">
+                            {{ $properties->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -217,7 +229,7 @@
         <!-- ============================================================== -->
         <!-- Over Visitor, Our income , slaes different and  sales prediction -->
         <!-- ============================================================== -->
-        <!-- .row  -->
+        {{-- <!-- .row  -->
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="card bg-light">
@@ -317,7 +329,7 @@
                 </div>
             </div>
         </div>
-        <!-- /.row  -->
+        <!-- /.row  --> --}}
         <!-- ============================================================== -->
         <!-- End Page Content -->
         <!-- ============================================================== -->

@@ -173,7 +173,7 @@
                 <!-- End Messages -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
-                <!-- mega menu -->
+                {{-- <!-- mega menu -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown mega-dropdown"> <a
                         class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
@@ -304,7 +304,7 @@
                     </div>
                 </li>
                 <!-- ============================================================== -->
-                <!-- End mega menu -->
+                <!-- End mega menu --> --}}
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
                 <!-- User Profile -->
@@ -312,7 +312,7 @@
                 <li class="nav-item dropdown u-pro">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href=""
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                            src="/assets/images/users/1.jpg" alt="user" class=""> <span
+                        src="/assets/images/comment.png" alt="user" class=""> <span
                             class="hidden-md-down">{{ auth()->user()->name }} &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                     <div class="dropdown-menu dropdown-menu-right animated flipInY">
                         <!-- text-->
