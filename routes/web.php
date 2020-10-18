@@ -32,4 +32,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/all-tenants', 'UserController@allTenants')->name('allTenants');
     Route::post('add-user','UserController@addUser')->name('addUser');
     Route::delete('delete-user/{user}','UserController@deleteUser')->name('deleteUser');
+    Route::get('/branches','BranchController@allBranches')->name('allBranches');
+    Route::get('/branch/{id}','BranchController@show')->name('singleBranch');
+    Route::get('/editbranch/{id}','BranchController@edit')->name('editBranch');
+    Route::put('/updatebranch/{id}','BranchController@update')->name('update.branch');
+    Route::delete('deletebranch/{id}','BranchController@destroy')->name('destroy.branch');
+    Route::get('/createbranch','BranchController@create')->name('create.branch');
+    Route::post('/newbranch','BranchController@store')->name('store.branch');
 });

@@ -12,9 +12,10 @@ class BranchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function allBranches()
     {
-        //
+        $branches = Branch::all();
+        return view('branches.index',compact('branches'));
     }
 
     /**
@@ -24,8 +25,9 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+        return view('branches.createEdit')->with('param','CreateBranch');
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +37,27 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+
+            'name'=>['required'],
+            'status'=>['required']
+
+        ]);
+
+        $upd = new Branch();
+
+        $upd->name=$request->name;
+        $upd->status=$request->status;
+
+        $validate = $upd->save();
+
+        if($validate){
+            return redirect()->route('allBranches')->with('success','You have successfully Created a new Branch.');
+        }
+        else{
+            return redirect()->back()->with('error','An error occured while creating the branch !');
+        }
+
     }
 
     /**
@@ -44,9 +66,10 @@ class BranchController extends Controller
      * @param  \App\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function show(Branch $branch)
+    public function show($id)
     {
-        //
+        $branch = Branch::find($id);
+        return view('branches.show',compact('branch'));
     }
 
     /**
@@ -55,9 +78,10 @@ class BranchController extends Controller
      * @param  \App\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function edit(Branch $branch)
+    public function edit($id)
     {
-        //
+        $branch = Branch::find($id);
+        return view('branches.createEdit',compact('branch'))->with('param','EditBranch');
     }
 
     /**
@@ -67,9 +91,32 @@ class BranchController extends Controller
      * @param  \App\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Branch $branch)
+    public function update(Request $request, $id)
     {
-        //
+
+        $this->validate($request,[
+
+            'name'=>['required'],
+            'status'=>['required']
+
+        ]);
+
+        $upd = Branch::find($id);
+
+        $upd->name=$request->name;
+        $upd->status=$request->status;
+
+        $validate = $upd->save();
+
+        if($validate){
+            return redirect()->route('allBranches')->with('success','You have successfully Updated the Branch details.');
+        }
+        else{
+            return redirect()->back()->with('error','An error occured while updating the branch details!');
+        }
+
+
+
     }
 
     /**
@@ -78,8 +125,16 @@ class BranchController extends Controller
      * @param  \App\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Branch $branch)
+    public function destroy($id)
     {
-        //
+        $del =Branch::find($id);
+        $del->delete();
+
+        if($del){
+            return redirect()->back()->with('success','You have successfully deleted the branch.');
+        }
+        else{
+            return redirect()->back()->with('error','An error occured while deleting the branch!');
+        }
     }
 }
