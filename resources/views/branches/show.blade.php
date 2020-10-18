@@ -58,7 +58,7 @@
                                                 <th>Type</th>
                                                 <th>Photo</th>
                                                 <th>Address</th>
-                                                <th>Manager_No</th>
+                                                <th>Landlord_No</th>
                                                 <th>Security_No</th>
                                                 {{-- <th>Status</th> --}}
                                                 <th>Actions</th>
@@ -85,7 +85,7 @@
                                                     <th>Type</th>
                                                     <th>Photo</th>
                                                     <th>Address</th>
-                                                    <th>Manager_No</th>
+                                                    <th>Landlord_No</th>
                                                     <th>Security_No</th>
                                                     {{-- <th>Status</th> --}}
                                                     <th>Actions</th>

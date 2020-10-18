@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Branch::class, function (Faker $faker) {
     return [
-        'name'=>$faker->city(),
+        'name'=>$faker->randomElement(['Utawala','Mihiango','Mowlem']),
         'status'=>$faker->randomElement (['Active','Inactive']),
 
     ];

@@ -26,7 +26,7 @@ $factory->define(User::class, function (Faker $faker) {
             'kra_pin'=>$faker->numberBetween(1,10),
             'id_no'=>$faker->numberBetween(1,10),
             'image'=>$faker->imageUrl($width = 640, $height = 480),
-            'type'=>$faker->randomElement(['tenant','admin','manager']),//tenant/admin/manager
+            'type'=>$faker->randomElement(['tenant','owner','manager']),//tenant/admin/manager
             // 'unit_no'=>function(){return App\Unit::all()->random();},
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

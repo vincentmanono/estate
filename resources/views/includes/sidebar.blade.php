@@ -12,7 +12,20 @@
                         <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
                         <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
                         <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
-                        <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Logout</a></li>
+                        <li> <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                             {{ __('Logout') }}
+                         </a>
+
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                             @csrf
+                         </form>
+</li>
+
+
+
+
                     </ul>
                 </li>
 
@@ -33,8 +46,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">Property Details</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-calendar.html">View Properties</a></li>
-                        <li><a href="app-chat.html">Add Property</a></li>
+                        <li><a href="#">View Properties</a></li>
+                        <li><a href="#">Add Property</a></li>
 
                     </ul>
                 </li>
@@ -42,8 +55,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">Services Provider </span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-calendar.html">View Services</a></li>
-                        <li><a href="app-chat.html">Add Services</a></li>
+                        <li><a href="#">View Services</a></li>
+                        <li><a href="#">Add Services</a></li>
 
                     </ul>
                 </li>
@@ -51,16 +64,16 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">Unit Information</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-calendar.html">View Units</a></li>
-                        <li><a href="app-chat.html">Add Unit</a></li>
+                        <li><a href="#">View Units</a></li>
+                        <li><a href="#">Add Unit</a></li>
 
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">Tenant Information</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-calendar.html">View All Tenant</a></li>
-                        <li><a href="app-chat.html">Add Tenant</a></li>
+                        <li><a href="#">View All Tenant</a></li>
+                        <li><a href="#">Add Tenant</a></li>
 
                     </ul>
                 </li>
@@ -71,8 +84,8 @@
                                 aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Rent
                                     Billing</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="app-calendar.html">View all rents</a></li>
-                                <li> <a href="http://" target="_blank" rel="noopener noreferrer">Add Rent</a> </li>
+                                <li><a href="#">View all rents</a></li>
+                                <li> <a href="#" target="_blank" rel="noopener noreferrer">Add Rent</a> </li>
 
 
                             </ul>
@@ -82,8 +95,8 @@
                                 aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Deposit
                                     Billing</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="app-calendar.html">View Deposits</a></li>
-                                <li><a href="app-chat.html">Add Deposit</a></li>
+                                <li><a href="#">View Deposits</a></li>
+                                <li><a href="#">Add Deposit</a></li>
 
                             </ul>
                         </li>
@@ -91,8 +104,8 @@
                                 aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Water
                                     Billing</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="app-calendar.html">View Billing</a></li>
-                                <li><a href="app-chat.html">Add Water Billing</a></li>
+                                <li><a href="#">View Billing</a></li>
+                                <li><a href="#">Add Water Billing</a></li>
 
                             </ul>
                         </li>
@@ -104,8 +117,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">Lease Agreement</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-calendar.html">Lease List</a></li>
-                        <li><a href="app-chat.html">Add Lease</a></li>
+                        <li><a href="#">Lease List</a></li>
+                        <li><a href="#">Add Lease</a></li>
 
                     </ul>
                 </li>
@@ -122,21 +135,21 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">Reports Information</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-calendar.html">Total collections Report</a></li>
-                        <li><a href="app-chat.html">Occupancy Report</a></li>
-                        <li><a href="app-chat.html">Tenant Report</a> </li>
+                        <li><a href="#">Total collections Report</a></li>
+                        <li><a href="#">Occupancy Report</a></li>
+                        <li><a href="#">Tenant Report</a> </li>
 
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                                 aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Billings
                                     Report</span></a>
                             <ul aria-expanded="false" class="collapse">
 
-                                <li><a href="app-chat.html">Rent Report</a></li>
+                                <li><a href="#">Rent Report</a></li>
 
-                                <li><a href="app-chat.html"> Deposit Report</a></li>
+                                <li><a href="#"> Deposit Report</a></li>
 
 
-                                <li><a href="app-chat.html"> Water Report</a></li>
+                                <li><a href="#"> Water Report</a></li>
 
                             </ul>
                         </li>
@@ -149,9 +162,9 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-email"></i><span class="hide-menu">Inbox</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-email.html">Mailbox</a></li>
-                        <li><a href="app-email-detail.html">Mailbox Detail</a></li>
-                        <li><a href="app-compose.html">Compose Mail</a></li>
+                        <li><a href="#">Mailbox</a></li>
+                        <li><a href="#">Mailbox Detail</a></li>
+                        <li><a href="#">Compose Mail</a></li>
                     </ul>
                 </li>
 
@@ -159,14 +172,14 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-email"></i><span class="hide-menu">SMS Notification</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-email.html">Send SMS</a></li>
+                        <li><a href="#">Send SMS</a></li>
                     </ul>
                 </li>
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-email"></i><span class="hide-menu">Payment Mode</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-email.html">Payment Datails</a></li>
+                        <li><a href="#">Payment Datails</a></li>
                     </ul>
                 </li>
 

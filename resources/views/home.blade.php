@@ -34,35 +34,35 @@
         <!--.row -->
         <div class="row">
             <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="card">
+                <div class="card bg-primary">
                     <div class="card-body">
-                        <h5 class="card-title text-uppercase">All Properties</h5>
+                        <h5 class="card-title text-uppercase">All Branches</h5>
                         <div class="d-flex align-items-center no-block m-t-20 m-b-10">
                             <h1><i class="ti-home text-info"></i></h1>
                             <div class="ml-auto">
-                                <h1 class="text-muted">480</h1>
+                                <h1 class="text-muted">{</h1>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="card">
+                <div class="card bg-info" >
                     <div class="card-body">
-                        <h5 class="card-title text-uppercase">Properties for Sale</h5>
+                        <h5 class="card-title text-uppercase">All Properties </h5>
                         <div class="d-flex align-items-center no-block m-t-20 m-b-10">
                             <h1><i class="icon-tag text-purple"></i></h1>
                             <div class="ml-auto">
-                                <h1 class="text-muted">169</h1>
+                                <h1 class="text-muted">{{ $propertycount }}</h1>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="card">
+                <div class="card bg-success">
                     <div class="card-body">
-                        <h5 class="card-title text-uppercase">Properties for Rent</h5>
+                        <h5 class="card-title text-uppercase">Occupied Units</h5>
                         <div class="d-flex align-items-center no-block m-t-20 m-b-10">
                             <h1><i class="icon-basket text-danger"></i></h1>
                             <div class="ml-auto">
@@ -73,9 +73,9 @@
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="card">
+                <div class="card bg-warning">
                     <div class="card-body">
-                        <h5 class="card-title text-uppercase">Total Ernings</h5>
+                        <h5 class="card-title text-uppercase">Vacant Units</h5>
                         <div class="d-flex align-items-center no-block m-t-20 m-b-10">
                             <h1><i class="ti-wallet text-success"></i></h1>
                             <div class="ml-auto">
@@ -117,13 +117,13 @@
                     <div class="col-md-12">
                         <div class="card m-b-15">
                             <div class="card-body">
-                                <h5 class="card-title">PROPERTY SALES INCOME</h5>
+                                <h5 class="card-title">Total Paid Deposit</h5>
                                 <div class="row">
-                                    <div class="col-6 m-t-30">
-                                        <h1 class="text-info">$64057</h1>
-                                        <p class="text-muted">APRIL 2017</p> <b>(150 Sales)</b>
+                                    <div class="col-9 m-t-30">
+                                        <h1 class="text-info">Ksh {{ number_format($depositsum , 2,'.',',')  }}  </h1>
+                                        <p class="text-muted">{{ (date('d,M,Y') )}}</p>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-3">
                                         <div id="sparkline2dash" class="text-right"></div>
                                     </div>
                                 </div>
@@ -133,14 +133,15 @@
                     <div class="col-md-12">
                         <div class="card bg-purple m-b-15">
                             <div class="card-body">
-                                <h5 class="text-white card-title">PROPERTY ON RENT INCOME</h5>
+                                <h5 class="text-white card-title">  Total Paid Rent</h5>
                                 <div class="row">
-                                    <div class="col-6 m-t-30">
-                                        <h1 class="text-white">$30447</h1>
-                                        <p class="text-white">APRIL 2017</p> <b class="text-white">(110
-                                            Sales)</b>
+                                    <div class="col-9 m-t-30">
+                                        <h1 class="text-white">Ksh {{ number_format($rentsum , 2,'.',',')  }}</h1>
+                                        <p class="text-white"> For :
+                                            <span>  {{ (date('M , Y') )}}</span>
+                                        </p>
                                     </div>
-                                    <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="col-md-3 col-sm-6 col-6">
                                         <div id="sales1" class="text-right"></div>
                                     </div>
                                 </div>
@@ -164,80 +165,45 @@
                             <table class="table product-overview">
                                 <thead>
                                     <tr>
-                                        <th>Customer</th>
-                                        <th>Order ID</th>
-                                        <th>Photo</th>
-                                        <th>Property</th>
-                                        <th>Type</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>Photo</th>
+                                                <th>Address</th>
+                                                <th>Landlord_No</th>
+                                                <th>Security_No</th>
+                                                {{-- <th>Status</th> --}}
+                                                <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($properties as $property)
                                     <tr>
-                                        <td>Steave Jobs</td>
-                                        <td>#85457898</td>
-                                        <td> <img src="/assets/images/property/prop1.jpeg" alt="iMac"
-                                                width="80"> </td>
-                                        <td>Swanim villa</td>
-                                        <td>Sold</td>
-                                        <td>10-7-2017</td>
-                                        <td> <span class="label label-success font-weight-100">Paid</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-dark p-r-10"
-                                                data-toggle="tooltip" title="Edit"><i
-                                                    class="ti-marker-alt"></i></a> <a href="javascript:void(0)"
-                                                class="text-dark" title="Delete" data-toggle="tooltip"><i
-                                                    class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Varun Dhavan</td>
-                                        <td>#95457898</td>
-                                        <td> <img src="/assets/images/property/prop2.jpeg" alt="iPhone"
-                                                width="80"> </td>
-                                        <td>River view home</td>
-                                        <td>On Rent</td>
-                                        <td>09-7-2017</td>
-                                        <td> <span class="label label-warning font-weight-100">Pending</span>
+                                       <td>{{ $property->name }}</td>
+                                       <td>{{ $property->type }}</td>
+                                       <td> <img src="../assets/images/property/prop1.jpeg" alt="iMac" width="80"> </td>
+                                       <td>{{ $property->address }}</td>
+                                       <td><a style="color: blue;"  href="tel:{{ $property->landlord_no }}">{{ $property->landlord_no }}</a> </td>
+                                       <td><a style="color: blue;" href="tel:{{ $property->security_no }}">{{ $property->security_no }}</a> </td>
+                                       {{-- <td> <span class="label label-success font-weight-100">Paid</span> </td> --}}
+                                       <td>
+                                           {{-- <a href="javascript:void(0)" class="text-dark p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> --}}
+                                           {{-- <a href="javascript:void(0)" class="text-dark" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a> --}}
+                                           <a class="btn btn-success " href="#" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
+
                                         </td>
-                                        <td><a href="javascript:void(0)" class="text-dark p-r-10"
-                                                data-toggle="tooltip" title="Edit"><i
-                                                    class="ti-marker-alt"></i></a> <a href="javascript:void(0)"
-                                                class="text-dark" title="Delete" data-toggle="tooltip"><i
-                                                    class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ritesh Desh</td>
-                                        <td>#68457898</td>
-                                        <td> <img src="/assets/images/property/prop3.jpeg" alt="apple_watch"
-                                                width="80"> </td>
-                                        <td>Gray Chair</td>
-                                        <td>12</td>
-                                        <td>08-7-2017</td>
-                                        <td> <span class="label label-success font-weight-100">Paid</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-dark p-r-10"
-                                                data-toggle="tooltip" title="Edit"><i
-                                                    class="ti-marker-alt"></i></a> <a href="javascript:void(0)"
-                                                class="text-dark" title="Delete" data-toggle="tooltip"><i
-                                                    class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hrithik</td>
-                                        <td>#45457898</td>
-                                        <td> <img src="/assets/images/property/prop3.jpeg" alt="mac_mouse"
-                                                width="80"> </td>
-                                        <td>Pure Wooden chair</td>
-                                        <td>18</td>
-                                        <td>02-7-2017</td>
-                                        <td> <span class="label label-danger font-weight-100">Failed</span>
-                                        </td>
-                                        <td><a href="javascript:void(0)" class="text-dark p-r-10"
-                                                data-toggle="tooltip" title="Edit"><i
-                                                    class="ti-marker-alt"></i></a> <a href="javascript:void(0)"
-                                                class="text-dark" title="Delete" data-toggle="tooltip"><i
-                                                    class="ti-trash"></i></a></td>
-                                    </tr>
+                                   </tr>
+                                   @endforeach
                                 </tbody>
+                                <thead>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>Photo</th>
+                                                <th>Address</th>
+                                                <th>Landlord_No</th>
+                                                <th>Security_No</th>
+                                                {{-- <th>Status</th> --}}
+                                                <th>Actions</th>
+                                </thead>
                             </table>
                         </div>
                     </div>
