@@ -22,6 +22,14 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/users', 'UserController@allUsers')->name('allUsers');
+    Route::get('/all-users', 'UserController@allUsers')->name('allUsers');
+    Route::get('/user/create', 'UserController@createUser')->name('createUser');
+    Route::get('/user/{user}', 'UserController@showUser')->name('showUser');
+    Route::get('/user/{user}/edit', 'UserController@editUser')->name('editUser');
+    Route::put('/user/{user}/edit', 'UserController@updateUser')->name('updateUser');
+
+
     Route::get('/all-tenants', 'UserController@allTenants')->name('allTenants');
+    Route::post('add-user','UserController@addUser')->name('addUser');
+    Route::delete('delete-user/{user}','UserController@deleteUser')->name('deleteUser');
 });

@@ -15,6 +15,9 @@ class CreateUnitsTable extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
+
+            $table->string('name', 100)->nullable();
+
             $table->string('rent_escalation')->nullable();
             $table->string('water_meter')->nullable();
             $table->string('billing_cycle')->nullable();//monthy,quartely,bi-annually,annually
@@ -25,7 +28,7 @@ class CreateUnitsTable extends Migration
             $table->string('management_fee')->nullable();
             $table->integer('property_id');
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
-            
+
 
 
             $table->timestamps();

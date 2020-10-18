@@ -21,9 +21,10 @@ class CreatePropertiesTable extends Migration
             $table->string('date_of_cert_of_occupation');
             $table->string('address');
             $table->string('security_no')->nullable();
+            $table->string('image')->nullable();
             $table->string('caretaker_no')->nullable();
             $table->string('landlord_no')->nullable();
-            $table->string('yearo_of_construction')->nullable();
+            $table->string('year_of_construction')->nullable();
             $table->string('water_bill_rate')->nullable();
             $table->string('l_r_no')->nullable();
             $table->integer('branch_id')->nullable();

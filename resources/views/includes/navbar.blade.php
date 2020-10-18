@@ -136,7 +136,7 @@
                                                 class="img-circle"> <span
                                                 class="profile-status busy pull-right"></span> </div>
                                         <div class="mail-contnet">
-                                            <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See
+                                            <h5>Sonu Nigam</h5> <span class="mail-desc">Ive sung a song! See
                                                 you at</span> <span class="time">9:10 AM</span>
                                         </div>
                                     </a>
@@ -313,7 +313,7 @@
                     <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href=""
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
                             src="/assets/images/users/1.jpg" alt="user" class=""> <span
-                            class="hidden-md-down">Mark &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                            class="hidden-md-down">{{ auth()->user()->name }} &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                     <div class="dropdown-menu dropdown-menu-right animated flipInY">
                         <!-- text-->
                         <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My

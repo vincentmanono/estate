@@ -6,7 +6,7 @@
             <ul id="sidebarnav">
                 <li class="user-pro"> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                         aria-expanded="false"><img src="/assets/images/users/1.jpg" alt="user-img"
-                            class="img-circle"><span class="hide-menu">Mark Jeckson</span></a>
+                            class="img-circle"><span class="hide-menu">{{ auth()->user()->name }}</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
                         <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
@@ -113,8 +113,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">User Management</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-calendar.html">View Users</a></li>
-                        <li><a href="app-chat.html">Add user</a></li>
+                        <li><a href="{{ route('allUsers') }}">View Users</a></li>
+                        <li><a href="{{ route('createUser') }}">Add user</a></li>
 
                     </ul>
                 </li>
