@@ -46,8 +46,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">Property Details</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">View Properties</a></li>
-                        <li><a href="#">Add Property</a></li>
+                        <li><a href="{{route('property.index')}}">View Properties</a></li>
+                    <li><a href="{{route('property.create')}}">Add Property</a></li>
 
                     </ul>
                 </li>
@@ -55,8 +55,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">Services Provider </span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">View Services</a></li>
-                        <li><a href="#">Add Services</a></li>
+                        <li><a href="{{ route('service.index') }}">View Services</a></li>
+                        <li><a href="{{ route('service.create') }}">Add Services</a></li>
 
                     </ul>
                 </li>
@@ -189,3 +189,4 @@
     </div>
     <!-- End Sidebar scroll-->
 </aside>
+
