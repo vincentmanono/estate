@@ -19,7 +19,6 @@ class CreateServicesTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('type');
-            $table->string('description');
             $table->timestamps();
         });
     }

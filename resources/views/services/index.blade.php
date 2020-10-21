@@ -15,15 +15,15 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor">Blank Page</h4>
+                        <h4 class="text-themecolor">Service Poviders</h4>
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                                <li class="breadcrumb-item active">Blank Page</li>
+                                <li class="breadcrumb-item active">Services</li>
                             </ol>
-                            <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
+                            <a type="button" href="{{ route('service.create') }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a>
                         </div>
                     </div>
                 </div>
@@ -42,8 +42,9 @@
 
                                         <div class="card">
                                             <div class="card-body">
-                                                <h4 class="card-title">Properties Table</h4>
+                                                <h4 class="card-title">Service Table</h4>
                                                 {{-- <h6 class="card-subtitle">Data table example</h6> --}}
+                                                <a href="{{ route('home') }}"class="btn btn-primary" style="float: right;" >  Back</a>
                                                 <div class="table-responsive m-t-40">
                                                     <table id="myTable" class="table table-bordered table-striped">
                                                         <thead>
@@ -62,11 +63,15 @@
                                                             <tr>
                                                             <td>{{$service->name}}</td>
                                                             <td>{{$service->type}}</td>
-                                                            <td>{{$service->Phone}}</td>
+                                                            <td>{{$service->phone}}</td>
                                                             <td>{{$service->email}}</td>
                                                             <td class="row">
-                                                            <a href="{{route('service.show',$service->id)}}" class=" btn btn btn-info" >More</a>
-                                                            <a href="{{route('service.edit',$service->id)}}" style="margin-left: 4%;margin-right:4;" class=" btn btn btn-warning" >Edit</a>
+                                                            <a href="{{route('service.edit',$service->id)}}" style="margin-left: 4%;margin-right:4%;" class=" btn btn btn-info" >Edit</a>
+                                                            <form action="{{ route('service.destroy',$service->id) }}" method="post" enctype="multipart/form-data">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" onclick="return confirm('Are you sure you want to delete this record?');" class="btn btn-danger">Delete</button>
+                                                            </form>
                                                             </td>
                                                             </tr>
                                                             @endforeach
@@ -84,7 +89,7 @@
                                                 </div>
 
                                             </div>
-                                            {{ $services->links() }}
+                                            {{--  {{ $services->links() }}  --}}
                                         </div>
                                       </div>
                                 </div>

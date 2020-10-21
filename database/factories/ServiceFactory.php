@@ -11,6 +11,6 @@ $factory->define(Service::class, function (Faker $faker) {
         'phone'=>$faker->e164PhoneNumber,
         'email'=>$faker->unique()->safeEmail,
         'type'=>$faker->randomElement(['internet','water','power']),
-        'description'=>$faker->sentence($nbWords = 6, $variableNbWords = true),
+        
     ];
 });
