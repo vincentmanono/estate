@@ -203,7 +203,7 @@
                                     </div>
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                    <button type="button" class="btn btn-inverse">Cancel</button>
+                                    <a type="button" href="{{ route('property.index') }}" class="btn btn-dark">Cancel</a>
                                 </div>
                             </form>
                           @elseif($param =='Edit Property')

@@ -76,12 +76,9 @@
                                                                     <td>{{ $unit->billing_cycle }}</td>
                                                                     <td>{{$unit->property->name}}</td>
                                                                     <td class="row">
-                                                                    <a href="{{route('unit.edit',$unit->id)}}" style="margin-left: 4%;margin-right:4%;" class=" btn btn btn-info" >Edit</a>
-                                                                    <form action="{{ route('unit.destroy',$unit->id) }}" method="post" enctype="multipart/form-data">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button type="submit" onclick="return confirm('Are you sure you want to delete this record?');" class="btn btn-danger">Delete</button>
-                                                                    </form>
+                                                                        <a class="btn btn-info " href="{{ route('unit.show',$unit->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
+                                                                        <a style="margin-left: 2%;margin-right:2%; " class="btn btn-success " href="{{ route('unit.edit',$unit->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
+
                                                                     </td>
                                                                     </tr>
                                                                     @endforeach
