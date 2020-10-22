@@ -84,7 +84,7 @@
                                 aria-expanded="false"><i class="ti-money"></i><span class="hide-menu">Rent
                                     Billing</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="#">View all rents</a></li>
+                                <li><a href="{{ route('rent.index') }}">View all rents</a></li>
                                 <li> <a href="#" target="_blank" rel="noopener noreferrer">Add Rent</a> </li>
 
 
@@ -95,8 +95,8 @@
                                 aria-expanded="false"><i class="ti-money"></i><span class="hide-menu">Deposit
                                     Billing</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="#">View Deposits</a></li>
-                                <li><a href="#">Add Deposit</a></li>
+                                <li><a href="{{ route('deposit.index') }}">View Deposits</a></li>
+                                <li><a href="{{ route('deposit.create') }}">Add Deposit</a></li>
 
                             </ul>
                         </li>
@@ -104,8 +104,8 @@
                                 aria-expanded="false"><i class="ti-money"></i><span class="hide-menu">Water
                                     Billing</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="#">View Billing</a></li>
-                                <li><a href="#">Add Water Billing</a></li>
+                                <li><a href="{{ route('water.index') }}">View Billing</a></li>
+                                <li><a href="{{ route('water.create') }}">Add Water Billing</a></li>
 
                             </ul>
                         </li>

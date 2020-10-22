@@ -14,7 +14,8 @@ class WaterController extends Controller
      */
     public function index()
     {
-        //
+        $waters = Water::all();
+        return view('waters.index',compact('waters'));
     }
 
     /**
