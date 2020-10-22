@@ -63,7 +63,7 @@
                                     @csrf
                                  @method('POST')
                                 <div class="form-body">
-                                    <h3 class="card-title">Enter unit Details</h3>
+                                    <h3 class="card-title">Enter Unit Details</h3>
                                     <hr>
                                     <div class="row p-t-20">
                                         <div class="col-md-6">
@@ -130,7 +130,7 @@
                                     <!--/span-->
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                    <a type="button" href="{{ route('unit.index') }}" class="btn btn-dark">Cancel</a>
+                                    <a type="button" href="{{ route('home') }}" class="btn btn-dark">Cancel</a>
                                 </div>
                             </form>
 
@@ -206,7 +206,7 @@
                                 <!--/span-->
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                <a type="button" href="{{ route('unit.index') }}" class="btn btn-dark">Cancel</a>
+                                <a type="button" href="{{ route('home') }}" class="btn btn-dark">Cancel</a>
                             </div>
                         </form>
                           @endif

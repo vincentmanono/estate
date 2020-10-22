@@ -22,7 +22,7 @@
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         <li class="breadcrumb-item active">Blank Page</li>
                     </ol>
-                    <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
+                    <a href="{{ route('unit.create') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a>
                 </div>
             </div>
         </div>
@@ -57,9 +57,7 @@
                                                             <table id="myTable" class="table table-bordered table-striped">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>Name</th>
-                                                                        <th>Water Meter</th>
-                                                                        <th>Electricity Meter</th>
+                                                                        <th>Unit Name</th>
                                                                         <th>Billing Cycle</th>
                                                                         <th>Property Name</th>
                                                                         <th>Action</th>
@@ -71,8 +69,6 @@
 
                                                                     <tr>
                                                                     <td>{{$unit->name}}</td>
-                                                                    <td>{{$unit->water_acc_no}}</td>
-                                                                    <td>{{$unit->electricity_acc_no}}</td>
                                                                     <td>{{ $unit->billing_cycle }}</td>
                                                                     <td>{{$unit->property->name}}</td>
                                                                     <td class="row">
@@ -84,9 +80,7 @@
                                                                     @endforeach
                                                                     <thead>
                                                                         <tr>
-                                                                            <th>Name</th>
-                                                                            <th>Water Meter</th>
-                                                                            <th>Electricity Meter</th>
+                                                                            <th>Unit Name</th>
                                                                             <th>Billing Cycle</th>
                                                                             <th>Property Name</th>
                                                                             <th>Action</th>
