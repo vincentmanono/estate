@@ -64,8 +64,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">Unit Information</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">View Units</a></li>
-                        <li><a href="#">Add Unit</a></li>
+                        <li><a href="{{ route('unit.index') }}">View Units</a></li>
+                        <li><a href="{{ route('unit.create') }}">Add Unit</a></li>
 
                     </ul>
                 </li>

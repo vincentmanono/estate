@@ -42,5 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('deletebranch/{id}','BranchController@destroy')->name('destroy.branch');
     Route::resource('/property', 'PropertyController');
     Route::resource('service', 'ServiceController');
+    Route::resource('unit', 'UnitController');
+
 
 });
