@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Unit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
@@ -23,6 +24,14 @@ class UserController extends Controller
     {
         $users = User::where('type', 'tenant')->get();
         return view('users.index', compact('users'))->with('params', "Tenants");
+    }
+
+    public function tenantUnit($tenantId , $unitId)
+    {
+        $tenant = User::findOrFail($tenantId) ;
+        $unit = Unit::findOrFail($unitId) ;
+        return view('users.userUnit',compact('unit')) ;
+
     }
 
     public function showUser($id)

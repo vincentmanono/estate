@@ -30,6 +30,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('/all-tenants', 'UserController@allTenants')->name('allTenants');
+
+    Route::get('/tenant/{tenant}/{unit}','UserController@tenantUnit')->name('tenantUnit');
+
+
+
     Route::post('add-user','UserController@addUser')->name('addUser');
     Route::delete('delete-user/{user}','UserController@deleteUser')->name('deleteUser');
     Route::get('/branches','BranchController@allBranches')->name('allBranches');

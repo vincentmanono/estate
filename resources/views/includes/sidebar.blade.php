@@ -72,8 +72,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">Tenant Information</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">View All Tenant</a></li>
-                        <li><a href="#">Add Tenant</a></li>
+                        <li><a href="{{ route('allTenants') }}">View All Tenant</a></li>
+                        <li><a href="{{ route('createUser') }}">Add Tenant</a></li>
 
                     </ul>
                 </li>

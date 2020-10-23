@@ -26,6 +26,9 @@ class CreateUnitsTable extends Migration
             $table->string('electricity_acc_no')->nullable();
             $table->string('service_charge')->nullable();
             $table->string('management_fee')->nullable();
+
+            $table->integer('rent')->unsigned()->nullable();
+
             $table->integer('property_id');
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
 

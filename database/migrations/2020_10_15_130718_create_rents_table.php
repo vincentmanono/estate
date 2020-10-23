@@ -16,8 +16,10 @@ class CreateRentsTable extends Migration
         Schema::create('rents', function (Blueprint $table) {
             $table->id();
             $table->string('amount');
-            $table->string('no_months');
-            $table->string('date');
+            $table->dateTime('paid_date')->nullable();
+            $table->dateTime('expiry_date')->nullable();
+            $table->boolean('status')->nullable()->default(false);
+
             $table->string('description')->nullable();
             $table->integer('user_id')->unsigned()->nullable() ;
             $table->integer('unit_id')->unsigned();
