@@ -25,7 +25,7 @@ class DepositController extends Controller
      */
     public function create()
     {
-        //
+        return view('deposits.createEdit')->with('param','Add Deposit Record');
     }
 
     /**
@@ -56,9 +56,11 @@ class DepositController extends Controller
      * @param  \App\Deposit  $deposit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Deposit $deposit)
+    public function edit($id)
     {
-        //
+        $deposit=Deposit::find($id);
+
+        return view('deposits.createEdit')->with('param','Edit Deposit Records');
     }
 
     /**
@@ -79,8 +81,16 @@ class DepositController extends Controller
      * @param  \App\Deposit  $deposit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Deposit $deposit)
+    public function destroy($id)
     {
-        //
+        $del = Deposit::find($id);
+        $del->delete();
+
+        if($del){
+            return redirect()->route('deposit.index')->with('success','You have successfully');
+        }
+        else{
+            return back()->with('error','An error occured. Please try again!!!');
+        }
     }
 }

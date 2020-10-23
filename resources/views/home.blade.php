@@ -192,9 +192,9 @@
                                        <td>{{ $property->address }}</td>
 
                                        {{-- <td> <span class="label label-success font-weight-100">Paid</span> </td> --}}
-                                       <td>
-                                        <a class="btn btn-success " href="{{ route('singleBranch',$property->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
-                                        <a style="margin-left: 2%;margin-right:2%; " class="btn btn-info " href="{{ route('editBranch',$property->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
+                                       <td class="row">
+                                        <a class="btn  btn-sm btn-success " href="{{ route('singleBranch',$property->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
+                                        <a style="margin-left: 2%;margin-right:2%; margin-top:4%; " class="btn btn-sm btn-info " href="{{ route('editBranch',$property->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
                                         </td>
                                    </tr>
                                    @endforeach

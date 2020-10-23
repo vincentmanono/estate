@@ -85,7 +85,7 @@
                                     Billing</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{ route('rent.index') }}">View all rents</a></li>
-                                <li> <a href="#" target="_blank" rel="noopener noreferrer">Add Rent</a> </li>
+                                <li> <a href="{{ route('rent.create') }}" target="_blank" rel="noopener noreferrer">Add Rent</a> </li>
 
 
                             </ul>

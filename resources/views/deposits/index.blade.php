@@ -47,6 +47,7 @@
                                                 <th>Date Paid</th>
                                                 <th>Unit Name</th>
                                                 <th>Tenant Name</th>
+                                                <th>status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -59,6 +60,7 @@
                                             <td>{{$deposit->date}}</td>
                                             <td>{{$deposit->unit->name}}</td>
                                             <td>{{ $deposit->user->name }}</td>
+                                            <td>{{ $deposit->status }}</td>
                                             <td class="row">
                                             <a href="{{route('deposit.show',$deposit->id)}}" class=" btn btn btn-info" >More</a>
                                             <a href="{{route('deposit.edit',$deposit->id)}}" style="margin-left: 4%;margin-right:4;" class=" btn btn btn-warning" >Edit</a>
@@ -71,6 +73,7 @@
                                                         <th>Date Paid</th>
                                                         <th>Unit Name</th>
                                                         <th>Tenant Name</th>
+                                                        <th>Status</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>

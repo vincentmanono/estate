@@ -25,7 +25,7 @@ class WaterController extends Controller
      */
     public function create()
     {
-        //
+        return view('waters.createEdit')->with('param','Add Water Records');
     }
 
     /**
@@ -45,9 +45,10 @@ class WaterController extends Controller
      * @param  \App\Water  $water
      * @return \Illuminate\Http\Response
      */
-    public function show(Water $water)
+    public function show( $id)
     {
-        //
+        $water = Water::find($id);
+        return view('waters.show',compact('water'));
     }
 
     /**
@@ -56,9 +57,11 @@ class WaterController extends Controller
      * @param  \App\Water  $water
      * @return \Illuminate\Http\Response
      */
-    public function edit(Water $water)
+    public function edit( $id)
     {
-        //
+        $water = Water::find($id);
+
+        return view('waters.createEdit',compact('water'))->with('param','Edit Water Records');
     }
 
     /**
@@ -79,8 +82,17 @@ class WaterController extends Controller
      * @param  \App\Water  $water
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Water $water)
+    public function destroy( $id)
     {
-        //
+        $del = Water::find($id);
+
+        $del->delete();
+
+        if($del){
+            return redirect()->route('water.index')->with('success','You have successfully deleted the record');
+        }
+        else{
+            return back()->with('error','An error occured. Try again!!!');
+        }
     }
 }
