@@ -16,12 +16,11 @@ class CreateWatersTable extends Migration
     {
         Schema::create('waters', function (Blueprint $table) {
             $table->id();
-            $table->string('amount'); 
+            $table->string('amount');
             $table->string('pay_date');
             $table->string('no_months')->nullable();
             $table->string('read_date')->nullable();
             $table->string('new_reading')->nullable();
-            $table->string('description')->nullable();
             $table->integer('unit_id');
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
             $table->timestamps();

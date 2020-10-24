@@ -13,7 +13,6 @@ $factory->define(Water::class, function (Faker $faker) {
             'no_months'=>$faker->numberBetween(1,12),
             'read_date'=>$faker->date(),
             'new_reading'=>$faker->randomNumber($nmDigits=4,$strict=false),
-            'description'=>$faker->paragraph($nbSentences = 3, $variableNbSentences = true),
             'unit_id'=>function(){return App\Unit::all()->random();}
     ];
 });

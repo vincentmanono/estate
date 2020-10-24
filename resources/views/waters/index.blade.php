@@ -66,9 +66,15 @@
                                             <td>{{$water->new_reading}}</td>
 
                                             <td class="row">
-                                            <a href="{{route('water.show',$water->id)}}" class=" btn btn btn-info" >More</a>
-                                            <a href="{{route('water.edit',$water->id)}}" style="margin-left: 4%;margin-right:4;" class=" btn btn btn-warning" >Edit</a>
-                                            </td>
+                                            <a href="{{route('water.edit',$water->id)}}" style="margin-right: 2%;" class=" btn btn btn-info" >Edit</a>
+
+                                            <form action="{{ route('water.destroy',$water->id) }}" enctype="multipart/form-data" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" onclick="return confirm('Are you sure you want to delete this record?');" class="btn btn-danger">Delete</button>
+                                            </form>
+
+                                        </td>
                                             </tr>
                                             @endforeach
                                                 <thead>

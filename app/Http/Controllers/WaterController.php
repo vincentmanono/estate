@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Water;
+use App\Unit;
 use Illuminate\Http\Request;
 
 class WaterController extends Controller
@@ -25,7 +26,8 @@ class WaterController extends Controller
      */
     public function create()
     {
-        return view('waters.createEdit')->with('param','Add Water Records');
+        $units =Unit::all();
+        return view('waters.createEdit',compact('units'))->with('param','Add Water Records');
     }
 
     /**
@@ -36,7 +38,35 @@ class WaterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,
+        [
+            'amount'=>['string','required'],
+            'pay_date'=>['string','required'],
+            'no_months'=>['string','required'],
+            'read_date'=>['string','required'],
+            'new_reading'=>['string','required'],
+            'unit_id'=>['string','required']
+        ]);
+
+        $post =new Water();
+
+        $post->amount= $request->amount;
+        $post->pay_date= $request->pay_date;
+        $post->no_months= $request->no_months;
+        $post->read_date= $request->read_date;
+        $post->new_reading= $request->new_reading;
+        $post->unit_id= $request->unit_id;
+
+        $validate=$post->save();
+
+        if($validate){
+            return back()->with('success','You have successfully added the water record.');
+        }
+        else{
+            return back()->with('error','An error occured. Please try again!!!');
+        }
+
+
     }
 
     /**
@@ -59,9 +89,10 @@ class WaterController extends Controller
      */
     public function edit( $id)
     {
+        $units = Unit::all();
         $water = Water::find($id);
 
-        return view('waters.createEdit',compact('water'))->with('param','Edit Water Records');
+        return view('waters.createEdit',compact('water','units'))->with('param','Edit Water Records');
     }
 
     /**
@@ -71,9 +102,36 @@ class WaterController extends Controller
      * @param  \App\Water  $water
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Water $water)
+    public function update(Request $request,  $id)
     {
-        //
+        $this->validate($request,
+        [
+            'amount'=>['string','required'],
+            'pay_date'=>['string','required'],
+            'no_months'=>['string','required'],
+            'read_date'=>['string','required'],
+            'new_reading'=>['string','required'],
+            'unit_id'=>['string','required']
+        ]);
+
+        $post = Water::find($id);
+
+        $post->amount= $request->amount;
+        $post->pay_date= $request->pay_date;
+        $post->no_months= $request->no_months;
+        $post->read_date= $request->read_date;
+        $post->new_reading= $request->new_reading;
+        $post->unit_id= $request->unit_id;
+
+        $validate=$post->save();
+
+        if($validate){
+            return back()->with('success','You have successfully updated  the water record.');
+        }
+        else{
+            return back()->with('error','An error occured. Please try again!!!');
+        }
+
     }
 
     /**

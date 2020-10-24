@@ -37,8 +37,9 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Properties Table</h4>
+                                <h4 class="card-title">Deposits Table</h4>
                                 {{-- <h6 class="card-subtitle">Data table example</h6> --}}
+                                <a href="{{ route('home') }}" style="float: right;" class="btn btn-sm btn-primary">Back</a>
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
@@ -62,8 +63,16 @@
                                             <td>{{ $deposit->user->name }}</td>
                                             <td>{{ $deposit->status }}</td>
                                             <td class="row">
-                                            <a href="{{route('deposit.show',$deposit->id)}}" class=" btn btn btn-info" >More</a>
-                                            <a href="{{route('deposit.edit',$deposit->id)}}" style="margin-left: 4%;margin-right:4;" class=" btn btn btn-warning" >Edit</a>
+                                             <a href="{{route('deposit.edit',$deposit->id)}}" style="margin-right: 3%;" class=" btn btn btn-info" >Edit</a>
+
+
+                                             <form action="{{ route('deposit.destroy',$deposit->id) }}" enctype="multipart/form-data"  method="post">
+                                                 @csrf
+                                                 @method('DELETE')
+
+                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?');">Delete</button>
+                                             </form>
+
                                             </td>
                                             </tr>
                                             @endforeach
