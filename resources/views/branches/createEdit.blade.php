@@ -101,13 +101,15 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Branch Status</label>
-                                        <div class="input-group mb-3">
-                                          <select name="status">
-                                                <option value="Active">Active</option>
-                                                <option value="Inactive">Inactive</option>
-                                              </select>
-                                        </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label">Branch</label>
+                                                <select class="form-control custom-select" name="status" data-placeholder="Choose a Category" tabindex="1">
+                                                    <option value="Active">Active</option>
+                                                    <option value="Inactive">Inactive</option>
+
+                                                </select>
+                                            
                                     </div>
                                     <button type="submit" class="btn btn-success mr-2">Create</button>
                                     <a type="submit" class="btn btn-dark" href="{{ route('allBranches') }}">Cancel</a>

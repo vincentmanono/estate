@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RentSeeder::class);
         $this->call(MaintenanceSeeder::class);
         $this->call(BookSeeder::class);
+        $this->call(ServiceSeeder::class);
 
     }
 }

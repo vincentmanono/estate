@@ -14,7 +14,8 @@ class DepositController extends Controller
      */
     public function index()
     {
-        //
+        $deposits=Deposit::all();
+        return view('deposits.index',compact('deposits'));
     }
 
     /**

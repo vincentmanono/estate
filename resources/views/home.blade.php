@@ -178,8 +178,7 @@
                                                 <th>Type</th>
                                                 <th>Photo</th>
                                                 <th>Address</th>
-                                                <th>Landlord_No</th>
-                                                <th>Security_No</th>
+
                                                 {{-- <th>Status</th> --}}
                                                 <th>Actions</th>
                                     </tr>
@@ -191,14 +190,11 @@
                                        <td>{{ $property->type }}</td>
                                        <td> <img src="../assets/images/property/prop1.jpeg" alt="iMac" width="80"> </td>
                                        <td>{{ $property->address }}</td>
-                                       <td><a style="color: blue;"  href="tel:{{ $property->landlord_no }}">{{ $property->landlord_no }}</a> </td>
-                                       <td><a style="color: blue;" href="tel:{{ $property->security_no }}">{{ $property->security_no }}</a> </td>
+
                                        {{-- <td> <span class="label label-success font-weight-100">Paid</span> </td> --}}
                                        <td>
-                                           {{-- <a href="javascript:void(0)" class="text-dark p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> --}}
-                                           {{-- <a href="javascript:void(0)" class="text-dark" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a> --}}
-                                           <a class="btn btn-success " href="#" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
-
+                                        <a class="btn btn-success " href="{{ route('singleBranch',$property->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
+                                        <a style="margin-left: 2%;margin-right:2%; " class="btn btn-info " href="{{ route('editBranch',$property->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
                                         </td>
                                    </tr>
                                    @endforeach
@@ -208,8 +204,7 @@
                                                 <th>Type</th>
                                                 <th>Photo</th>
                                                 <th>Address</th>
-                                                <th>Landlord_No</th>
-                                                <th>Security_No</th>
+
                                                 {{-- <th>Status</th> --}}
                                                 <th>Actions</th>
                                 </thead>

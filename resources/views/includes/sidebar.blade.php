@@ -35,7 +35,7 @@
 
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-layout-grid2"></i><span class="hide-menu">Branch Information</span></a>
+                            class="ti-control-shuffle "></i><span class="hide-menu">Branch Information</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{ route('allBranches') }}">View Branches</a></li>
                         <li><a href="{{ route('create.branch') }}">Add Branch</a></li>
@@ -44,33 +44,33 @@
                 </li>
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-layout-grid2"></i><span class="hide-menu">Property Details</span></a>
+                            class="ti-home"></i><span class="hide-menu">Property Details</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">View Properties</a></li>
-                        <li><a href="#">Add Property</a></li>
+                        <li><a href="{{route('property.index')}}">View Properties</a></li>
+                    <li><a href="{{route('property.create')}}">Add Property</a></li>
 
                     </ul>
                 </li>
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-layout-grid2"></i><span class="hide-menu">Services Provider </span></a>
+                            class="ti-settings"></i><span class="hide-menu">Services Provider </span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">View Services</a></li>
-                        <li><a href="#">Add Services</a></li>
+                        <li><a href="{{ route('service.index') }}">View Services</a></li>
+                        <li><a href="{{ route('service.create') }}">Add Services</a></li>
 
                     </ul>
                 </li>
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-layout-grid2"></i><span class="hide-menu">Unit Information</span></a>
+                            class="ti-home"></i><span class="hide-menu">Unit Information</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">View Units</a></li>
-                        <li><a href="#">Add Unit</a></li>
+                        <li><a href="{{ route('unit.index') }}">View Units</a></li>
+                        <li><a href="{{ route('unit.create') }}">Add Unit</a></li>
 
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-layout-grid2"></i><span class="hide-menu">Tenant Information</span></a>
+                            class="ti-user"></i><span class="hide-menu">Tenant Information</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{ route('allTenants') }}">View All Tenant</a></li>
                         <li><a href="{{ route('createUser') }}">Add Tenant</a></li>
@@ -78,13 +78,13 @@
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-layout-grid2"></i><span class="hide-menu">Billings Section</span></a>
+                            class="ti-money"></i><span class="hide-menu">Billings Section</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Rent
+                                aria-expanded="false"><i class="ti-money"></i><span class="hide-menu">Rent
                                     Billing</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="#">View all rents</a></li>
+                                <li><a href="{{ route('rent.index') }}">View all rents</a></li>
                                 <li> <a href="#" target="_blank" rel="noopener noreferrer">Add Rent</a> </li>
 
 
@@ -92,20 +92,20 @@
                         </li>
 
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Deposit
+                                aria-expanded="false"><i class="ti-money"></i><span class="hide-menu">Deposit
                                     Billing</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="#">View Deposits</a></li>
-                                <li><a href="#">Add Deposit</a></li>
+                                <li><a href="{{ route('deposit.index') }}">View Deposits</a></li>
+                                <li><a href="{{ route('deposit.create') }}">Add Deposit</a></li>
 
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Water
+                                aria-expanded="false"><i class="ti-money"></i><span class="hide-menu">Water
                                     Billing</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="#">View Billing</a></li>
-                                <li><a href="#">Add Water Billing</a></li>
+                                <li><a href="{{ route('water.index') }}">View Billing</a></li>
+                                <li><a href="{{ route('water.create') }}">Add Water Billing</a></li>
 
                             </ul>
                         </li>
@@ -115,7 +115,7 @@
                 </li>
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-layout-grid2"></i><span class="hide-menu">Lease Agreement</span></a>
+                            class="ti-write"></i><span class="hide-menu">Lease Agreement</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="#">Lease List</a></li>
                         <li><a href="#">Add Lease</a></li>
@@ -124,7 +124,7 @@
                 </li>
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-layout-grid2"></i><span class="hide-menu">User Management</span></a>
+                            class="ti-user"></i><span class="hide-menu">User Management</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{ route('allUsers') }}">View Users</a></li>
                         <li><a href="{{ route('createUser') }}">Add user</a></li>
@@ -133,14 +133,14 @@
                 </li>
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-layout-grid2"></i><span class="hide-menu">Reports Information</span></a>
+                            class="ti-agenda"></i><span class="hide-menu">Reports Information</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="#">Total collections Report</a></li>
                         <li><a href="#">Occupancy Report</a></li>
                         <li><a href="#">Tenant Report</a> </li>
 
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Billings
+                                aria-expanded="false"><span class="hide-menu">Billings
                                     Report</span></a>
                             <ul aria-expanded="false" class="collapse">
 
@@ -177,7 +177,7 @@
                 </li>
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-email"></i><span class="hide-menu">Payment Mode</span></a>
+                            class="ti-wallet"></i><span class="hide-menu">Payment Mode</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="#">Payment Datails</a></li>
                     </ul>
@@ -189,3 +189,4 @@
     </div>
     <!-- End Sidebar scroll-->
 </aside>
+

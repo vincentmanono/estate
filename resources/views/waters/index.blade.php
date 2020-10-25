@@ -14,15 +14,15 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor">All Properties</h4>
+                        <h4 class="text-themecolor">All Units water</h4>
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                                <li class="breadcrumb-item active">Properties</li>
+                                <li class="breadcrumb-item active">water</li>
                             </ol>
-                        <a href="{{route('property.create')}}" type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a>
+                        <a href="{{route('water.create')}}" type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New</a>
                         </div>
                     </div>
                 </div>
@@ -43,34 +43,43 @@
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Type</th>
-                                                <th>Address</th>
-                                                {{-- <th>Image</th> --}}
+
+                                                <th>Unit Name</th>
+                                                <th>Property Name</th>
+                                                <th>Amount</th>
+                                                <th>No of Months</th>
+                                                <th>Read Date </th>
+                                                <th>New Reading</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            @foreach ($properties as $property)
+                                            @foreach ($waters as $water)
 
                                             <tr>
-                                            <td>{{$property->name}}</td>
-                                            <td>{{$property->type}}</td>
-                                            <td>{{$property->address}}</td>
-                                            {{-- <td>{{$property->image}}</td> --}}
+                                            <td>{{ $water->unit->name  }}</td>
+                                            <td> {{ $water->unit->property->name }}</td>
+                                            <td>{{$water->amount}}</td>
+                                            <td>{{$water->no_months}}</td>
+                                            <td>{{$water->read_date}}</td>
+                                            <td>{{$water->new_reading}}</td>
+
                                             <td class="row">
-                                            <a href="{{route('property.show',$property->id)}}" class=" btn btn btn-info" >More</a>
-                                            <a href="{{route('property.edit',$property->id)}}" style="margin-left: 4%;margin-right:4;" class=" btn btn btn-warning" >Edit</a>
+                                            <a href="{{route('water.show',$water->id)}}" class=" btn btn btn-info" >More</a>
+                                            <a href="{{route('water.edit',$water->id)}}" style="margin-left: 4%;margin-right:4;" class=" btn btn btn-warning" >Edit</a>
                                             </td>
                                             </tr>
                                             @endforeach
                                                 <thead>
                                                     <tr>
-                                                        <th>Name</th>
-                                                        <th>Type</th>
-                                                        <th>Address</th>
-                                                        {{-- <th>Image</th> --}}
+
+                                                        <th>Unit Name</th>
+                                                        <th>Property Name</th>
+                                                        <th>Amount</th>
+                                                        <th>No of Months</th>
+                                                        <th>Read Date </th>
+                                                        <th>New Reading</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -87,7 +96,7 @@
                 <!-- ============================================================== -->
                 <!-- Right sidebar -->
                 <!-- ============================================================== -->
-              
+
                 <!-- ============================================================== -->
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->

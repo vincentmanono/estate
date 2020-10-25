@@ -14,15 +14,15 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor">All Properties</h4>
+                        <h4 class="text-themecolor">All Units deposit</h4>
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                                <li class="breadcrumb-item active">Properties</li>
+                                <li class="breadcrumb-item active">deposit</li>
                             </ol>
-                        <a href="{{route('property.create')}}" type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a>
+                        <a href="{{route('deposit.create')}}" type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New</a>
                         </div>
                     </div>
                 </div>
@@ -43,34 +43,34 @@
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Type</th>
-                                                <th>Address</th>
-                                                {{-- <th>Image</th> --}}
+                                                <th>Amount</th>
+                                                <th>Date Paid</th>
+                                                <th>Unit Name</th>
+                                                <th>Tenant Name</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            @foreach ($properties as $property)
+                                            @foreach ($deposits as $deposit)
 
                                             <tr>
-                                            <td>{{$property->name}}</td>
-                                            <td>{{$property->type}}</td>
-                                            <td>{{$property->address}}</td>
-                                            {{-- <td>{{$property->image}}</td> --}}
+                                            <td>{{$deposit->amount}}</td>
+                                            <td>{{$deposit->date}}</td>
+                                            <td>{{$deposit->unit->name}}</td>
+                                            <td>{{ $deposit->user->name }}</td>
                                             <td class="row">
-                                            <a href="{{route('property.show',$property->id)}}" class=" btn btn btn-info" >More</a>
-                                            <a href="{{route('property.edit',$property->id)}}" style="margin-left: 4%;margin-right:4;" class=" btn btn btn-warning" >Edit</a>
+                                            <a href="{{route('deposit.show',$deposit->id)}}" class=" btn btn btn-info" >More</a>
+                                            <a href="{{route('deposit.edit',$deposit->id)}}" style="margin-left: 4%;margin-right:4;" class=" btn btn btn-warning" >Edit</a>
                                             </td>
                                             </tr>
                                             @endforeach
                                                 <thead>
                                                     <tr>
-                                                        <th>Name</th>
-                                                        <th>Type</th>
-                                                        <th>Address</th>
-                                                        {{-- <th>Image</th> --}}
+                                                        <th>Amount</th>
+                                                        <th>Date Paid</th>
+                                                        <th>Unit Name</th>
+                                                        <th>Tenant Name</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -87,7 +87,7 @@
                 <!-- ============================================================== -->
                 <!-- Right sidebar -->
                 <!-- ============================================================== -->
-              
+
                 <!-- ============================================================== -->
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
