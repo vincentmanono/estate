@@ -114,7 +114,7 @@
                                                         <div class="d-flex no-block align-items-center">
                                                             <span><img src="{{ asset('/assets/images/property/pro-bath.png') }}"></span>
                                                             <span class="p-10 text-muted">Bathrooms</span>
-                                                            <span class="badge badge-pill badge-secondary ml-auto">{{ $unit->floor->sitting }}</span>
+                                                            {{--  <span class="badge badge-pill badge-secondary ml-auto">{{ $unit->floor->sitting }}</span>  --}}
                                                         </div>
                                                         <div class="d-flex no-block align-items-center">
                                                             <span><img src="/assets/images/property/pro-bed.png"></span>
