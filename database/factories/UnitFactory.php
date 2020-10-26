@@ -10,12 +10,12 @@ $factory->define(Unit::class, function (Faker $faker) {
 
             'name'=>$faker->word(),
             'rent'=>$faker->numberBetween(10000,50000),
-            'rent_escalation'=>$faker->numberBetween(200,1000),
-            'water_meter'=>$faker->numberBetween(200,1000),
+            // 'rent_escalation'=>$faker->numberBetween(200,1000),
+            // 'water_meter'=>$faker->numberBetween(200,1000),
             // 'rent_escalation'=>$faker->numberBetween(200,1000),
             // 'water_meter'=>$faker->numberBetween(200,1000),
             'billing_cycle'=>$faker->randomElement(['monthly','quartely','annually','bi-annually']),//monthy,quartely,bi-annually,annually
-            'water_acc_no'=>$faker->numberBetween(200,1000),
+            // 'water_acc_no'=>$faker->numberBetween(200,1000),
             // 'electricity_meter'=>$faker->randomElement(['prepaid','postpay']),//prepaid and post-paid
             'electricity_acc_no'=>$faker->numberBetween(200,1000),
             'service_charge'=>$faker->numberBetween(200,1000),
