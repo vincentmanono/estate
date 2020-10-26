@@ -117,7 +117,7 @@
                                                             @if ( $lease->unit->status)
                                                                 <span class="badge badge-success">Active</span>
                                                             @else
-                                                                <span class="badge badge-danger">Pedding</span>
+                                                                <span class="badge badge-danger">Pending</span>
                                                             @endif
 
                                                         </td>

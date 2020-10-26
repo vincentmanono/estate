@@ -43,21 +43,21 @@ class RentController extends Controller
         $this->validate($request,[
 
             'amount'=>'required',
-            'no_months'=>'required',
+            'paid_date'=>'required',
             'unit_id'=>'required',
             'user_id'=>'required',
             'description'=>'required',
-            'date'=>'required',
+            'expiry_date'=>'required',
         ]);
 
         $post = new Rent();
 
         $post->amount =$request->amount;
-        $post->no_months =$request->no_months;
+        $post->paid_date =$request->paid_date;
         $post->unit_id =$request->unit_id;
         $post->description =$request->description;
         $post->user_id =$request->user_id;
-        $post->date =$request->date;
+        $post->expiry_date =$request->expiry_date;
 
         $validate=$post->save();
 
@@ -108,21 +108,21 @@ class RentController extends Controller
         $this->validate($request,[
 
             'amount'=>'required',
-            'no_months'=>'required',
+            'paid_date'=>'required',
             'unit_id'=>'required',
             'user_id'=>'required',
             'description'=>'required',
-            'date'=>'required',
+            'expiry_date'=>'required',
         ]);
 
         $post = Rent::find($id);
 
         $post->amount =$request->amount;
-        $post->no_months =$request->no_months;
+        $post->paid_date =$request->paid_date;
         $post->unit_id =$request->unit_id;
         $post->description =$request->description;
         $post->user_id =$request->user_id;
-        $post->date =$request->date;
+        $post->expiry_date =$request->expiry_date;
 
         $validate=$post->save();
 

@@ -218,8 +218,8 @@
                                                                 <thead>
                                                                     <tr>
                                                                         <th>AMOUNT</th>
-                                                                        <th>NO OF MONTHS</th>
-                                                                        <th>DATE</th>
+                                                                        <th>PAID DATE</th>
+                                                                        <th>EXPIRY DATE</th>
                                                                         <th>DESCRIPTION</th>
 
                                                                     </tr>
@@ -230,8 +230,8 @@
                                                                     @if ($rent->unit_id == $unit->id)
                                                                         <tr>
                                                                                 <td>{{ $rent->amount }}</td>
-                                                                                <td>{{ $rent->no_months }}</td>
-                                                                                <td>{{ $rent->date }}</td>
+                                                                                <td>{{ $rent->paid_date }}</td>
+                                                                                <td>{{ $rent->expiry_date }}</td>
                                                                                 <td>{{ $rent->description }}</td>
 
                                                                         </tr>
@@ -245,8 +245,8 @@
                                                                 <tfoot>
 
                                                                         <th>AMOUNT</th>
-                                                                        <th>NO OF MONTHS</th>
-                                                                        <th>DATE</th>
+                                                                        <th>EXPIRY DATE</th>
+                                                                        <th>EXPIRY DATE</th>
                                                                         <th>DESCRIPTION</th>
 
                                                                 </tfoot>
