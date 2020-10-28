@@ -220,7 +220,7 @@
                                 <div class="text-center"> <i class="fa fa-phone text-danger p-r-10" aria-hidden="true"></i> {{$property->user->phone}}
                                     <br> <i class="fa fa-envelope-o text-danger p-r-10 m-t-10" aria-hidden="true"></i> {{$property->user->email}} </div>
                             </div>
-                            <div class="card-body border-top">
+                            {{-- <div class="card-body border-top">
                                 <div class="pd-agent-inq">
                                     <h5 class="card-title">Request Inquiry</h5>
                                     <form class="form-horizontal form-agent-inq">
@@ -248,10 +248,10 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="card">
-                            <div class="card-body">
+                            {{-- <div class="card-body">
                                 <h5 class="card-title">Community Information</h5>
                                 <div class="table-responsive p-t-10">
                                     <table class="table">
@@ -284,7 +284,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

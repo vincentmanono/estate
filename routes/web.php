@@ -51,6 +51,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('rent', 'RentController');
     Route::resource('deposit', 'DepositController');
     Route::resource('water', 'WaterController');
+    Route::resource('payment', 'PaymentController');
+
 
 
 

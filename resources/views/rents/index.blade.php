@@ -47,8 +47,8 @@
                                                 <th>Property Name</th>
                                                 <th>Unit Name</th>
                                                 <th>Amount</th>
-                                                <th>No of Months</th>
                                                 <th>Date Paid</th>
+                                                <th>Expiry Date</th>
                                                 <th>Tenant Name</th>
                                                 <th>Action</th>
                                             </tr>
@@ -62,8 +62,8 @@
                                             <td>{{$rent->unit->name}}</td>
                                             <td>{{ $rent->unit->property->name }}</td>
                                             <td>{{$rent->amount}}</td>
-                                            <td>{{$rent->no_months}}</td>
-                                            <td>{{$rent->date}}</td>
+                                            <td>{{$rent->paid_date}}</td>
+                                            <td>{{$rent->expiry_date}}</td>
                                             <td>{{ $rent->user->name }}</td>
                                             <td class="row">
 
@@ -85,8 +85,8 @@
                                                         <th>Property Name</th>
                                                         <th>Unit Name</th>
                                                         <th>Amount</th>
-                                                        <th>No of Months</th>
                                                         <th>Date Paid</th>
+                                                        <th>Expiry Date</th>
                                                         <th>Tenant Name</th>
                                                         <th>Action</th>
                                                     </tr>

@@ -108,8 +108,8 @@
                                                 <!--/span-->
                                                 <div class="col-md-6">
                                                    <div class="form-group has-success">
-                                                        <label class="control-label">No of Months</label>
-                                                        <input type="text" name="no_months" class="form-control">
+                                                        <label class="control-label">Paid Date</label>
+                                                        <input type="date" name="paid_date" class="form-control">
                                                     </div>
                                                 </div>
                                                 <!--/span-->
@@ -118,8 +118,8 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group has-success">
-                                                        <label class="control-label">Date</label>
-                                                        <input type="date" name="date" class="form-control">
+                                                        <label class="control-label">ExpiryDate</label>
+                                                        <input type="date" name="expiry_date" class="form-control">
                                                         </div>
                                                 </div>
                                                 <!--/span-->
@@ -198,8 +198,8 @@
                                                 <!--/span-->
                                                 <div class="col-md-6">
                                                    <div class="form-group has-success">
-                                                        <label class="control-label">No of Months</label>
-                                                        <input type="text" value="{{ $rent->no_months }}" name="no_months" class="form-control">
+                                                        <label class="control-label"> Date Paid</label>
+                                                        <input type="date" value="{{ $rent->paid_date }}" name="paid_date" class="form-control">
                                                     </div>
                                                 </div>
                                                 <!--/span-->
@@ -208,8 +208,8 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group has-success">
-                                                        <label class="control-label">Date</label>
-                                                        <input type="date" value="{{ $rent->date  }}" name="date" class="form-control">
+                                                        <label class="control-label">Expiry Date</label>
+                                                        <input type="date" value="{{ $rent->expiry_date  }}" name="expiry_date" class="form-control">
                                                         </div>
                                                 </div>
                                                 <!--/span-->
