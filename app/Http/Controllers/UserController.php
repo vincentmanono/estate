@@ -59,7 +59,27 @@ class UserController extends Controller
         $user->kra_pin = $request->input('kra');
         $user->id_no = $request->input('ID');
         $user->type = $type;
-        $user->password =  Hash::make($password);
+        $user->password = Hash::make($password);
+        
+        if (file_exists($request->file('image'))) {
+
+            // Get filename with extension
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+
+            // Get just the filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+            // Get extension
+            $extension = $request->file('image')->getClientOriginalExtension();
+
+            // Create new filename
+            $filenameToStore = $filename . '_' . time() . '.' . $extension;
+
+            // Uplaod image
+            $path = $request->file('image')->storeAs('public/users', $filenameToStore);
+            $user->image = $filenameToStore;
+        }
+
         if ($user->save()) {
             Session::flash('success', $type . " created successfully");
             return redirect()->route("allUsers");
