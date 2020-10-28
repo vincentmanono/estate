@@ -130,7 +130,7 @@
                                             @enderror
                                         </div>
 
-                                        {{-- <div class="form-group col-md-6 col-xs-12 ">
+                                        <div class="form-group col-md-6 col-xs-12 ">
                                             <label for="">User Image</label>
                                             <input type="file" title="User Image"
                                                 class="form-control-file  @error('image') is-invalid @enderror "
@@ -143,7 +143,7 @@
                                             </span>
                                             @enderror
 
-                                        </div> --}}
+                                        </div>
 
                                         <div class="form-group col-md-6 col-xs-12 ">
                                             <label for="type"> Select User Type </label>
@@ -264,7 +264,7 @@
                                             <label for="avatar">User Image</label>
                                             <input type="file" title="User Image"
                                                 class="form-control-file  @error('avatar') is-invalid @enderror "
-                                                placeholder="Upload Image Only" name="avatar" autocomplete="photo"
+                                                placeholder="Upload Image Only" name="image" autocomplete="photo"
                                                 aria-describedby="fileimage">
                                             <small id="fileimage" class="form-text text-muted">Upload User Image</small>
                                             @error('image')

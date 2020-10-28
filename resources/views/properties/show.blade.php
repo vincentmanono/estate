@@ -54,13 +54,13 @@
                                     </ol>
                                     <div class="carousel-inner" role="listbox">
                                         <div class="carousel-item active">
-                                            <img class="img-responsive" src="../assets/images/property/prop6.jpg" alt="First slide">
+                                            <img class="img-responsive" src="/assets/images/property/prop6.jpg" alt="First slide">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="img-responsive" src="storage/property/{{ $property->image }}" alt="Second slide">
+                                            <img class="img-responsive" src="/storage/property/{{$property->image}}" alt="Second slide">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="img-responsive" src="../assets/images/property/prop8.jpg" alt="Third slide">
+                                            <img class="img-responsive" src="/assets/images/property/prop8.jpg" alt="Third slide">
                                         </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
