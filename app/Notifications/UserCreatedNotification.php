@@ -49,13 +49,13 @@ class UserCreatedNotification extends Notification
         ->subject("Account created")
         ->from('info@chiefproperties.co.ke',"Chief Properties")
         ->greeting("Hello ". $this->user->name)
-        ->line('Your account have been created successfully')
+        ->line('Your account has been created successfully')
         ->line("Your login creditials are as follows")
         ->line("Email : ". $user->email )
         ->line("Password : ". $password )
         ->line("Please make sure you update your password after first login")
         ->action('Login now', url(route('login')))
-        ->line('Thank you for truest in , '.config('app.name') ) ;
+        ->line('Thank you for trusting '.config('app.name') ) ;
 
 
     }

@@ -99,7 +99,7 @@
             <div class="col-lg-8 ">
 
                <div class="row card card-body">
-                   <h5 class="card-title">Landlords</h5>
+                   <h5 class="card-title">Managers</h5>
                    <div class="row">
                    @foreach ($managers as $manager)
                    <div class="col-md-4">

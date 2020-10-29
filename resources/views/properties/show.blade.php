@@ -211,7 +211,7 @@
                             <div class="card-body bg-light">
 
                                 <div class="text-center">
-                                    <a href="javascript:void(0)"><img alt="img" class="thumb-lg img-circle" src="../assets/images/users/agent.jpg"></a>
+                                    <a href="javascript:void(0)"><img alt="img" class="thumb-lg img-circle" src="/storage/users/{{ $property->user->image }}"></a>
                                 <h4>{{$property->user->name}}</h4>
                                     <h6>Property {{$property->user->type}}</h6> </div>
                             </div>
