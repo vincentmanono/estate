@@ -12,7 +12,7 @@ class CreateUnitsTable extends Migration
      * @return void
      */
     public function up()
-    {
+    { 
         Schema::create('units', function (Blueprint $table) {
             $table->id();
 
