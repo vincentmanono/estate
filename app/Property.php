@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Property extends Model
 {
     protected $guarded=[];
+
+    public function images()
+    {
+        return $this->hasMany(PropertyImage::class);
+    }
+
     public function branch(){
         return $this->belongsTo(Branch::class);
     }

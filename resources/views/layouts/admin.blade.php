@@ -8,9 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('/assets/images/favicon.png')}}">
     @yield('title')
+    @yield('extraCss')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- This page CSS -->
     <!-- chartist CSS -->
@@ -172,6 +175,7 @@
      <script src="{{ asset('/assets/node_modules/jsgrid/db.js')}}"></script>
     <script type="text/javascript" src="{{ asset('/assets/node_modules/jsgrid/jsgrid.min.js')}}"></script>
      <script src="{{ asset('/assets/dist/js/pages/jsgrid-init.js')}}"></script>
+     @yield('extraScripts')
 
 </body>
 

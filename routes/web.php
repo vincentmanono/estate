@@ -45,7 +45,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/editbranch/{id}','BranchController@edit')->name('editBranch');
     Route::put('/updatebranch/{id}','BranchController@update')->name('update.branch');
     Route::delete('deletebranch/{id}','BranchController@destroy')->name('destroy.branch');
+    Route::get('/property/{id}/images','PropertyImageController@create')->name('property.images.create');
+    Route::post('/property/{id}/images','PropertyImageController@store')->name('property.images.store');
+    Route::post('/property/images','PropertyImageController@fileDestroy')->name('property.images.destroy');
     Route::resource('/property', 'PropertyController');
+
     Route::resource('service', 'ServiceController');
     Route::resource('unit', 'UnitController');
     Route::resource('rent', 'RentController');
