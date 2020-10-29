@@ -20,6 +20,7 @@ class UnitController extends Controller
         $units=Unit::all();
         return view('units.index',compact('units'));
     }
+   
 
     /**
      * Show the form for creating a new resource.

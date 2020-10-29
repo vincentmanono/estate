@@ -14,7 +14,9 @@ class LeaseController extends Controller
      */
     public function index()
     {
-        //
+        $leases = Lease::all();
+
+        return view('occupancy.index',compact('leases'));
     }
 
     /**

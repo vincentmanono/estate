@@ -137,7 +137,7 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="#">Total collections Report</a></li>
                         <li><a href="#">Occupancy Report</a></li>
-                        <li><a href="#">Tenant Report</a> </li>
+                        <li><a href="{{ route('tenant.report') }}">Tenant Report</a> </li>
 
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                                 aria-expanded="false"><span class="hide-menu">Billings

@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('add-user','UserController@addUser')->name('addUser');
     Route::delete('delete-user/{user}','UserController@deleteUser')->name('deleteUser');
+    Route::get('tenantreport','UserController@tenantReport')->name('tenant.report');
     Route::get('/branches','BranchController@allBranches')->name('allBranches');
     Route::get('/branch/{id}','BranchController@show')->name('singleBranch');
     Route::get('/createbranch','BranchController@create')->name('create.branch');
@@ -60,6 +61,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('property/{property}' , 'ManagerController@property')->name('manager.property');
             Route::get('expenses/{property}' , 'ManagerController@expenses')->name('manager.property.expenses');
     });
+
+
 
 
 

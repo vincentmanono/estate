@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Notifications\UserCreatedNotification;
 use App\Unit;
+use App\Lease;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
@@ -26,6 +27,12 @@ class UserController extends Controller
     {
         $users = User::where('type', 'tenant')->get();
         return view('users.index', compact('users'))->with('params', "Tenants");
+    }
+    public function tenantReport(){
+        $leases = Lease::all();
+        $tenants = User::where('type', 'tenant')->get();
+        return view('users.tenantreport', compact('tenants','leases'))->with('params', "Tenants");
+
     }
 
     public function tenantUnit($tenantId , $unitId)
