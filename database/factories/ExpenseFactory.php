@@ -14,7 +14,7 @@ $factory->define(Expense::class, function (Faker $faker) {
             'amount'=>$faker->numberBetween(200,1000),
             'description'=>$faker->paragraph($nbSentences = 3, $variableNbSentences = true),
             'property_id'=>function(){return App\Property::all()->random();},
-            'user_id'=>function(){return App\User::all()->random();}
+            'solved'=>$faker->boolean(60)
 
     ];
 });

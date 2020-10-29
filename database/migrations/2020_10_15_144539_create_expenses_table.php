@@ -15,15 +15,20 @@ class CreateExpensesTable extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            $table->string('occurance')->nullable;//regular
+            $table->string('occurance')->nullable();//regular
             $table->string('type');
-            $table->string('date');
+
+
+            $table->date('date')->nullable()->default(now());
+
             $table->string('amount');
             $table->string('description');
             $table->integer('property_id');
+
+            $table->boolean('solved')->nullable()->default(false);
+
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
-            $table->integer('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

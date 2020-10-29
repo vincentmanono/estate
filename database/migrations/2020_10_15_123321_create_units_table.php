@@ -29,6 +29,8 @@ class CreateUnitsTable extends Migration
 
             $table->integer('rent')->unsigned()->nullable();
 
+            $table->boolean('status')->nullable()->default(false);
+
             // $table->string('management_fee')->nullable();
             $table->integer('property_id');
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
