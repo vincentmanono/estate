@@ -56,6 +56,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('water', 'WaterController');
     Route::resource('payment', 'PaymentController');
 
+    Route:Route::prefix('manager')->group(function () {
+            Route::get('property/{property}' , 'ManagerController@property')->name('manager.property');
+            Route::get('expenses/{property}' , 'ManagerController@expenses')->name('manager.property.expenses');
+    });
+
 
 
 

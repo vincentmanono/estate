@@ -164,7 +164,8 @@
                                                     <th>Name</th>
                                                     <th>Type</th>
                                                     <th>Units</th>
-                                                    <th >Action</th>
+
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -174,8 +175,9 @@
                                                         <td>{{ $property->name}} </td>
                                                         <td>{{ $property->type }} </td>
                                                         <td>{{ $property->units->count() }} </td>
+
                                                         <td>
-                                                            <a href="#"
+                                                            <a href="{{ route('manager.property', $property->id) }}"
                                                                 class=" waves-effect waves-light  btn btn-sm btn-info "><i class="fa fa-eye" aria-hidden="true"></i></a>
                                                                 <a href="#"
                                                                     class=" waves-effect waves-light  btn btn-sm btn-warning text text-white "><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
