@@ -6,12 +6,14 @@ use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Notifications\UserCreatedNotification;
 use App\Unit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
 {
@@ -60,7 +62,7 @@ class UserController extends Controller
         $user->id_no = $request->input('ID');
         $user->type = $type;
         $user->password = Hash::make($password);
-        
+
         if (file_exists($request->file('image'))) {
 
             // Get filename with extension
@@ -82,6 +84,7 @@ class UserController extends Controller
 
         if ($user->save()) {
             Session::flash('success', $type . " created successfully");
+            Notification::send( $user, new UserCreatedNotification($user , $password) ) ;
             return redirect()->route("allUsers");
         }
     }
@@ -126,7 +129,7 @@ class UserController extends Controller
             $old_avatar = $user->avatar;
             $avatar = $request->avatar;
             if ($old_avatar != 'avatar.png' && !Str::contains(auth()->user()->avatar, 'http')) {
-                $imagepath = public_path('/storage/users/') . '/' . $old_avatar;
+                $imagepath = public_path('/storage/users') . '/' . $old_avatar;
                 File::delete($imagepath);
             }
 
@@ -182,7 +185,7 @@ class UserController extends Controller
 
         }
 
-        if (Auth::user()->type == 'owner' || Auth::user()->id == $id) {
+        if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager' || Auth::user()->id == $id) {
             if (User::where('type', 'owner')->count() == 1 && Auth::user()->type == 'owner' && Auth::user()->id == $user->id) {
                 Session::flash('error', 'Sorry, you are the ONLY REMAINING owner! Make someone else a super admin then exit.');
                 return redirect()->back();
