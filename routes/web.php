@@ -60,6 +60,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route:Route::prefix('manager')->group(function () {
             Route::get('property/{property}' , 'ManagerController@property')->name('manager.property');
             Route::get('expenses/{property}' , 'ManagerController@expenses')->name('manager.property.expenses');
+            Route::get('expenses/{property}/create' , 'ManagerController@expensesCreate')->name('manager.property.expenses.create');
+            Route::post('expenses/{property}/store' , 'ManagerController@expensesStore')->name('manager.property.expenses.store');
+            Route::get('expenses/{expense}/edit' , 'ManagerController@expensesEdit')->name('manager.property.expenses.edit');
+            Route::put('expenses/{expense}/update' , 'ManagerController@expensesUpdate')->name('manager.property.expenses.update');
+            Route::post('expenses/{expense}/solved', 'ManagerController@expensesApprove')->name('manager.property.expenses.approve');
+            Route::delete('expenses/{expense}/delete' , 'ManagerController@expensesDelete')->name('manager.property.expenses.delete');
+
     });
 
 

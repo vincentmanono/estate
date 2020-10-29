@@ -1,4 +1,9 @@
 @extends('layouts.admin')
+
+@section('title')
+    <title>{{ $property->name . "Expenses" }} </title>
+@stop
+
 @section('content')
 
 <!-- ============================================================== -->
@@ -22,7 +27,7 @@
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active">Property expenses</li>
                     </ol>
-                    <a href="#" type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a>
+                    <a href="{{ route('manager.property.expenses.create',$property->id) }}" type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a>
                 </div>
             </div>
         </div>
@@ -89,9 +94,31 @@
                                                                     </td>
 
                                                                     <td class="row">
-                                                                        <a class="btn btn-info " href="#" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> </a>
-                                                                        <a  class="btn btn-success " href="#" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i></a>
-                                                                        <!-- Button trigger modal -->
+                                                                        @if ( $expense->solved)
+                                                                        <a class="btn btn-dark mr-2 expensesApprove " href="#" data-toggle="tooltip" title="Expense Already Approved"> <i class="fa fa-play-circle" aria-hidden="true">Disapprove </i> </a>
+                                                                        @else
+                                                                        <a class="btn btn-info mr-2 expensesApprove "  href="#" data-toggle="tooltip" title="Approve Expense"> <i class="fa fa-play-circle" aria-hidden="true">Approve </i> </a>
+
+                                                                        @endif
+
+                                                                        <a  class="btn btn-success " href="{{ route('manager.property.expenses.edit',$expense->id) }}" data-toggle="tooltip" title="Edit expense"> <i class="ti-marker-alt"></i></a>
+                                                                        <a  class="btn btn-danger expenseDelete " href="#" data-toggle="tooltip" title="Delete expense"> <i class="fa fa-trash" aria-hidden="true"></i></a>
+
+                                                                        <form id="expenseDelete" action="{{ route('manager.property.expenses.delete',$expense->id) }}" method="post">
+                                                                            @method("DELETE")
+                                                                            @csrf
+                                                                        </form>
+
+
+                                                                        <form id="expensesApprove" action="{{ route('manager.property.expenses.approve',$expense->id) }}" method="post">
+                                                                            @csrf
+                                                                            @if ($expense->solved)
+                                                                            <input type="hidden" name="solved" value="0">
+                                                                            @else
+                                                                            <input type="hidden" name="solved" value="1">
+                                                                            @endif
+
+                                                                        </form>
 
 
                                                                     </td>
@@ -155,3 +182,23 @@
 <!-- ============================================================== -->
 <!-- footer -->
 @endsection
+
+@section('extraScripts')
+    <script>
+
+        $(".expensesApprove").click((event)=>{
+            event.preventDefault()
+            if( confirm('Are you sure you need to take this Action ?') ){
+                $('#expensesApprove').submit()
+            }
+        })
+        $(".expenseDelete").click((event)=>{
+            event.preventDefault()
+            if( confirm('Are you sure you need to delete this expense ?') ){
+                $('#expenseDelete').submit()
+            }
+        })
+
+    </script>
+@stop
+
