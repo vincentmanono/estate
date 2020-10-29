@@ -117,8 +117,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-write"></i><span class="hide-menu">Lease Agreement</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Lease List</a></li>
-                        <li><a href="#">Add Lease</a></li>
+                        <li><a href="{{ route('lease.index') }}">Lease List</a></li>
+                        <li><a href="{{ route('lease.create') }}">Add Lease</a></li>
 
                     </ul>
                 </li>
