@@ -37,7 +37,7 @@
                 <div class="col-lg-4 col-xlg-3 col-md-5">
                     <div class="card">
                         <div class="card-body">
-                            <center class="m-t-30"> <img src="/storage/users/{{$user->image }}" class="img-circle"
+                            <center class="m-t-30"> <img src="/storage/users/{{ $user->image }}" class="img-circle"
                                     width="150" />
                                 <h4 class="card-title m-t-10">{{ $user->name }}</h4>
                                 <h6 class="card-subtitle">{{ $user->type }}</h6>
@@ -84,6 +84,11 @@
                                         role="tab">Leases</a> </li>
                             @endif
 
+                            @if ($user->type == 'manager')
+                                 <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#property"
+                                        role="tab">Property</a> </li>
+                            @endif
+
 
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile"
                                     role="tab">Profile</a> </li>
@@ -92,47 +97,95 @@
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="leases" role="tabpanel">
+                            @if ($user->type == 'tenant')
+                                <div class="tab-pane active" id="leases" role="tabpanel">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Lease Information</h4>
+                                        <h6 class="card-subtitle">Units Tenant Leased</code></h6>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Property</th>
+                                                        <th>Unit</th>
+
+                                                        <th>Status</th>
+                                                        <th colspan="2">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($user->leases as $lease)
+                                                        <tr>
+                                                            <td>{{ $lease->unit->property->name }}</td>
+                                                            <td>{{ $lease->unit->name }}</td>
+                                                            <td>
+                                                                @if ($lease->unit->status)
+                                                                    <span class="badge badge-success">Active</span>
+                                                                @else
+                                                                    <span class="badge badge-danger">Pending</span>
+                                                                @endif
+
+                                                            </td>
+                                                            <td>
+
+                                                                <a href="{{ route('tenantUnit', [$user->id, $lease->unit->id]) }}"
+                                                                    class="btn waves-effect waves-light btn-rounded btn-info">View</a>
+                                                                <a name="" id=""
+                                                                    class="btn waves-effect waves-light btn-rounded  btn-danger"
+                                                                    href="#">Delete</a>
+
+                                                            </td>
+                                                        </tr>
+
+                                                    @endforeach
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if ($user->type == 'manager')
+                            <div class="tab-pane active" id="property" role="tabpanel">
                                 <div class="card-body">
-                                    <h4 class="card-title">Lease Information</h4>
-                                    <h6 class="card-subtitle">Units Tenant Leased</code></h6>
+                                    <h4 class="card-title">Property Information</h4>
+                                    <h6 class="card-subtitle">Property Information</code></h6>
                                     <div class="table-responsive">
-                                        <table class="table">
+
+                                        <table class="table table-hover table-inverse table-responsive">
                                             <thead>
                                                 <tr>
 
-                                                    <th>Property</th>
-                                                    <th>Unit</th>
-
-                                                    <th>Status</th>
-                                                    <th colspan="2">Action</th>
+                                                    <th>Branch</th>
+                                                    <th>Name</th>
+                                                    <th>Type</th>
+                                                    <th>Units</th>
+                                                    <th >Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($user->leases as $lease)
+                                                @foreach ($user->properties as $property)
                                                     <tr>
-                                                        <td>{{ $lease->unit->property->name }}</td>
-                                                        <td>{{ $lease->unit->name }}</td>
+                                                        <td>{{ $property->branch->name }} </td>
+                                                        <td>{{ $property->name}} </td>
+                                                        <td>{{ $property->type }} </td>
+                                                        <td>{{ $property->units->count() }} </td>
                                                         <td>
-                                                            @if ( $lease->unit->status)
-                                                                <span class="badge badge-success">Active</span>
-                                                            @else
-                                                                <span class="badge badge-danger">Pending</span>
-                                                            @endif
+                                                            <a href="#"
+                                                                class=" waves-effect waves-light  btn btn-sm btn-info "><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                                <a href="#"
+                                                                    class=" waves-effect waves-light  btn btn-sm btn-warning text text-white "><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
 
-                                                        </td>
-                                                        <td>
-
-                                                            <a href="{{ route('tenantUnit',[$user->id,$lease->unit->id]) }}"
-                                                                class="btn waves-effect waves-light btn-rounded btn-info">View</a>
-                                                                <a name="" id=""
-                                                                class="btn waves-effect waves-light btn-rounded  btn-danger"
-                                                                href="#">Delete</a>
-
+                                                                    <a href="" onclick="#"
+                                                                        class=" waves-effect waves-light  btn btn-sm btn-danger text text-white "> <i class="fa fa-trash" aria-hidden="true"></i> </a>
                                                         </td>
                                                     </tr>
-
                                                 @endforeach
+
 
 
                                             </tbody>
@@ -141,8 +194,12 @@
                                     </div>
                                 </div>
                             </div>
+                        @endif
+
+
+
                             <!--second tab-->
-                            <div class="tab-pane" id="profile" role="tabpanel">
+                            <div class="tab-pane  " id="profile" role="tabpanel">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>

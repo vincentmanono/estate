@@ -15,19 +15,17 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h4 class="text-themecolor">Datatable</h4>
+                    <h4 class="text-themecolor">  {{ $params }}</h4>
                 </div>
                 <div class="col-md-7 align-self-center text-right">
                     <div class="d-flex justify-content-end align-items-center">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="javascript:void(0)">Home</a>
+                                <a href="{{ route('home') }}">Home</a>
                             </li>
-                            <li class="breadcrumb-item active">Datatable</li>
+                            <li class="breadcrumb-item active">{{ $params }}</li>
                         </ol>
-                        <button type="button" class="btn btn-info d-none d-lg-block m-l-15">
-                            <i class="fa fa-plus-circle"></i> Create New
-                        </button>
+
                     </div>
                 </div>
             </div>
@@ -68,12 +66,42 @@
                                         @foreach ($users as $user)
                                             <tr>
                                                 <td>{{ $user->name }}</td>
-                                                <td>{{ $user->type }}</td>
+                                                <td>
+
+
+
+                                                    @if ($user->type  == "owner" )
+                                                        <span class="badge badge-pill badge-primary"> Owner</span>
+                                                    @elseif ($user->type  == "manager" )
+                                                        <span class="badge badge-pill badge-info">Manager</span>
+                                                    @elseif ($user->type  == "tenant" )
+                                                    <span class="badge badge-pill badge-dark">Tenant</span>
+                                                    @else
+                                                    <a href="mailto:info@lagaster.com" title="Email lagaster developers" >
+                                                    <span class="badge badge-pill badge-danger">  Contact Lagaster </span></a>
+                                                    @endif
+
+
+
+                                                </td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->phone }}</td>
                                                 <td>
+
                                                     <a href="{{ route('showUser', $user->id) }}"
-                                                        class="btn waves-effect waves-light btn-block btn-info">View</a>
+                                                        class=" waves-effect waves-light  btn btn-sm btn-info "><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                        <a href="{{ route('updateUser', $user->id) }}"
+                                                            class=" waves-effect waves-light  btn btn-sm btn-warning text text-white "><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+
+                                                            <a href="" onclick="deleteUser()"
+                                                                class=" waves-effect waves-light  btn btn-sm btn-danger text text-white "> <i class="fa fa-trash" aria-hidden="true"></i> </a>
+
+                                                                <form id="deleteUser" action="{{ route('deleteUser', $user->id) }}" method="post">
+                                                                    @csrf
+                                                                    @method("DELETE")
+                                                                </form>
+
+
 
                                                 </td>
 
@@ -116,3 +144,15 @@
         <!-- ============================================================== -->
     </div>
 @stop
+
+@section('extraScripts')
+    <script>
+        function deleteUser(){
+            event.preventDefault()
+            if( confirm("Are you sure you need to delete this user ?") ){
+                document.getElementById("deleteUser").submit()
+            }
+        }
+    </script>
+@stop
+

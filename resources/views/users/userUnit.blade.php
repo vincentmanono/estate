@@ -58,9 +58,10 @@
                                                         <!--/span-->
                                                         <div class="col-md-6">
                                                             <div class="form-group row">
-                                                                <label class="control-label text-right col-md-3">Monthly Rent:</label>
+                                                                <label
+                                                                    class="control-label text-right col-md-3">water Acc  number :</label>
                                                                 <div class="col-md-9">
-                                                                    <p class="form-control-static"> {{ $unit->rent }} </p>
+                                                                    <p class="form-control-static"> {{  $unit->water_acc_no  }} </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -71,9 +72,9 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group row">
                                                                 <label
-                                                                    class="control-label text-right col-md-3">Rent Escalation:</label>
+                                                                    class="control-label text-right col-md-3"> billing cycle:</label>
                                                                 <div class="col-md-9">
-                                                                    <p class="form-control-static"> {{ $unit->rent_escalation }} </p>
+                                                                    <p class="form-control-static"> {{ $unit->billing_cycle }} </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -86,108 +87,102 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                         <!--/span-->
                                                     </div>
                                                     <!--/row-->
                                                     <div class="row">
+
                                                         <div class="col-md-6">
                                                             <div class="form-group row">
-                                                                <label
-                                                                    class="control-label text-right col-md-3">billing_cycle :</label>
+                                                                <label class="control-label text-right col-md-3">Monthly Rent:</label>
                                                                 <div class="col-md-9">
-                                                                    <p class="form-control-static"> {{ $unit->billing_cycle }} </p>
+                                                                    <p class="form-control-static"> {{ $unit->rent }} </p>
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                         <!--/span-->
                                                         <div class="col-md-6">
                                                             <div class="form-group row">
                                                                 <label
-                                                                    class="control-label text-right col-md-3">Membership:</label>
+                                                                    class="control-label text-right col-md-3"> electricity meter:</label>
                                                                 <div class="col-md-9">
-                                                                    <p class="form-control-static"> Free </p>
+                                                                    <p class="form-control-static"> {{ $unit-> electricity_meter }} </p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <!--/span-->
                                                     </div>
+                                                    <div class="row">
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group row">
+                                                                <label class="control-label text-right col-md-3"> electricity Acc No:</label>
+                                                                <div class="col-md-9">
+                                                                    <p class="form-control-static"> {{ $unit->electricity_acc_no }} </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!--/span-->
+                                                        <div class="col-md-6">
+                                                            <div class="form-group row">
+                                                                <label
+                                                                    class="control-label text-right col-md-3">service charge:</label>
+                                                                <div class="col-md-9">
+                                                                    <p class="form-control-static"> {{ $unit->service_charge }} </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--/span-->
+                                                    </div>
+
                                                     <!--/row-->
-                                                    <h3 class="box-title">Address</h3>
+                                                    <h3 class="box-title">Unit Billings </h3>
                                                     <hr class="m-t-0 m-b-40">
                                                     <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label
-                                                                    class="control-label text-right col-md-3">Address:</label>
-                                                                <div class="col-md-9">
-                                                                    <p class="form-control-static"> E104, Dharti-2, Near
-                                                                        silverstar mall </p>
+
+                                                            <div class="card col-md-12 ">
+                                                                <div class="card-body">
+                                                                  <h4 class="card-title">Rent Table</h4>
+                                                                  <h6 class="card-subtitle">Monthly rent for {{ $unit->name }}</h6>
+                                                                  <div class="table-responsive m-t-40">
+                                                                    <table
+                                                                      id="myTable"
+                                                                      class="table table-bordered table-striped"
+                                                                    >
+                                                                      <thead>
+                                                                        <tr>
+                                                                          <th>Paid</th>
+                                                                          <th>expiry</th>
+                                                                          <th>Status</th>
+                                                                          <th>Description</th>
+                                                                          <th>Action</th>
+                                                                        </tr>
+                                                                      </thead>
+                                                                      <tbody>
+
+                                                                          @foreach ($unit->rents as $rent)
+                                                                               <tr>
+                                                                          <td>{{ $rent-> paid_date}}</td>
+                                                                          <td>{{ $rent->expiry_date }}</td>
+                                                                          <td> {{ ($rent->status) ? "Active": "Used" }} </td>
+                                                                          <td>{{ Str::of($rent->description)->limit(60,"...") }}</td>
+
+                                                                          <td>#</td>
+                                                                        </tr>
+                                                                          @endforeach
+
+
+
+
+                                                                      </tbody>
+                                                                    </table>
+                                                                  </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
+                                                              </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label
-                                                                    class="control-label text-right col-md-3">City:</label>
-                                                                <div class="col-md-9">
-                                                                    <p class="form-control-static"> Bhavnagar </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--/span-->
-                                                        <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label
-                                                                    class="control-label text-right col-md-3">State:</label>
-                                                                <div class="col-md-9">
-                                                                    <p class="form-control-static"> Gujarat </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--/span-->
-                                                    </div>
-                                                    <!--/row-->
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label class="control-label text-right col-md-3">Post
-                                                                    Code:</label>
-                                                                <div class="col-md-9">
-                                                                    <p class="form-control-static"> 457890 </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--/span-->
-                                                        <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label
-                                                                    class="control-label text-right col-md-3">Country:</label>
-                                                                <div class="col-md-9">
-                                                                    <p class="form-control-static"> India </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--/span-->
-                                                    </div>
-                                                </div>
-                                                <div class="form-actions">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="row">
-                                                                <div class="col-md-offset-3 col-md-9">
-                                                                    <button type="submit" class="btn btn-danger"> <i
-                                                                            class="fa fa-pencil"></i> Edit</button>
-                                                                    <button type="button"
-                                                                        class="btn btn-inverse">Cancel</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6"> </div>
-                                                    </div>
-                                                </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>

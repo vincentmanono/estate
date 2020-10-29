@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             // $table->string('unit_no')->nullable();
             $table->string('id_no')->nullable();
             $table->string('image')->nullable();
-            $table->string('type');//tenant/admin/manager
+            $table->string('type');//tenant/owner/manager
             $table->string('email')->unique();
             // $table->foreign('unit_no')->references('id')->on('units')->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
