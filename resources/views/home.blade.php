@@ -126,7 +126,7 @@
                     <div class="col-md-12">
                         <div class="card m-b-15">
                             <div class="card-body">
-                                <h5 class="card-title">Total Paid Deposit</h5>
+                                <h5 class="card-title">Total Active Paid Deposit</h5>
                                 <div class="row">
                                     <div class="col-9 m-t-30">
                                         <h1 class="text-info">Ksh {{ number_format($depositsum , 2,'.',',')  }}  </h1>
@@ -142,7 +142,7 @@
                     <div class="col-md-12">
                         <div class="card bg-purple m-b-15">
                             <div class="card-body">
-                                <h5 class="text-white card-title">  Total Paid Rent</h5>
+                                <h5 class="text-white card-title">  Total Active Paid Rent</h5>
                                 <div class="row">
                                     <div class="col-9 m-t-30">
                                         <h1 class="text-white">Ksh {{ number_format($rentsum , 2,'.',',')  }}</h1>

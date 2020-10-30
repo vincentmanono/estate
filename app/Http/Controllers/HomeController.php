@@ -35,14 +35,13 @@ class HomeController extends Controller
         $branchcount = Branch::all()->count();
         $leasecount= Lease::where('status','active')->count();
         $unleasecount= Lease::where('status','inactive')->count();
-        $depositsum = Deposit::where('status',1)-> pluck('amount')->sum();
+        $depositsum = Deposit::where('status',"Active")-> pluck('amount')->sum();
         $properties = Property::orderBy('id','desc')->paginate(10);
         $managers = User::where('type','manager')->paginate(3);
 
-        $now =Carbon::now();
-
-        $prev = $now->subMonths(1);
-        $rentsum = Rent::where('date','>', $prev )->pluck("amount")->sum();
+        $now =Carbon::now()->format('Y-m-d H:i:s');
+        // $prev = Carbon::now()->subMonth(1)->format('Y-m-d H:i:s');
+        $rentsum = Rent::where('expiry_date','>',$now)->pluck("amount")->sum();
 
         return view('home',compact('propertycount','properties','depositsum','rentsum','managers','branchcount','leasecount','unleasecount'));
     }

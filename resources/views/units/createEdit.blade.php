@@ -69,7 +69,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Unit Name</label>
-                                                <input type="text" id="firstName" name="name" class="form-control" >
+                                                <input type="text"  name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                               </div>
                                         </div>
                                         <!--/span-->
@@ -103,7 +103,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Billing Cycle</label>
-                                                <input type="text" name="billing_cycle" class="form-control" >
+                                                <input type="text" name="billing_cycle" class="form-control @error('billing_cycle') is-invalid @enderror" value="{{ old('billing_cycle') }}" required autocomplete="billing_cycle" autofocus>
                                             </div>
                                         </div>
                                         <!--/span-->
@@ -116,16 +116,38 @@
                                     <div class="col-md-6">
                                         <div class="form-group has-success" >
                                             <label class="control-label">Water Meter No</label>
-                                            <input type="text" id="firstName" name="water_acc_no" class="form-control" >
+                                            <input type="text" id="water_acc_no" name="water_acc_no"  class="form-control @error('water_acc_no') is-invalid @enderror" value="{{ old('water_acc_no') }}" required autocomplete="water_acc_no" autofocus>
                                           </div>
                                     </div>
                                     <!--/span-->
                                     <div class="col-md-6">
                                         <div class="form-group has-success" >
                                             <label class="control-label">Electricity Meter No</label>
-                                            <input type="text" id="firstName" name="electricity_acc_no" class="form-control" >
+                                            <input type="text" id="electricity_acc_no" name="electricity_acc_no" class="form-control @error('electricity_acc_no') is-invalid @enderror" value="{{ old('electricity_acc_no') }}" required autocomplete="electricity_acc_no" autofocus>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group has-success" >
+                                            <label class="control-label">Rent Amount (KSH)</label>
+                                            <input type="number" id="rent" name="rent" class="form-control @error('rent') is-invalid @enderror" value="{{ old('rent') }}" required autocomplete="rent" autofocus>
+                                          </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group has-success" >
+
+                                            <div class="form-group">
+                                                <label for="status">Unit Status</label>
+                                                <select id="status" class="form-control" name="status" required >
+                                                    <option value="0" >Vacant</option>
+                                                    <option value="1">Occupied</option>
+                                                </select>
+                                            </div>
+                                          </div>
+                                    </div>
+
                                 </div>
                                     <!--/span-->
                                 <div class="form-actions">
@@ -202,6 +224,29 @@
                                         <input type="text" id="firstName" value="{{ $unit->electricity_acc_no }}" name="electricity_acc_no" class="form-control" >
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-success" >
+                                        <label class="control-label">Rent Amount (KSH)</label>
+                                        <input type="number" id="rent" name="rent" class="form-control @error('rent') is-invalid @enderror" value="{{ old('rent') ? old('rent') :$unit->rent }}" required autocomplete="rent" autofocus>
+                                      </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group has-success" >
+
+                                        <div class="form-group">
+                                            <label for="status">Unit Status</label>
+                                            <select id="status" class="form-control" name="status" required >
+                                                <option selected value="{{ $unit->status }}">{{ ($unit->status) ? "Occupied":"Vacant" }}</option>
+                                                <option value="0" >Vacant</option>
+                                                <option value="1">Occupied</option>
+                                            </select>
+                                        </div>
+                                      </div>
+                                </div>
+
                             </div>
                                 <!--/span-->
                             <div class="form-actions">
