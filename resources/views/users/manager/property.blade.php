@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    <title>{{  "Manage property" }} </title>
+@stop
 @section('content')
 
 
