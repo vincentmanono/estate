@@ -50,7 +50,7 @@ class UserCreatedNotification extends Notification
         ->from('info@chiefproperties.co.ke',"Chief Properties")
         ->greeting("Hello ". $this->user->name)
         ->line('Your account has been created successfully')
-        ->line("Your login creditials are as follows")
+        ->line("Your login creditials are as follows:")
         ->line("Email : ". $user->email )
         ->line("Password : ". $password )
         ->line("Please make sure you update your password after first login")

@@ -167,7 +167,7 @@ class LeaseController extends Controller
             $extension = $request->file('file')->getClientOriginalExtension();
 
             // Create new filename
-            $filenameToStore = $filename . '_' . time() . '.' . $extension;
+            $filenameToStore = $extension . '_' . time() . '.' . $filename;
 
             // Uplaod file
             $path = $request->file('file')->storeAs('public/lease', $filenameToStore);
@@ -199,7 +199,7 @@ class LeaseController extends Controller
             $del = Lease::find($id);
 
             $old_avatar = $del->file;
-            if ($old_avatar != 'avatar.png') {
+            if ($old_avatar != 'avatar.pdf') {
                 $imagepath = public_path('/storage/lease/')  . $old_avatar;
                 File::delete($imagepath);
                 // Storage::delete('Property/'. $old_avatar );

@@ -144,12 +144,12 @@
                                     Report</span></a>
                             <ul aria-expanded="false" class="collapse">
 
-                                <li><a href="#">Rent Report</a></li>
+                                <li><a href="{{ route('rent.report') }}">Rent Report</a></li>
 
-                                <li><a href="#"> Deposit Report</a></li>
+                                <li><a href="{{ route('deposit.report') }}"> Deposit Report</a></li>
 
 
-                                <li><a href="#"> Water Report</a></li>
+                                <li><a href="{{ route('water.report') }}"> Water Report</a></li>
 
                             </ul>
                         </li>

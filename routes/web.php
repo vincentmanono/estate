@@ -38,6 +38,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('add-user','UserController@addUser')->name('addUser');
     Route::delete('delete-user/{user}','UserController@deleteUser')->name('deleteUser');
     Route::get('tenantreport','UserController@tenantReport')->name('tenant.report');
+    Route::get('/rentreport','RentController@rentReport')->name('rent.report');
+    Route::get('/depositreport','DepositController@depositReport')->name('deposit.report');
+    Route::get('/waterreport','WaterController@waterReport')->name('water.report');
     Route::get('/branches','BranchController@allBranches')->name('allBranches');
     Route::get('/branch/{id}','BranchController@show')->name('singleBranch');
     Route::get('/createbranch','BranchController@create')->name('create.branch');

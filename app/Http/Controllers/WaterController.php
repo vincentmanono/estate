@@ -18,6 +18,12 @@ class WaterController extends Controller
         $waters = Water::all();
         return view('waters.index',compact('waters'));
     }
+    public function waterReport(){
+
+        $waters = Water::all();
+        return view('reports.waterreport',compact('waters'))->with('params','Water Record');
+
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -31,7 +31,7 @@ class UserController extends Controller
     public function tenantReport(){
         $leases = Lease::all();
         $tenants = User::where('type', 'tenant')->get();
-        return view('users.tenantreport', compact('tenants','leases'))->with('params', "Tenants");
+        return view('reports.tenantreport', compact('tenants','leases'))->with('params', "Tenants");
 
     }
 

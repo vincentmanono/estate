@@ -78,6 +78,7 @@
                                                 <label class="control-label">Property Name</label>
                                                 <select class="form-control custom-select" name="property_id"  tabindex="1">
 
+                                                    <option value="">--select-property--</option>
 
                                                @foreach ($properties as $property)
                                                <option value="{{ $property->id }}">{{ $property->name }}</option>

@@ -2,7 +2,6 @@
 @section('content')
 
 
-
 <!-- Page wrapper  -->
 <!-- ============================================================== -->
 <div class="page-wrapper">
@@ -15,7 +14,7 @@
         <!-- ============================================================== -->
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="text-themecolor">Lease Details</h4>
+                <h4 class="text-themecolor">Lease</h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
@@ -37,22 +36,19 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        {{--  <iframe src="/storage/lease/{{ $lease->file }}" style="width:600px; height:500px;" frameborder="0"></iframe>  --}}
 
-                        <div style="float:right;">
-                            <a href="{{ route('lease.index') }}" class="btn btn-primary">Back</a>
 
-                        </div>
-                               <embed src="/storage/lease/{{ $lease->file }}" type="application/pdf" width="100%" height="600px" />
+
+                        <embed src="/storage/lease/{{ $lease->file }}" type="application/pdf" width="100%" height="600px" />
+
+
+
                     </div>
                 </div>
             </div>
         </div>
         <!-- ============================================================== -->
         <!-- End PAge Content -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right sidebar -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
     </div>
