@@ -90,7 +90,7 @@
                                 <div class="card">
                                     <!-- row -->
                                     <div class="row no-gutters">
-                                        <div class="col-md-4" style="background: url('../assets/images/property/prop1.jpeg') center center / cover no-repeat; min-height:250px;">
+                                        {{--  <div class="col-md-4" style="background: url('../assets/images/property/prop1.jpeg') center center / cover no-repeat; min-height:250px;">  --}}
                                             <span class="pull-right label label-danger">For Rent</span>
                                         </div>
                                         <!-- column -->

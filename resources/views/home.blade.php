@@ -188,13 +188,13 @@
                                     <tr>
                                        <td>{{ $property->name }}</td>
                                        <td>{{ $property->type }}</td>
-                                       <td> <img src="../assets/images/property/prop1.jpeg" alt="iMac" width="80"> </td>
+                                       <td> <img src="/storage/property/{{ $property->image }}" alt="iMac" width="80"> </td>
                                        <td>{{ $property->address }}</td>
 
                                        {{-- <td> <span class="label label-success font-weight-100">Paid</span> </td> --}}
                                        <td class="row">
-                                        <a  style="margin-right: 2%;" class="btn   btn-success " href="{{ route('singleBranch',$property->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
-                                        <a  class="btn  btn-info " href="{{ route('editBranch',$property->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
+                                        <a  style="margin-right: 2%;" class="btn   btn-success " href="{{ route('property.show',$property->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
+                                        <a  class="btn  btn-info " href="{{ route('property.edit',$property->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
                                         </td>
                                    </tr>
                                    @endforeach
