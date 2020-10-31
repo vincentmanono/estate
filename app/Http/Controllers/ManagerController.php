@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Rent;
+use App\Unit;
 use App\Expense;
 use App\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
 
 class ManagerController extends Controller
@@ -12,9 +15,14 @@ class ManagerController extends Controller
     public function property($propertyId)
     {
         $property = Property::findOrFail($propertyId);
+        $now =Carbon::now()->format('Y-m-d H:i:s');
+        $prev = Carbon::now()->subMonth(1)->format('Y-m-d H:i:s');
+        $CurrentActiveRents = Rent::where("property_id",$propertyId)->where('expiry_date ','>',$prev)->get();
+        $CurrentActiveRentsSum = Rent::where("property_id",$propertyId)->where('expiry_date ','>',$prev)->pluck('amount')->sum();
         $sumExpenses = Expense::where('property_id',$propertyId)->where('solved',false) ->pluck('amount')->sum();
 
-        return view('users.manager.property',compact('property','sumExpenses')) ;
+
+        return view('users.manager.property',compact('property','sumExpenses','CurrentActiveRents','CurrentActiveRentsSum')) ;
 
     }
     public function expenses($propertyId)

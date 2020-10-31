@@ -3,9 +3,12 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Rent;
+use App\Unit;
 use Faker\Generator as Faker;
 
 $factory->define(Rent::class, function (Faker $faker) {
+    $unitId = function(){return App\Unit::all()->random();} ;
+
     return [
 
             'amount'=>$faker->numberBetween(5000,10000),
@@ -14,7 +17,7 @@ $factory->define(Rent::class, function (Faker $faker) {
             'status'=>$faker->boolean(),
             'description'=>$faker->paragraph($nbSentences = 3, $variableNbSentences = true),
             'user_id'=>function(){return App\User::all()->random();},
-            'unit_id'=>function(){return App\Unit::all()->random();}
-
-    ];
-});
+            'unit_id'=>$unitId ,
+            'property_id'=>function(){return App\Property::all()->random();}
+        ];
+    });

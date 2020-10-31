@@ -18,7 +18,7 @@ $factory->define(Unit::class, function (Faker $faker) {
             'electricity_meter'=>$faker->randomElement(['prepaid','postpay']),//prepaid and post-paid
             'electricity_acc_no'=>$faker->numberBetween(200,1000),
             'service_charge'=>$faker->numberBetween(200,1000),
-            // 'management_fee'=>$faker->numberBetween(200,1000),
+            'status'=>$faker->boolean(),
             'property_id'=>function(){return App\Property::all()->random();},
 
         ];
