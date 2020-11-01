@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
      <!-- Site Metas -->
-    <title>CITY Real Estate - Responsive HTML5 Landing Page Template</title>
+    <title>Chief Properties - Real Estate</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -53,26 +53,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="{{ asset('/client/images/logos/logo.png') }}" alt="image"></a>
+                    {{--  <a class="navbar-brand" href="index.html"><img src="{{ asset('/client/images/logos/logo.png') }}" alt="image"></a>  --}}
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="active" href="index.html">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About us </a></li>
-                        <li><a href="service.html">Service</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
+                        {{--  <li><a href="service.html">Service</a></li>  --}}
+                        {{--  <li><a href="gallery.html">Gallery</a></li>  --}}
                         <li><a href="properties.html">Properties</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li class="social-links"><a href="#"><i class="fa fa-twitter global-radius"></i></a></li>
-                        <li class="social-links"><a href="#"><i class="fa fa-facebook global-radius"></i></a></li>
-                        <li class="social-links"><a href="#"><i class="fa fa-linkedin global-radius"></i></a></li>
-						<li class="search-option">
-							<button class="search tran3s dropdown-toggle" id="searchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search" aria-hidden="true"></i></button>
-							<form action="#" class="p-color-bg dropdown-menu tran3s" aria-labelledby="searchDropdown">
-								<input type="text" placeholder="Search....">
-								<button class="p-color-bg"><i class="fa fa-search" aria-hidden="true"></i></button>
-							</form>
-					   </li>
                     </ul>
                 </div>
             </div>
@@ -87,7 +77,7 @@
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="widget clearfix">
                         <div class="widget-title">
-                            <img src="{{ asset('/client/images/logos/logo-realestate.png') }}" alt="">
+                            {{--  <img src="{{ asset('/client/images/logos/logo-realestate.png') }}" alt="">  --}}
                         </div>
                         <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
                         <p>Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
@@ -103,8 +93,8 @@
                         <ul class="twitter-widget footer-links">
                             <li><a href="#"> Home </a></li>
                             <li><a href="#"> About Us </a></li>
-                            <li><a href="#"> Services</a></li>
-							<li><a href="#"> Gallery</a></li>
+                            {{--  <li><a href="#"> Services</a></li>  --}}
+							{{--  <li><a href="#"> Gallery</a></li>  --}}
 							<li><a href="#"> Properties</a></li>
 							<li><a href="#"> Contact</a></li>
                         </ul><!-- end links -->
@@ -118,15 +108,15 @@
                         </div>
 
                         <ul class="footer-links">
-                            <li><a href="mailto:#">info@yoursite.com</a></li>
-                            <li><a href="#">www.yoursite.com</a></li>
-                            <li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
-                            <li>+61 3 8376 6284</li>
+                            <li><a href="mailto:#">info@chiefproperties.co.ke</a></li>
+                            <li><a href="#">www.chiefproperties.co.ke</a></li>
+                            <li>PO Box </li>
+                            <li>+254 700 000 000</li>
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
                 </div><!-- end col -->
 
-                <div class="col-md-2 col-sm-2 col-xs-12">
+                {{--  <div class="col-md-2 col-sm-2 col-xs-12">
                     <div class="widget clearfix">
                         <div class="widget-title">
                             <h3>Social</h3>
@@ -139,9 +129,10 @@
                             <li><a href="#"><i class="fa fa-pinterest"></i> Pinterest</a></li>
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
-                </div><!-- end col -->
+                </div><!-- end col -->  --}}
 
             </div><!-- end row -->
+            
         </div><!-- end container -->
     </footer><!-- end footer -->
 
@@ -149,15 +140,15 @@
         <div class="container">
             <div class="footer-distributed">
                 <div class="footer-left">
-                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">City Real Estate</a> Design By : <a href="https://html.design/">html design</a></p>
+                    <p class="footer-company-name">All Rights Reserved. &copy; {{ date('Y') }}  <a href="#">ChiefProperties</a> Design By : <a href="https://lagaster.com"> Lagaster </a></p>
                 </div>
 
-                <div class="footer-right">
+                {{--  <div class="footer-right">
                     <form method="get" action="#">
                         <input placeholder="Subscribe our newsletter.." name="search">
                         <i class="fa fa-envelope-o"></i>
                     </form>
-                </div>
+                </div>  --}}
             </div>
         </div><!-- end container -->
     </div><!-- end copyrights -->

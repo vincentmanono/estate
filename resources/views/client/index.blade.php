@@ -62,9 +62,9 @@
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="big-tagline clearfix">
-                    <h2>Sell Your Property with CITY Real Estate</h2>
-                    <p class="lead">With CITY Real Estate responsive landing page template, you can promote your all property & real estate projects. </p>
-                    <a data-scroll href="#gallery" class="btn btn-light btn-radius grd1 btn-brd">View Gallery</a>
+                    <h2>Chief Property Real Estates</h2>
+                    <p class="lead">Welcome to Chief Properties Real Estate Site. </p>
+                    <a data-scroll href="#gallery" class="btn btn-light btn-radius grd1 btn-brd">Contact Us</a>
                 </div>
             </div>
         </div><!-- end row -->
@@ -116,8 +116,8 @@
             </div>
             <div class="col-md-6">
                 <div class="message-box right-ab">
-                    <h4>Awards Winning Real Estate Company</h4>
-                    <h2>Welcome to CITY Real Estate</h2>
+                    <h4>Chief Properties</h4>
+                    <h2>Welcome to Chief Properties Real Estate</h2>
                     <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
                     <p>Aenean eleifend in felis id viverra. Vestibulum semper ex eu molestie pulvinar. Maecenas non efficitur metus, et semper sem. Mauris ligula sapien, gravida a scelerisque ut, vehicula sed mauris. Proin dapibus mi id vulputate euismod. Nam ullamcorper dui tellus, non lacinia lorem hendrerit eu. Donec at orci cursus, rutrum metus eget, cursus turpis.  </p>
                     <a href="#" class="btn btn-light btn-radius grd1 btn-brd"> Read More </a>
@@ -132,7 +132,7 @@
     <div class="container">
         <div class="section-title row text-center">
             <div class="col-md-8 col-md-offset-2">
-                <h3>Agent Details</h3>
+                <h3>Managers Details</h3>
                 <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
             </div><!-- end col -->
         </div><!-- end title -->
@@ -140,7 +140,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="message-box">
-                    <h4>The Agent</h4>
+                    <h4>Manager</h4>
                     <h2>Jenny Martines</h2>
                     <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
 
@@ -152,7 +152,7 @@
             <div class="col-md-3">
                 <div class="post-media wow fadeIn">
                     <img src="{{asset('client/uploads/agent.jpg')}} alt="" class="img-responsive">
-                    <a href="http://www.youtube.com/watch?v=nrJtHemSPW4" data-rel="prettyPhoto[gal]" class="playbutton"><i class="flaticon-play-button"></i></a>
+                    {{--  <a href="http://www.youtube.com/watch?v=nrJtHemSPW4" data-rel="prettyPhoto[gal]" class="playbutton"><i class="flaticon-play-button"></i></a>  --}}
                 </div><!-- end media -->
             </div><!-- end col -->
             <div class="col-md-3">
@@ -174,7 +174,7 @@
     <div class="container">
         <div class="section-title row text-center">
             <div class="col-md-8 col-md-offset-2">
-                <h3>Happy Customers</h3>
+                <h3>Happy Tenants</h3>
                 <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
             </div><!-- end col -->
         </div><!-- end title -->
