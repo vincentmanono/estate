@@ -19,6 +19,12 @@ class DepositController extends Controller
         $deposits=Deposit::all();
         return view('deposits.index',compact('deposits'));
     }
+    public function depositReport(){
+
+        $deposits=Deposit::all();
+        return view('reports.depositreport',compact('deposits'))->with('params','Deposits');
+
+    }
 
     /**
      * Show the form for creating a new resource.

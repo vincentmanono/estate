@@ -51,6 +51,16 @@
 
                     </ul>
                 </li>
+                {{--  application  --}}
+                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+                        class="ti-home"></i><span class="hide-menu">Apartment Request</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{route('application.index')}}">View Requests</a></li>
+                        {{--  <li><a href="{{route('property.create')}}">Add Property</a></li>  --}}
+
+                        </ul>
+                    </li>
+                 {{--  end f appication  --}}
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-settings"></i><span class="hide-menu">Services Provider </span></a>
@@ -117,8 +127,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-write"></i><span class="hide-menu">Lease Agreement</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Lease List</a></li>
-                        <li><a href="#">Add Lease</a></li>
+                        <li><a href="{{ route('lease.index') }}">Lease List</a></li>
+                        <li><a href="{{ route('lease.create') }}">Add Lease</a></li>
 
                     </ul>
                 </li>
@@ -137,19 +147,19 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="#">Total collections Report</a></li>
                         <li><a href="#">Occupancy Report</a></li>
-                        <li><a href="#">Tenant Report</a> </li>
+                        <li><a href="{{ route('tenant.report') }}">Tenant Report</a> </li>
 
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                                 aria-expanded="false"><span class="hide-menu">Billings
                                     Report</span></a>
                             <ul aria-expanded="false" class="collapse">
 
-                                <li><a href="#">Rent Report</a></li>
+                                <li><a href="{{ route('rent.report') }}">Rent Report</a></li>
 
-                                <li><a href="#"> Deposit Report</a></li>
+                                <li><a href="{{ route('deposit.report') }}"> Deposit Report</a></li>
 
 
-                                <li><a href="#"> Water Report</a></li>
+                                <li><a href="{{ route('water.report') }}"> Water Report</a></li>
 
                             </ul>
                         </li>

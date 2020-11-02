@@ -11,7 +11,7 @@ $factory->define(Lease::class, function (Faker $faker) {
         'status'=> $faker->boolean() ,
         'date'=>$faker->date(),
         'user_id'=>function(){return App\User::all()->random();},
-        'unit_id'=>function(){return App\Unit::all()->random();},
+        'unit_id'=>function(){return App\Unit::where('status',true)->get()->random();},
         'file'=>$faker->url()
 
     ];

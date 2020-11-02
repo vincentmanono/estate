@@ -119,6 +119,8 @@
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Property Manager</label>
                                                 <select class="form-control custom-select" name="user_id" data-placeholder="Choose a Category" tabindex="1">
+
+                                                    <option value="">--select-manager--</option>
                                                     @foreach ($users as $user)
 
 
@@ -191,6 +193,7 @@
                                             <label class="control-label">Type</label>
                                             <select class="form-control custom-select" name="type" data-placeholder="Choose a Category" tabindex="1">
 
+                                            <option value="">--select-type--</option>
                                             <option value="residential">residential</option>
                                             <option value="commercial">commercial</option>
                                             <option value="service_resident">service_resident</option>

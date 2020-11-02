@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BookSeeder::class);
         $this->call(ServiceSeeder::class);
         $this->call(PaymentSeeder::class);
+        $this->call(ApplicationSeeder::class);
 
     }
 }

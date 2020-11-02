@@ -6,12 +6,15 @@ use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Notifications\UserCreatedNotification;
 use App\Unit;
+use App\Lease;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
 {
@@ -22,8 +25,14 @@ class UserController extends Controller
     }
     public function allTenants()
     {
-        $users = User::where('type', 'tenant')->get();
+        $users = User::where('type', 'tenant')->latest()->get();
         return view('users.index', compact('users'))->with('params', "Tenants");
+    }
+    public function tenantReport(){
+        $leases = Lease::all();
+        $tenants = User::where('type', 'tenant')->get();
+        return view('reports.tenantreport', compact('tenants','leases'))->with('params', "Tenants");
+
     }
 
     public function tenantUnit($tenantId , $unitId)
@@ -59,9 +68,30 @@ class UserController extends Controller
         $user->kra_pin = $request->input('kra');
         $user->id_no = $request->input('ID');
         $user->type = $type;
-        $user->password =  Hash::make($password);
+        $user->password = Hash::make($password);
+
+        if (file_exists($request->file('image'))) {
+
+            // Get filename with extension
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+
+            // Get just the filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+            // Get extension
+            $extension = $request->file('image')->getClientOriginalExtension();
+
+            // Create new filename
+            $filenameToStore = $filename . '_' . time() . '.' . $extension;
+
+            // Uplaod image
+            $path = $request->file('image')->storeAs('public/users', $filenameToStore);
+            $user->image = $filenameToStore;
+        }
+
         if ($user->save()) {
             Session::flash('success', $type . " created successfully");
+            Notification::send( $user, new UserCreatedNotification($user , $password) ) ;
             return redirect()->route("allUsers");
         }
     }
@@ -106,7 +136,7 @@ class UserController extends Controller
             $old_avatar = $user->avatar;
             $avatar = $request->avatar;
             if ($old_avatar != 'avatar.png' && !Str::contains(auth()->user()->avatar, 'http')) {
-                $imagepath = public_path('/storage/users/') . '/' . $old_avatar;
+                $imagepath = public_path('/storage/users') . '/' . $old_avatar;
                 File::delete($imagepath);
             }
 
@@ -162,7 +192,7 @@ class UserController extends Controller
 
         }
 
-        if (Auth::user()->type == 'owner' || Auth::user()->id == $id) {
+        if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager' || Auth::user()->id == $id) {
             if (User::where('type', 'owner')->count() == 1 && Auth::user()->type == 'owner' && Auth::user()->id == $user->id) {
                 Session::flash('error', 'Sorry, you are the ONLY REMAINING owner! Make someone else a super admin then exit.');
                 return redirect()->back();

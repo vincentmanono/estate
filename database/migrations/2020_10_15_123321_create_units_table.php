@@ -12,7 +12,7 @@ class CreateUnitsTable extends Migration
      * @return void
      */
     public function up()
-    {
+    { 
         Schema::create('units', function (Blueprint $table) {
             $table->id();
 
@@ -28,6 +28,8 @@ class CreateUnitsTable extends Migration
             $table->string('management_fee')->nullable();
 
             $table->integer('rent')->unsigned()->nullable();
+
+            $table->boolean('status')->nullable()->default(false);
 
             // $table->string('management_fee')->nullable();
             $table->integer('property_id');

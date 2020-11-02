@@ -99,7 +99,7 @@
             <div class="col-lg-8 ">
 
                <div class="row card card-body">
-                   <h5 class="card-title">Landlords</h5>
+                   <h5 class="card-title">Managers</h5>
                    <div class="row">
                    @foreach ($managers as $manager)
                    <div class="col-md-4">
@@ -126,7 +126,7 @@
                     <div class="col-md-12">
                         <div class="card m-b-15">
                             <div class="card-body">
-                                <h5 class="card-title">Total Paid Deposit</h5>
+                                <h5 class="card-title">Total Active Paid Deposit</h5>
                                 <div class="row">
                                     <div class="col-9 m-t-30">
                                         <h1 class="text-info">Ksh {{ number_format($depositsum , 2,'.',',')  }}  </h1>
@@ -142,7 +142,7 @@
                     <div class="col-md-12">
                         <div class="card bg-purple m-b-15">
                             <div class="card-body">
-                                <h5 class="text-white card-title">  Total Paid Rent</h5>
+                                <h5 class="text-white card-title">  Total Active Paid Rent</h5>
                                 <div class="row">
                                     <div class="col-9 m-t-30">
                                         <h1 class="text-white">Ksh {{ number_format($rentsum , 2,'.',',')  }}</h1>
@@ -188,13 +188,13 @@
                                     <tr>
                                        <td>{{ $property->name }}</td>
                                        <td>{{ $property->type }}</td>
-                                       <td> <img src="../assets/images/property/prop1.jpeg" alt="iMac" width="80"> </td>
+                                       <td> <img src="/storage/property/{{ $property->image }}" alt="iMac" width="80"> </td>
                                        <td>{{ $property->address }}</td>
 
                                        {{-- <td> <span class="label label-success font-weight-100">Paid</span> </td> --}}
                                        <td class="row">
-                                        <a  style="margin-right: 2%;" class="btn   btn-success " href="{{ route('singleBranch',$property->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
-                                        <a  class="btn  btn-info " href="{{ route('editBranch',$property->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
+                                        <a  style="margin-right: 2%;" class="btn   btn-success " href="{{ route('property.show',$property->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
+                                        <a  class="btn  btn-info " href="{{ route('property.edit',$property->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
                                         </td>
                                    </tr>
                                    @endforeach

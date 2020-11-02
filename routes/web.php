@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/','PageController@index');
+Route::get('/properties','PageController@property');
+Route::get('singleproperty/{id}','PageController@show')->name('single.show');
+Route::get('propertygallery/{id}','PageController@images')->name('property.images');
+Route::post('/propertyapplication','PageController@store')->name('request.application');
 
 Auth::routes();
 
@@ -35,9 +40,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/tenant/{tenant}/{unit}','UserController@tenantUnit')->name('tenantUnit');
 
 
-
     Route::post('add-user','UserController@addUser')->name('addUser');
     Route::delete('delete-user/{user}','UserController@deleteUser')->name('deleteUser');
+    Route::get('tenantreport','UserController@tenantReport')->name('tenant.report');
+    Route::get('/rentreport','RentController@rentReport')->name('rent.report');
+    Route::get('/depositreport','DepositController@depositReport')->name('deposit.report');
+    Route::get('/waterreport','WaterController@waterReport')->name('water.report');
     Route::get('/branches','BranchController@allBranches')->name('allBranches');
     Route::get('/branch/{id}','BranchController@show')->name('singleBranch');
     Route::get('/createbranch','BranchController@create')->name('create.branch');
@@ -45,13 +53,33 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/editbranch/{id}','BranchController@edit')->name('editBranch');
     Route::put('/updatebranch/{id}','BranchController@update')->name('update.branch');
     Route::delete('deletebranch/{id}','BranchController@destroy')->name('destroy.branch');
+    Route::get('/property/{id}/images','PropertyImageController@create')->name('property.images.create');
+    Route::post('/property/{id}/images','PropertyImageController@store')->name('property.images.store');
+    Route::post('/property/images','PropertyImageController@fileDestroy')->name('property.images.destroy');
     Route::resource('/property', 'PropertyController');
+
     Route::resource('service', 'ServiceController');
     Route::resource('unit', 'UnitController');
     Route::resource('rent', 'RentController');
     Route::resource('deposit', 'DepositController');
     Route::resource('water', 'WaterController');
     Route::resource('payment', 'PaymentController');
+    Route::resource('lease','LeaseController');
+    Route::resource('application', 'ApplicationController');
+
+    Route::prefix('manager')->group(function () {
+            Route::get('property/{property}' , 'ManagerController@property')->name('manager.property');
+            Route::get('expenses/{property}' , 'ManagerController@expenses')->name('manager.property.expenses');
+            Route::get('expenses/{property}/create' , 'ManagerController@expensesCreate')->name('manager.property.expenses.create');
+            Route::post('expenses/{property}/store' , 'ManagerController@expensesStore')->name('manager.property.expenses.store');
+            Route::get('expenses/{expense}/edit' , 'ManagerController@expensesEdit')->name('manager.property.expenses.edit');
+            Route::put('expenses/{expense}/update' , 'ManagerController@expensesUpdate')->name('manager.property.expenses.update');
+            Route::post('expenses/{expense}/solved', 'ManagerController@expensesApprove')->name('manager.property.expenses.approve');
+            Route::delete('expenses/{expense}/delete' , 'ManagerController@expensesDelete')->name('manager.property.expenses.delete');
+
+    });
+
+
 
 
 

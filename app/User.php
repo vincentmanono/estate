@@ -46,9 +46,7 @@ class User extends Authenticatable
     public function maintenances(){
         return $this->hasMany(Maintenance::class);
     }
-    public function expenses(){
-        return $this->hasMany(Expense::class);
-    }
+
     public function leases(){
         return $this->hasMany(Lease::class);
     }

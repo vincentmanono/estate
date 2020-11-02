@@ -21,6 +21,7 @@ class UnitController extends Controller
         return view('units.index',compact('units'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -46,7 +47,9 @@ class UnitController extends Controller
             'electricity_acc_no'=>'string',
             'service_charge'=>'string',
             'property_id'=>'required',
-            'billing_cycle'=>'string'
+            'billing_cycle'=>'string',
+            'rent'=> 'required',
+            'status'=>'required'
         ]);
 
         $post = new Unit();
@@ -57,7 +60,8 @@ class UnitController extends Controller
         $post->service_charge =$request->service_charge;
         $post->property_id=$request->property_id;
         $post->billing_cycle=$request->billing_cycle;
-
+        $post->rent=$request->rent;
+        $post->status=$request->status;
         $validate= $post->save();
 
         if($validate){
@@ -78,7 +82,7 @@ class UnitController extends Controller
     {
         $leases=Lease::all();
         $unit = Unit::find($id);
-        $rents = Rent::all();
+        $rents = Rent::where('unit_id',$id)->orderBy('id','desc')->get() ;
         return view('units.show',compact('unit','leases','rents'));
     }
 
@@ -122,6 +126,8 @@ class UnitController extends Controller
         $post->service_charge =$request->service_charge;
         $post->property_id=$request->property_id;
         $post->billing_cycle=$request->billing_cycle;
+        $post->rent=$request->rent;
+        $post->status=$request->status;
 
         $validate= $post->save();
 

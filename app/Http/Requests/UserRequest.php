@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
             'phone'=>"required|numeric|min:10",
             'address'=>"required|string",
             'ID'=>"required|string|max:20",
-            'kra'=>"numeric",
+            'kra'=>"string",
             'avatar'=>"image|nullable"
         ];
     }

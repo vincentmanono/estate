@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Property extends Model
 {
     protected $guarded=[];
+
+    public function images()
+    {
+        return $this->hasMany(PropertyImage::class);
+    }
+
     public function branch(){
         return $this->belongsTo(Branch::class);
     }
@@ -16,7 +22,11 @@ class Property extends Model
     public function units(){
         return $this->hasMany(Unit::class);
     }
+    public function rents(){
+        return $this->hasMany(Rent::class);
+    }
     public function expenses(){
         return $this->hasMany(Expense::class);
     }
+    
 }

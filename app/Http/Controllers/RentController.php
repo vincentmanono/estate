@@ -19,6 +19,12 @@ class RentController extends Controller
         $rents=Rent::all();
         return view('rents.index',compact('rents'));
     }
+    public function rentReport(){
+
+        $rents=Rent::all();
+        return view('reports.rentreport',compact('rents'))->with('params','Rents');
+
+    }
 
     /**
      * Show the form for creating a new resource.
