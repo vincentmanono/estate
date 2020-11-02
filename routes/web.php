@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/',function(){
-    return view('client.index');
-});
+Route::get('/','PageController@index');
+Route::get('/properties','PageController@property');
+Route::get('singleproperty/{id}','PageController@show')->name('single.show');
+Route::get('propertygallery/{id}','PageController@images')->name('property.images');
+Route::post('/propertyapplication','PageController@store')->name('request.application');
 
 Auth::routes();
 
@@ -63,6 +65,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('water', 'WaterController');
     Route::resource('payment', 'PaymentController');
     Route::resource('lease','LeaseController');
+    Route::resource('application', 'ApplicationController');
 
     Route::prefix('manager')->group(function () {
             Route::get('property/{property}' , 'ManagerController@property')->name('manager.property');

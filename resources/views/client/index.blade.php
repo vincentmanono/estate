@@ -22,39 +22,50 @@
         <div class="row">
             <div class="col-md-6 wow slideInLeft hidden-xs hidden-sm">
                 <div class="contact_form">
-                    <h3><i class="fa fa-envelope-o grd1 global-radius"></i> QUICK APPOINTMENT</h3>
-                    <form id="contactform1" class="row" name="contactform" method="post">
+                    <h3><i class="fa fa-envelope-o grd1 global-radius"></i>APARTMENT APPLICATION</h3>
+                    @include('messages')
+                     <form id="contactform1" class="row" action="" method="post">{{--  {{ route('request.application') }}  --}}
+
+                        @csrf()
+                        @method('POST')
+
                         <fieldset class="row-fluid">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="first_name1" id="first_name1" class="form-control" placeholder="First Name">
+                                <input type="text" name="name" id="first_name1" class="form-control" placeholder="name">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="last_name1" id="last_name1" class="form-control" placeholder="Last Name">
+                                <select name="property_id" class="form-control" id="">
+                                    <option value="">-----select-property-----</option>
+                                    @foreach ($properties as $property)
+
+                                    <option value="{{ $property->id }}">{{ $property->name }}</option>
+
+                                    @endforeach
+                                </select>
+                             </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <input type="email" name="email" id="email1" class="form-control" placeholder="Your Email">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="email" name="email1" id="email1" class="form-control" placeholder="Your Email">
+                                <input type="text" name="phone" id="phone1" class="form-control" placeholder="Your Phone">
                             </div>
+
+
+
+
+
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" name="identity"  class="form-control" placeholder="Your ID">
+                            </div>
+                            {{--  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" name="phone1" id="phone1" class="form-control" placeholder="Your Phone">
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label class="sr-only">Select Time</label>
-                                <select name="select_service1" id="select_service1" class="selectpicker form-control" data-style="btn-white">
-                                    <option value="selecttime">Select Time</option>
-                                    <option value="Weekdays">Weekdays</option>
-                                    <option value="Weekend">Weekend</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label class="sr-only">What is max price?</label>
-                                <select name="select_price1" id="select_price1" class="selectpicker form-control" data-style="btn-white">
-                                    <option value="$100 - $2000">$100 - $2000</option>
-                                    <option value="$2000 - $4000">$2000 - $4000</option>
-                                    <option value="$4000 - $10000">$4000 - $10000</option>
-                                </select>
-                            </div>
+                            </div>  --}}
+
+
+
+
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                <button type="submit" value="SEND" id="submit1" class="btn btn-light btn-radius btn-brd grd1 btn-block">Get an Appointment</button>
+                                <button type="submit" value="SEND" id="submit1" class="btn btn-light btn-radius btn-brd grd1 btn-block">Apply</button>
                             </div>
                         </fieldset>
                     </form>
@@ -77,28 +88,28 @@
             <div class="top-feature owl-carousel owl-theme">
                 <div class="item">
                     <div class="single-feature">
-                        <div class="icon"><img src="{{asset('client/uploads/icon-01.png')}}" class="img-responsive" alt=""></div>
+                        <div class="icon"><img src="{{asset('/client/uploads/icon-01.png')}}" class="img-responsive" alt=""></div>
                         <h4><a href="#">Full Furnished</a></h4>
                         <p>Mauris eu porta orci. In at erat enim. Suspendisse felis erat, volutpat at nisl sit amet, maximus molestie nisi. </p>
                     </div>
                 </div>
                 <div class="item">
                     <div class="single-feature">
-                        <div class="icon"><img src="{{asset('client/uploads/icon-02.png')}}" class="img-responsive" alt=""></div>
+                        <div class="icon"><img src="{{asset('/client/uploads/icon-02.png')}}" class="img-responsive" alt=""></div>
                         <h4><a href="#">Living Inside a Nature</a></h4>
                         <p>Mauris eu porta orci. In at erat enim. Suspendisse felis erat, volutpat at nisl sit amet, maximus molestie nisi.</p>
                     </div>
                 </div>
                 <div class="item">
                     <div class="single-feature">
-                        <div class="icon"><img src="{{asset('client/uploads/icon-03.png')}}" class="img-responsive" alt=""></div>
+                        <div class="icon"><img src="{{asset('/client/uploads/icon-03.png')}}" class="img-responsive" alt=""></div>
                         <h4><a href="#">Luxurious Fittings</a></h4>
                         <p>Mauris eu porta orci. In at erat enim. Suspendisse felis erat, volutpat at nisl sit amet, maximus molestie nisi. </p>
                     </div>
                 </div>
                 <div class="item">
                     <div class="single-feature">
-                        <div class="icon"><img src="{{asset('client/uploads/icon-04.png')}}" class="img-responsive" alt=""></div>
+                        <div class="icon"><img src="{{asset('/client/uploads/icon-04.png')}}" class="img-responsive" alt=""></div>
                         <h4><a href="#">Non Stop Security</a></h4>
                         <p>Lorem Is a dummy Mauris eu porta orci. In at erat enim. Suspendisse felis erat, volutpat at nisl sit amet, maximus molestie nisi. </p>
                     </div>
@@ -128,47 +139,7 @@
     </div>
 </div>
 
-<div id="agent" class="parallax section db parallax-off" style="background-image:url('uploads/parallax_02.png');">
-    <div class="container">
-        <div class="section-title row text-center">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>Managers Details</h3>
-                <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
-            </div><!-- end col -->
-        </div><!-- end title -->
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="message-box">
-                    <h4>Manager</h4>
-                    <h2>Jenny Martines</h2>
-                    <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
-
-                    <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-
-                    <a href="#contact" data-scroll class="btn btn-light global-radius btn-brd grd1 effect-1">Contact Me</a>
-                </div><!-- end messagebox -->
-            </div><!-- end col -->
-            <div class="col-md-3">
-                <div class="post-media wow fadeIn">
-                    <img src="{{asset('client/uploads/agent.jpg')}} alt="" class="img-responsive">
-                    {{--  <a href="http://www.youtube.com/watch?v=nrJtHemSPW4" data-rel="prettyPhoto[gal]" class="playbutton"><i class="flaticon-play-button"></i></a>  --}}
-                </div><!-- end media -->
-            </div><!-- end col -->
-            <div class="col-md-3">
-                <div class="agencies_meta clearfix">
-                    <span><i class="fa fa-envelope "></i> <a href="mailto:support@sitename.com">support@sitename.com</a></span>
-                    <span><i class="fa fa-link "></i> <a href="#">www.sitename.com</a></span>
-                    <span><i class="fa fa-phone-square "></i> +1 232 444 55 66</span>
-                    <span><i class="fa fa-print "></i> +1 232 444 55 66</span>
-                    <span><i class="fa fa-facebook-square "></i> <a href="#">facebook.com/tagline</a></span>
-                    <span><i class="fa fa-twitter-square "></i> <a href="#">twitter.com/tagline</a></span>
-                    <span><i class="fa fa-linkedin-square "></i> <a href="#">linkedin.com/tagline</a></span>
-                </div><!-- end agencies_meta -->
-            </div><!-- end col -->
-        </div><!-- end row -->
-    </div>
-</div>
 
 <div id="testimonials" class="section lb">
     <div class="container">

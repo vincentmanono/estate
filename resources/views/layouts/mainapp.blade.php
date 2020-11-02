@@ -53,16 +53,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    {{--  <a class="navbar-brand" href="index.html"><img src="{{ asset('/client/images/logos/logo.png') }}" alt="image"></a>  --}}
+                    <a class="navbar-brand" href="/"><img src="{{ asset('/client/images/logos/log.PNG') }}" alt="image"></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About us </a></li>
-                        {{--  <li><a href="service.html">Service</a></li>  --}}
+                        {{--  <li><a href="about.html">About us </a></li>  --}}
+
                         {{--  <li><a href="gallery.html">Gallery</a></li>  --}}
-                        <li><a href="properties.html">Properties</a></li>
+                        <li><a href="/properties">Properties</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                        <li><a href="{{ route('login') }}">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -80,7 +81,6 @@
                             {{--  <img src="{{ asset('/client/images/logos/logo-realestate.png') }}" alt="">  --}}
                         </div>
                         <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
-                        <p>Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
                     </div><!-- end clearfix -->
                 </div><!-- end col -->
 
@@ -92,7 +92,7 @@
 
                         <ul class="twitter-widget footer-links">
                             <li><a href="#"> Home </a></li>
-                            <li><a href="#"> About Us </a></li>
+                            {{--  <li><a href="#"> About Us </a></li>  --}}
                             {{--  <li><a href="#"> Services</a></li>  --}}
 							{{--  <li><a href="#"> Gallery</a></li>  --}}
 							<li><a href="#"> Properties</a></li>
@@ -132,26 +132,23 @@
                 </div><!-- end col -->  --}}
 
             </div><!-- end row -->
-            
+            <div class="row">
+                <div class="footer-distributed">
+                    <div class="footer-left">
+                        <p class="footer-company-name">All Rights Reserved. &copy; {{ date('Y') }}  <a href="https://chiefproperties.co.ke">ChiefProperties</a> Design By : <a href="https://lagaster.com"> Lagaster </a></p>
+                    </div>
+
+                    {{--  <div class="footer-right">
+                        <form method="get" action="#">
+                            <input placeholder="Subscribe our newsletter.." name="search">
+                            <i class="fa fa-envelope-o"></i>
+                        </form>
+                    </div>  --}}
+                </div>
+            </div>
         </div><!-- end container -->
     </footer><!-- end footer -->
 
-    <div class="copyrights">
-        <div class="container">
-            <div class="footer-distributed">
-                <div class="footer-left">
-                    <p class="footer-company-name">All Rights Reserved. &copy; {{ date('Y') }}  <a href="#">ChiefProperties</a> Design By : <a href="https://lagaster.com"> Lagaster </a></p>
-                </div>
-
-                {{--  <div class="footer-right">
-                    <form method="get" action="#">
-                        <input placeholder="Subscribe our newsletter.." name="search">
-                        <i class="fa fa-envelope-o"></i>
-                    </form>
-                </div>  --}}
-            </div>
-        </div><!-- end container -->
-    </div><!-- end copyrights -->
 
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 
