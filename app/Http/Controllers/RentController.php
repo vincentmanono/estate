@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Rent;
+use App\User;
+use App\Unit;
 use Illuminate\Http\Request;
 
 class RentController extends Controller
@@ -14,7 +16,8 @@ class RentController extends Controller
      */
     public function index()
     {
-        //
+        $rents=Rent::all();
+        return view('rents.index',compact('rents'));
     }
 
     /**
@@ -24,7 +27,9 @@ class RentController extends Controller
      */
     public function create()
     {
-        //
+        $units = Unit::all();
+        $tenants = User::where('type','tenant')->get();
+        return view('rents.createEdit',compact('units','tenants'))->with('param','Add Rent Records');
     }
 
     /**
@@ -35,7 +40,33 @@ class RentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+
+            'amount'=>'required',
+            'paid_date'=>'required',
+            'unit_id'=>'required',
+            'user_id'=>'required',
+            'description'=>'required',
+            'expiry_date'=>'required',
+        ]);
+
+        $post = new Rent();
+
+        $post->amount =$request->amount;
+        $post->paid_date =$request->paid_date;
+        $post->unit_id =$request->unit_id;
+        $post->description =$request->description;
+        $post->user_id =$request->user_id;
+        $post->expiry_date =$request->expiry_date;
+
+        $validate=$post->save();
+
+        if($validate){
+
+            return back()->with('success','You have successfully added the rent record.');
+        }else{
+            return back()->with('error','An error occured. Please try again!!!');
+        }
     }
 
     /**
@@ -44,9 +75,11 @@ class RentController extends Controller
      * @param  \App\Rent  $rent
      * @return \Illuminate\Http\Response
      */
-    public function show(Rent $rent)
+    public function show($id)
     {
-        //
+        $rents=Rent::all();
+        $rent = Rent::find($id);
+        return view('rents.show',compact('rent','rents'));
     }
 
     /**
@@ -55,9 +88,12 @@ class RentController extends Controller
      * @param  \App\Rent  $rent
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rent $rent)
+    public function edit($id)
     {
-        //
+        $units = Unit::all();
+        $tenants = User::where('type','tenant')->get();
+        $rent = Rent::find($id);
+        return view('rents.createEdit',compact('rent','units','tenants'))->with('param','Edit Rent Details');
     }
 
     /**
@@ -67,9 +103,35 @@ class RentController extends Controller
      * @param  \App\Rent  $rent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rent $rent)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+
+            'amount'=>'required',
+            'paid_date'=>'required',
+            'unit_id'=>'required',
+            'user_id'=>'required',
+            'description'=>'required',
+            'expiry_date'=>'required',
+        ]);
+
+        $post = Rent::find($id);
+
+        $post->amount =$request->amount;
+        $post->paid_date =$request->paid_date;
+        $post->unit_id =$request->unit_id;
+        $post->description =$request->description;
+        $post->user_id =$request->user_id;
+        $post->expiry_date =$request->expiry_date;
+
+        $validate=$post->save();
+
+        if($validate){
+
+            return back()->with('success','You have successfully updated the rent record.');
+        }else{
+            return back()->with('error','An error occured. Please try again!!!');
+        }
     }
 
     /**
@@ -78,8 +140,16 @@ class RentController extends Controller
      * @param  \App\Rent  $rent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rent $rent)
+    public function destroy($id)
     {
-        //
+        $del =Rent::find($id);
+        $del->delete();
+
+        if($del){
+            return redirect()->route('rent.index')->with('success','You have successfully deleted the record');
+        }
+        else{
+            return back()->with('error','An error occured. Please try again!!!');
+        }
     }
 }

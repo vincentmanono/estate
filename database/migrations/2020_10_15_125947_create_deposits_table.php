@@ -16,9 +16,10 @@ class CreateDepositsTable extends Migration
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
             $table->string('amount');
+            $table->string('date');
             $table->integer('unit_id');
             $table->integer('user_id')->nullable();
-            $table->boolean('status')->nullable()->default(false);
+            $table->string('status')->nullable();
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();

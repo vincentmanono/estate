@@ -14,7 +14,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services =Service::orderBy('id','Desc')->get();
+        return view('services.index',compact('services'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('services.createEdit')->with('param','Add Service');
     }
 
     /**
@@ -35,7 +36,30 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+
+            'name'=>'string',
+            'phone'=>'string',
+            'email'=>'email',
+            'type'=>'string',
+
+        ]);
+
+        $post = new Service();
+
+        $post->name=$request->name;
+        $post->phone=$request->phone;
+        $post->email=$request->email;
+        $post->type=$request->type;
+
+        $validate=$post->save();
+
+        if($validate){
+            return \redirect()->route('service.index')->with('success','You have successsfully added the service');
+        }else{
+            return back()->with('error','An error occured while adding the details');
+        }
+
     }
 
     /**
@@ -44,9 +68,10 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show($id)
     {
-        //
+        $service  =Service::find($id);
+        return view('services.show',compact('service'));
     }
 
     /**
@@ -55,9 +80,10 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit($id)
     {
-        //
+        $service=Service::find($id);
+        return view('services.createEdit',compact('service'))->with('param','Edit Service');
     }
 
     /**
@@ -67,9 +93,32 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request,$id)
     {
-        //
+        $this->validate($request,[
+
+            'name'=>'string',
+            'phone'=>'string',
+            'email'=>'email',
+            'type'=>'string',
+
+        ]);
+
+        $post = Service::find($id);
+
+        $post->name=$request->name;
+        $post->phone=$request->phone;
+        $post->email=$request->email;
+        $post->type=$request->type;
+
+        $validate=$post->save();
+
+        if($validate){
+            return \redirect()->route('service.index')->with('success','You have successsfully updated the service');
+        }else{
+            return back()->with('error','An error occured while updating the details');
+        }
+
     }
 
     /**
@@ -78,8 +127,16 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy($id)
     {
-        //
+        $del =Service::find($id);
+        $del->delete();
+
+        if($del){
+            return \redirect()->route('service.index')->with('success','You have succesfully deleted the record');
+        }
+        else{
+            return back()->with('error','An error occured. Try again');
+        }
     }
 }

@@ -10,7 +10,8 @@ $factory->define(Deposit::class, function (Faker $faker) {
 
         'amount'=>$faker->numberBetween(5000,20000),
         'unit_id'=>function(){return App\Unit::all()->random();},
-        'status'=>$faker->boolean(),
+        'status'=>$faker->randomElement(['Claimed','Refunded','Active']),
+        'date'=>$faker->date(),
         'user_id'=>function(){return App\User::all()->random();}
 
     ];

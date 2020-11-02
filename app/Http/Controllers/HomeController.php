@@ -33,8 +33,8 @@ class HomeController extends Controller
     {
         $propertycount = Property::all()->count();
         $branchcount = Branch::all()->count();
-        $leasecount= Lease::where('status','active')->count();
-        $unleasecount= Lease::where('status','inactive')->count();
+        $leasecount= Lease::where('status','1')->count();
+        $unleasecount= Lease::where('status','0')->count();
         $depositsum = Deposit::where('status',1)-> pluck('amount')->sum();
         $properties = Property::orderBy('id','desc')->paginate(10);
         $managers = User::where('type','manager')->paginate(3);

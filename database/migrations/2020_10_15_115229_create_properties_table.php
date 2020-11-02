@@ -18,12 +18,10 @@ class CreatePropertiesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');//residential/commercial/service_resident
-            $table->string('date_of_cert_of_occupation');
+            $table->string('date_of_cert_of_occupation')->nullable();
             $table->string('address');
-            $table->string('security_no')->nullable();
             $table->string('image')->nullable();
-            $table->string('caretaker_no')->nullable();
-            $table->string('landlord_no')->nullable();
+            $table->string('description')->nullable();
             $table->string('year_of_construction')->nullable();
             $table->string('water_bill_rate')->nullable();
             $table->string('l_r_no')->nullable();
