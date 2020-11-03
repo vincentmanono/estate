@@ -47,6 +47,90 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#floorplan">
+                                @if ($unit->floor->count() != 0)
+                                    <i class="fa fa-pencil" aria-hidden="true">Edit floor plan</i>
+                                @else
+                                             <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>   Unit Floor Plan
+                                @endif
+
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="floorplan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text text-center text-bold "> {{  ($unit->floor->count() > 0) ? "Add" : "Edit" }}  Unit Floor Plan</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                        </div>
+                                        <div class="modal-body" style="background-color: #b7e9df;" >
+                                            <div id="response" > </div>
+                                            <form id="floorStoreForm" action="{{ ($unit->floor->count() > 0) ? route('unit.floor.update',$unit->floor->id) : route('unit.floor.store',$unit->id)  }}" method="post" enctype="multipart/form-data" >
+                                                @csrf
+
+                                                @if ( $unit->floor->count())
+                                                      @method("PUT")
+                                                @endif
+
+                                                <div class="d-flex flex-row">
+                                                    <div class="form-group mr-2">
+                                                        <label for="image">Floor architecture Image</label>
+                                                        <input id="image" class="form-control" type="file" name="image">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="kitchen">kitchen <i class="fa fa-star" aria-hidden="true"></i> </label>
+                                                        <input id="kitchen" @if ($unit->floor->count())
+                                                            value="{{ $unit->floor->kitchen }}"
+                                                        @endif
+                                                         class="form-control" type="text" name="kitchen">
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-row">
+                                                     <div class="form-group mr-2">
+                                                    <label for="sitting">sitting <i class="fa fa-star" aria-hidden="true"></i></label>
+                                                    <input id="sitting" class="form-control"
+
+                                                    @if ($unit->floor->count())
+                                                            value="{{ $unit->floor->sitting }}"
+                                                        @endif
+                                                    type="text" name="sitting">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="swimming">swimming <i class="fa fa-star" aria-hidden="true"></i></label>
+                                                    <input id="swimming"
+                                                    @if ($unit->floor->count())
+                                                            value="{{ $unit->floor->swimming }}"
+                                                        @endif
+                                                     class="form-control" type="text" name="swimming">
+                                                </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="garden">garden <i class="fa fa-star" aria-hidden="true"></i></label>
+                                                    <input id="garden"
+                                                    @if ($unit->floor->count())
+                                                    value="{{ $unit->floor->garden }}"
+                                                @endif
+                                                     class="form-control" type="text" name="garden">
+                                                    <input  type="hidden" value="{{ $unit->id }}" name="unit_id">
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save Unit Floor</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
                             <a style="float: right" href="{{ route('unit.edit', $unit->id) }}"
                                 class="btn btn-sm btn-info">Edit Unit</a>
                             <!-- row -->
@@ -347,3 +431,15 @@
     <!-- ============================================================== -->
 
 @endsection
+
+
+@section('extraScripts')
+    <script>
+        $(
+            $("#floorStoreForm").submit(()=>{
+                //event.preventDefault()
+            })
+        )
+    </script>
+@stop
+

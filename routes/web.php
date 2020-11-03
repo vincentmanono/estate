@@ -79,6 +79,9 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('expenses/{expense}/solved', 'ManagerController@expensesApprove')->name('manager.property.expenses.approve');
             Route::delete('expenses/{expense}/delete' , 'ManagerController@expensesDelete')->name('manager.property.expenses.delete');
 
+            Route::post('unit/{unit}/floor', 'FloorController@store')->name('unit.floor.store');
+            Route::put('floor/{floor}', 'FloorController@update')->name('unit.floor.update');
+
     });
 
 
