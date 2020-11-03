@@ -38,9 +38,10 @@ class PageController extends Controller
         $this->validate($request,[
             'name'=>['required'],
             'phone'=>['required'],
-            'unit_id'=>['required'],
+            'property_id'=>['required'],
             'email'=>['required'],
-            'identity'=>['required']
+            'identity'=>['required'],
+            'status'=>['required']
         ]);
 
         $post = new Application();
@@ -48,8 +49,9 @@ class PageController extends Controller
         $post->name=$request->name;
         $post->email=$request->email;
         $post->identity=$request->identity;
-        $post->unit_id=$request->unit_id;
+        $post->property_id=$request->property_id;
         $post->phone=$request->phone;
+        $post->status= $request->status;
 
         $validate=$post->save();
 

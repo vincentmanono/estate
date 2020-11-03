@@ -21,7 +21,26 @@ class ApplicationController extends Controller
         return view('apprequest.index',compact('applications'));
 
     }
+    public function approve(Request $request,$id){
+       $this->validate($request,[
+           'status'=>['required']
+       ]);
+       $post = Application::find($id);
 
+       $post->status=$request->status;
+
+       $validate=$post->save();
+       if($validate){
+           return redirect()->route('home');
+       }
+
+     }
+     public function decline($id){
+        $appreq = Application::findOrFail($id);
+        $appreq->status = 0;
+        $appreq->save();
+        return redirect()->back();
+     }
     /**
      * Show the form for creating a new resource.
      *

@@ -54,6 +54,7 @@
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Phone</th>
+                                                <th>Status</th>
                                                 <th>Property</th>
                                                 <th>ACTIONS</th>
 
@@ -66,27 +67,26 @@
                                                     <td>{{ $application->name }}</td>
                                                     <td> <a style="color: blue;" href="mailto:{{ $application->email }}">{{ $application->email }}</a></td>
                                                     <td><a style="color: blue;" href="tel:{{ $application->phone }}">{{ $application->phone }}</a></td>
+                                                    <th>
 
-                                                    {{--  @foreach ($properties as $property)
+                                                        @if ($application->status == 1)
+                                                            <span class="badge badge-pill badge-info"> Approved </span></a>
+                                                        @else
+                                                            <span class="badge badge-pill badge-danger"> Pending </span></a>
 
-                                                    @if($property->id == $application->id)  --}}
-
-
-                                                    <td>{{ $application->property->name }}</td>
-                                                    {{--  @endif
-                                                    @endforeach  --}}
-
-
+                                                        @endif
+                                                    </th>
+                                                   <td>{{ $application->property->name }}</td>
                                                     <td class="row" >
 
-                                                        {{--  <a class="btn btn-success " href="{{ route('singleapplication',$application->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
-                                                        <a style="margin-left: 2%;margin-right:2%; " class="btn btn-warning " href="{{ route('editapplication',$application->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
-                                                        <form action="{{ route('destroy.application',$application->id) }}" method="POST" >
-                                                            @csrf
-                                                            @method('DELETE')
 
-                                                            <button type="submit" onclick="return confirm('Are you sure you want to delete this record?');" class="btn btn-danger" title="Delete"  data-toggle="tooltip"><i class="ti-trash"></i> Delete</button>
-                                                        </form>  --}}
+
+                                                        <form action="{{route('app.approve', $application->id)}}" method="POST">
+                                                            @method('PUT')
+                                                            <input type="text" name="status" value="1" hidden>
+                                                            <button class="btn btn-sm  btn-success" type="submit">Approve</button>
+                                                        </form>
+                                                        <a href="{{route('app.decline', $application->id)}}" class="btn  btn-sm btn-danger">Decline</a>
                                                     </td>
 
                                             </tr>

@@ -12,7 +12,8 @@ $factory->define(Application::class, function (Faker $faker) {
         'phone'=>$faker->e164PhoneNumber,
         'email'=>$faker->unique()->safeEmail,
         'identity'=>$faker->numberBetween(100,200),
-        'unit_id'=>function(){return App\Unit::all()->random();}
+        'property_id'=>function(){return App\Property::all()->random();},
+        'status'=>$faker->boolean(),
 
     ];
 });

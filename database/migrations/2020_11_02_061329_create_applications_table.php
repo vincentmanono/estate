@@ -16,11 +16,12 @@ class CreateApplicationsTable extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('unit_id');
+            $table->string('property_id');
             $table->string('phone');
             $table->string('identity');
             $table->string('email');
-            $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
+            $table->boolean('status')->nullable()->default(false);
+            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
             $table->timestamps();
         });
     }

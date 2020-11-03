@@ -66,6 +66,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('payment', 'PaymentController');
     Route::resource('lease','LeaseController');
     Route::resource('application', 'ApplicationController');
+    Route::put('/approve/{id}', 'ApplicationController@approve')->name('app.approve');
+    Route::post('/decline/{id}', 'ApplicationController@decline')->name('app.decline');
 
     Route::prefix('manager')->group(function () {
             Route::get('property/{property}' , 'ManagerController@property')->name('manager.property');

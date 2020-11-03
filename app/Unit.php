@@ -32,7 +32,5 @@ class Unit extends Model
     public function waters(){
         return $this->hasMany(Water::class);
     }
-    public function applications(){
-        return $this->hasMany(Application::class);
-    }
+    
 }

@@ -28,5 +28,7 @@ class Property extends Model
     public function expenses(){
         return $this->hasMany(Expense::class);
     }
-    
+    public function applications(){
+        return $this->hasMany(Application::class);
+    }
 }

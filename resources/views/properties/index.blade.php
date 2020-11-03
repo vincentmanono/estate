@@ -46,7 +46,7 @@
                                                 <th>Name</th>
                                                 <th>Type</th>
                                                 <th>Address</th>
-                                                {{-- <th>Image</th> --}}
+                                                <th>Image</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -58,7 +58,7 @@
                                             <td>{{$property->name}}</td>
                                             <td>{{$property->type}}</td>
                                             <td>{{$property->address}}</td>
-                                            {{-- <td>{{$property->image}}</td> --}}
+                                            <td>{{$property->image}}</td>
                                             <td class="row">
                                             <a href="{{route('property.show',$property->id)}}" class=" btn btn btn-info" >More</a>
                                             <a href="{{route('property.edit',$property->id)}}" style="margin-left: 4%;margin-right:4;" class=" btn btn btn-warning" >Edit</a>
@@ -70,7 +70,7 @@
                                                         <th>Name</th>
                                                         <th>Type</th>
                                                         <th>Address</th>
-                                                        {{-- <th>Image</th> --}}
+                                                        <th>Image</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -87,7 +87,7 @@
                 <!-- ============================================================== -->
                 <!-- Right sidebar -->
                 <!-- ============================================================== -->
-              
+
                 <!-- ============================================================== -->
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
