@@ -49,6 +49,7 @@
                         <div class="card-body">
                             <a style="float: right" href="{{ route('unit.edit', $unit->id) }}"
                                 class="btn btn-sm btn-info">Edit Unit</a>
+                                <a href="{{ route('floor.create') }}">Add Floor Plan</a>
                             <!-- row -->
                             <div class="row">
 
@@ -203,7 +204,7 @@
 
                                         @if ($unit->status && $unit->leased != null)
                                             <center class="m-t-30">
-                                                <img src="/assets/images/users/agent.jpg" class="img-circle" width="150" />
+                                                <img src="/storage/user/{{ $unit->leased->user->image }}" class="img-circle" width="150" />
                                                 <h4 class="card-title m-t-10">{{ $unit->leased->user->name }}</h4>
                                                 <h4 class="card-title m-t-10">Phone</h4>
                                                 <h6 class="card-subtitle"> <a style="color: blue"

@@ -24,7 +24,8 @@ class FloorController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('floor.createEdit')->with('params','Add Floor Plan');
     }
 
     /**

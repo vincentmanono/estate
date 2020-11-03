@@ -25,9 +25,8 @@ class UserController extends Controller
     }
     public function allTenants()
     {
-        $leases = Lease::all();
         $users = User::where('type', 'tenant')->latest()->get();
-        return view('users.tenants', compact('users','leases'))->with('params', "Tenants");
+        return view('users.index', compact('users'))->with('params', "Tenants");
     }
     public function tenantReport(){
         $leases = Lease::all();

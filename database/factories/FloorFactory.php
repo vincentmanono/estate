@@ -11,6 +11,7 @@ $factory->define(Floor::class, function (Faker $faker) {
             'image'=>$faker->url(),
             'kitchen'=>$faker->word(),
             'sitting'=>$faker->word(),
+            'bedroom'=>$faker->word(),
             'swimming'=>$faker->word(),
             'garden'=>$faker->word(),
             'unit_id'=>function(){return App\Unit::all()->random();}
