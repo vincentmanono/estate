@@ -57,12 +57,6 @@
                                             <th>Type</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            @if ($params =='Tenants')
-                                            <th>Unit</th>
-                                            <th>Property</th>
-                                            <th>Branch</th>
-
-                                            @endif
                                             <th>Actions</th>
 
                                         </tr>
@@ -95,23 +89,6 @@
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->phone }}</td>
 
-                                                  @if ($params == 'Tenants')
-
-                                                  @foreach ($leases as $lease)
-
-                                                  @if ($lease->user_id == $user->id)
-                                                  <td>
-                                                      {{ $lease->unit->name }}
-
-                                                  </td>
-                                                  <td>{{ $lease->unit->property->name }}</td>
-                                                   <td>{{ $lease->unit->property->branch->name }}</td>
-                                                  @endif
-
-                                                  @endforeach
-
-                                                  @endif
-
 
                                                 <td>
 
@@ -142,12 +119,6 @@
                                         <th>Type</th>
                                         <th>Email</th>
                                         <th>Phone</th>
-                                        @if ($params =='Tenants')
-                                        <th>Unit</th>
-                                        <th>Property</th>
-                                        <th>Branch</th>
-
-                                        @endif
                                         <th>Actions</th>
                                     </tfoot>
                                 </table>

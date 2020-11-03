@@ -17,11 +17,24 @@ class FloorController extends Controller
             'garden'=>'required'
         ));
 
+<<<<<<< HEAD
         $floor = Floor::create($request->all());
         $floor->image = $this->uploadImage($request) ;
         $floor->save();
         $request->session()->flash('success', "floor plan saved");
         return back();
+=======
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        
+        return view('floor.createEdit')->with('params','Add Floor Plan');
+    }
+>>>>>>> 6b1c94257f37045281652db35bd98ab07f86d529
 
     }
     public function update(Request $request, Floor $floor)

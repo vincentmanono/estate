@@ -20,6 +20,9 @@
     </div>
 </div>
 
+<div style="margin-top: 2%;">
+
+</div>
 
 
 <div class="container">
@@ -60,6 +63,7 @@
             </div><!-- end service -->
 
         </div>
+
         <div class="col-md-6">
             <div class="contact_form">
                 <h3><i class="fa fa-envelope-o grd1 global-radius"></i>APARTMENT APPLICATION</h3>

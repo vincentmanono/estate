@@ -57,12 +57,12 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         {{--  <li><a href="about.html">About us </a></li>  --}}
 
                         {{--  <li><a href="gallery.html">Gallery</a></li>  --}}
                         <li><a href="/properties">Properties</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        {{-- <li><a href="contact">Contact</a></li> --}}
                         <li><a href="{{ route('login') }}">Login</a></li>
                     </ul>
                 </div>
@@ -96,7 +96,7 @@
                             {{--  <li><a href="#"> Services</a></li>  --}}
 							{{--  <li><a href="#"> Gallery</a></li>  --}}
 							<li><a href="#"> Properties</a></li>
-							<li><a href="#"> Contact</a></li>
+							{{-- <li><a href="#"> Contact</a></li> --}}
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
                 </div><!-- end col -->
@@ -132,7 +132,7 @@
                 </div><!-- end col -->  --}}
 
             </div><!-- end row -->
-            <div class="row">
+            <div class="row" style="margin-left: 24%;">
                 <div class="footer-distributed">
                     <div class="footer-left">
                         <p class="footer-company-name">All Rights Reserved. &copy; {{ date('Y') }}  <a href="https://chiefproperties.co.ke">ChiefProperties</a> Design By : <a href="https://lagaster.com"> Lagaster </a></p>

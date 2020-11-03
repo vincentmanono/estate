@@ -16,6 +16,7 @@ class CreateFloorsTable extends Migration
         Schema::create('floors', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable();
+            $table->string('bedroom')->nullable();
             $table->string('kitchen')->nullable();
             $table->string('sitting')->nullable();
             $table->string('swimming')->nullable();
