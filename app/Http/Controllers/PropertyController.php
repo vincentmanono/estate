@@ -16,6 +16,10 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->authorizeResource( Property::class,'property' );
+    }
     public function index()
     {
         $properties= Property::all();

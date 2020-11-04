@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/property/{id}/images','PropertyImageController@create')->name('property.images.create')->middleware('manager');
     Route::post('/property/{id}/images','PropertyImageController@store')->name('property.images.store')->middleware('manager');
     Route::post('/property/images','PropertyImageController@fileDestroy')->name('property.images.destroy');
-    Route::resource('/property', 'PropertyController');
+    Route::resource('property', 'PropertyController');
 
     Route::resource('service', 'ServiceController');
     Route::resource('unit', 'UnitController');

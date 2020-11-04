@@ -38,7 +38,10 @@
                             class="ti-control-shuffle "></i><span class="hide-menu">Branch Information</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{ route('allBranches') }}">View Branches</a></li>
-                        <li><a href="{{ route('create.branch') }}">Add Branch</a></li>
+                       @if (auth()->user()->type == 'manager' || auth()->user()->type == 'owner'  )
+                            <li><a href="{{ route('create.branch') }}">Add Branch</a></li>
+                       @endif
+
 
                     </ul>
                 </li>
@@ -47,7 +50,10 @@
                             class="ti-home"></i><span class="hide-menu">Property Details</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('property.index')}}">View Properties</a></li>
+                        @if (auth()->user()->type == 'manager' || auth()->user()->type == 'owner'  )
+
                     <li><a href="{{route('property.create')}}">Add Property</a></li>
+                    @endif
 
                     </ul>
                 </li>
