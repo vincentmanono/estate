@@ -133,7 +133,7 @@
 
                             <a style="float: right" href="{{ route('unit.edit', $unit->id) }}"
                                 class="btn btn-sm btn-info">Edit Unit</a>
-                                <a href="{{ route('floor.create') }}">Add Floor Plan</a>
+                                {{--  <a href="#">Add Floor Plan</a>  --}}
                             <!-- row -->
                             <div class="row">
 
