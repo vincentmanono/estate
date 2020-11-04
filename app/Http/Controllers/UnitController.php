@@ -18,7 +18,8 @@ class UnitController extends Controller
     public function index()
     {
         $units=Unit::all();
-        return view('units.index',compact('units'));
+        $leases =Lease::all();
+        return view('units.index',compact('units','leases'));
     }
 
 

@@ -59,7 +59,7 @@
                                                                     <tr>
                                                                         <th>Branch</th>
                                                                         <th>Property</th>
-                                                                        <th>Unit </th>
+                                                                        <th>Unit</th>
                                                                         <th>Action</th>
                                                                     </tr>
                                                                 </thead>
@@ -71,6 +71,7 @@
                                                                         <td>{{ $unit->property->branch->name }}</td>
                                                                         <td>{{$unit->property->name}}</td>
                                                                         <td>{{$unit->name}}</td>
+
                                                                         <td class="row">
                                                                             <a class="btn btn-info btn-sm" href="{{ route('unit.show',$unit->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
                                                                             <a style="margin-left: 2%;margin-right:2%; " class="btn btn-success btn-sm " href="{{ route('unit.edit',$unit->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
