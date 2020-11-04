@@ -25,9 +25,10 @@ class BranchController extends Controller
      */
     public function create()
     {
+        $this->authorize('create',Branch::class) ;
         return view('branches.createEdit')->with('param','CreateBranch');
     }
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -37,6 +38,7 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create',Branch::class) ;
         $this->validate($request,[
 
             'name'=>['required'],
@@ -68,6 +70,8 @@ class BranchController extends Controller
      */
     public function show($id)
     {
+        $this->authorize('view',Branch::class) ;
+
         $branch = Branch::find($id);
         return view('branches.show',compact('branch'));
     }
@@ -80,6 +84,7 @@ class BranchController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('update',Branch::class) ;
         $branch = Branch::find($id);
         return view('branches.createEdit',compact('branch'))->with('param','EditBranch');
     }
@@ -93,6 +98,7 @@ class BranchController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('update',Branch::class) ;
 
         $this->validate($request,[
 
@@ -127,6 +133,7 @@ class BranchController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete',Branch::class) ;
         $del =Branch::find($id);
         $del->delete();
 

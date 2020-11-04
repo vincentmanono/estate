@@ -57,5 +57,24 @@ class User extends Authenticatable
         return $this->hasMany(Deposit::class);
     }
 
+    public function isManager(){
+
+         if ($this->type == "manager" ) {
+           return true ;
+         } else {
+            return false ;
+         }
+
+    }
+    public function isOwner(){
+
+        if ($this->type == "owner" ) {
+          return true ;
+        } else {
+           return false ;
+        }
+
+   }
+
 
 }
