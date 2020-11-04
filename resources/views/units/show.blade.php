@@ -82,7 +82,7 @@
                                                         <input id="image" class="form-control" type="file" name="image">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="kitchen">kitchen <i class="fa fa-star" aria-hidden="true"></i> </label>
+                                                        <label for="kitchen">kitchen <i  aria-hidden="true"></i> </label>
                                                         <input id="kitchen" @if ($unit->floor->count())
                                                             value="{{ $unit->floor->kitchen }}"
                                                         @endif
@@ -91,7 +91,7 @@
                                                 </div>
                                                 <div class="d-flex flex-row">
                                                      <div class="form-group mr-2">
-                                                    <label for="sitting">sitting <i class="fa fa-star" aria-hidden="true"></i></label>
+                                                    <label for="sitting">Bathroom <i  aria-hidden="true"></i></label>
                                                     <input id="sitting" class="form-control"
 
                                                     @if ($unit->floor->count())
@@ -100,25 +100,32 @@
                                                     type="text" name="sitting">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="swimming">swimming <i class="fa fa-star" aria-hidden="true"></i></label>
-                                                    <input id="swimming"
+                                                    <label for=" garage"> garage <i  aria-hidden="true"></i></label>
+                                                    <input id=" garage"
                                                     @if ($unit->floor->count())
-                                                            value="{{ $unit->floor->swimming }}"
-                                                        @endif
-                                                     class="form-control" type="text" name="swimming">
-                                                </div>
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <label for="garden">garden <i class="fa fa-star" aria-hidden="true"></i></label>
-                                                    <input id="garden"
-                                                    @if ($unit->floor->count())
-                                                    value="{{ $unit->floor->garden }}"
+                                                    value="{{ $unit->floor-> garage }}"
                                                 @endif
-                                                     class="form-control" type="text" name="garden">
+                                                     class="form-control" type="text" name=" garage">
                                                     <input  type="hidden" value="{{ $unit->id }}" name="unit_id">
                                                 </div>
+
+                                                </div>
+
+
+                                               <div class="row">
+
+                                                   <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="bedroom">bedroom <i  aria-hidden="true"></i></label>
+                                                        <input id="bedroom"
+                                                        @if ($unit->floor->count())
+                                                        value="{{ $unit->floor->bedroom }}"
+                                                    @endif
+                                                         class="form-control" type="text" name="bedroom">
+                                                        <input  type="hidden" value="{{ $unit->id }}" name="unit_id">
+                                                    </div>
+                                                   </div>
+                                               </div>
 
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -137,7 +144,7 @@
                             <!-- row -->
                             <div class="row">
 
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     <div class="card">
                                         <div class="card">
                                             <div class="card-body">
@@ -179,21 +186,21 @@
                                     </div>
                                 </div>
                                 <!-- column -->
-                                <div class="col-lg-8">
+                                <div class="col-lg-9">
                                     <!-- Property Items -->
                                     <div class="card">
                                         <!-- row -->
                                         <div class="row no-gutters">
-                                            <div class="col-md-4"
-                                                style="background: url('../assets/images/property/prop1.jpeg') center center / cover no-repeat; min-height:250px;">
-                                                <span class="pull-right label label-danger">For Rent</span>
+                                            <div class="col-md-5"
+                                                style="background: url('/storage/floor/{{ $unit->floor->image }}') center center / cover no-repeat; min-height:250px;">
+                                                <span class="pull-right label label-danger">Floor Plan</span>
                                             </div>
                                             <!-- column -->
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <!-- Row -->
                                                 <div class="row no-gutters">
                                                     <!-- column -->
-                                                    <div class="col-md-6 border-right border-bottom">
+                                                    <div class="col-md-5 border-right border-bottom">
                                                         <div class="p-20">
 
                                                             <h5 class="card-title">Unit Name</h5>
@@ -204,28 +211,35 @@
                                                         </div>
                                                     </div>
                                                     <!-- column -->
-                                                    <div class="col-md-6 border-bottom">
+                                                    <div class="col-md-7 border-bottom">
                                                         <div class="p-20">
                                                             <div class="d-flex no-block align-items-center">
                                                                 <span><img
                                                                         src="{{ asset('/assets/images/property/pro-bath.png') }}"></span>
                                                                 <span class="p-10 text-muted">Bathrooms</span>
-                                                                {{-- <span
+                                                                <span
                                                                     class="badge badge-pill badge-secondary ml-auto">{{ $unit->floor->sitting }}</span>
-                                                                --}}
+
                                                             </div>
                                                             <div class="d-flex no-block align-items-center">
                                                                 <span><img src="/assets/images/property/pro-bed.png"></span>
-                                                                <span class="p-10 text-muted">Beds</span>
+                                                                <span class="p-10 text-muted">Bedrooms</span>
                                                                 <span
-                                                                    class="badge badge-pill badge-secondary ml-auto">2</span>
+                                                                    class="badge badge-pill badge-secondary ml-auto">{{ $unit->floor->bedroom }}</span>
                                                             </div>
                                                             <div class="d-flex no-block align-items-center">
                                                                 <span><img
                                                                         src="../assets/images/property/pro-garage.png"></span>
-                                                                <span class="p-10 text-muted">Garages</span>
+                                                                <span class="p-10 text-muted">Kitchen</span>
                                                                 <span
-                                                                    class="badge badge-pill badge-secondary ml-auto">1</span>
+                                                                    class="badge badge-pill badge-secondary ml-auto">{{ $unit->floor->kitchen }}</span>
+                                                            </div>
+                                                            <div class="d-flex no-block align-items-center">
+                                                                <span><img
+                                                                        src="../assets/images/property/pro-garage.png"></span>
+                                                                <span class="p-10 text-muted">Garage</span>
+                                                                <span
+                                                                    class="badge badge-pill badge-secondary ml-auto">{{ $unit->floor->garage }}</span>
                                                             </div>
                                                         </div>
                                                     </div>

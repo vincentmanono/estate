@@ -43,6 +43,7 @@
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
+                                                <th>Branch</th>
                                                 <th>Name</th>
                                                 <th>Type</th>
                                                 <th>Address</th>
@@ -55,10 +56,11 @@
                                             @foreach ($properties as $property)
 
                                             <tr>
+                                            <td>{{ $property->branch->name }}</td>
                                             <td>{{$property->name}}</td>
                                             <td>{{$property->type}}</td>
                                             <td>{{$property->address}}</td>
-                                            <td>{{$property->image}}</td>
+                                            <td> <img src="/storage/property/{{ $property->image }}" alt="{{ $property->name }}" width="80"> </td>
                                             <td class="row">
                                             <a href="{{route('property.show',$property->id)}}" class=" btn btn btn-info" >More</a>
                                             <a href="{{route('property.edit',$property->id)}}" style="margin-left: 4%;margin-right:4;" class=" btn btn btn-warning" >Edit</a>
@@ -67,6 +69,7 @@
                                             @endforeach
                                                 <thead>
                                                     <tr>
+                                                        <th>Branch</th>
                                                         <th>Name</th>
                                                         <th>Type</th>
                                                         <th>Address</th>

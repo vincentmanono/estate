@@ -19,8 +19,7 @@ class CreateFloorsTable extends Migration
             $table->string('bedroom')->nullable();
             $table->string('kitchen')->nullable();
             $table->string('sitting')->nullable();
-            $table->string('swimming')->nullable();
-            $table->string('garden')->nullable();
+            $table->string('garage')->nullable();
             $table->integer('unit_id');
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
             $table->timestamps();
