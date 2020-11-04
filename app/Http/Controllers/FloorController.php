@@ -13,8 +13,8 @@ class FloorController extends Controller
             'image' => 'image',
             'kitchen'=>'required',
             'sitting'=>'required',
-            'swimming'=>'required',
-            'garden'=>'required'
+            ' garage'=>'required',
+            'bedroom'=>'required'
         ));
 
         $floor = Floor::create($request->all());

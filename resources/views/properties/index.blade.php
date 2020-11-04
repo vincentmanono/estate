@@ -45,10 +45,11 @@
                                 <table id="myTable" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
+                                            <th>Image</th>
                                             <th>Name</th>
                                             <th>Type</th>
                                             <th>Address</th>
-                                            <th>Image</th>
+
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -57,10 +58,14 @@
                                         @foreach ($properties as $property)
 
                                             <tr>
+                                                <td> <img
+                                                        src="{{ Str::contains($property->image, 'http') ? $property->image : '/storage/property/' . $property->image }}"
+                                                        alt="{{ $property->name }}">
+                                                    </td>
                                                 <td>{{ $property->name }}</td>
                                                 <td>{{ $property->type }}</td>
                                                 <td>{{ $property->address }}</td>
-                                                <td>{{ $property->image }}</td>
+
                                                 <td class="row">
                                                     <a href="{{ route('property.show', $property->id) }}"
                                                         class=" btn btn btn-info">More</a>
@@ -75,10 +80,12 @@
                                         @endforeach
                                         <thead>
                                             <tr>
+                                                <th>Image</th>
+                                                <th>Branch</th>
                                                 <th>Name</th>
                                                 <th>Type</th>
                                                 <th>Address</th>
-                                                <th>Image</th>
+
                                                 <th>Action</th>
                                             </tr>
                                         </thead>

@@ -103,8 +103,9 @@
                    <div class="row">
                    @foreach ($managers as $manager)
                    <div class="col-md-4">
+                    <a href="{{ route('showUser',$manager->id) }}" style="color: black">
                     <div class="card-body">
-                        <center class="m-t-30"> <img src="/assets/images/users/agent.jpg" class="img-circle" width="150" />
+                        <center class="m-t-30"> <img src="/storage/users/{{ $manager->image }}" class="img-circle" width="150" />
                             <h4 class="card-title m-t-10">{{ $manager->name }}</h4><small class="text-muted p-t-30 db">Phone</small>
                             <h6 class="card-subtitle">{{ $manager->phone }}</h6><hr>
                             <h5 class="card-title">Property(s) In Charge</h5>
@@ -115,6 +116,7 @@
 
                         </center>
                     </div>
+                    </a>
                </div>
                    @endforeach
                 </div>
@@ -188,7 +190,7 @@
                                     <tr>
                                        <td>{{ $property->name }}</td>
                                        <td>{{ $property->type }}</td>
-                                       <td> <img src="/storage/property/{{ $property->image }}" alt="iMac" width="80"> </td>
+                                       <td> <img src="/storage/property/{{ $property->image }}" alt="{{ $property->name }}" width="80"> </td>
                                        <td>{{ $property->address }}</td>
 
                                        {{-- <td> <span class="label label-success font-weight-100">Paid</span> </td> --}}

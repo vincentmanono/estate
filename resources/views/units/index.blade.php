@@ -57,9 +57,9 @@
                                                             <table id="myTable" class="table table-bordered table-striped">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>Unit Name</th>
-                                                                        <th>Billing Cycle</th>
-                                                                        <th>Property Name</th>
+                                                                        <th>Branch</th>
+                                                                        <th>Property</th>
+                                                                        <th>Unit </th>
                                                                         <th>Action</th>
                                                                     </tr>
                                                                 </thead>
@@ -68,21 +68,21 @@
                                                                     @foreach ($units as $unit)
 
                                                                     <tr>
-                                                                    <td>{{$unit->name}}</td>
-                                                                    <td>{{ $unit->billing_cycle }}</td>
-                                                                    <td>{{$unit->property->name}}</td>
-                                                                    <td class="row">
-                                                                        <a class="btn btn-info " href="{{ route('unit.show',$unit->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
-                                                                        <a style="margin-left: 2%;margin-right:2%; " class="btn btn-success " href="{{ route('unit.edit',$unit->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
+                                                                        <td>{{ $unit->property->branch->name }}</td>
+                                                                        <td>{{$unit->property->name}}</td>
+                                                                        <td>{{$unit->name}}</td>
+                                                                        <td class="row">
+                                                                            <a class="btn btn-info btn-sm" href="{{ route('unit.show',$unit->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
+                                                                            <a style="margin-left: 2%;margin-right:2%; " class="btn btn-success btn-sm " href="{{ route('unit.edit',$unit->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
 
-                                                                    </td>
+                                                                         </td>
                                                                     </tr>
                                                                     @endforeach
                                                                     <thead>
                                                                         <tr>
-                                                                            <th>Unit Name</th>
-                                                                            <th>Billing Cycle</th>
-                                                                            <th>Property Name</th>
+                                                                            <th>Branch</th>
+                                                                            <th>Property</th>
+                                                                            <th>Unit </th>
                                                                             <th>Action</th>
                                                                         </tr>
                                                                     </thead>

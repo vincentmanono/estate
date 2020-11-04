@@ -22,6 +22,13 @@ class LeaseController extends Controller
 
         return view('lease.index',compact('leases'));
     }
+    public function leaseReport(){
+
+        $leases = Lease::all();
+
+        return view('reports.occupancyreport',compact('leases'))->with('params','Occupancy');
+
+    }
 
     /**
      * Show the form for creating a new resource.

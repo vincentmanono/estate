@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Property::class, function (Faker $faker) {
     return [
 
-        'name'=>$faker->name(),
+        'name'=>$faker->randomElement(['MihiangoProperty','UtawalaProperty','MowlemProperty']),
         'type'=>$faker->randomElement(['residential','commercial','service_resident']),
         'date_of_cert_of_occupation'=>$faker->date(),
         'address'=>$faker->address,

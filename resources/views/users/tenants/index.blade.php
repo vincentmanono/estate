@@ -93,7 +93,7 @@
                                                 <td>{{ $lease->user->phone }}</td>
                                                 <td>
 
-                                                    @if ($lease->status)
+                                                    @if ($lease->status==1)
                                                         <span class="badge badge-pill badge-success">Active</span>
                                                     @else
                                                         <span class="badge badge-pill badge-danger">Inactive</span>
