@@ -64,9 +64,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('water', 'WaterController');
     Route::resource('payment', 'PaymentController');
     Route::resource('lease','LeaseController');
-    Route::resource('application', 'ApplicationController');
-    Route::put('/approve/{id}', 'ApplicationController@approve')->name('app.approve');
-    Route::post('/decline/{id}', 'ApplicationController@decline')->name('app.decline');
 
     Route::middleware(['manager'])->prefix('manager')->group( function () {
             Route::get('property/{property}' , 'ManagerController@property')->name('manager.property');
@@ -79,6 +76,9 @@ Route::group(['middleware' => ['auth']], function () {
             Route::delete('expenses/{expense}/delete' , 'ManagerController@expensesDelete')->name('manager.property.expenses.delete');
             Route::post('unit/{unit}/floor', 'FloorController@store')->name('unit.floor.store');
             Route::put('floor/{floor}', 'FloorController@update')->name('unit.floor.update');
+            Route::get('applications', 'ApplicationController@index')->name('application.index')->middleware('manager');
+            Route::put('/application/approvedecline/{application}', 'ApplicationController@approveDecline')->name('application.status')->middleware('manager');
+
 
     }) ;
 

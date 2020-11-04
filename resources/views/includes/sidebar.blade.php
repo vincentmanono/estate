@@ -57,16 +57,16 @@
 
                     </ul>
                 </li>
-                {{--  application  --}}
-                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                        class="ti-home"></i><span class="hide-menu">Apartment Request</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{route('application.index')}}">View Requests</a></li>
-                        {{--  <li><a href="{{route('property.create')}}">Add Property</a></li>  --}}
+                @if (auth()->user()->type == 'manager' || auth()->user()->type == 'owner'  )
+                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+                    class="ti-home"></i><span class="hide-menu">Apartment Request</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('application.index')}}">View Requests</a></li>
 
-                        </ul>
-                    </li>
-                 {{--  end f appication  --}}
+                    </ul>
+                </li>
+                @endif
+
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-settings"></i><span class="hide-menu">Services Provider </span></a>
