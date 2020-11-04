@@ -52,20 +52,11 @@ class UnitController extends Controller
             'status'=>'required'
         ]);
 
-        $post = new Unit();
 
-        $post->name =$request->name;
-        $post->water_acc_no=$request->water_acc_no;
-        $post->electricity_acc_no=$request->electricity_acc_no;
-        $post->service_charge =$request->service_charge;
-        $post->property_id=$request->property_id;
-        $post->billing_cycle=$request->billing_cycle;
-        $post->rent=$request->rent;
-        $post->status=$request->status;
-        $validate= $post->save();
+        $unit = Unit::create($request->all());
 
-        if($validate){
-            return back()->with('success','You have successfully added the unit');
+        if($unit){
+            return redirect()->route('unit.show',$unit)  ->with('success','You have successfully added the unit');
         }
         else{
             return back()->with('error','An error occured and the unit was not added.');
