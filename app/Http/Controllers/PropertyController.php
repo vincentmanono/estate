@@ -18,10 +18,11 @@ class PropertyController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource( Property::class,'property' );
+        // $this->authorizeResource( Property::class,'property' );
     }
     public function index()
     {
+        $this->authorize("viewAny",Property::class) ;
         $properties= Property::all();
         return view('properties.index',compact('properties'));
     }
@@ -33,6 +34,7 @@ class PropertyController extends Controller
      */
     public function create()
     {
+        $this->authorize("create",Property::class) ;
         $branches = Branch::all();
         $users = User::where('type','manager')->get();
         return view('properties.createEdit',compact('branches','users'))->with('param','Add Property');
@@ -46,6 +48,7 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize("create",Property::class) ;
         $this->validate($request,[
 
 
@@ -111,9 +114,10 @@ class PropertyController extends Controller
      * @param  \App\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Property $property)
     {
-        $property =Property::find($id);
+        $this->authorize("view",$property) ;
+
         return view('properties.show',compact('property'));
     }
 
@@ -123,9 +127,9 @@ class PropertyController extends Controller
      * @param  \App\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Property $property)
     {
-        $property=Property::find($id);
+        $this->authorize("update",$property) ;
         $branches = Branch::all();
         $users = User::where('type','manager')->get();
         return view('properties.createEdit',compact('branches','users','property'))->with('param','Edit Property');
@@ -138,8 +142,10 @@ class PropertyController extends Controller
      * @param  \App\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,  Property $property)
     {
+        $this->authorize("update",$property) ;
+
         $this->validate($request,[
 
 
@@ -155,7 +161,7 @@ class PropertyController extends Controller
            'user_id'=>[''],
 
         ]);
-        $post = Property::find($id);
+        $post = Property::find($property->id);
 
         $post->name = $request->name;
         $post->type = $request->type;
@@ -216,10 +222,11 @@ class PropertyController extends Controller
      * @param  \App\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Property $property)
     {
         try {
-            $del = Property::find($id);
+            $this->authorize("delete",$property) ;
+            $del = Property::find($property->id);
 
             $old_avatar = $del->image;
             if ($old_avatar != 'avatar.png') {

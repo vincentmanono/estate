@@ -65,7 +65,7 @@
                                                     <a href="{{ route('property.show', $property->id) }}"
                                                         class=" btn btn btn-info">More</a>
                                                     @can('update', $property)
-                                                        <a href="{{ route('property.edit', $property->id) }}"
+                                                        <a href="{{ route('property.edit', $property) }}"
                                                             style="margin-left: 4%;margin-right:4;"
                                                             class=" btn btn btn-warning">Edit</a>
 

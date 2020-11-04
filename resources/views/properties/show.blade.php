@@ -182,10 +182,17 @@
                             <div class="card-body border-top">
                                 <div class="pd-agent-inq">
                                     <h5 class="card-title">Modify Property</h5>
+                                    @can('update',  $property)
                                     <a name="" id="" class="btn btn-primary" href="{{ route('property.images.create',$property->id) }}" role="button">Add Property Images </a>
-                                    <a name="" id="" class="btn btn-warning" href="#" role="button">Edit Property</a>
-                                    <a name="" id="" class="btn btn-danger mt-3"  onclick=" deleteProperty()" role="button">Delete Property</a>
-                                    <form id="deleteproperty" action="{{route('property.destroy',$property->id)}}" method="post" enctype="multipart/form-data">
+
+                                    <a name="" id="" class="btn btn-warning" href="{{ route('property.edit',$property) }}" role="button">Edit Property</a>
+
+                                    @endcan
+                                    @can('delete',  $property)
+                                                                            <a name="" id="" class="btn btn-danger mt-3"  onclick=" deleteProperty()" role="button">Delete Property</a>
+
+                                    @endcan
+                                    <form id="deleteproperty" action="{{route('property.destroy',$property)}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')
                                     </form>
