@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Branch;
 use App\Policies\BranchPolicy;
+use App\Policies\PropertyPolicy;
+use App\Property;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,7 +18,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
-        Branch::class => BranchPolicy::class
+        Branch::class => BranchPolicy::class,
+        Property::class => PropertyPolicy::class
     ];
 
     /**

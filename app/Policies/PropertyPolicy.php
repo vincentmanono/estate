@@ -2,8 +2,9 @@
 
 namespace App\Policies;
 
-use App\Property;
 use App\User;
+use App\Property;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PropertyPolicy
@@ -18,7 +19,7 @@ class PropertyPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true ;
     }
 
     /**
@@ -30,7 +31,7 @@ class PropertyPolicy
      */
     public function view(User $user, Property $property)
     {
-        //
+        return true ;
     }
 
     /**
@@ -41,7 +42,10 @@ class PropertyPolicy
      */
     public function create(User $user)
     {
-        //
+        if ( $user->isManager() || $user->isOwner() ) {
+            return Response::allow() ;
+         }
+         return Response::deny("You do not have permission to access this ") ;
     }
 
     /**
@@ -53,7 +57,17 @@ class PropertyPolicy
      */
     public function update(User $user, Property $property)
     {
-        //
+        if ( $user->isManager() || $user->isOwner() ) {
+
+            if ( ($user->isManager() && $user->id == $property->user_id ) || $user->isOwner()  ) {
+                return Response::allow() ;
+            } else {
+                return Response::deny("You do not have permission to access this ") ;
+            }
+
+
+         }
+         return Response::deny("You do not have permission to access this ") ;
     }
 
     /**
@@ -65,7 +79,17 @@ class PropertyPolicy
      */
     public function delete(User $user, Property $property)
     {
-        //
+        if ( $user->isManager() || $user->isOwner() ) {
+
+            if ( ($user->isManager() && $user->id == $property->user_id ) || $user->isOwner()  ) {
+                return Response::allow() ;
+            } else {
+                return Response::deny("You do not have permission to access this ") ;
+            }
+
+
+         }
+         return Response::deny("You do not have permission to access this ") ;
     }
 
     /**
@@ -77,7 +101,17 @@ class PropertyPolicy
      */
     public function restore(User $user, Property $property)
     {
-        //
+        if ( $user->isManager() || $user->isOwner() ) {
+
+            if ( ($user->isManager() && $user->id == $property->user_id ) || $user->isOwner()  ) {
+                return Response::allow() ;
+            } else {
+                return Response::deny("You do not have permission to access this ") ;
+            }
+
+
+         }
+         return Response::deny("You do not have permission to access this ") ;
     }
 
     /**
@@ -89,6 +123,16 @@ class PropertyPolicy
      */
     public function forceDelete(User $user, Property $property)
     {
-        //
+        if ( $user->isManager() || $user->isOwner() ) {
+
+            if ( ($user->isManager() && $user->id == $property->user_id ) || $user->isOwner()  ) {
+                return Response::allow() ;
+            } else {
+                return Response::deny("You do not have permission to access this ") ;
+            }
+
+
+         }
+         return Response::deny("You do not have permission to access this ") ;
     }
 }
