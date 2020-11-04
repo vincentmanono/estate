@@ -33,8 +33,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/user/{user}/edit', 'UserController@editUser')->name('editUser');
     Route::put('/user/{user}/edit', 'UserController@updateUser')->name('updateUser');
 
-
-
     Route::get('/all-tenants', 'UserController@allTenants')->name('allTenants');
 
     Route::get('/tenant/{tenant}/{unit}','UserController@tenantUnit')->name('tenantUnit');
@@ -49,13 +47,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/waterreport','WaterController@waterReport')->name('water.report');
     Route::get('/branches','BranchController@allBranches')->name('allBranches');
     Route::get('/branch/{id}','BranchController@show')->name('singleBranch');
-    Route::get('/createbranch','BranchController@create')->name('create.branch');
-    Route::post('/newbranch','BranchController@store')->name('store.branch');
-    Route::get('/editbranch/{id}','BranchController@edit')->name('editBranch');
-    Route::put('/updatebranch/{id}','BranchController@update')->name('update.branch');
-    Route::delete('deletebranch/{id}','BranchController@destroy')->name('destroy.branch');
-    Route::get('/property/{id}/images','PropertyImageController@create')->name('property.images.create');
-    Route::post('/property/{id}/images','PropertyImageController@store')->name('property.images.store');
+    Route::get('/createbranch','BranchController@create')->name('create.branch')->middleware('manager') ;
+    Route::post('/newbranch','BranchController@store')->name('store.branch')->middleware('manager') ;
+    Route::get('/editbranch/{id}','BranchController@edit')->name('editBranch')->middleware('manager') ;
+    Route::put('/updatebranch/{id}','BranchController@update')->name('update.branch')->middleware('manager') ;
+    Route::delete('deletebranch/{id}','BranchController@destroy')->name('destroy.branch')->middleware('manager') ;
+    Route::get('/property/{id}/images','PropertyImageController@create')->name('property.images.create')->middleware('manager');
+    Route::post('/property/{id}/images','PropertyImageController@store')->name('property.images.store')->middleware('manager');
     Route::post('/property/images','PropertyImageController@fileDestroy')->name('property.images.destroy');
     Route::resource('/property', 'PropertyController');
 
@@ -70,7 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/approve/{id}', 'ApplicationController@approve')->name('app.approve');
     Route::post('/decline/{id}', 'ApplicationController@decline')->name('app.decline');
 
-    Route::prefix('manager')->group(function () {
+    Route::middleware(['manager'])->prefix('manager')->group( function () {
             Route::get('property/{property}' , 'ManagerController@property')->name('manager.property');
             Route::get('expenses/{property}' , 'ManagerController@expenses')->name('manager.property.expenses');
             Route::get('expenses/{property}/create' , 'ManagerController@expensesCreate')->name('manager.property.expenses.create');
@@ -79,15 +77,9 @@ Route::group(['middleware' => ['auth']], function () {
             Route::put('expenses/{expense}/update' , 'ManagerController@expensesUpdate')->name('manager.property.expenses.update');
             Route::post('expenses/{expense}/solved', 'ManagerController@expensesApprove')->name('manager.property.expenses.approve');
             Route::delete('expenses/{expense}/delete' , 'ManagerController@expensesDelete')->name('manager.property.expenses.delete');
-
             Route::post('unit/{unit}/floor', 'FloorController@store')->name('unit.floor.store');
             Route::put('floor/{floor}', 'FloorController@update')->name('unit.floor.update');
 
-    });
-
-
-
-
-
+    }) ;
 
 });
