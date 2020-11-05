@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Application;
+use App\Jobs\EmailApplicant;
 use Illuminate\Http\Request;
 use App\Property;
 
@@ -42,6 +43,7 @@ class ApplicationController extends Controller
             'status' => $status
         ]);
         $response = ($status) ? "Application Approved" : "Application Desclined";
+        dispatch( new EmailApplicant($status , $application) ) ;
         return back()->with('success', $response);
     }
 
