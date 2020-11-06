@@ -42,12 +42,8 @@ class ApplicationController extends Controller
         $application->update([
             'status' => $status
         ]);
-<<<<<<< HEAD
-        $response = ($status) ? "Application Approved" : "Application Declined";
-=======
         $response = ($status) ? "Application Approved" : "Application Desclined";
         dispatch( new EmailApplicant($status , $application) ) ;
->>>>>>> 1f782f7fe9700553fab4b8cbaab010a72e2f2111
         return back()->with('success', $response);
     }
 
