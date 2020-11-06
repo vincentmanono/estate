@@ -1,5 +1,6 @@
 <?php
 
+use App\Floor;
 use Illuminate\Database\Seeder;
 
 class FloorSeeder extends Seeder
@@ -11,6 +12,6 @@ class FloorSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Floor::class,60)->create();
+        factory(Floor::class,30)->create();
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Unit;
 use Illuminate\Database\Seeder;
 
 class UnitSeeder extends Seeder
@@ -11,7 +12,6 @@ class UnitSeeder extends Seeder
      */
     public function run()
     {
-        
-        factory(App\Unit::class,50)->create();
+        factory(Unit::class,50)->create();
     }
 }
