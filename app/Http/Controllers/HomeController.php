@@ -9,6 +9,7 @@ use App\Deposit;
 use App\Lease;
 use App\Rent;
 use App\User;
+use App\Unit;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -33,8 +34,8 @@ class HomeController extends Controller
     {
         $propertycount = Property::all()->count();
         $branchcount = Branch::all()->count();
-        $leasecount= Lease::where('status','active')->count();
-        $unleasecount= Lease::where('status','inactive')->count();
+        $leasecount= Unit::where('status',1)->count();
+        $unleasecount= Unit::where('status',0)->count();
         $depositsum = Deposit::where('status',"Active")-> pluck('amount')->sum();
         $properties = Property::orderBy('id','desc')->paginate(10);
         $managers = User::where('type','manager')->paginate(3);

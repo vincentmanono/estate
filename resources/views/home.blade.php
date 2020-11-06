@@ -190,7 +190,11 @@
                                     <tr>
                                        <td>{{ $property->name }}</td>
                                        <td>{{ $property->type }}</td>
-                                       <td> <img src="/storage/property/{{ $property->image }}" alt="{{ $property->name }}" width="80"> </td>
+                                       <td> <img height="30px"
+                                        src= "  {{ Str::contains($property->image, 'http') ? $property->image : '/storage/property/' . $property->image }}"
+                                        alt="{{ $property->name }}">
+                                        </td>
+                                       {{--  <td> <img src="/storage/property/{{ $property->image }}" alt="{{ $property->name }}" width="80"> </td>  --}}
                                        <td>{{ $property->address }}</td>
 
                                        {{-- <td> <span class="label label-success font-weight-100">Paid</span> </td> --}}

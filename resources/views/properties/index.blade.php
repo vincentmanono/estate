@@ -58,8 +58,8 @@
                                         @foreach ($properties as $property)
 
                                             <tr>
-                                                <td> <img
-                                                        src="{{ Str::contains($property->image, 'http') ? $property->image : '/storage/property/' . $property->image }}"
+                                                <td> <img height="30px"
+                                                        src= "  {{ Str::contains($property->image, 'http') ? $property->image : '/storage/property/' . $property->image }}"
                                                         alt="{{ $property->name }}">
                                                     </td>
                                                 <td>{{ $property->name }}</td>
@@ -81,7 +81,6 @@
                                         <thead>
                                             <tr>
                                                 <th>Image</th>
-                                                <th>Branch</th>
                                                 <th>Name</th>
                                                 <th>Type</th>
                                                 <th>Address</th>

@@ -81,7 +81,7 @@
                     <h2>Welcome to Chief Properties Real Estate</h2>
                     <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
                     <p>Aenean eleifend in felis id viverra. Vestibulum semper ex eu molestie pulvinar. Maecenas non efficitur metus, et semper sem. Mauris ligula sapien, gravida a scelerisque ut, vehicula sed mauris. Proin dapibus mi id vulputate euismod. Nam ullamcorper dui tellus, non lacinia lorem hendrerit eu. Donec at orci cursus, rutrum metus eget, cursus turpis.  </p>
-                    <a href="#" class="btn btn-light btn-radius grd1 btn-brd"> Read More </a>
+                    {{--  <a href="#" class="btn btn-light btn-radius grd1 btn-brd"> Read More </a>  --}}
                 </div>
             </div>
         </div>

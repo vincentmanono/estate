@@ -54,7 +54,7 @@
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Type</th>
+                                            <th>email</th>
                                             <th>Phone</th>
                                             <th>Lease</th>
                                             <th>Unit</th>
@@ -68,29 +68,12 @@
 
                                         @foreach ($leases as $lease)
                                             <tr>
+                                                @if ($lease->user->type =='tenant')
+
                                                 <td>{{ $lease->user->name }}</td>
 
-                                                <td>
-
-
-
-                                                    @if ($lease->user->type == 'owner')
-                                                        <span class="badge badge-pill badge-primary"> Owner</span>
-                                                    @elseif ( $lease->user->type == "manager" )
-                                                        <span class="badge badge-pill badge-info">Manager</span>
-                                                    @elseif ( $lease->user->type == "tenant" )
-                                                        <span class="badge badge-pill badge-dark">Tenant</span>
-                                                    @else
-                                                        <a href="mailto:info@lagaster.com"
-                                                            title="Email lagaster developers">
-                                                            <span class="badge badge-pill badge-danger"> Contact Lagaster
-                                                            </span></a>
-                                                    @endif
-
-
-
-                                                </td>
-                                                <td>{{ $lease->user->phone }}</td>
+                                                <td><a style="color: blue" href="mailto:{{ $lease->user->email }}"> {{ $lease->user->email }}</a></td>
+                                                <td><a style="color: blue" href="tel:{{ $lease->user->phone }}">{{ $lease->user->phone }}</a></td>
                                                 <td>
 
                                                     @if ($lease->status==1)
@@ -134,12 +117,14 @@
 
                                                 </td>
 
+                                                @endif
+
                                             </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <th>Name</th>
-                                        <th>Type</th>
+                                        <th>Email</th>
                                         <th>Phone</th>
                                         <th>Lease</th>
                                         <th>Unit</th>

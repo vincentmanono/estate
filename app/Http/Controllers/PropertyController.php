@@ -6,6 +6,8 @@ use App\Property;
 use App\Branch;
 use Illuminate\support\Str;
 use App\User;
+use App\Unit;
+use App\Lease;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -117,8 +119,10 @@ class PropertyController extends Controller
     public function show(Property $property)
     {
         $this->authorize("view",$property) ;
+        $units =Unit::all();
+        $leases=Lease::all();
 
-        return view('properties.show',compact('property'));
+        return view('properties.show',compact('property','units','leases'));
     }
 
     /**

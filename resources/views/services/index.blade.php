@@ -63,8 +63,8 @@
                                                             <tr>
                                                             <td>{{$service->name}}</td>
                                                             <td>{{$service->type}}</td>
-                                                            <td>{{$service->phone}}</td>
-                                                            <td>{{$service->email}}</td>
+                                                            <td> <a href="tel:{{$service->phone}}" style="color: blue">{{$service->phone}}</a></td>
+                                                            <td><a href="mailto:{{$service->email}}" style="color: blue">{{$service->email}}</a> </td>
                                                             <td class="row">
                                                             <a href="{{route('service.edit',$service->id)}}" style="margin-left: 4%;margin-right:4%;" class=" btn btn btn-info" >Edit</a>
                                                             <form action="{{ route('service.destroy',$service->id) }}" method="post" enctype="multipart/form-data">

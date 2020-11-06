@@ -41,7 +41,7 @@ class ApplicationController extends Controller
         $application->update([
             'status' => $status
         ]);
-        $response = ($status) ? "Application Approved" : "Application Desclined";
+        $response = ($status) ? "Application Approved" : "Application Declined";
         return back()->with('success', $response);
     }
 
