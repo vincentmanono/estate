@@ -2,7 +2,7 @@
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar">
         <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
+        {{--  <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="user-pro"> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                         aria-expanded="false"><img  src="{{ (Str::contains(auth()->user()->image,'http') ? auth()->user()->image:'/storage/users/' . auth()->user()->image ) }}"  alt="{{ Auth::user()->name  }}"
@@ -29,13 +29,10 @@
                     </ul>
                 </li>
 
+                <li> <a class="waves-effect waves-dark" href="{{ route('home') }}"><i class="icon-speedometer"></i><span
+                            class="hide-menu">Dashboard</span></a>
+                </li>
 
-
-             <li> <a class="waves-effect waves-dark" href="{{ route('home') }}"><i class="icon-speedometer"></i><span
-                class="hide-menu">Dashboard</span></a>
-              </li>
-
-              @if (Auth::user()->type =='manager' || Auth::user()->type =='owner')
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-control-shuffle "></i><span class="hide-menu">Branch Information</span></a>
@@ -203,44 +200,8 @@
                     </ul>
                 </li>
 
-
-
-
-
-
-
-
-
-
-                @elseif (Auth::user()->type =='tenant')
-
-
-
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                    class="ti-home"></i><span class="hide-menu">Lease Information</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{ route('lease.show',Auth::user()->id) }}">View Units</a></li>
-                        <li><a href="{{ route('unit.create') }}">Add Unit</a></li>
-
-                    </ul>
-                </li>
-
-
-
-                 @endif
-
-
-
-
-
-
-
-
-
-
-
             </ul>
-        </nav>
+        </nav>  --}}
         <!-- End Sidebar navigation -->
     </div>
     <!-- End Sidebar scroll-->

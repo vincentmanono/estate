@@ -27,6 +27,8 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/tenant', 'HomeController@index')->name('tenant');
+    Route::get('/manager', 'HomeController@index')->name('manager');
     Route::get('/all-users', 'UserController@allUsers')->name('allUsers');
     Route::get('/user/create', 'UserController@createUser')->name('createUser');
     Route::get('/user/{user}', 'UserController@showUser')->name('showUser');
