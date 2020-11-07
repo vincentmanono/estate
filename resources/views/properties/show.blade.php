@@ -40,68 +40,67 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                         @include('includes.slider')
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Units</h5>
-                                        <hr class="m-0 p-10">
+                      @if (Auth::user()->type == 'manager' || Auth::user()->type == 'owner' )
 
-                                       @foreach ($units as $unit)
+                      <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Units</h5>
+                                    <hr class="m-0 p-10">
 
-                                       @if ($unit->property_id == $property->id)
+                                   @foreach ($units as $unit)
 
-                                       <div class="d-flex fa fa-check-circle text-success p-b-10">
-                                        <h6 class="m-l-10 text-dark">{{ $unit->name }}</h6>
-                                    </div>
+                                   @if ($unit->property_id == $property->id)
 
-                                       @endif
+                                   <div class="d-flex fa fa-check-circle text-success p-b-10">
+                                    <h6 class="m-l-10 text-dark">{{ $unit->name }}</h6>
+                                </div>
 
-                                       @endforeach
+                                   @endif
 
-                                    </div>
+                                   @endforeach
+
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Tenants</h5>
-                                        <div class="table-responsive p-t-10 border-top">
-                                            <table class="table no-border">
-                                                <tbody class="text-dark">
-
-
-
-                                       @foreach ($leases as $lease)
-
-                                       @if ($lease->unit->property_id == $property->id && $lease->unit->status ==1)
-
-                                        <tr>
-                                            <td>{{ $lease->user->name }}</td>
-                                            <td>{{ $lease->unit->name }}</td>
-                                        </tr>
-
-                                       @endif
-
-
-
-                                        @endforeach
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- <div class="col-sm-12">
-                                <div class="card p-l-0 p-r-0 p-b-10">
-                                    <div class="card-body">
-                                        <h5 class="card-title fw-500 p-l-20">Location</h5>
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d117506.98606137399!2d72.5797426!3d23.020345749999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1476988114677" width="100%" height="244" frameborder="0" style="border:0" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <h5 class="card-title" style="margin-right: 30%;">Tenant Name</h5>
+                                    <h5 class="card-title">Unit Name</h5>
+                                    </div>
+                                    <div class="table-responsive p-t-10 border-top">
+                                        <table class="table no-border">
+                                            <tbody class="text-dark">
+
+
+
+                                   @foreach ($leases as $lease)
+
+                                   @if ($lease->unit->property_id == $property->id && $lease->unit->status ==1)
+
+                                    <tr>
+                                        <td>{{ $lease->user->name }}</td>
+                                        <td>{{ $lease->unit->name }}</td>
+                                    </tr>
+
+                                   @endif
+
+
+
+                                    @endforeach
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                      @endif
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 

@@ -107,6 +107,8 @@
                                                 <thead>
                                                     <tr>
 
+
+
                                                         <th>Property</th>
                                                         <th>Unit</th>
 
@@ -131,9 +133,11 @@
 
                                                                 <a href="{{ route('tenantUnit', [$user->id, $lease->unit->id]) }}"
                                                                     class="btn waves-effect waves-light btn-rounded btn-info">View</a>
-                                                                <a name="" id=""
+                                                                    @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
+
+                                                                    <a name="" id=""
                                                                     class="btn waves-effect waves-light btn-rounded  btn-danger"
-                                                                    href="#">Delete</a>
+                                                                    href="#">Delete</a>@endif
 
                                                             </td>
                                                         </tr>

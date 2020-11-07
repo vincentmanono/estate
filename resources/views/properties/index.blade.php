@@ -22,8 +22,12 @@
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item active">Properties</li>
                         </ol>
+                        @if (Auth::user()->type =='owner' || Auth::user()->type =='manager')
+
                         <a href="{{ route('property.create') }}" type="button"
                             class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a>
+
+                        @endif
                     </div>
                 </div>
             </div>

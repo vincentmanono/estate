@@ -21,7 +21,11 @@
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         <li class="breadcrumb-item active">Lease</li>
                     </ol>
+                    @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
+
                     <a type="button" href="{{ route('lease.create') }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a>
+
+                    @endif
                 </div>
             </div>
         </div>
@@ -63,17 +67,30 @@
                                                             <table id="myTable" class="table table-bordered table-striped">
                                                                 <thead>
                                                                     <tr>
+                                                                        @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
+
                                                                         <th>Property</th>
                                                                         <th>Unit</th>
                                                                         <th>Tenant</th>
                                                                         <th>Status</th>
                                                                         <th>Lease Form</th>
                                                                         <th>Action</th>
+                                                                        @elseif(Auth::user()->type == 'tenant')
+
+                                                                        <th>Property</th>
+                                                                        <th>Unit</th>
+                                                                        <th>Tenant</th>
+                                                                        <th>Status</th>
+                                                                        <th>Lease Form</th>
+                                                                        @endif
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
 
                                                                     @foreach ($leases as $lease)
+
+                                                                    @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
+
 
                                                                     <tr>
                                                                         <td>{{ $lease->unit->property->name }}</td>
@@ -103,15 +120,53 @@
                                                                     </form>
                                                                     </td>
                                                                     </tr>
+
+
+                                                                    @elseif(Auth::user()->type == 'tenant')
+
+                                                                    @if (Auth::user()->id == $lease->user->id)
+                                                                    <td>{{ $lease->unit->property->name }}</td>
+                                                                    <td>{{$lease->unit->name}}</td>
+                                                                    <td>{{$lease->user->name}}</td>
+                                                                    <td>
+
+                                                                        @if ($lease->status == 1)
+                                                                        <span class="badge badge-pill badge-info"> Active </span></a>
+                                                                        @else
+                                                                        <span class="badge badge-pill badge-danger"> Inactive </span></a>
+
+                                                                        @endif
+
+                                                                    </td>
+
+                                                                    <td>
+                                                                        <a href="{{route('lease.show',$lease->id)}}" style="margin-left: 4%;margin-right:4%;" class=" btn btn btn-info" >Read</a>
+
+                                                                    </td>
+
+                                                                    @endif
+
+                                                                    @endif
+
                                                                     @endforeach
                                                                     <thead>
                                                                         <tr>
+                                                                            @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
+
                                                                             <th>Property</th>
                                                                             <th>Unit</th>
                                                                             <th>Tenant</th>
                                                                             <th>Status</th>
                                                                             <th>Lease Form</th>
                                                                             <th>Action</th>
+                                                                            @elseif(Auth::user()->type == 'tenant')
+
+                                                                            <th>Property</th>
+                                                                            <th>Unit</th>
+                                                                            <th>Tenant</th>
+                                                                            <th>Status</th>
+                                                                            <th>Lease Form</th>
+                                                                            @endif
                                                                         </tr>
                                                                     </thead>
                                                                 </tbody>

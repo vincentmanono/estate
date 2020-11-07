@@ -15,7 +15,13 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
+                    @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
+
                     <h4 class="text-themecolor"> {{ $params }}</h4>
+                    @else
+                    <h4 class="text-themecolor">Tenant</h4>
+                    @endif
+
                 </div>
                 <div class="col-md-7 align-self-center text-right">
                     <div class="d-flex justify-content-end align-items-center">
@@ -23,7 +29,12 @@
                             <li class="breadcrumb-item">
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
+
+                            @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
+
                             <li class="breadcrumb-item active">{{ $params }}</li>
+                            @endif
+
                         </ol>
 
                     </div>
@@ -43,7 +54,14 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">All {{ $params }}</h4>
+
+
+                                @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
+                                <h4 class="card-title">
+                                All {{ $params }}</h4>
+                            @else
+                            Tenant
+                            @endif
                             {{-- <h6 class="card-subtitle">Data table example</h6>
                             --}}
                             <div style="float: right">
@@ -67,6 +85,8 @@
                                     <tbody>
 
                                         @foreach ($leases as $lease)
+
+                                        @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
                                             <tr>
                                                 @if ($lease->user->type =='tenant')
 
@@ -120,7 +140,48 @@
                                                 @endif
 
                                             </tr>
-                                        @endforeach
+                                        @elseif(Auth::user()->type == 'tenant')
+
+                                        @if (Auth::user()->id == $lease->user->id)
+
+                                        <td>{{ $lease->user->name }}</td>
+
+                                        <td><a style="color: blue" href="mailto:{{ $lease->user->email }}"> {{ $lease->user->email }}</a></td>
+                                        <td><a style="color: blue" href="tel:{{ $lease->user->phone }}">{{ $lease->user->phone }}</a></td>
+                                        <td>
+
+                                            @if ($lease->status==1)
+                                                <span class="badge badge-pill badge-success">Active</span>
+                                            @else
+                                                <span class="badge badge-pill badge-danger">Inactive</span>
+                                            @endif
+
+                                        </td>
+                                        <td>
+                                            {{ $lease->unit->name }}
+                                        </td>
+                                        <td>
+                                            {{ $lease->unit->property->name }}
+                                        </td>
+                                        <td>
+                                            {{ $lease->unit->property->branch->name }}
+                                        </td>
+
+
+                                        <td>
+
+                                            <a href="{{ route('showUser', $lease->user->id) }}"
+                                                class=" waves-effect waves-light  btn btn-sm btn-info "><i
+                                                    class="fa fa-eye" aria-hidden="true"></i>View</a>
+
+                                        </td>
+
+
+
+                                        @endif
+
+                                        @endif
+                                            @endforeach
                                     </tbody>
                                     <tfoot>
                                         <th>Name</th>
