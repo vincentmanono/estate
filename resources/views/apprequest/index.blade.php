@@ -65,7 +65,67 @@
                                                     </thead>
                                                     <tbody>
 
-                                                        @foreach ($properties as $property)
+                                                        @if ( $owner = "owner" )
+                                                        @foreach ($applications as $application)
+                                                        <tr>
+                                                            <td>{{ $application->identity }}</td>
+                                                            <td>{{ $application->name }}</td>
+                                                            <td> <a style="color: blue;"
+                                                                    href="mailto:{{ $application->email }}">{{ $application->email }}</a>
+                                                            </td>
+                                                            <td><a style="color: blue;"
+                                                                    href="tel:{{ $application->phone }}">{{ $application->phone }}</a>
+                                                            </td>
+                                                            <th>
+
+                                                                @if ($application->status == 1)
+                                                                    <span class="badge badge-pill badge-info">
+                                                                        Approved
+                                                                    </span></a>
+                                                                @else
+                                                                    <span class="badge badge-pill badge-danger">
+                                                                        Pending
+                                                                    </span></a>
+
+                                                                @endif
+                                                            </th>
+                                                            <td>{{ $application->property->name }}</td>
+                                                            <td class="row">
+
+
+                                                                @if ($application->status == 1)
+                                                                    <form
+                                                                        action="{{ route('application.status', $application) }}"
+                                                                        method="POST">
+                                                                        @method('PUT')
+                                                                        @csrf
+                                                                        <input type="number" name="status" value="0"
+                                                                            hidden>
+                                                                        <button class="btn btn-sm  btn-danger"
+                                                                            type="submit">Decline</button>
+                                                                    </form>
+
+                                                                @else
+                                                                    <form
+                                                                        action="{{ route('application.status', $application) }}"
+                                                                        method="POST">
+                                                                        @method('PUT')
+                                                                        @csrf
+                                                                        <input type="number" name="status" value="1"
+                                                                            hidden>
+                                                                        <button class="btn btn-sm  btn-success"
+                                                                            type="submit">Approve</button>
+                                                                    </form>
+
+                                                                @endif
+
+                                                            </td>
+
+                                                        </tr>
+                                                    @endforeach
+
+                                                        @else
+                                                             @foreach ($properties as $property)
                                                             @foreach ($property->applications as $application)
                                                                 <tr>
                                                                     <td>{{ $application->identity }}</td>
@@ -124,6 +184,10 @@
                                                                 </tr>
                                                             @endforeach
                                                         @endforeach
+                                                        @endif
+
+
+
 
 
 
