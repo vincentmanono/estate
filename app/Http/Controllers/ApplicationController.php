@@ -20,17 +20,19 @@ class ApplicationController extends Controller
 
         if ( auth()->user()->type == "owner" ) {
             $applications = Application::latest()->get();
+            return view('apprequest.index', compact('applications'))->with('owner','owner');
         } else {
             $manager = auth()->user();
 
             $properties = Property::where('user_id',$manager->id)->with('applications')->get();
+            return view('apprequest.index', compact('properties'));
 
         }
 
 
 
 
-        return view('apprequest.index', compact('properties'));
+
     }
     public function approveDecline(Request $request,  $id)
     {

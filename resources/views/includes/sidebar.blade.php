@@ -5,23 +5,24 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="user-pro"> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                        aria-expanded="false"><img  src="{{ (Str::contains(auth()->user()->image,'http') ? auth()->user()->image:'/storage/users/' . auth()->user()->image ) }}"  alt="{{ Auth::user()->name  }}"
-                            class="img-circle"><span class="hide-menu">{{ auth()->user()->name }}</span></a>
+                        aria-expanded="false"><img
+                            src="{{ Str::contains(auth()->user()->image, 'http') ? auth()->user()->image : '/storage/users/' . auth()->user()->image }}"
+                            alt="{{ Auth::user()->name }}" class="img-circle"><span
+                            class="hide-menu">{{ auth()->user()->name }}</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
                         <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
                         <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
                         <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
-                        <li> <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
+                        <li> <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
-                             {{ __('Logout') }}
-                         </a>
+                                {{ __('Logout') }}
+                            </a>
 
-                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                             @csrf
-                         </form>
-</li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
 
 
 
@@ -38,9 +39,9 @@
                             class="ti-control-shuffle "></i><span class="hide-menu">Branch Information</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{ route('allBranches') }}">View Branches</a></li>
-                       @if (auth()->user()->type == 'manager' || auth()->user()->type == 'owner'  )
+                        @if (auth()->user()->type == 'manager' || auth()->user()->type == 'owner')
                             <li><a href="{{ route('create.branch') }}">Add Branch</a></li>
-                       @endif
+                        @endif
 
 
                     </ul>
@@ -49,33 +50,36 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-home"></i><span class="hide-menu">Property Details</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{route('property.index')}}">View Properties</a></li>
-                        @if (auth()->user()->type == 'manager' || auth()->user()->type == 'owner'  )
+                        <li><a href="{{ route('property.index') }}">View Properties</a></li>
+                        @if (auth()->user()->type == 'manager' || auth()->user()->type == 'owner')
 
-                    <li><a href="{{route('property.create')}}">Add Property</a></li>
-                    @endif
-
-                    </ul>
-                </li>
-                @if (auth()->user()->type == 'manager' || auth()->user()->type == 'owner'  )
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                    class="ti-home"></i><span class="hide-menu">Apartment Request</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{route('application.index')}}">View Requests</a></li>
+                            <li><a href="{{ route('property.create') }}">Add Property</a></li>
+                        @endif
 
                     </ul>
                 </li>
+                @if (auth()->user()->type == 'manager' || auth()->user()->type == 'owner')
+                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+                                class="ti-home"></i><span class="hide-menu">Apartment Request</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ route('application.index') }}">View Requests</a></li>
+
+                        </ul>
+                    </li>
                 @endif
+                @if (auth()->user()->type == 'manager' || auth()->user()->type == 'owner')
+                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+                                class="ti-settings"></i><span class="hide-menu">Services Provider </span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ route('service.index') }}">View Services</a></li>
+                            <li><a href="{{ route('service.create') }}">Add Services</a></li>
+
+                        </ul>
+                    </li>
 
 
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-settings"></i><span class="hide-menu">Services Provider </span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{ route('service.index') }}">View Services</a></li>
-                        <li><a href="{{ route('service.create') }}">Add Services</a></li>
 
-                    </ul>
-                </li>
+
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-home"></i><span class="hide-menu">Unit Information</span></a>
@@ -85,11 +89,15 @@
 
                     </ul>
                 </li>
+                @endif
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-user"></i><span class="hide-menu">Tenant Information</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{ route('allTenants') }}">View All Tenant</a></li>
-                        <li><a href="{{ route('createUser') }}">Add Tenant</a></li>
+                        @if (auth()->user()->type == 'manager' || auth()->user()->type == 'owner')
+                             <li><a href="{{ route('createUser') }}">Add Tenant</a></li>
+                        @endif
+
 
                     </ul>
                 </li>
@@ -101,7 +109,8 @@
                                     Billing</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{ route('rent.index') }}">View all rents</a></li>
-                                <li> <a href="{{ route('rent.create') }}" target="_blank" rel="noopener noreferrer">Add Rent</a> </li>
+                                <li> <a href="{{ route('rent.create') }}" target="_blank" rel="noopener noreferrer">Add
+                                        Rent</a> </li>
 
 
                             </ul>
@@ -143,7 +152,10 @@
                             class="ti-user"></i><span class="hide-menu">User Management</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{ route('allUsers') }}">View Users</a></li>
-                        <li><a href="{{ route('createUser') }}">Add user</a></li>
+                        @if (auth()->user()->type == 'manager' || auth()->user()->type == 'owner')
+                            <li><a href="{{ route('createUser') }}">Add user</a></li>
+                        @endif
+
 
                     </ul>
                 </li>
@@ -206,4 +218,3 @@
     </div>
     <!-- End Sidebar scroll-->
 </aside>
-

@@ -28,18 +28,19 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/all-users', 'UserController@allUsers')->name('allUsers');
-    Route::get('/user/create', 'UserController@createUser')->name('createUser');
+
+    Route::get('/user/create', 'UserController@createUser')->name('createUser')->middleware('manager') ;
     Route::get('/user/{user}', 'UserController@showUser')->name('showUser');
-    Route::get('/user/{user}/edit', 'UserController@editUser')->name('editUser');
-    Route::put('/user/{user}/edit', 'UserController@updateUser')->name('updateUser');
+    Route::get('/user/{user}/edit', 'UserController@editUser')->name('editUser')->middleware('manager') ;
+    Route::put('/user/{user}/edit', 'UserController@updateUser')->name('updateUser')->middleware('manager') ;
 
     Route::get('/all-tenants', 'UserController@allTenants')->name('allTenants');
 
     Route::get('/tenant/{tenant}/{unit}','UserController@tenantUnit')->name('tenantUnit');
 
 
-    Route::post('add-user','UserController@addUser')->name('addUser');
-    Route::delete('delete-user/{user}','UserController@deleteUser')->name('deleteUser');
+    Route::post('add-user','UserController@addUser')->name('addUser')->middleware('manager') ;
+    Route::delete('delete-user/{user}','UserController@deleteUser')->name('deleteUser')->middleware('manager') ;
     Route::get('occupancyreport','LeaseController@leaseReport')->name('occupancy.report');
     Route::get('tenantreport','UserController@tenantReport')->name('tenant.report');
     Route::get('/rentreport','RentController@rentReport')->name('rent.report');
@@ -57,7 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/property/images','PropertyImageController@fileDestroy')->name('property.images.destroy');
     Route::resource('property', 'PropertyController');
 
-    Route::resource('service', 'ServiceController');
+
     Route::resource('unit', 'UnitController');
     Route::resource('rent', 'RentController');
     Route::resource('deposit', 'DepositController');
@@ -78,6 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::put('floor/{floor}', 'FloorController@update')->name('unit.floor.update');
             Route::get('applications', 'ApplicationController@index')->name('application.index')->middleware('manager');
             Route::put('/application/approvedecline/{application}', 'ApplicationController@approveDecline')->name('application.status')->middleware('manager');
+            Route::resource('service', 'ServiceController');
 
 
     }) ;

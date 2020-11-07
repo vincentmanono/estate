@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('manager');
+    }
     public function index()
     {
         $services =Service::orderBy('id','Desc')->get();
