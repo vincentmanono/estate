@@ -13,15 +13,15 @@
         <!-- ============================================================== -->
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="text-themecolor">Real Estate Dashboard</h4>
+                <h4 class="text-themecolor">Manager Dashboard</h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Real Estate Dashboard</li>
+                        <li class="breadcrumb-item active">ChiefProperties Manager</li>
                     </ol>
-                    <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
+                    {{--  <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>  --}}
                 </div>
             </div>
         </div>
@@ -31,200 +31,117 @@
         <!-- ============================================================== -->
         <!-- Info box -->
         <!-- ============================================================== -->
-        <!--.row -->
-        <div class="row">
-            <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-uppercase">All Properties</h5>
-                        <div class="d-flex align-items-center no-block m-t-20 m-b-10">
-                            <h1><i class="ti-home text-info"></i></h1>
-                            <div class="ml-auto">
-                                <h1 class="text-muted">480</h1>
+        <!-- Info box -->
+        <!-- ============================================================== -->
+        <div class="card-group">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-flex no-block align-items-center">
+                                <div>
+                                    <h3><i class="icon-screen-desktop"></i></h3>
+                                    <p class="text-muted">MYNEW CLIENTS</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <h2 class="counter text-primary">23</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-uppercase">Properties for Sale</h5>
-                        <div class="d-flex align-items-center no-block m-t-20 m-b-10">
-                            <h1><i class="icon-tag text-purple"></i></h1>
-                            <div class="ml-auto">
-                                <h1 class="text-muted">169</h1>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-flex no-block align-items-center">
+                                <div>
+                                    <h3><i class="icon-note"></i></h3>
+                                    <p class="text-muted">NEW PROJECTS</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <h2 class="counter text-cyan">169</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="progress">
+                                <div class="progress-bar bg-cyan" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-uppercase">Properties for Rent</h5>
-                        <div class="d-flex align-items-center no-block m-t-20 m-b-10">
-                            <h1><i class="icon-basket text-danger"></i></h1>
-                            <div class="ml-auto">
-                                <h1 class="text-muted">311</h1>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-flex no-block align-items-center">
+                                <div>
+                                    <h3><i class="icon-doc"></i></h3>
+                                    <p class="text-muted">NEW INVOICES</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <h2 class="counter text-purple">157</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="progress">
+                                <div class="progress-bar bg-purple" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6 col-xs-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-uppercase">Total Ernings</h5>
-                        <div class="d-flex align-items-center no-block m-t-20 m-b-10">
-                            <h1><i class="ti-wallet text-success"></i></h1>
-                            <div class="ml-auto">
-                                <h1 class="text-muted">$8170</h1>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-flex no-block align-items-center">
+                                <div>
+                                    <h3><i class="icon-bag"></i></h3>
+                                    <p class="text-muted">All PROJECTS</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <h2 class="counter text-success">431</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /.row -->
+        <!-- ============================================================== -->
+        <!-- End Info box -->
         <!-- ============================================================== -->
         <!-- End Info box -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Over Visitor, Our income , slaes different and  sales prediction -->
         <!-- ============================================================== -->
-        <!-- .row -->
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex m-b-40 align-items-center">
-                            <h5 class="card-title">PROPERTIES STATS</h5>
-                            <div class="ml-auto">
-                                <ul class="list-inline font-12">
-                                    <li><i class="fa fa-circle text-cyan"></i> For Sale</li>
-                                    <li><i class="fa fa-circle text-primary"></i> For Rent</li>
-                                    <li><i class="fa fa-circle text-purple"></i> All</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div id="morris-bar-chart" style="height:352px;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card m-b-15">
-                            <div class="card-body">
-                                <h5 class="card-title">PROPERTY SALES INCOME</h5>
-                                <div class="row">
-                                    <div class="col-6 m-t-30">
-                                        <h1 class="text-info">$64057</h1>
-                                        <p class="text-muted">APRIL 2017</p> <b>(150 Sales)</b> </div>
-                                    <div class="col-6">
-                                        <div id="sparkline2dash" class="text-right"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="card bg-purple m-b-15">
-                            <div class="card-body">
-                                <h5 class="text-white card-title">PROPERTY ON RENT INCOME</h5>
-                                <div class="row">
-                                    <div class="col-6 m-t-30">
-                                        <h1 class="text-white">$30447</h1>
-                                        <p class="text-white">APRIL 2017</p> <b class="text-white">(110 Sales)</b> </div>
-                                    <div class="col-md-6 col-sm-6 col-6">
-                                        <div id="sales1" class="text-right"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
+
         <!-- ============================================================== -->
         <!-- Comment - table -->
+
         <!-- ============================================================== -->
-        <!-- row -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">PROPERTY OVERVIEW</h5>
-                        <div class="table-responsive">
-                            <table class="table product-overview">
-                                <thead>
-                                    <tr>
-                                        <th>Customer</th>
-                                        <th>Order ID</th>
-                                        <th>Photo</th>
-                                        <th>Property</th>
-                                        <th>Type</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Steave Jobs</td>
-                                        <td>#85457898</td>
-                                        <td> <img src="../assets/images/property/prop1.jpeg" alt="iMac" width="80"> </td>
-                                        <td>Swanim villa</td>
-                                        <td>Sold</td>
-                                        <td>10-7-2017</td>
-                                        <td> <span class="label label-success font-weight-100">Paid</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-dark p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-dark" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Varun Dhavan</td>
-                                        <td>#95457898</td>
-                                        <td> <img src="../assets/images/property/prop2.jpeg" alt="iPhone" width="80"> </td>
-                                        <td>River view home</td>
-                                        <td>On Rent</td>
-                                        <td>09-7-2017</td>
-                                        <td> <span class="label label-warning font-weight-100">Pending</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-dark p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-dark" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ritesh Desh</td>
-                                        <td>#68457898</td>
-                                        <td> <img src="../assets/images/property/prop3.jpeg" alt="apple_watch" width="80"> </td>
-                                        <td>Gray Chair</td>
-                                        <td>12</td>
-                                        <td>08-7-2017</td>
-                                        <td> <span class="label label-success font-weight-100">Paid</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-dark p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-dark" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hrithik</td>
-                                        <td>#45457898</td>
-                                        <td> <img src="../assets/images/property/prop3.jpeg" alt="mac_mouse" width="80"> </td>
-                                        <td>Pure Wooden chair</td>
-                                        <td>18</td>
-                                        <td>02-7-2017</td>
-                                        <td> <span class="label label-danger font-weight-100">Failed</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-dark p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-dark" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
-        <!-- ============================================================== -->
-        <!-- End Comment - chats -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Over Visitor, Our income , slaes different and  sales prediction -->
         <!-- ============================================================== -->
         <!-- .row  -->
         <div class="row">
@@ -315,6 +232,70 @@
         </div>
         <!-- /.row  -->
         <!-- ============================================================== -->
+
+        <!-- .row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">PROPERTY OVERVIEW</h5>
+                        <div class="table-responsive">
+                            <table class="table product-overview">
+                                <thead>
+                                    <tr>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>Photo</th>
+                                                <th>Address</th>
+
+                                                {{-- <th>Status</th> --}}
+                                                <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($properties as $property)
+                                    <tr>
+                                       <td>{{ $property->name }}</td>
+                                       <td>{{ $property->type }}</td>
+                                       <td> <img height="30px"
+                                        src= "  {{ Str::contains($property->image, 'http') ? $property->image : '/storage/property/' . $property->image }}"
+                                        alt="{{ $property->name }}">
+                                        </td>
+                                       {{--  <td> <img src="/storage/property/{{ $property->image }}" alt="{{ $property->name }}" width="80"> </td>  --}}
+                                       <td>{{ $property->address }}</td>
+
+                                       {{-- <td> <span class="label label-success font-weight-100">Paid</span> </td> --}}
+                                       <td class="row">
+                                        <a  style="margin-right: 2%;" class="btn   btn-success " href="{{ route('property.show',$property->id) }}" data-toggle="tooltip" title="View"> <i class="ti-eye"></i> View</a>
+                                        <a  class="btn  btn-info " href="{{ route('property.edit',$property->id) }}" data-toggle="tooltip" title="Edit"> <i class="ti-marker-alt"></i>Edit</a>
+                                        </td>
+                                   </tr>
+                                   @endforeach
+                                </tbody>
+                                <thead>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>Photo</th>
+                                                <th>Address</th>
+
+                                                {{-- <th>Status</th> --}}
+                                                <th>Actions</th>
+                                </thead>
+                            </table>
+                        </div>
+                        <div style="margin-left: 40%">
+                            {{ $properties->links() }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- End Comment - chats -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Over Visitor, Our income , slaes different and  sales prediction -->
+
         <!-- End Page Content -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->

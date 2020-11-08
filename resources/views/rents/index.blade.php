@@ -14,7 +14,11 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
+                        @if(Auth::user()->type =='tenant')
+                        <h4 class="text-themecolor">Unit  Rents</h4>
+                        @else
                         <h4 class="text-themecolor">All Units Rent</h4>
+                        @endif
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
@@ -22,8 +26,11 @@
                             <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                                 <li class="breadcrumb-item active">Rent</li>
                             </ol>
-                        <a href="{{route('rent.create')}}" type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New</a>
-                        </div>
+                            @if (Auth::user()->type == 'manager' || Auth::user()->type == 'owner')
+
+                                 <a href="{{route('rent.create')}}" type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New</a>
+                             @endif
+                    </div>
                     </div>
                 </div>
                 <!-- ============================================================== -->
@@ -39,6 +46,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Rents Table</h4>
                                 {{-- <h6 class="card-subtitle">Data table example</h6> --}}
+                                <a class="btn btn-primary btn sm" style="float:right;" href="{{ route('home') }}">Back</a>
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
@@ -50,35 +58,59 @@
                                                 <th>Date Paid</th>
                                                 <th>Expiry Date</th>
                                                 <th>Tenant Name</th>
+                                                @if (Auth::user()->type == 'manager' || Auth::user()->type == 'owner')
+
                                                 <th>Action</th>
+                                                @endif
                                             </tr>
                                         </thead>
                                         <tbody>
 
                                             @foreach ($rents as $rent)
 
-                                            <tr>
 
-                                            <td>{{$rent->unit->name}}</td>
-                                            <td>{{ $rent->unit->property->name }}</td>
-                                            <td>{{$rent->amount}}</td>
-                                            <td>{{$rent->paid_date}}</td>
-                                            <td>{{$rent->expiry_date}}</td>
-                                            <td>{{ $rent->user->name }}</td>
-                                            <td class="row">
+                                                @if (Auth::user()->type == 'manager' || Auth::user()->type == 'owner')
 
-                                            <a href="{{route('rent.edit',$rent->id)}}" style="margin-left: 4%;margin-right:4%; margin-bottom:4%; " class=" btn btn-info" >Edit</a>
+                                                <tr>
+                                                    <td>{{$rent->unit->name}}</td>
+                                                    <td>{{ $rent->unit->property->name }}</td>
+                                                    <td>{{$rent->amount}}</td>
+                                                    <td>{{$rent->paid_date}}</td>
+                                                    <td>{{$rent->expiry_date}}</td>
+                                                    <td>{{ $rent->user->name }}</td>
+                                                    <td class="row">
 
-                                            <form action="{{ route('rent.destroy',$rent->id) }}" enctype="multipart/form-data" method="post">
+                                                    <a href="{{route('rent.edit',$rent->id)}}" style="margin-left: 4%;margin-right:4%; margin-bottom:4%; " class=" btn btn-info" >Edit</a>
 
-                                                @csrf
-                                                @method('DELETE')
+                                                    <form action="{{ route('rent.destroy',$rent->id) }}" enctype="multipart/form-data" method="post">
 
-                                                <button type="submit" class=" btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?');">Delete</button>
+                                                        @csrf
+                                                        @method('DELETE')
 
-                                            </form>
-                                            </td>
+                                                        <button type="submit" class=" btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?');">Delete</button>
+
+                                                    </form>
+                                                    </td>
+                                                </tr>
+
+                                                @elseif(Auth::user()->type == 'tenant')
+
+                                              @if (Auth::user()->id == $rent->user_id)
+
+                                              <tr>
+                                                <td>{{$rent->unit->name}}</td>
+                                                <td>{{ $rent->unit->property->name }}</td>
+                                                <td>{{$rent->amount}}</td>
+                                                <td>{{$rent->paid_date}}</td>
+                                                <td>{{$rent->expiry_date}}</td>
+                                                <td>{{ $rent->user->name }}</td>
+
                                             </tr>
+
+                                              @endif
+
+                                                @endif
+
                                             @endforeach
                                                 <thead>
                                                     <tr>
@@ -88,7 +120,10 @@
                                                         <th>Date Paid</th>
                                                         <th>Expiry Date</th>
                                                         <th>Tenant Name</th>
+                                                        @if (Auth::user()->type == 'manager' || Auth::user()->type == 'owner')
+
                                                         <th>Action</th>
+                                                        @endif
                                                     </tr>
                                                 </thead>
                                         </tbody>

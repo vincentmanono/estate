@@ -231,6 +231,22 @@
                         <li><a href="{{ route('allTenants') }}">View Details</a></li>
                     </ul>
                 </li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                    aria-expanded="false"><i class="ti-money"></i><span class="hide-menu">Rent
+                        Billing</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ route('rent.index') }}">View Rent Records</a></li>
+                        </ul>
+                </li>
+
+                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                    aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Services
+                        </span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ route('tenantservice.create') }}">Request Service</a></li>
+
+                        </ul>
+                </li>
 
 
                  @endif

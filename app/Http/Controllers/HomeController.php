@@ -55,13 +55,16 @@ class HomeController extends Controller
             elseif(Auth::user()->type =='manager')
             {
 
-                return view('manager');
+                $properties = Property::orderBy('id','desc')->paginate(10);
+                return view('manager',compact('properties'));
 
             }
             elseif(Auth::user()->type == 'tenant')
             {
 
-                return view('tenant');
+                $leases = Lease::all();
+                $rents = Rent::all();
+                return view('tenant',compact('leases','rents'));
 
             }
         }

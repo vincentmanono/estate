@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('water', 'WaterController');
     Route::resource('payment', 'PaymentController');
     Route::resource('lease','LeaseController');
+    Route::resource('tenantservice', 'TenantServiceController');
 
     Route::middleware(['manager'])->prefix('manager')->group( function () {
             Route::get('property/{property}' , 'ManagerController@property')->name('manager.property');
@@ -82,6 +83,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('applications', 'ApplicationController@index')->name('application.index')->middleware('manager');
             Route::put('/application/approvedecline/{application}', 'ApplicationController@approveDecline')->name('application.status')->middleware('manager');
             Route::resource('service', 'ServiceController');
+
 
 
     }) ;

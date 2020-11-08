@@ -76,5 +76,11 @@ class User extends Authenticatable
 
    }
 
+   public function requests()
+   {
+       return $this->hasMany(TenantService::class);
+   }
+
+
 
 }

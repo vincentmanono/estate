@@ -14,4 +14,8 @@ class Lease extends Model
     public function unit(){
         return $this->belongsTo(Unit::class);
     }
+    public function requests()
+   {
+       return $this->hasMany(TenantService::class);
+   }
 }
