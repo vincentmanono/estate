@@ -65,7 +65,7 @@
                                                     </thead>
                                                     <tbody>
 
-                                                        @if ( $owner = "owner" )
+                                                        @if ( $param == "owner" )
                                                         @foreach ($applications as $application)
                                                         <tr>
                                                             <td>{{ $application->identity }}</td>

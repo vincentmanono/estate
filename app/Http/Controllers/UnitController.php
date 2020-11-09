@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Unit;
-use App\Lease;
 use App\Rent;
+use App\Unit;
+use App\User;
+use App\Lease;
 use App\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UnitController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +24,26 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $units=Unit::all();
-        $leases =Lease::all();
-        return view('units.index',compact('units','leases'));
+        $this->authorize('viewAny',Unit::class);
+        $user = User::where('id', Auth::user()->id)->first();
+        $units = [] ;
+        if ( $user->isOwner()) {
+            $units=Unit::latest()->get();
+            return view('units.index',compact('units'))->with('param','owner');
+
+        } else if($user->isManager() ){
+            $properties = Property::where('user_id',$user->id)->get();
+
+
+            return view('units.index',compact('properties'))->with('param','manager');
+        }else{
+            Session::flash("error","You do not have permission to access this route") ;
+         return redirect()->back() ;
+        }
+
+
+
+
     }
 
 
@@ -30,6 +54,8 @@ class UnitController extends Controller
      */
     public function create()
     {
+        $this->authorize('create',Unit::class);
+
         $properties =Property::all();
         return view('units.createEdit',compact('properties'))->with('param','Add New Unit');
     }
@@ -42,6 +68,8 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create',Unit::class);
+
         $this->validate($request,[
             'name'=>'required',
             'water_acc_no'=>'string',
@@ -72,8 +100,10 @@ class UnitController extends Controller
      */
     public function show($id)
     {
-        $leases=Lease::all();
-        $unit = Unit::find($id);
+        $unit =  Unit::findOrFail($id);
+
+        $this->authorize('view',$unit);
+        $leases= $unit->leases ;
         $rents = Rent::where('unit_id',$id)->orderBy('id','desc')->get() ;
         return view('units.show',compact('unit','leases','rents'));
     }
@@ -86,7 +116,9 @@ class UnitController extends Controller
      */
     public function edit($id)
     {
+        $unit =  Unit::findOrFail($id);
 
+        $this->authorize('update',$unit);
         $unit = Unit::find($id);
         $properties =Property::all();
         return view('units.createEdit',compact('unit','properties'))->with('param','Edit Unit Details');
@@ -101,6 +133,10 @@ class UnitController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $unit =  Unit::findOrFail($id);
+
+        $this->authorize('update',$unit);
+
         $this->validate($request,[
             'name'=>'required',
             'water_acc_no'=>'string',
@@ -139,6 +175,9 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
+        $unit =  Unit::findOrFail($id);
+
+        $this->authorize('delete',$unit);
         $del = Unit::find($id);
         $del->delete();
 

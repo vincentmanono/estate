@@ -2,10 +2,12 @@
 
 namespace App\Policies;
 
-use App\Branch;
 use App\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Branch;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class BranchPolicy
 {
@@ -45,7 +47,8 @@ class BranchPolicy
         if ( $user->isManager() || $user->isOwner() ) {
             return Response::allow() ;
          }
-         return Response::deny("You do not have permission to access this ") ;
+         Session::flash("error","You do not have permission to access this") ;
+          return redirect()->back() ;
     }
 
     /**
@@ -61,7 +64,8 @@ class BranchPolicy
         if ( $user->isManager() || $user->isOwner() ) {
             return Response::allow() ;
          }
-         return Response::deny("You do not have permission to access this ") ;
+         Session::flash("error","You do not have permission to access this") ;
+          return redirect()->back() ;
     }
 
     /**
@@ -76,7 +80,8 @@ class BranchPolicy
         if ( $user->isManager() || $user->isOwner() ) {
             return Response::allow() ;
          }
-         return Response::deny("You do not have permission to access this ") ;
+         Session::flash("error","You do not have permission to access this") ;
+         return redirect()->back() ;
     }
 
     /**
@@ -91,7 +96,8 @@ class BranchPolicy
         if ( $user->isManager() || $user->isOwner() ) {
             return Response::allow() ;
          }
-         return Response::deny("You do not have permission to access this ") ;
+         Session::flash("error","You do not have permission to access this") ;
+         return redirect()->back() ;
     }
 
     /**
@@ -106,6 +112,7 @@ class BranchPolicy
         if ( $user->isManager() || $user->isOwner() ) {
             return Response::allow() ;
          }
-         return Response::deny("You do not have permission to access this ") ;
+         Session::flash("error","You do not have permission to access this") ;
+         return redirect()->back() ;
     }
 }
