@@ -17,9 +17,9 @@
                 <div class="col-md-5 align-self-center">
                     @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
 
-                    <h4 class="text-themecolor"> {{ $params }}</h4>
+                        <h4 class="text-themecolor"> {{ $params }}</h4>
                     @else
-                    <h4 class="text-themecolor">Tenant</h4>
+                        <h4 class="text-themecolor">Tenant</h4>
                     @endif
 
                 </div>
@@ -32,7 +32,7 @@
 
                             @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
 
-                            <li class="breadcrumb-item active">{{ $params }}</li>
+                                <li class="breadcrumb-item active">{{ $params }}</li>
                             @endif
 
                         </ol>
@@ -56,11 +56,11 @@
                         <div class="card-body">
 
 
-                                @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
+                            @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
                                 <h4 class="card-title">
-                                All {{ $params }}</h4>
+                                    All {{ $params }}</h4>
                             @else
-                            Tenant
+                                Tenant
                             @endif
                             {{-- <h6 class="card-subtitle">Data table example</h6>
                             --}}
@@ -84,104 +84,208 @@
                                     </thead>
                                     <tbody>
 
-                                        @foreach ($leases as $lease)
+                                        @if (auth()
+            ->user()
+            ->isOwner())
+                                            @foreach ($leases as $lease)
+                                                <tr>
 
-                                        @if (Auth::user()->type == 'owner' || Auth::user()->type == 'manager')
-                                            <tr>
-                                                @if ($lease->user->type =='tenant')
+                                                    <td>{{ $lease->user->name }}</td>
 
-                                                <td>{{ $lease->user->name }}</td>
+                                                    <td><a style="color: blue" href="mailto:{{ $lease->user->email }}">
+                                                            {{ $lease->user->email }}</a></td>
+                                                    <td><a style="color: blue"
+                                                            href="tel:{{ $lease->user->phone }}">{{ $lease->user->phone }}</a>
+                                                    </td>
+                                                    <td>
 
-                                                <td><a style="color: blue" href="mailto:{{ $lease->user->email }}"> {{ $lease->user->email }}</a></td>
-                                                <td><a style="color: blue" href="tel:{{ $lease->user->phone }}">{{ $lease->user->phone }}</a></td>
-                                                <td>
+                                                        @if ($lease->status == 1)
+                                                            <span class="badge badge-pill badge-success">Active</span>
+                                                        @else
+                                                            <span class="badge badge-pill badge-danger">Inactive</span>
+                                                        @endif
 
-                                                    @if ($lease->status==1)
-                                                        <span class="badge badge-pill badge-success">Active</span>
-                                                    @else
-                                                        <span class="badge badge-pill badge-danger">Inactive</span>
-                                                    @endif
-
-                                                </td>
-                                                <td>
-                                                    {{ $lease->unit->name }}
-                                                </td>
-                                                <td>
-                                                    {{ $lease->unit->property->name }}
-                                                </td>
-                                                <td>
-                                                    {{ $lease->unit->property->branch->name }}
-                                                </td>
-
-
-                                                <td>
-
-                                                    <a href="{{ route('showUser', $lease->user->id) }}"
-                                                        class=" waves-effect waves-light  btn btn-sm btn-info "><i
-                                                            class="fa fa-eye" aria-hidden="true"></i></a>
-                                                    <a href="{{ route('updateUser', $lease->user->id) }}"
-                                                        class=" waves-effect waves-light  btn btn-sm btn-warning text text-white "><i
-                                                            class="fa fa-pencil-square" aria-hidden="true"></i></a>
-
-                                                    <a href="" onclick="deleteUser()"
-                                                        class=" waves-effect waves-light  btn btn-sm btn-danger text text-white ">
-                                                        <i class="fa fa-trash" aria-hidden="true"></i> </a>
-
-                                                    <form id="deleteUser"
-                                                        action="{{ route('deleteUser', $lease->user->id) }}" method="post">
-                                                        @csrf
-                                                        @method("DELETE")
-                                                    </form>
+                                                    </td>
+                                                    <td>
+                                                        {{ $lease->unit->name }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $lease->unit->property->name }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $lease->unit->property->branch->name }}
+                                                    </td>
 
 
+                                                    <td>
 
-                                                </td>
+                                                        <a href="{{ route('showUser', $lease->user->id) }}"
+                                                            class=" waves-effect waves-light  btn btn-sm btn-info "><i
+                                                                class="fa fa-eye" aria-hidden="true"></i></a>
+                                                        <a href="{{ route('updateUser', $lease->user->id) }}"
+                                                            class=" waves-effect waves-light  btn btn-sm btn-warning text text-white "><i
+                                                                class="fa fa-pencil-square" aria-hidden="true"></i></a>
 
-                                                @endif
+                                                        <a href="" onclick="deleteUser()"
+                                                            class=" waves-effect waves-light  btn btn-sm btn-danger text text-white ">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i> </a>
 
-                                            </tr>
-                                        @elseif(Auth::user()->type == 'tenant')
-
-                                        @if (Auth::user()->id == $lease->user->id)
-
-                                        <td>{{ $lease->user->name }}</td>
-
-                                        <td><a style="color: blue" href="mailto:{{ $lease->user->email }}"> {{ $lease->user->email }}</a></td>
-                                        <td><a style="color: blue" href="tel:{{ $lease->user->phone }}">{{ $lease->user->phone }}</a></td>
-                                        <td>
-
-                                            @if ($lease->status==1)
-                                                <span class="badge badge-pill badge-success">Active</span>
-                                            @else
-                                                <span class="badge badge-pill badge-danger">Inactive</span>
-                                            @endif
-
-                                        </td>
-                                        <td>
-                                            {{ $lease->unit->name }}
-                                        </td>
-                                        <td>
-                                            {{ $lease->unit->property->name }}
-                                        </td>
-                                        <td>
-                                            {{ $lease->unit->property->branch->name }}
-                                        </td>
-
-
-                                        <td>
-
-                                            <a href="{{ route('showUser', $lease->user->id) }}"
-                                                class=" waves-effect waves-light  btn btn-sm btn-info "><i
-                                                    class="fa fa-eye" aria-hidden="true"></i>View</a>
-
-                                        </td>
+                                                        <form id="deleteUser"
+                                                            action="{{ route('deleteUser', $lease->user->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method("DELETE")
+                                                        </form>
 
 
 
-                                        @endif
+                                                    </td>
 
-                                        @endif
+
+
+                                                </tr>
                                             @endforeach
+
+                                        @elseif( auth()->user()->isManager())
+
+                                            @foreach ($properties as $property)
+
+                                                @foreach ($property->leases as $lease)
+
+                                                    <tr>
+
+                                                        <td>{{ $lease->user->name }}</td>
+
+                                                        <td><a style="color: blue" href="mailto:{{ $lease->user->email }}">
+                                                                {{ $lease->user->email }}</a></td>
+                                                        <td><a style="color: blue"
+                                                                href="tel:{{ $lease->user->phone }}">{{ $lease->user->phone }}</a>
+                                                        </td>
+                                                        <td>
+
+                                                            @if ($lease->status == 1)
+                                                                <span class="badge badge-pill badge-success">Active</span>
+                                                            @else
+                                                                <span class="badge badge-pill badge-danger">Inactive</span>
+                                                            @endif
+
+                                                        </td>
+                                                        <td>
+                                                            {{ $lease->unit->name }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $lease->unit->property->name }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $lease->unit->property->branch->name }}
+                                                        </td>
+
+
+                                                        <td>
+
+                                                            <a href="{{ route('showUser', $lease->user->id) }}"
+                                                                class=" waves-effect waves-light  btn btn-sm btn-info "><i
+                                                                    class="fa fa-eye" aria-hidden="true"></i></a>
+                                                            <a href="{{ route('updateUser', $lease->user->id) }}"
+                                                                class=" waves-effect waves-light  btn btn-sm btn-warning text text-white "><i
+                                                                    class="fa fa-pencil-square" aria-hidden="true"></i></a>
+
+                                                            <a href="" onclick="deleteUser()"
+                                                                class=" waves-effect waves-light  btn btn-sm btn-danger text text-white ">
+                                                                <i class="fa fa-trash" aria-hidden="true"></i> </a>
+
+                                                            <form id="deleteUser"
+                                                                action="{{ route('deleteUser', $lease->user->id) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                @method("DELETE")
+                                                            </form>
+
+
+
+                                                        </td>
+
+
+
+                                                    </tr>
+
+
+                                                @endforeach
+
+
+
+                                            @endforeach
+
+
+                                        @else
+
+
+                                            @foreach (auth()->user()->leases as $lease)
+
+                                                <tr>
+
+                                                    <td>{{ $lease->user->name }}</td>
+
+                                                    <td><a style="color: blue" href="mailto:{{ $lease->user->email }}">
+                                                            {{ $lease->user->email }}</a></td>
+                                                    <td><a style="color: blue"
+                                                            href="tel:{{ $lease->user->phone }}">{{ $lease->user->phone }}</a>
+                                                    </td>
+                                                    <td>
+
+                                                        @if ($lease->status == 1)
+                                                            <span class="badge badge-pill badge-success">Active</span>
+                                                        @else
+                                                            <span class="badge badge-pill badge-danger">Inactive</span>
+                                                        @endif
+
+                                                    </td>
+                                                    <td>
+                                                        {{ $lease->unit->name }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $lease->unit->property->name }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $lease->unit->property->branch->name }}
+                                                    </td>
+
+
+                                                    <td>
+
+                                                        <a href="{{ route('showUser', $lease->user->id) }}"
+                                                            class=" waves-effect waves-light  btn btn-sm btn-info "><i
+                                                                class="fa fa-eye" aria-hidden="true"></i></a>
+                                                        <a href="{{ route('updateUser', $lease->user->id) }}"
+                                                            class=" waves-effect waves-light  btn btn-sm btn-warning text text-white "><i
+                                                                class="fa fa-pencil-square" aria-hidden="true"></i></a>
+
+                                                        <a href="" onclick="deleteUser()"
+                                                            class=" waves-effect waves-light  btn btn-sm btn-danger text text-white ">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i> </a>
+
+                                                        <form id="deleteUser"
+                                                            action="{{ route('deleteUser', $lease->user->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method("DELETE")
+                                                        </form>
+
+
+
+                                                    </td>
+
+
+
+                                                </tr>
+
+                                            @endforeach
+
+
+                                        @endif
+
+
+
                                     </tbody>
                                     <tfoot>
                                         <th>Name</th>

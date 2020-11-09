@@ -9,6 +9,7 @@ use App\Http\Requests\UserRequest;
 use App\Notifications\UserCreatedNotification;
 use App\Unit;
 use App\Lease;
+use App\Property;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
@@ -25,9 +26,20 @@ class UserController extends Controller
     }
     public function allTenants()
     {
-        // $users = User::where('type', 'tenant')->latest()->get();
-        $leases= Lease::latest()->get();
-        return view('users.tenants/index', compact('leases'))->with('params', "Tenants");
+        if (Auth::user()->isOwner() ) {
+            $leases= Lease::latest()->get();
+            return view('users.tenants/index', compact('leases'))->with('params', "Tenants");
+
+        } elseif (Auth::user()->isManager() ) {
+            $properties = Property::where('user_id',Auth::user()->id)->get();
+            return view('users.tenants/index', compact('properties'))->with('params', "Tenants");
+        }else{
+            $leases = Auth::user()->leases ;
+            return view('users.tenants/index', compact('leases'))->with('params', "Tenants");
+        }
+
+
+
     }
     public function tenantReport(){
         $leases = Lease::all();

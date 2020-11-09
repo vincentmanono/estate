@@ -34,4 +34,10 @@ class Property extends Model
     public function requests(){
         return $this->hasMany(TenantService::class);
     }
+
+    public function leases()
+    {
+        return $this->hasManyThrough(Lease::class, Unit::class);
+    }
+
 }
