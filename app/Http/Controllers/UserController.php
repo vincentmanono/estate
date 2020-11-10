@@ -58,15 +58,33 @@ class UserController extends Controller
 
     public function showUser($id)
     {
-        $user = User::findOrFail($id);
+
+
+        if ( Auth::user()->isOwner() || Auth::user()->isManager() ) {
+          $user = User::findOrFail($id);
+        } elseif( Auth::user()->id == $id ) {
+            $user = User::findOrFail($id);
+        }else{
+            Session::flash('error',"You do not have previlagies to view other tenant profile");
+            return back();
+        }
+
+
 
         return view('users.show', compact('user'));
     }
 
     public function createUser()
     {
+        if ( Auth::user()->isOwner() || Auth::user()->isManager() ) {
+            return view('users.createEdit')->with('params', 'create');
+        } else {
+            Session::flash('error',"You do not have previlagies to create other tenant profile");
+            return back();
+        }
 
-        return view('users.createEdit')->with('params', 'create');
+
+
     }
 
     public function addUser(UserRequest $request)
@@ -112,13 +130,34 @@ class UserController extends Controller
     public function editUser($id)
     {
         $user = User::findOrFail($id);
-        return view('users.createEdit', compact('user'))->with('params', 'edit');
+        if ( $user->isOwner() &&  Auth::user()->isOwner() ) {
+            return view('users.createEdit', compact('user'))->with('params', 'edit');
+        } elseif($user->isOwner() && ! Auth::user()->isOwner()) {
+            Session::flash('error',"You do not have previlagies to update owner profile");
+            return back();
+        }else{
+            return view('users.createEdit', compact('user'))->with('params', 'edit');
+        }
+
+
+
 
 
     }
 
     public function updateUser(UserRequest $request,$id)
     {
+        $user = User::findOrFail($id);
+        if ( $user->isOwner() && ! Auth::user()->isOwner() ) {
+            Session::flash('error',"You do not have previlagies to update owner profile");
+            return back();
+        }
+        if ( $user->isManager() && ! Auth::user()->id !== $id  ) {
+            Session::flash('error',"You do not have previlagies to update this profile");
+            return back();
+        }
+
+
         if(!$request->hasFile('avatar') && $request->has('avatar')){
             return redirect()->back()->with('error','Image not supported');
         }
@@ -198,6 +237,19 @@ class UserController extends Controller
         //
         try {
             $user = User::where('id', $id)->first();
+
+            $user = User::findOrFail($id);
+        if ( $user->isOwner() && ! Auth::user()->isOwner() ) {
+            Session::flash('error',"You do not have previlagies to delete owner profile");
+            return back();
+        }
+        if ( $user->isManager() && ! Auth::user()->id !== $id  ) {
+            Session::flash('error',"You do not have previlagies to delete this profile");
+            return back();
+        }
+
+
+
         } catch (QueryException $ex) {
 
             Session::flash('error', 'Admin/User could not be found!');
