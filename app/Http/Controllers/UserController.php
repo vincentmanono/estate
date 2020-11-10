@@ -82,9 +82,6 @@ class UserController extends Controller
             Session::flash('error',"You do not have previlagies to create other tenant profile");
             return back();
         }
-
-
-
     }
 
     public function addUser(UserRequest $request)
