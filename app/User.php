@@ -16,9 +16,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','address',  'phone','kra_pin',  'id_no','type'.
-        'email','image'];
-         /**
+        'name', 'email', 'password', 'address',  'phone', 'kra_pin',  'id_no', 'type' .
+            'email', 'image'
+    ];
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
@@ -37,50 +38,62 @@ class User extends Authenticatable
     ];
 
 
-    public function properties(){
+    public function properties()
+    {
         return $this->hasMany(Property::class);
     }
-    public function deposits(){
+    public function deposits()
+    {
         return $this->hasMany(Deposit::class);
     }
-    public function maintenances(){
+    public function maintenances()
+    {
         return $this->hasMany(Maintenance::class);
     }
 
-    public function leases(){
+    public function leases()
+    {
         return $this->hasMany(Lease::class);
     }
-    public function smss(){
+    public function smss()
+    {
         return $this->hasMany(Sms::class);
     }
-    public function rents(){
-        return $this->hasMany(Deposit::class);
+    public function rents()
+    {
+        return $this->hasMany(Rent::class);
     }
 
-    public function isManager(){
+    public function isManager()
+    {
 
-         if ($this->type == "manager" ) {
-           return true ;
-         } else {
-            return false ;
-         }
-
-    }
-    public function isOwner(){
-
-        if ($this->type == "owner" ) {
-          return true ;
+        if ($this->type == "manager") {
+            return true;
         } else {
-           return false ;
+            return false;
         }
+    }
+    public function isOwner()
+    {
 
-   }
+        if ($this->type == "owner") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function isTenant()
+    {
 
-   public function requests()
-   {
-       return $this->hasMany(TenantService::class);
-   }
+        if ($this->type == "tenant") {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-
-
+    public function requests()
+    {
+        return $this->hasMany(TenantService::class);
+    }
 }

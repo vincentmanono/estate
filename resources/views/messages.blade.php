@@ -36,6 +36,6 @@
 
         }
 
-        setTimeout(flash, 6400);
+        setTimeout(flash, 9400);
 
 </script>

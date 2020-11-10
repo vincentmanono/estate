@@ -52,7 +52,6 @@ class DepositController extends Controller
     public function create()
     {
         $this->authorize('create', Deposit::class);
-        $this->authorize('create', Deposit::class);
         $user = User::find(Auth::user()->id);
         $tenants = User::latest()->get();
         if ($user->isOwner()) {

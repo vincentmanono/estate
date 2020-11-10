@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Rent;
-use App\User;
 use App\Unit;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RentController extends Controller
 {
@@ -16,14 +17,26 @@ class RentController extends Controller
      */
     public function index()
     {
-        $rents=Rent::all();
-        return view('rents.index',compact('rents'));
+
+        $user = User::findOrFail(Auth::user()->id);
+        $this->authorize('viewAny',Rent::class);
+        if ($user->isOwner() || $user->isTenant()) {
+
+            $rents = ($user->isOwner()) ? Rent::latest()->get() :  $user->rents ;
+            // dd($rents);
+            $compact = compact('rents');
+        } else {
+            $properties = $user->properties;
+            $compact = compact('properties');
+        }
+
+        return view('rents.index', $compact)->with('param', 'Rent Records');
     }
-    public function rentReport(){
+    public function rentReport()
+    {
 
-        $rents=Rent::all();
-        return view('reports.rentreport',compact('rents'))->with('params','Rents');
-
+        $rents = Rent::latest()->get();
+        return view('reports.rentreport', compact('rents'))->with('params', 'Rents');
     }
 
     /**
@@ -33,9 +46,19 @@ class RentController extends Controller
      */
     public function create()
     {
-        $units = Unit::all();
-        $tenants = User::where('type','tenant')->get();
-        return view('rents.createEdit',compact('units','tenants'))->with('param','Add Rent Records');
+        $this->authorize('create',Rent::class);
+
+
+        $user = User::find(Auth::user()->id);
+        $tenants = User::latest()->get();
+        if ( $user->isOwner() ) {
+            $units = Unit::latest()->get();
+             return view('rents.createEdit', compact('units', 'tenants'))->with('param', 'Add Rent Records');
+        } else {
+            $properties = $user->properties;
+            return view('rents.createEdit', compact('properties','tenants'))->with('param', 'Add Rent Records');
+        }
+
     }
 
     /**
@@ -46,32 +69,35 @@ class RentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $validator=  $this->validate($request, [
 
-            'amount'=>'required',
-            'paid_date'=>'required',
-            'unit_id'=>'required',
-            'user_id'=>'required',
-            'description'=>'required',
-            'expiry_date'=>'required',
+            'amount' => 'required',
+            'paid_date' => 'required',
+            'unit_id' => 'required',
+            'user_id' => 'required',
+            'description' => 'required',
+            'expiry_date' => 'required',
         ]);
+        $this->authorize('create',Rent::class);
 
+        $unit = Unit::findOrFail($request->unit_id);
         $post = new Rent();
 
-        $post->amount =$request->amount;
-        $post->paid_date =$request->paid_date;
-        $post->unit_id =$request->unit_id;
-        $post->description =$request->description;
-        $post->user_id =$request->user_id;
-        $post->expiry_date =$request->expiry_date;
+        $post->amount = $request->amount;
+        $post->paid_date = $request->paid_date;
+        $post->unit_id = $request->unit_id;
+        $post->description = $request->description;
+        $post->user_id = $request->user_id;
+        $post->expiry_date = $request->expiry_date;
+        $post->property_id = $unit->property->id ;
 
-        $validate=$post->save();
+        $validate = $post->save();
 
-        if($validate){
+        if ($validate) {
 
-            return back()->with('success','You have successfully added the rent record.');
-        }else{
-            return back()->with('error','An error occured. Please try again!!!');
+            return redirect()->route('rent.index') ->with('success', 'You have successfully added the rent record.');
+        } else {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
     }
 
@@ -83,9 +109,11 @@ class RentController extends Controller
      */
     public function show($id)
     {
-        $rents=Rent::all();
+        $rents = Rent::all();
         $rent = Rent::find($id);
-        return view('rents.show',compact('rent','rents'));
+        $this->authorize('view',$rent);
+
+        return view('rents.show', compact('rent', 'rents'));
     }
 
     /**
@@ -96,10 +124,9 @@ class RentController extends Controller
      */
     public function edit($id)
     {
-        $units = Unit::all();
-        $tenants = User::where('type','tenant')->get();
         $rent = Rent::find($id);
-        return view('rents.createEdit',compact('rent','units','tenants'))->with('param','Edit Rent Details');
+        $this->authorize('update',$rent);
+        return view('rents.createEdit', compact('rent'))->with('param', 'Edit Rent Details');
     }
 
     /**
@@ -111,32 +138,37 @@ class RentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
 
-            'amount'=>'required',
-            'paid_date'=>'required',
-            'unit_id'=>'required',
-            'user_id'=>'required',
-            'description'=>'required',
-            'expiry_date'=>'required',
+            'amount' => 'required',
+            'paid_date' => 'required',
+            'unit_id' => 'required',
+            'user_id' => 'required',
+            'description' => 'required',
+            'expiry_date' => 'required',
         ]);
 
         $post = Rent::find($id);
+        $unit = Unit::findOrFail($request->unit_id);
+        $this->authorize('update',$post);
 
-        $post->amount =$request->amount;
-        $post->paid_date =$request->paid_date;
-        $post->unit_id =$request->unit_id;
-        $post->description =$request->description;
-        $post->user_id =$request->user_id;
-        $post->expiry_date =$request->expiry_date;
 
-        $validate=$post->save();
+        $post->amount = $request->amount;
+        $post->paid_date = $request->paid_date;
+        $post->unit_id = $request->unit_id;
+        $post->description = $request->description;
+        $post->user_id = $request->user_id;
+        $post->expiry_date = $request->expiry_date;
+        $post->property_id = $unit->property->id ;
 
-        if($validate){
 
-            return back()->with('success','You have successfully updated the rent record.');
-        }else{
-            return back()->with('error','An error occured. Please try again!!!');
+        $validate = $post->save();
+
+        if ($validate) {
+
+            return back()->with('success', 'You have successfully updated the rent record.');
+        } else {
+            return back()->with('error', 'An error occured. Please try again!!!');
         }
     }
 
@@ -148,14 +180,17 @@ class RentController extends Controller
      */
     public function destroy($id)
     {
-        $del =Rent::find($id);
+
+
+        $del = Rent::find($id);
+        $this->authorize('update',$del);
+
         $del->delete();
 
-        if($del){
-            return redirect()->route('rent.index')->with('success','You have successfully deleted the record');
-        }
-        else{
-            return back()->with('error','An error occured. Please try again!!!');
+        if ($del) {
+            return redirect()->route('rent.index')->with('success', 'You have successfully deleted the record');
+        } else {
+            return back()->with('error', 'An error occured. Please try again!!!');
         }
     }
 }
