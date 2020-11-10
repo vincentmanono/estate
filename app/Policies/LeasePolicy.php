@@ -3,11 +3,11 @@
 namespace App\Policies;
 
 use App\User;
-use App\Water;
+use App\Lease;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class WaterPolicy
+class LeasePolicy
 {
     use HandlesAuthorization;
 
@@ -20,19 +20,18 @@ class WaterPolicy
     public function viewAny(User $user)
     {
         return Response::allow();
-
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Water  $water
+     * @param  \App\Lease  $lease
      * @return mixed
      */
-    public function view(User $user, Water $water)
+    public function view(User $user, Lease $lease)
     {
-        if ( $user->isOwner() || $user->isManager() && $water->unit->property->user_id == $user->id || $user->isTenant() && $user->id == $water->unit->lease->user_id) {
+        if ( $user->isOwner() || $user->isManager() && $lease->unit->property->user_id == $user->id || $user->isTenant() && $user->id == $lease->user_id ) {
             return Response::allow();
         } else {
             return Response::deny("You do not have permission to access this route",401);
@@ -58,12 +57,12 @@ class WaterPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Water  $water
+     * @param  \App\Lease  $lease
      * @return mixed
      */
-    public function update(User $user, Water $water)
+    public function update(User $user, Lease $lease)
     {
-        if ( $user->isOwner() || $user->isManager() && $water->unit->property->user_id == $user->id  ) {
+        if ( $user->isOwner() || $user->isManager() && $lease->unit->property->user_id == $user->id  ) {
             return Response::allow();
         } else {
             return Response::deny("You do not have permission to access this route",401);
@@ -74,12 +73,12 @@ class WaterPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Water  $water
+     * @param  \App\Lease  $lease
      * @return mixed
      */
-    public function delete(User $user, Water $water)
+    public function delete(User $user, Lease $lease)
     {
-        if ( $user->isOwner() || $user->isManager() && $water->unit->property->user_id == $user->id  ) {
+        if ( $user->isOwner() || $user->isManager() && $lease->unit->property->user_id == $user->id  ) {
             return Response::allow();
         } else {
             return Response::deny("You do not have permission to access this route",401);
@@ -90,10 +89,10 @@ class WaterPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Water  $water
+     * @param  \App\Lease  $lease
      * @return mixed
      */
-    public function restore(User $user, Water $water)
+    public function restore(User $user, Lease $lease)
     {
         //
     }
@@ -102,10 +101,10 @@ class WaterPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Water  $water
+     * @param  \App\Lease  $lease
      * @return mixed
      */
-    public function forceDelete(User $user, Water $water)
+    public function forceDelete(User $user, Lease $lease)
     {
         //
     }

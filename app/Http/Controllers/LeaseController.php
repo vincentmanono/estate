@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Lease;
 use App\Unit;
 use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use App\Lease;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class LeaseController extends Controller
 {
@@ -20,7 +21,22 @@ class LeaseController extends Controller
     {
         $leases = Lease::all();
 
-        return view('lease.index',compact('leases'));
+
+        $user = User::find(Auth::user()->id);
+        $this->authorize('viewAny', Lease::class);
+        if ($user->isOwner() || $user->isTenant()) {
+
+            $leases = ($user->isOwner()) ? Lease::latest()->get() :  $user->leases ;
+            // dd($rents);
+            $compact = compact('leases');
+        } else {
+            $properties = $user->properties;
+            $compact = compact('properties');
+        }
+
+
+
+        return view('lease.index',$compact)->with('param',"All lease Records");
     }
     public function leaseReport(){
 
@@ -37,9 +53,23 @@ class LeaseController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        $units = Unit::all();
-        return view('lease.createEdit',compact('users','units'))->with('params','Add Lease Record');
+        $this->authorize('create', Lease::class);
+        $users = User::latest()->get();
+        $user = User::find(Auth::user()->id);
+
+        if ($user->isOwner()) {
+            $units = Unit::latest()->get();
+            $compact = compact('units','users') ;
+
+
+        } else {
+            $properties = $user->properties;
+            $compact = compact('properties','users') ;
+
+
+        }
+
+        return view('lease.createEdit',$compact)->with('params','Add Lease Record');
     }
 
     /**
@@ -60,6 +90,8 @@ class LeaseController extends Controller
         ]);
 
         $post = new Lease();
+        $this->authorize('create', Lease::class);
+
 
         $post->status=$request->status;
         $post->date=$request->date;
@@ -107,7 +139,9 @@ class LeaseController extends Controller
     public function show($id)
     {
         $lease = Lease::find($id);
-        return view('lease.show',compact('lease'));
+        $this->authorize('view', $lease);
+
+        return view('lease.show',compact('lease'))->with('params','View Lease Record');
     }
 
     /**
@@ -118,10 +152,20 @@ class LeaseController extends Controller
      */
     public function edit( $id)
     {
-        $users = User::all();
-        $units = Unit::all();
         $lease = Lease::find($id);
-        return view('lease.createEdit',compact('users','units','lease'))->with('params','Edit Lease Record');
+        $this->authorize('update', $lease);
+        $user = User::find(Auth::user()->id);
+
+        if ($user->isManager() ) {
+            $properties = $user->properties ;
+            $compact= compact('lease','properties') ;
+        } else {
+            $units = Unit::latest()->get();
+            $compact= compact('lease','units') ;
+        }
+
+
+        return view('lease.createEdit',$compact)->with('params','Edit Lease Record');
     }
 
     /**
@@ -143,6 +187,8 @@ class LeaseController extends Controller
         ]);
 
         $post =  Lease::find($id);
+
+        $this->authorize('update', $post);
 
         $post->status=$request->status;
         $post->date=$request->date;
@@ -204,6 +250,8 @@ class LeaseController extends Controller
     {
         try {
             $del = Lease::find($id);
+            $this->authorize('delete', $del);
+
 
             $old_avatar = $del->file;
             if ($old_avatar != 'avatar.pdf') {
