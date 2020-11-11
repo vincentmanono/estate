@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+// Route::get('/',function(){
+// return view('layouts.mainapp');});
 Route::get('/','PageController@index');
 Route::get('/properties','PageController@property');
 Route::get('singleproperty/{id}','PageController@show')->name('single.show');
