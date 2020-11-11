@@ -371,7 +371,7 @@
                                                                                         </td>
                                                                                         <td>{{ date('F d, Y', strtotime($rent->expiry_date)) }}
                                                                                         </td>
-                                                                                        <td>{{ Str::of($rent->description)->limit(40) }}
+                                                                                        <td>{{ Str::of($rent->description)->limit(100) }}
                                                                                         </td>
 
                                                                                     </tr>

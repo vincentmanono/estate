@@ -6,6 +6,7 @@ use App\TenantService;
 use Illuminate\Http\Request;
 use App\Unit;
 use App\Lease;
+use App\Property;
 class TenantServiceController extends Controller
 {
     /**
@@ -15,7 +16,9 @@ class TenantServiceController extends Controller
      */
     public function index()
     {
-        //
+        $properties =Property::all();
+
+        return view('tenantservice.index',compact('properties'));
     }
 
     /**
