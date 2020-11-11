@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Water;
 use App\Unit;
+use App\User;
+use App\Water;
+use App\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WaterController extends Controller
 {
@@ -16,11 +19,33 @@ class WaterController extends Controller
     public function index()
     {
         $waters = Water::all();
-        return view('waters.index',compact('waters'));
+        $user = User::where('id', Auth::user()->id)->first();
+
+        // return view('waters.index',compact('waters'));
+
+        if ( $user->isOwner()) {
+            $waters = Water::latest()->get();
+            $compact = compact('waters') ;
+        } else if($user->isManager() ){
+            $properties = Property::where('user_id',$user->id)->get();
+            $compact = compact('properties') ;
+
+        }else{
+            $leases = $user->leases;
+            $compact = compact('leases') ;
+
+        }
+
+        return view('waters.index',$compact)->with('param','Water billing records');
+
+
+
+
+
     }
     public function waterReport(){
 
-        $waters = Water::all();
+        $waters = Water::latest()->get();
         return view('reports.waterreport',compact('waters'))->with('params','Water Record');
 
     }
@@ -32,8 +57,19 @@ class WaterController extends Controller
      */
     public function create()
     {
-        $units =Unit::all();
-        return view('waters.createEdit',compact('units'))->with('param','Add Water Records');
+        $this->authorize('create', Water::class);
+        $user = User::find(Auth::user()->id);
+        if ($user->isOwner()) {
+            $units = Unit::latest()->get();
+            $compact = compact('units');
+
+        } else {
+            $properties = $user->properties;
+            $compact = compact('properties');
+
+        }
+
+        return view('waters.createEdit',$compact)->with('param','Add Water Records');
     }
 
     /**

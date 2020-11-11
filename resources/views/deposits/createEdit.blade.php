@@ -1,293 +1,420 @@
 @extends('layouts.admin')
+@section('title')
+    <title>{{ $param }}</title>
+@stop
 @section('content')
 
-<!-- Page wrapper  -->
-<!-- ============================================================== -->
-<div class="page-wrapper">
+    <!-- Page wrapper  -->
     <!-- ============================================================== -->
-    <!-- Container fluid  -->
-    <!-- ============================================================== -->
-    <div class="container-fluid">
+    <div class="page-wrapper">
         <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
+        <!-- Container fluid  -->
         <!-- ============================================================== -->
-        <div class="row page-titles">
-            <div class="col-md-5 align-self-center">
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
 
 
-               <h4 class="text-themecolor">Deposit Records</h4>
+                    <h4 class="text-themecolor">{{ $param }}</h4>
 
 
-            </div>
-            <div class="col-md-7 align-self-center text-right">
-                <div class="d-flex justify-content-end align-items-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Deposit</li>
-                    </ol>
-                    @if($param == 'Edit deposit Details')
-                    <a type="button" href="{{ route('deposit.create') }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New</a>
-                    @endif
+                </div>
+                <div class="col-md-7 align-self-center text-right">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                            <li class="breadcrumb-item active">Deposit</li>
+                        </ol>
+                        @if ($param == 'Edit deposit Details')
+                            <a type="button" href="{{ route('deposit.create') }}"
+                                class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New</a>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Start Page Content -->
-        <!-- ============================================================== -->
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
 
-                        {{--  content here  --}}
+                            {{-- content here --}}
 
-                        <!-- Row -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    {{--  <div class="card-header bg-info">
-                                        <h4 class="mb-0 text-white">Other Sample form</h4>
-                                    </div>  --}}
-                                  @if ($param =='Add deposit Records' )
+                            <!-- Row -->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        {{-- <div class="card-header bg-info">
+                                            <h4 class="mb-0 text-white">Other Sample form</h4>
+                                        </div> --}}
+                                        @if ($param == 'Add deposit Records')
 
-                                  <form action="{{ route('deposit.store') }}" enctype="multipart/form-data" method="post">
+                                            @if (Auth::user()->isOwner())
+                                                <form action="{{ route('deposit.store') }}" enctype="multipart/form-data"
+                                                    method="post">
 
-                                    @csrf
-                                    @method('POST')
-                                    <div class="card-body">
-                                        <h4 class="card-title">Add deposit Records</h4>
-                                    </div>
-                                    <hr>
-                                    <div class="form-body">
-                                        <div class="card-body">
-                                            <div class="row pt-3">
-                                                <div class="col-md-6">
-                                                   <div class="form-group has-success">
-                                                        <label class="control-label">Unit Name</label>
-                                                        <select  name="unit_id" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-
-                                                            <option value="">--select -tenant-name--</option>
-                                                            @foreach ($units as $unit)
-
-                                                            <option value="{{ $unit->id }}">{{ $unit->name }}</option>
-
-                                                            @endforeach
-
-                                                        </select>
+                                                    @csrf
+                                                    @method('POST')
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Add deposit Records</h4>
                                                     </div>
-                                                </div>
-                                                <!--/span-->
-                                                <div class="col-md-6">
-                                                   <div class="form-group has-success">
-                                                        <label class="control-label">Tenant Name</label>
-                                                        <select  name="user_id" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                                    <hr>
+                                                    <div class="form-body">
+                                                        <div class="card-body">
+                                                            <div class="row pt-3">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Unit Name</label>
+                                                                        <select name="unit_id"
+                                                                            class="form-control custom-select"
+                                                                            data-placeholder="Choose a Category"
+                                                                            tabindex="1">
 
-                                                            <option value="">--select -tenant-name--</option>
-                                                            @foreach ($tenants as $tenant)
+                                                                            <option value="">--select -tenant-name--
+                                                                            </option>
+                                                                            @foreach ($units as $unit)
 
-                                                            <option value="{{ $tenant->id }}">{{ $tenant->name }}</option>
+                                                                                <option value="{{ $unit->id }}">
+                                                                                    {{ $unit->name }}  (  {{ $unit->property->name }} )
 
-                                                            @endforeach
+                                                                                </option>
 
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <!--/span-->
-                                            </div>
-                                            <!--/row-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group has-success">
-                                                        <label class="control-label">Amount</label>
-                                                        <input type="type" name="amount" class="form-control">
+                                                                            @endforeach
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Tenant Name</label>
+                                                                        <select name="user_id"
+                                                                            class="form-control custom-select"
+                                                                            data-placeholder="Choose a Category"
+                                                                            tabindex="1">
+
+                                                                            <option value="">--select -tenant-name--
+                                                                            </option>
+                                                                            @foreach ($tenants as $tenant)
+
+                                                                                <option value="{{ $tenant->id }}">
+                                                                                    {{ $tenant->name . "  ( ".  $tenant->type . " )" }}
+                                                                                </option>
+
+                                                                            @endforeach
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                            </div>
+                                                            <!--/row-->
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Amount</label>
+                                                                        <input type="type" name="amount"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">No of Months</label>
+                                                                        <input type="text" name="no_months"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                            </div>
+                                                            <!--/row-->
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Date</label>
+                                                                        <input type="date" name="date" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Status</label>
+                                                                        <select name="status"
+                                                                            class="form-control custom-select" id="">
+
+                                                                            <option value="">--select-status--</option>
+                                                                            <option value="Claimed">Claimed</option>
+                                                                            <option value="Active">Active</option>
+                                                                            <option value="Refunded">Refunded</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                            </div>
+
+                                                            <div class="form-actions">
+                                                                <div class="card-body">
+                                                                    <button type="submit" class="btn btn-success"> <i
+                                                                            class="fa fa-check"></i> Save</button>
+                                                                    <a href="{{ route('deposit.index') }}" type="button"
+                                                                        class="btn btn-dark">Cancel</a>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                </div>
-                                                <!--/span-->
-                                                <div class="col-md-6">
-                                                   <div class="form-group has-success">
-                                                        <label class="control-label">No of Months</label>
-                                                        <input type="text" name="no_months" class="form-control">
+                                                </form>
+                                            @else
+
+                                            <form action="{{ route('deposit.store') }}" enctype="multipart/form-data"
+                                                    method="post">
+
+                                                    @csrf
+                                                    @method('POST')
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Add deposit Records</h4>
                                                     </div>
-                                                </div>
-                                                <!--/span-->
-                                            </div>
-                                            <!--/row-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group has-success">
-                                                        <label class="control-label">Date</label>
-                                                        <input type="date" name="date" class="form-control">
+                                                    <hr>
+                                                    <div class="form-body">
+                                                        <div class="card-body">
+                                                            <div class="row pt-3">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Unit Name</label>
+                                                                        <select name="unit_id"
+                                                                            class="form-control custom-select"
+                                                                            data-placeholder="Choose a Category"
+                                                                            tabindex="1">
+
+                                                                            <option value="">--select -tenant-name--
+                                                                            </option>
+                                                                            @foreach ($properties as $property)
+
+                                                                            @foreach ($property->units as $unit)
+                                                                                 <option value="{{ $unit->id }}">
+                                                                                    {{ $unit->name }}  (  {{ $unit->property->name }} )
+                                                                                </option>
+                                                                            @endforeach
+
+
+
+
+                                                                            @endforeach
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Tenant Name</label>
+                                                                        <select name="user_id"
+                                                                            class="form-control custom-select"
+                                                                            data-placeholder="Choose a Category"
+                                                                            tabindex="1">
+
+                                                                            <option value="">--select -tenant-name--
+                                                                            </option>
+                                                                            @foreach ($tenants as $tenant)
+
+                                                                                <option value="{{ $tenant->id }}">
+                                                                                    {{ $tenant->name . "  ( ".  $tenant->type . " )" }}
+                                                                                </option>
+
+                                                                            @endforeach
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                            </div>
+                                                            <!--/row-->
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Amount</label>
+                                                                        <input type="type" name="amount"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">No of Months</label>
+                                                                        <input type="text" name="no_months"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                            </div>
+                                                            <!--/row-->
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Date</label>
+                                                                        <input type="date" name="date" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Status</label>
+                                                                        <select name="status"
+                                                                            class="form-control custom-select" id="">
+
+                                                                            <option value="">--select-status--</option>
+                                                                            <option value="Claimed">Claimed</option>
+                                                                            <option value="Active">Active</option>
+                                                                            <option value="Refunded">Refunded</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                            </div>
+
+                                                            <div class="form-actions">
+                                                                <div class="card-body">
+                                                                    <button type="submit" class="btn btn-success"> <i
+                                                                            class="fa fa-check"></i> Save</button>
+                                                                    <a href="{{ route('deposit.index') }}" type="button"
+                                                                        class="btn btn-dark">Cancel</a>
+                                                                </div>
+                                                            </div>
                                                         </div>
+                                                </form>
+
+                                            @endif
+
+
+
+
+                                        @elseif('Edit deposit Records')
+
+                                            <form action="{{ route('deposit.update', $deposit->id) }}"
+                                                enctype="multipart/form-data" method="post">
+
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Update deposit Records</h4>
+                                                    <span>
+                                                        Tenant : {{ $deposit->user->name . ' ' . $deposit->user->phone }}
+                                                    </span>
                                                 </div>
-                                                <!--/span-->
-                                                <div class="col-md-6">
-                                                   <div class="form-group has-success">
-                                                        <label class="control-label">Status</label>
-                                                        <select name="status" class="form-control custom-select" id="">
+                                                <hr>
+                                                <div class="form-body">
+                                                    <div class="card-body">
+                                                        <div class="row pt-3">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group has-success">
+                                                                    <label class="control-label">Unit Name</label>
+                                                                    <select name="unit_id"
+                                                                        class="form-control custom-select"
+                                                                        data-placeholder="Choose a Category" tabindex="1">
 
-                                                            <option value="">--select-status--</option>
-                                                            <option value="Claimed">Claimed</option>
-                                                            <option value="Active">Active</option>
-                                                            <option value="Refunded">Refunded</option>
-                                                        </select>                                                    </div>
-                                                </div>
-                                                <!--/span-->
-                                            </div>
+                                                                        <option value="{{ $deposit->unit->id }}" selected>
+                                                                            {{ $deposit->unit->name }}
+                                                                        </option>
+                                                                        @foreach ($deposit->unit->property->units as $unit)
 
-                                        <div class="form-actions">
-                                            <div class="card-body">
-                                                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                                <a href="{{ route('deposit.index') }}" type="button" class="btn btn-dark">Cancel</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                                                            <option value="{{ $unit->id }}">
+                                                                                {{ $unit->name . " ( ". $unit->property->name . " )" }}
+                                                                            </option>
 
-                                  @elseif('Edit deposit Records')
+                                                                        @endforeach
 
-                                  <form action="{{ route('deposit.update',$deposit->id) }}" enctype="multipart/form-data" method="post">
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <!--/span-->
+                                                            <div class="col-md-6">
+                                                                <div class="form-group has-success">
+                                                                    <input type="hidden" value="{{ $deposit->user->id }}"
+                                                                        name="user_id">
 
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="card-body">
-                                        <h4 class="card-title">Update deposit Records</h4>
-                                    </div>
-                                    <hr>
-                                    <div class="form-body">
-                                        <div class="card-body">
-                                            <div class="row pt-3">
-                                                <div class="col-md-6">
-                                                   <div class="form-group has-success">
-                                                        <label class="control-label">Unit Name</label>
-                                                        <select  name="unit_id" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                                                    <label class="control-label">Amount</label>
+                                                                    <input type="type" value="{{ $deposit->amount }}"
+                                                                        name="amount" class="form-control">
 
-                                                            <option value="{{ $deposit->unit->id }}" selected>{{$deposit->unit->name}}</option>
-                                                            @foreach ($units as $unit)
 
-                                                            <option value="{{ $unit->id }}">{{ $unit->name }}</option>
-
-                                                            @endforeach
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <!--/span-->
-                                                <div class="col-md-6">
-                                                   <div class="form-group has-success">
-                                                        <label class="control-label">Tenant Name</label>
-                                                        <select  name="user_id" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-
-                                                            <option value="{{ $deposit->user->id }}" selected>{{$deposit->user->name}}</option>
-                                                            @foreach ($tenants as $tenant)
-
-                                                            <option value="{{ $tenant->id }}">{{ $tenant->name }}</option>
-
-                                                            @endforeach
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <!--/span-->
-                                            </div>
-                                            <!--/row-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group has-success">
-                                                        <label class="control-label">Amount</label>
-                                                        <input type="type" value="{{ $deposit->amount }}" name="amount" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <!--/span-->
                                                         </div>
-                                                </div>
-                                                <!--/span-->
-                                                <div class="col-md-6">
-                                                    <div class="form-group has-success">
-                                                        <label class="control-label">Date</label>
-                                                        <input type="date" value="{{ $deposit->date  }}" name="date" class="form-control">
+                                                        <!--/row-->
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group has-success">
+                                                                    <label class="control-label">Date</label>
+                                                                    <input type="date" value="{{ $deposit->date }}"
+                                                                        name="date" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <!--/span-->
+                                                            <div class="col-md-6">
+                                                                <div class="form-group has-success">
+                                                                    <label class="control-label">Status</label>
+                                                                    <select name="status" class="form-control custom-select"
+                                                                        id="">
+                                                                        <option value="{{ $deposit->status }}" selected>
+                                                                            {{ $deposit->status }}
+                                                                        </option>
+                                                                        <option value="Claimed">Claimed</option>
+                                                                        <option value="Active">Active</option>
+                                                                        <option value="Refunded">Refunded</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <!--/span-->
                                                         </div>
-                                                </div>
-                                                <!--/span-->
-                                            </div>
-                                            <!--/row-->
-                                            <div class="row">
+                                                        <!--/row-->
 
-                                                <!--/span-->
-                                                <div class="col-md-5">
-                                                   <div class="form-group has-success">
-                                                        <label class="control-label">Status</label>
-                                                        <select name="status" class="form-control custom-select" id="">
-                                                            <option value="{{ $deposit->status }}">{{ $deposit->status }}</option>
-                                                            <option value="Claimed">Claimed</option>
-                                                            <option value="Active">Active</option>
-                                                            <option value="Refunded">Refunded</option>
-                                                        </select>
+
+                                                        <div class="form-actions">
+                                                            <div class="card-body">
+                                                                <button type="submit" class="btn btn-success"> <i
+                                                                        class="fa fa-check"></i> Save</button>
+                                                                <a href="{{ route('deposit.index') }}" type="button"
+                                                                    class="btn btn-dark">Cancel</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <!--/span-->
-                                            </div>
+                                            </form>
 
-                                        <div class="form-actions">
-                                            <div class="card-body">
-                                                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                                <a href="{{ route('deposit.index') }}" type="button" class="btn btn-dark">Cancel</a>
-                                            </div>
-                                        </div>
+                                        @endif
                                     </div>
-                                </form>
-
-                                  @endif
                                 </div>
                             </div>
+                            <!-- Row -->
+
+
                         </div>
-                        <!-- Row -->
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-        <!-- ============================================================== -->
-        <!-- End PAge Content -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right sidebar -->
-        <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
 
-        <!-- ============================================================== -->
+    <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
-</div>
-<!-- ============================================================== -->
-<!-- End Page wrapper  -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
 
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Deposit;
 use App\Unit;
 use App\User;
+use App\Deposit;
+use App\Policies\DepositPolicy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class DepositController extends Controller
 {
@@ -14,16 +17,31 @@ class DepositController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        $deposits=Deposit::all();
-        return view('deposits.index',compact('deposits'));
+
+        $user = User::find(Auth::user()->id);
+        $this->authorize('viewAny', Deposit::class);
+        if ($user->isOwner()) {
+            $deposits = Deposit::latest()->get();
+            return view('deposits.index', compact('deposits'))->with('param', 'Deposit');
+        } elseif ($user->isManager()) {
+            $properties = $user->properties;
+            return view('deposits.index', compact('properties'))->with('param', 'Deposit');
+        } else {
+            $deposits = $user->deposits;
+            return view('deposits.index', compact('deposits'))->with('param', 'Deposit');
+        }
     }
-    public function depositReport(){
+    public function depositReport()
+    {
 
-        $deposits=Deposit::all();
-        return view('reports.depositreport',compact('deposits'))->with('params','Deposits');
-
+        $deposits = Deposit::all();
+        return view('reports.depositreport', compact('deposits'))->with('params', 'Deposits');
     }
 
     /**
@@ -33,9 +51,18 @@ class DepositController extends Controller
      */
     public function create()
     {
-        $units = Unit::all();
-        $tenants = User::where('type','tenant')->get();
-        return view('deposits.createEdit',compact('units','tenants'))->with('param','Add deposit Records');
+        $this->authorize('create', Deposit::class);
+        $user = User::find(Auth::user()->id);
+        $tenants = User::latest()->get();
+        if ($user->isOwner()) {
+            $units = Unit::latest()->get();
+
+            return view('deposits.createEdit', compact('units', 'tenants'))->with('param', 'Add deposit Records');
+        } else {
+            $properties = $user->properties;
+
+            return view('deposits.createEdit', compact('properties', 'tenants'))->with('param', 'Add deposit Records');
+        }
     }
 
     /**
@@ -47,31 +74,31 @@ class DepositController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request,[
+        $this->validate($request, [
 
-            'amount'=>['string','required'],
-            'date'=>['string','required'],
-            'user_id'=>['required'],
-            'unit_id'=>['string','required'],
-            'status'=>['string','required']
+            'amount' => ['string', 'required'],
+            'date' => ['string', 'required'],
+            'user_id' => ['required'],
+            'unit_id' => ['string', 'required'],
+            'status' => ['string', 'required']
 
         ]);
 
+        $this->authorize('create', Deposit::class);
         $post = new Deposit();
 
-        $post->amount =$request->amount;
-        $post->date =$request->date;
-        $post->user_id=$request->user_id;
-        $post->unit_id=$request->unit_id;
-        $post->status=$request->status;
+        $post->amount = $request->amount;
+        $post->date = $request->date;
+        $post->user_id = $request->user_id;
+        $post->unit_id = $request->unit_id;
+        $post->status = $request->status;
 
-        $validate=$post->save();
+        $validate = $post->save();
 
-        if($validate){
-            return back()->with('success','You have successfully added the deposit record');
-        }
-        else{
-            return back()->with('error','An error occured. Please try again!!!');
+        if ($validate) {
+            return back()->with('success', 'You have successfully added the deposit record');
+        } else {
+            return back()->with('error', 'An error occured. Please try again!!!');
         }
     }
 
@@ -81,10 +108,19 @@ class DepositController extends Controller
      * @param  \App\Deposit  $deposit
      * @return \Illuminate\Http\Response
      */
-    public function show( $id)
+    public function show($id)
     {
+
         $deposit = Deposit::find($id);
-        return view('deposits.show',compact('deposit'));
+        $this->authorize('view', $deposit);
+
+
+        if (($deposit->unit->property->user_id == auth()->user()->id) || auth()->user()->isOwner()) {
+            return view('deposits.show', compact('deposit'));
+        } else {
+            Session::flash('error', "You do not have previlagies to view this deposit details");
+            return back();
+        }
     }
 
     /**
@@ -95,11 +131,16 @@ class DepositController extends Controller
      */
     public function edit($id)
     {
-        $units = Unit::all();
-        $tenants = User::where('type','tenant')->get();
-        $deposit=Deposit::find($id);
+        $deposit = Deposit::find($id);
+        $this->authorize('update', $deposit);
 
-        return view('deposits.createEdit',compact('deposit','units','tenants'))->with('param','Edit Deposit Records');
+
+        if (($deposit->unit->property->user_id == auth()->user()->id) || auth()->user()->isOwner()) {
+            return view('deposits.createEdit', compact('deposit'))->with('param', 'Edit Deposit Record');
+        } else {
+            Session::flash('error', "You do not have previlagies to edit this deposit details");
+            return back();
+        }
     }
 
     /**
@@ -111,31 +152,26 @@ class DepositController extends Controller
      */
     public function update(Request $request,  $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
 
-            'amount'=>['string','required'],
-            'date'=>['string','required'],
-            'user_id'=>['required'],
-            'unit_id'=>['string','required'],
-            'status'=>['string','required']
+            'amount' => ['string', 'required'],
+            'date' => ['string', 'required'],
+            'user_id' => ['required'],
+            'unit_id' => ['string', 'required'],
+            'status' => ['string', 'required']
 
         ]);
 
-        $post =  Deposit::find($id);
+        $deposit =  Deposit::find($id);
+        $this->authorize('update', $deposit);
 
-        $post->amount =$request->amount;
-        $post->date =$request->date;
-        $post->user_id=$request->user_id;
-        $post->unit_id=$request->unit_id;
-        $post->status=$request->status;
+        $update = $deposit->update($request->all());
 
-        $validate=$post->save();
 
-        if($validate){
-            return back()->with('success','You have successfully updated the deposit record');
-        }
-        else{
-            return back()->with('error','An error occured. Please try again!!!');
+        if ($update) {
+            return back()->with('success', 'You have successfully updated the deposit record');
+        } else {
+            return back()->with('error', 'An error occured. Please try again!!!');
         }
     }
 
@@ -147,14 +183,22 @@ class DepositController extends Controller
      */
     public function destroy($id)
     {
-        $del = Deposit::find($id);
-        $del->delete();
 
-        if($del){
-            return redirect()->route('deposit.index')->with('success','You have successfully deleted the deposit record.');
+        $deposit = Deposit::find($id);
+        $this->authorize('delete', $deposit);
+
+        if (auth()->user()->isOwner()) {
+            $deposit->delete();
+        } else {
+            Session::flash('error', "You do not have previlagies to delete this deposit details");
+            return back();
         }
-        else{
-            return back()->with('error','An error occured. Please try again!!!');
+
+
+        if ($deposit) {
+            return redirect()->route('deposit.index')->with('success', 'You have successfully deleted the deposit record.');
+        } else {
+            return back()->with('error', 'An error occured. Please try again!!!');
         }
     }
 }
