@@ -25,7 +25,7 @@
                 <div class="big-tagline clearfix">
                     <h2>Chief Property Real Estates</h2>
                     <p class="lead">Welcome to Chief Properties Real Estate Site. </p>
-                    <a data-scroll href="#gallery" class="btn btn-light btn-radius grd1 btn-brd">Contact Us</a>
+                    <a data-scroll href="/properties" class="btn btn-light btn-radius grd1 btn-brd">View Properties</a>
                 </div>
             </div>
         </div><!-- end row -->
@@ -34,38 +34,7 @@
 
 <div class="about-box">
     <div class="container">
-        <div class="row">
-            <div class="top-feature owl-carousel owl-theme">
-                <div class="item">
-                    <div class="single-feature">
-                        <div class="icon"><img src="{{asset('/client/uploads/icon-01.png')}}" class="img-responsive" alt=""></div>
-                        <h4><a href="#">Full Furnished</a></h4>
-                        <p>Mauris eu porta orci. In at erat enim. Suspendisse felis erat, volutpat at nisl sit amet, maximus molestie nisi. </p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-feature">
-                        <div class="icon"><img src="{{asset('/client/uploads/icon-02.png')}}" class="img-responsive" alt=""></div>
-                        <h4><a href="#">Living Inside a Nature</a></h4>
-                        <p>Mauris eu porta orci. In at erat enim. Suspendisse felis erat, volutpat at nisl sit amet, maximus molestie nisi.</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-feature">
-                        <div class="icon"><img src="{{asset('/client/uploads/icon-03.png')}}" class="img-responsive" alt=""></div>
-                        <h4><a href="#">Luxurious Fittings</a></h4>
-                        <p>Mauris eu porta orci. In at erat enim. Suspendisse felis erat, volutpat at nisl sit amet, maximus molestie nisi. </p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-feature">
-                        <div class="icon"><img src="{{asset('/client/uploads/icon-04.png')}}" class="img-responsive" alt=""></div>
-                        <h4><a href="#">Non Stop Security</a></h4>
-                        <p>Lorem Is a dummy Mauris eu porta orci. In at erat enim. Suspendisse felis erat, volutpat at nisl sit amet, maximus molestie nisi. </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <hr class="hr1">
 
@@ -86,11 +55,13 @@
             </div>
         </div>
 
+        @include('includes.clientadvert')
+
     </div>
 </div>
 
 
-
+{{--
 <div id="testimonials" class="section lb">
     <div class="container">
         <div class="section-title row text-center">
@@ -183,6 +154,6 @@
             </div><!-- end col -->
         </div><!-- end row -->
     </div><!-- end container -->
-</div><!-- end section -->
+</div><!-- end section -->  --}}
 
 @endsection

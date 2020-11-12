@@ -183,6 +183,51 @@
                                                                 </div>
                                                               </div>
                                                     </div>
+
+
+                                                    {{--  water  --}}
+
+                                                    <div class="row">
+
+                                                        <div class="card col-md-12 ">
+                                                            <div class="card-body">
+                                                              <h4 class="card-title">Water Table</h4>
+                                                              <h6 class="card-subtitle">Monthly water bill for {{ $unit->name }}</h6>
+                                                              <div class="table-responsive m-t-40">
+                                                                <table
+                                                                  id="myTable"
+                                                                  class="table table-bordered table-striped"
+                                                                >
+                                                                  <thead>
+                                                                    <tr>
+                                                                      <th>Amount</th>
+                                                                      <th>Pay Date</th>
+                                                                      <th>No.of.Months</th>
+                                                                      <th>Read Date</th>
+                                                                      <th>New Reading</th>
+                                                                    </tr>
+                                                                  </thead>
+                                                                  <tbody>
+
+                                                                      @foreach ($unit->waters as $water)
+                                                                           <tr>
+                                                                      <td>{{ $water->amount}}</td>
+                                                                      <td>{{ $water->pay_date }}</td>
+                                                                      <td> {{ $water->no_months}} </td>
+                                                                      <td>{{ $water->read_date }}</td>
+                                                                      <td>{{ $water->new_reading }}</td>
+                                                                    </tr>
+                                                                      @endforeach
+
+
+
+
+                                                                  </tbody>
+                                                                </table>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>

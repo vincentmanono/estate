@@ -4,7 +4,8 @@
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="widget clearfix">
                     <div class="widget-title">
-                        <img src="{{ asset('client/images/logos/log.PNG') }}" alt="">
+                        <a href="/"> <img src="{{ asset('client/images/logos/log.PNG') }}" alt=""></a>
+
                     </div>
                     <p> Welcome to chiefproperties RealEstate.</p>
                 </div><!-- end clearfix -->
