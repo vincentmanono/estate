@@ -93,7 +93,7 @@
 
                                     @if(Auth::user()->id == $rent->user_id)
 
-                                     @if($rent->status ==1)
+                                     @if($rent->status =1)
                                      Paid
                                      @else
                                      Not Paid
@@ -111,11 +111,21 @@
             <div class="col-lg-3 col-sm-6 col-xs-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-uppercase">Water Billing Status</h5>
+                        <h5 class="card-title text-uppercase">Leased Units </h5>
                         <div class="d-flex align-items-center no-block m-t-20 m-b-10">
-                            <h1><i class="ti-wallet text-success"></i></h1>
+                            <h1><i class="ti-home text-success"></i></h1>
                             <div class="ml-auto">
-                                <h1 class="text-muted">$8170</h1>
+                               <h1 class="text-muted">
+                                  {{--     @foreach ($leases as $lease)
+
+                                    @if (Auth::user()->id == $lease->user_id)  --}}
+
+                                    {{ Auth()->user()->leases->count() }}
+
+                                    {{--  @endif
+
+                                    @endforeach  --}}
+                                </h1>
                             </div>
                         </div>
                     </div>
