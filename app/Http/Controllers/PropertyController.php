@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Property;
-use App\Branch;
-use Illuminate\support\Str;
-use App\User;
 use App\Unit;
+use App\User;
 use App\Lease;
+use App\Branch;
+use App\Property;
+use Illuminate\support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Database\QueryException;
 
 class PropertyController extends Controller
 {
@@ -24,9 +25,11 @@ class PropertyController extends Controller
     }
     public function index()
     {
-        $this->authorize("viewAny",Property::class) ;
-        $properties= Property::all();
-        return view('properties.index',compact('properties'));
+        $properties = Property::latest()->get();
+
+        $this->authorize("viewAny", Property::class);
+
+        return view('properties.index', compact('properties'));
     }
 
     /**
@@ -36,10 +39,10 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        $this->authorize("create",Property::class) ;
+        $this->authorize("create", Property::class);
         $branches = Branch::all();
-        $users = User::where('type','manager')->get();
-        return view('properties.createEdit',compact('branches','users'))->with('param','Add Property');
+        $users = User::where('type', 'manager')->get();
+        return view('properties.createEdit', compact('branches', 'users'))->with('param', 'Add Property');
     }
 
     /**
@@ -50,33 +53,33 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize("create",Property::class) ;
-        $this->validate($request,[
+        $this->authorize("create", Property::class);
+        $this->validate($request, [
 
 
-            'name'=>['string'],
-            'type'=>['required'],
-            'date_of_cert_of_occupation'=>[''],
-            'address'=>['string'],
-            'image'=>['required'],
-            'year_of_construction'=>[''],
-            'water_bill_rate'=>['string'],
-            'l_r_no'=>['string'],
-           'branch_id'=>[''],
-           'user_id'=>[''],
+            'name' => ['string'],
+            'type' => ['required'],
+            'date_of_cert_of_occupation' => [''],
+            'address' => ['string'],
+            'image' => ['required'],
+            'year_of_construction' => [''],
+            'water_bill_rate' => ['string'],
+            'l_r_no' => ['string'],
+            'branch_id' => [''],
+            'user_id' => [''],
 
         ]);
         $post = new Property();
 
         $post->name = $request->name;
         $post->type = $request->type;
-        $post->date_of_cert_of_occupation= $request->date_of_cert_of_occupation;
-        $post->address =$request->address;
-        $post->year_of_construction=$request->year_of_construction;
-        $post->water_bill_rate=$request->water_bill_rate;
+        $post->date_of_cert_of_occupation = $request->date_of_cert_of_occupation;
+        $post->address = $request->address;
+        $post->year_of_construction = $request->year_of_construction;
+        $post->water_bill_rate = $request->water_bill_rate;
         $post->l_r_no = $request->l_r_no;
-        $post->branch_id =$request->branch_id;
-        $post->user_id= $request->user_id;
+        $post->branch_id = $request->branch_id;
+        $post->user_id = $request->user_id;
 
         if (file_exists($request->file('image'))) {
 
@@ -97,16 +100,13 @@ class PropertyController extends Controller
             $avatar  = $filenameToStore;
             $post->image = $avatar;
         }
-        $validate=$post->save();
+        $validate = $post->save();
 
-        if($validate){
-            return redirect()->route('property.index')->with('success','You have successfully added a new Property');
+        if ($validate) {
+            return redirect()->route('property.index')->with('success', 'You have successfully added a new Property');
+        } else {
+            return redirect()->back()->with('error', 'An error occured while submitting the Property details');
         }
-        else{
-            return redirect()->back()->with('error','An error occured while submitting the Property details');
-        }
-
-
     }
 
 
@@ -118,11 +118,11 @@ class PropertyController extends Controller
      */
     public function show(Property $property)
     {
-        $this->authorize("view",$property) ;
-        $units =Unit::all();
-        $leases=Lease::all();
+        $this->authorize("view", $property);
+        $units = Unit::all();
+        $leases = Lease::all();
 
-        return view('properties.show',compact('property','units','leases'));
+        return view('properties.show', compact('property', 'units', 'leases'));
     }
 
     /**
@@ -133,10 +133,10 @@ class PropertyController extends Controller
      */
     public function edit(Property $property)
     {
-        $this->authorize("update",$property) ;
+        $this->authorize("update", $property);
         $branches = Branch::all();
-        $users = User::where('type','manager')->get();
-        return view('properties.createEdit',compact('branches','users','property'))->with('param','Edit Property');
+        $users = User::where('type', 'manager')->get();
+        return view('properties.createEdit', compact('branches', 'users', 'property'))->with('param', 'Edit Property');
     }
 
     /**
@@ -148,34 +148,34 @@ class PropertyController extends Controller
      */
     public function update(Request $request,  Property $property)
     {
-        $this->authorize("update",$property) ;
+        $this->authorize("update", $property);
 
-        $this->validate($request,[
+        $this->validate($request, [
 
 
-            'name'=>['string'],
-            'type'=>['required'],
-            'date_of_cert_of_occupation'=>[''],
-            'address'=>['string'],
-            'image'=>['required'],
-            'year_of_construction'=>[''],
-            'water_bill_rate'=>['string'],
-            'l_r_no'=>['string'],
-           'branch_id'=>[''],
-           'user_id'=>[''],
+            'name' => ['string'],
+            'type' => ['required'],
+            'date_of_cert_of_occupation' => [''],
+            'address' => ['string'],
+            'image' => ['nullable'],
+            'year_of_construction' => [''],
+            'water_bill_rate' => ['string'],
+            'l_r_no' => ['string'],
+            'branch_id' => [''],
+            'user_id' => [''],
 
         ]);
         $post = Property::find($property->id);
 
         $post->name = $request->name;
         $post->type = $request->type;
-        $post->date_of_cert_of_occupation= $request->date_of_cert_of_occupation;
-        $post->address =$request->address;
-        $post->year_of_construction=$request->year_of_construction;
-        $post->water_bill_rate=$request->water_bill_rate;
+        $post->date_of_cert_of_occupation = $request->date_of_cert_of_occupation;
+        $post->address = $request->address;
+        $post->year_of_construction = $request->year_of_construction;
+        $post->water_bill_rate = $request->water_bill_rate;
         $post->l_r_no = $request->l_r_no;
-        $post->branch_id =$request->branch_id;
-        $post->user_id= $request->user_id;
+        $post->branch_id = $request->branch_id;
+        $post->user_id = $request->user_id;
 
         if (file_exists($request->file('image'))) {
 
@@ -208,16 +208,13 @@ class PropertyController extends Controller
             // Upload image
             $post->image = $filenameToStore;
         }
-        $validate=$post->save();
+        $validate = $post->save();
 
-        if($validate){
-            return redirect()->back()->with('success','You have successfully Edited the Property');
+        if ($validate) {
+            return redirect()->back()->with('success', 'You have successfully Edited the Property');
+        } else {
+            return redirect()->back()->with('error', 'An error occured while updating the Property details!');
         }
-        else{
-            return redirect()->back()->with('error','An error occured while updating the Property details!');
-        }
-
-
     }
 
     /**
@@ -229,7 +226,7 @@ class PropertyController extends Controller
     public function destroy(Property $property)
     {
         try {
-            $this->authorize("delete",$property) ;
+            $this->authorize("delete", $property);
             $del = Property::find($property->id);
 
             $old_avatar = $del->image;
@@ -248,9 +245,7 @@ class PropertyController extends Controller
             }
         } catch (QueryException $ex) {
 
-            return redirect()->back()->with('error','Property could not be found');
+            return redirect()->back()->with('error', 'Property could not be found');
         }
     }
-
 }
-
