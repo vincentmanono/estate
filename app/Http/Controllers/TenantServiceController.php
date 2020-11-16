@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\TenantService;
-use Illuminate\Http\Request;
 use App\Unit;
+use App\User;
 use App\Lease;
 use App\Property;
+use App\TenantService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 class TenantServiceController extends Controller
 {
     /**
@@ -17,8 +20,23 @@ class TenantServiceController extends Controller
     public function index()
     {
         $properties =Property::all();
+        $user = User::where('id', Auth::user()->id)->first();
+        if ( $user->isOwner() || $user->isTenant() ) {
+            $allServicesRequests = TenantService::latest()->get();
+            $specificTenantRequests = TenantService::latest()->where('user_id',$user->id)->get();
 
-        return view('tenantservice.index',compact('properties'));
+            $services =  ($user->isOwner()) ? $allServicesRequests : $specificTenantRequests ;
+
+            $compact = compact('services') ;
+
+        } else {
+            $properties = $user->properties ;
+            $compact = compact('properties') ;
+
+        }
+
+
+        return view('tenantservice.index',$compact);
     }
 
     /**
@@ -28,9 +46,8 @@ class TenantServiceController extends Controller
      */
     public function create()
     {
-        $units = Unit::all();
-        $leases = Lease::all();
-        return view('tenantservice.create',compact('units','leases'));
+        $leases = Auth::user()->leases ;
+        return view('tenantservice.create',compact('leases')) ->with('param','Create Tenant Request') ;
     }
 
     /**
@@ -41,29 +58,24 @@ class TenantServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-
-            'user_id'=>['required'],
-            'property_id'=>['required'],
+        $validator = $this->validate($request,[
             'message'=>['required'],
             'unit_id'=>['required']
-
         ]);
 
         $post = new TenantService();
 
-        $post->user_id=$request->user_id;
+        $post->user_id= Auth::user()->id ;
         $post->unit_id=$request->unit_id;
-        $post->property_id=$request->property_id;
         $post->message=$request->message;
 
         $validate=$post->save();
 
         if($validate){
-            return back()->with('success','Your request has been successfully sent.We shall get back to you soon.');
+            return redirect()->route('tenantservice.index')->with('success','Your request has been successfully sent.We shall get back to you soon.');
         }
         else{
-            return \back()->with('error','An error occured while submitting your request! please try again.');
+             return redirect()->back()->withErrors($validator)->withInput();
         }
     }
 
@@ -84,9 +96,11 @@ class TenantServiceController extends Controller
      * @param  \App\TenantService  $tenantService
      * @return \Illuminate\Http\Response
      */
-    public function edit(TenantService $tenantService)
+    public function edit($id)
     {
-        //
+        $service = TenantService::findOrFail($id) ;
+        return view('tenantservice.create',compact('service')) ->with('param','Edit Tenant Request') ;
+
     }
 
     /**
@@ -96,9 +110,12 @@ class TenantServiceController extends Controller
      * @param  \App\TenantService  $tenantService
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TenantService $tenantService)
+    public function update(Request $request, $id)
     {
-        //
+        $service = TenantService::findOrFail($id) ;
+        $service->update($request->all());
+        $request->session()->flash('success', "You service request updated");
+        return redirect()->route('tenantservice.index') ;
     }
 
     /**
@@ -107,8 +124,21 @@ class TenantServiceController extends Controller
      * @param  \App\TenantService  $tenantService
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TenantService $tenantService)
+    public function destroy($id)
     {
-        //
+        $service = TenantService::findOrFail($id) ;
+        $service->delete();
+
+        return redirect()->route('tenantservice.index')->with('success', "Service request deleted");
+
+    }
+
+    public function changestatus(Request $request , $id )
+    {
+        $service = TenantService::findOrFail($id) ;
+        $service->update($request->all());
+        $request->session()->flash('success', "Service request status updated");
+        return redirect()->route('tenantservice.index') ;
+
     }
 }

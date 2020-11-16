@@ -20,11 +20,11 @@ class CreateTenantServicesTable extends Migration
             $table->integer('unit_id');
             $table->integer('user_id');
             $table->string('message');
-            $table->integer('property_id');
+
+            $table->boolean('status')->nullable()->default(false);
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
-            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
-
             $table->timestamps();
         });
     }
