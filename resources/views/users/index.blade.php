@@ -95,7 +95,7 @@
                                                     <a href="{{ route('showUser', $user->id) }}"
                                                         class=" waves-effect waves-light  btn btn-sm btn-info "><i class="fa fa-eye" aria-hidden="true"></i></a>
                                                         <a href="{{ route('updateUser', $user->id) }}"
-                                                            class=" waves-effect waves-light  btn btn-sm btn-warning text text-white "><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                                                            class=" waves-effect waves-light  btn btn-sm btn-warning text text-white "><i class="fa fa-pencil-square" aria-hidden="true">Edit</i></a>
 
                                                             <a href="" onclick="deleteUser()"
                                                                 class=" waves-effect waves-light  btn btn-sm btn-danger text text-white "> <i class="fa fa-trash" aria-hidden="true"></i> </a>
