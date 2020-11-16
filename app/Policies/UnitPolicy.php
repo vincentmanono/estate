@@ -24,8 +24,7 @@ class UnitPolicy
         if ($user->isOwner() || $user->isManager()) {
             return true;
         } else {
-            Session::flash("error", "You do not have permission to access this route");
-            return redirect()->back();
+            return Response::deny("You do not have permission to view all Units ",401) ;
         }
     }
 
@@ -39,13 +38,14 @@ class UnitPolicy
     public function view(User $user, Unit $unit)
     {
         if ($user->isOwner() || $user->isManager()) {
-            if ($user->isManager() && $unit->property->user_id == $user->id) {
+            if ($user->isManager() && $unit->property->user_id == $user->id || $user->isOwner()) {
                 return Response::allow();
             } else {
-                return Response::deny("You do not have permission to access this route",HttpFoundationResponse::HTTP_UNAUTHORIZED);
+                return Response::deny("You do not have permission to view unit ",HttpFoundationResponse::HTTP_UNAUTHORIZED) ;
+
             }
         } else {
-            return Response::deny("You do not have permission to access this route",HttpFoundationResponse::HTTP_UNAUTHORIZED);
+            return Response::deny("You do not have permission to view unit ",HttpFoundationResponse::HTTP_UNAUTHORIZED) ;
 
         }
     }
@@ -61,7 +61,7 @@ class UnitPolicy
         if ($user->isOwner() || $user->isManager()) {
             return Response::allow();
         } else {
-            return Response::deny("You do not have permission to access this route",HttpFoundationResponse::HTTP_UNAUTHORIZED);
+            return Response::deny("You do not have permission to create unit ",HttpFoundationResponse::HTTP_UNAUTHORIZED) ;
 
         }
     }
@@ -76,13 +76,13 @@ class UnitPolicy
     public function update(User $user, Unit $unit)
     {
         if ($user->isOwner() || $user->isManager()) {
-            if ($user->isManager() && $unit->property->user_id == $user->id) {
+            if ($user->isManager() && $unit->property->user_id == $user->id || $user->isOwner()) {
                 return Response::allow();
             } else {
-                return Response::deny("You do not have permission to access this route",HttpFoundationResponse::HTTP_UNAUTHORIZED);
+                return Response::deny("You do not have permission to update unit ",HttpFoundationResponse::HTTP_UNAUTHORIZED) ;
             }
         } else {
-            return Response::deny("You do not have permission to access this route",HttpFoundationResponse::HTTP_UNAUTHORIZED);
+            return Response::deny("You do not have permission to update unit ",HttpFoundationResponse::HTTP_UNAUTHORIZED) ;
 
         }
     }
@@ -97,13 +97,13 @@ class UnitPolicy
     public function delete(User $user, Unit $unit)
     {
         if ($user->isOwner() || $user->isManager()) {
-            if ($user->isManager() && $unit->property->user_id == $user->id) {
+            if ($user->isManager() && $unit->property->user_id == $user->id || $user->isOwner()) {
                 return Response::allow();
             } else {
-                return Response::deny("You do not have permission to access this route",HttpFoundationResponse::HTTP_UNAUTHORIZED);
+                return Response::deny("You do not have permission to delete unit ",HttpFoundationResponse::HTTP_UNAUTHORIZED) ;
             }
         } else {
-            return Response::deny("You do not have permission to access this route",HttpFoundationResponse::HTTP_UNAUTHORIZED);
+            return Response::deny("You do not have permission to delete unit ",HttpFoundationResponse::HTTP_UNAUTHORIZED) ;
 
         }
     }

@@ -46,8 +46,8 @@ class PropertyPolicy
         if ($user->isManager() || $user->isOwner()) {
             return Response::allow();
         }
-        Session::flash("error", "You do not have permission to access this");
-        return redirect()->back();
+        return Response::deny("You do not have permission to create new property ",401) ;
+
     }
 
     /**
@@ -64,12 +64,12 @@ class PropertyPolicy
             if (($user->isManager() && $user->id == $property->user_id) || $user->isOwner()) {
                 return Response::allow();
             } else {
-                Session::flash("error", "You do not have permission to access this");
-                return redirect()->back();
+                return Response::deny("You do not have permission to update property ",401) ;
+
             }
         }
-        Session::flash("error", "You do not have permission to access this");
-        return redirect()->back();
+        return Response::deny("You do not have permission to update property ",401) ;
+
     }
 
     /**
@@ -86,12 +86,12 @@ class PropertyPolicy
             if (($user->isManager() && $user->id == $property->user_id) || $user->isOwner()) {
                 return Response::allow();
             } else {
-                Session::flash("error", "You do not have permission to access this");
-                return redirect()->back();
+                return Response::deny("You do not have permission to delete property ",401) ;
+
             }
         }
-        Session::flash("error", "You do not have permission to access this");
-        return redirect()->back();
+        return Response::deny("You do not have permission to delete property ",401) ;
+
     }
 
     /**

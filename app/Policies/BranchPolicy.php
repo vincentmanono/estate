@@ -47,8 +47,7 @@ class BranchPolicy
         if ( $user->isManager() || $user->isOwner() ) {
             return Response::allow() ;
          }
-         Session::flash("error","You do not have permission to access this") ;
-          return redirect()->back() ;
+          return Response::deny("You do not have permission to access this",401) ;
     }
 
     /**
@@ -64,8 +63,8 @@ class BranchPolicy
         if ( $user->isManager() || $user->isOwner() ) {
             return Response::allow() ;
          }
-         Session::flash("error","You do not have permission to access this") ;
-          return redirect()->back() ;
+         return Response::deny("You do not have permission to access this",401) ;
+
     }
 
     /**
@@ -80,8 +79,8 @@ class BranchPolicy
         if ( $user->isManager() || $user->isOwner() ) {
             return Response::allow() ;
          }
-         Session::flash("error","You do not have permission to access this") ;
-         return redirect()->back() ;
+         return Response::deny("You do not have permission to access this",401) ;
+
     }
 
     /**
@@ -96,8 +95,8 @@ class BranchPolicy
         if ( $user->isManager() || $user->isOwner() ) {
             return Response::allow() ;
          }
-         Session::flash("error","You do not have permission to access this") ;
-         return redirect()->back() ;
+         return Response::deny("You do not have permission to access this",401) ;
+
     }
 
     /**
@@ -112,7 +111,7 @@ class BranchPolicy
         if ( $user->isManager() || $user->isOwner() ) {
             return Response::allow() ;
          }
-         Session::flash("error","You do not have permission to access this") ;
-         return redirect()->back() ;
+         return Response::deny("You do not have permission to access this",401) ;
+
     }
 }

@@ -4,7 +4,7 @@
     <td>{{ $rent->amount }}</td>
     <td>{{ $rent->paid_date }}</td>
     <td>{{ $rent->expiry_date }}</td>
-    <td>{{ $rent->user->name }}</td>
+    <td>{{ $rent->user->name ?? "null" }}</td>
     <td class="row">
 
         @can('update', $rent)

@@ -72,7 +72,7 @@
                                         @if (Auth::user()->isTenant() || Auth::user()->isOwner())
 
                                             @foreach ($rents as $rent)
-                                                @include('rents/showAllRents',['rent'=>$rent])
+                                                @include('rents/showAllRents',['rent'=>$rent ])
                                             @endforeach
 
                                         @else

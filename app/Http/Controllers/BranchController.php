@@ -14,7 +14,7 @@ class BranchController extends Controller
      */
     public function allBranches()
     {
-        $branches = Branch::all();
+        $branches = Branch::latest()->get();
         return view('branches.index',compact('branches'));
     }
 
@@ -70,9 +70,10 @@ class BranchController extends Controller
      */
     public function show($id)
     {
-        $this->authorize('view',Branch::class) ;
 
         $branch = Branch::find($id);
+        $this->authorize('view',$branch) ;
+
         return view('branches.show',compact('branch'));
     }
 
@@ -84,8 +85,9 @@ class BranchController extends Controller
      */
     public function edit($id)
     {
-        $this->authorize('update',Branch::class) ;
         $branch = Branch::find($id);
+        $this->authorize('view',$branch) ;
+
         return view('branches.createEdit',compact('branch'))->with('param','EditBranch');
     }
 
@@ -98,7 +100,6 @@ class BranchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->authorize('update',Branch::class) ;
 
         $this->validate($request,[
 
@@ -108,6 +109,8 @@ class BranchController extends Controller
         ]);
 
         $upd = Branch::find($id);
+        $this->authorize('view',$upd) ;
+
 
         $upd->name=$request->name;
         $upd->status=$request->status;
@@ -133,8 +136,9 @@ class BranchController extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('delete',Branch::class) ;
         $del =Branch::find($id);
+        $this->authorize('delete',$del) ;
+
         $del->delete();
 
         if($del){

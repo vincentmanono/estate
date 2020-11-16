@@ -19,11 +19,11 @@ class RentController extends Controller
     {
 
         $user = User::findOrFail(Auth::user()->id);
+
         $this->authorize('viewAny',Rent::class);
         if ($user->isOwner() || $user->isTenant()) {
 
             $rents = ($user->isOwner()) ? Rent::latest()->get() :  $user->rents ;
-            // dd($rents);
             $compact = compact('rents');
         } else {
             $properties = $user->properties;
