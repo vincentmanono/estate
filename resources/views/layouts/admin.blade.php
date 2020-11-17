@@ -24,7 +24,12 @@
     <link href="{{asset('/assets/dist/css/style.min.css')}}" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
     <link href="{{asset('/assets/dist/css/pages/dashboard1.css')}}" rel="stylesheet">
+{{--  chat  --}}
 
+<link href="{{ asset('assets/dist/css/pages/chat-app-page.css') }}" rel="stylesheet">
+
+
+{{--  end chat  --}}
      <!-- Editable CSS -->
      <link type="text/css" rel="stylesheet" href="{{asset('/assets/node_modules/jsgrid/jsgrid.min.css')}}" />
      <link type="text/css" rel="stylesheet" href="{{asset('/assets/node_modules/jsgrid/jsgrid-theme.min.css')}}" />
@@ -111,6 +116,7 @@
      <script src="{{ asset('/assets/node_modules/toast-master/js/jquery.toast.js')}}"></script>
     <!-- Chart JS -->
      <script src="{{ asset('/assets/dist/js/dashboard1.js')}}"></script>
+     <script src="{{ asset('assets/dist/js/pages/chat.js') }}"></script>
     <!-- start - This is for export functionality only -->
      <script src="{{ asset('/assets/files/dataTables.buttons.min.js')}}"></script>
      <script src="{{ asset('/assets/files/buttons.flash.min.js')}}"></script>

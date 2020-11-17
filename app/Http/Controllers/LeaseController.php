@@ -250,7 +250,7 @@ class LeaseController extends Controller
     {
         try {
             $del = Lease::find($id);
-            $this->authorize('delete', $del);
+            $this->authorize('delete', $del); 
 
 
             $old_avatar = $del->file;

@@ -173,7 +173,7 @@
                                     </div>
                                     <!--/span-->
                                     <div class="col-md-6">
-                                        <div class="form-group has-success" >
+                                        {{-- <div class="form-group has-success" >
                                             <label class="control-label">Property Name</label>
                                             <select class="form-control custom-select" name="property_id"  tabindex="1">
                                                 <option value="{{ $unit->property->id }}" selected>{{ $unit->property->name }}</option>
@@ -185,7 +185,7 @@
 
 
                                             </select>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <!--/span-->
                                 </div>

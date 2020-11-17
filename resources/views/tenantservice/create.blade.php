@@ -128,6 +128,7 @@
                                                 <!--/span-->
                                             </div>
                                             <!--/row-->
+                                            <input type="text" name="status" value="0" hidden>
 
 
                                         <div class="form-actions">

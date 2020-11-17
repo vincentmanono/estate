@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\TenantService;
 use Illuminate\Http\Request;
 use App\Unit;
+use App\User;
+use Auth;
 use App\Lease;
 use App\Property;
 class TenantServiceController extends Controller
@@ -16,9 +18,22 @@ class TenantServiceController extends Controller
      */
     public function index()
     {
-        $properties =Property::all();
 
-        return view('tenantservice.index',compact('properties'));
+        $user =User::where('id',Auth::user()->id)->first();
+        $this->authorize('viewAny',TenantService::class);
+        if ($user->isOwner() || $user->isTenant()) {
+            $services=TenantService::latest()->get();
+
+            $requests = ($user->isOwner()) ? TenantService::latest()->get() :  $user->requests ;
+            // dd($rents);
+            $compact = compact('requests');
+
+         } else {
+            $properties = $user->properties;
+            $compact = compact('properties');
+        }
+        return view('tenantservice.index',$compact);
+
     }
 
     /**
@@ -28,9 +43,9 @@ class TenantServiceController extends Controller
      */
     public function create()
     {
-        $units = Unit::all();
+
         $leases = Lease::all();
-        return view('tenantservice.create',compact('units','leases'));
+        return view('tenantservice.create',compact('leases'));
     }
 
     /**
@@ -46,16 +61,19 @@ class TenantServiceController extends Controller
             'user_id'=>['required'],
             'property_id'=>['required'],
             'message'=>['required'],
-            'unit_id'=>['required']
+            'unit_id'=>['required'],
+            'status'=>['required'],
+
 
         ]);
 
         $post = new TenantService();
 
-        $post->user_id=$request->user_id;
+        $post->user_id=Auth::user()->id;//auth user id
         $post->unit_id=$request->unit_id;
         $post->property_id=$request->property_id;
         $post->message=$request->message;
+        $post->status=$request->status;
 
         $validate=$post->save();
 
@@ -73,9 +91,12 @@ class TenantServiceController extends Controller
      * @param  \App\TenantService  $tenantService
      * @return \Illuminate\Http\Response
      */
-    public function show(TenantService $tenantService)
+    public function show( $id)
     {
-        //
+        $service =TenantService::find($id);
+        $this->authorize('view',$service);
+
+        return view('tenantservice.show',compact('service'));
     }
 
     /**
@@ -107,8 +128,18 @@ class TenantServiceController extends Controller
      * @param  \App\TenantService  $tenantService
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TenantService $tenantService)
+    public function destroy( $id)
     {
-        //
+        $del = TenantService::find($id);
+        $this->authorize('delete',$del);
+        $del->delete();
+
+        if ($del) {
+
+            return redirect()->route('tenantservice.index')->with('success','You have successfully deleted the request');
+        } else {
+            return back()->with('error','An error occured while trying to delete the request');
+        }
+
     }
 }

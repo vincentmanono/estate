@@ -26,7 +26,7 @@ class UnitController extends Controller
     {
         $this->authorize('viewAny',Unit::class);
         $user = User::where('id', Auth::user()->id)->first();
-        $units = [] ;
+        $units = [] ; 
         if ( $user->isOwner()) {
             $units=Unit::latest()->get();
             return view('units.index',compact('units'))->with('param','owner');
@@ -142,7 +142,7 @@ class UnitController extends Controller
             'water_acc_no'=>'string',
             'electricity_acc_no'=>'string',
             'service_charge'=>'string',
-            'property_id'=>'required',
+            // 'property_id'=>'required',
             'billing_cycle'=>'string'
         ]);
 
@@ -152,7 +152,7 @@ class UnitController extends Controller
         $post->water_acc_no=$request->water_acc_no;
         $post->electricity_acc_no=$request->electricity_acc_no;
         $post->service_charge =$request->service_charge;
-        $post->property_id=$request->property_id;
+        // $post->property_id=$request->property_id;
         $post->billing_cycle=$request->billing_cycle;
         $post->rent=$request->rent;
         $post->status=$request->status;

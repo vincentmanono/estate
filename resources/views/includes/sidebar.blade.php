@@ -34,17 +34,18 @@
              <li> <a class="waves-effect waves-dark" href="{{ route('home') }}"><i class="icon-speedometer"></i><span
                 class="hide-menu">Dashboard</span></a>
               </li>
+              
+                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Tenants Requests
+                                        </span></a>
+                                        <ul aria-expanded="false" class="collapse">
+                                            <li><a href="{{ route('tenantservice.index') }}">View Requests</a></li>
 
+                                        </ul>
+                                </li>
               @if (Auth::user()->type =='manager' || Auth::user()->type =='owner')
 
-              <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Tenants Requests
-                    </span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{ route('tenantservice.index') }}">View Requests</a></li>
 
-                    </ul>
-            </li>
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-control-shuffle "></i><span class="hide-menu">Branch Information</span></a>
