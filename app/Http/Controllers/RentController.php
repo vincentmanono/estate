@@ -79,17 +79,14 @@ class RentController extends Controller
             'expiry_date' => 'required',
         ]);
         $this->authorize('create',Rent::class);
-
-        $unit = Unit::findOrFail($request->unit_id);
         $post = new Rent();
-
         $post->amount = $request->amount;
         $post->paid_date = $request->paid_date;
         $post->unit_id = $request->unit_id;
         $post->description = $request->description;
         $post->user_id = $request->user_id;
         $post->expiry_date = $request->expiry_date;
-        $post->property_id = $unit->property->id ;
+
 
         $validate = $post->save();
 
@@ -149,7 +146,6 @@ class RentController extends Controller
         ]);
 
         $post = Rent::find($id);
-        $unit = Unit::findOrFail($request->unit_id);
         $this->authorize('update',$post);
 
 
@@ -159,7 +155,6 @@ class RentController extends Controller
         $post->description = $request->description;
         $post->user_id = $request->user_id;
         $post->expiry_date = $request->expiry_date;
-        $post->property_id = $unit->property->id ;
 
 
         $validate = $post->save();
