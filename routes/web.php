@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/manager', 'HomeController@index')->name('manager');
     Route::get('/all-users', 'UserController@allUsers')->name('allUsers');
     // users
+    Route::get('my-profile/{slug}', 'UserController@showUserProfile')->name('show.user.profile');
     Route::get('/user/create', 'UserController@createUser')->name('createUser')->middleware('manager') ;
     Route::get('/user/{user}', 'UserController@showUser')->name('showUser');
     Route::get('/user/{user}/edit', 'UserController@editUser')->name('editUser')->middleware('manager') ;
@@ -72,6 +73,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('payment', 'PaymentController');
     Route::resource('lease','LeaseController');
     Route::resource('tenantservice', 'TenantServiceController');
+
+
 
     // manager
     Route::middleware(['manager'])->prefix('manager')->group( function () {

@@ -8,7 +8,7 @@
                 <!-- Logo icon --><b>
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img  src="/assets/images/logo-light-icon.png" alt="homepage" class="dark-logo" />
+                    <img src="/assets/images/logo-light-icon.png" alt="homepage" class="dark-logo" />
                     <!-- Light Logo icon -->
                     <img src="/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                 </b>
@@ -107,13 +107,11 @@
                 <!-- Messages -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                            class="icon-note"></i>
+                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> <i class="icon-note"></i>
                         <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                     </a>
-                    <div class="dropdown-menu mailbox dropdown-menu-right animated bounceInDown"
-                        aria-labelledby="2">
+                    <div class="dropdown-menu mailbox dropdown-menu-right animated bounceInDown" aria-labelledby="2">
                         <ul>
                             <li>
                                 <div class="drop-title">You have 4 new messages</div>
@@ -122,8 +120,9 @@
                                 <div class="message-center">
                                     <!-- Message -->
                                     <a href="javascript:void(0)">
-                                        <div class="user-img"> <img src="{{ (Str::contains(Auth::user()->image,'http') ? Auth::user()->image:'/storage/users/' . Auth::user()->image ) }}"alt="user"
-                                                class="img-circle"> <span
+                                        <div class="user-img"> <img
+                                                src="{{ Str::contains(Auth::user()->image, 'http') ? Auth::user()->image : '/storage/users/' . Auth::user()->image }}"
+                                                alt="user" class="img-circle"> <span
                                                 class="profile-status online pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my
@@ -133,8 +132,8 @@
                                     <!-- Message -->
                                     <a href="javascript:void(0)">
                                         <div class="user-img"> <img src="/assets/images/users/2.jpg" alt="user"
-                                                class="img-circle"> <span
-                                                class="profile-status busy pull-right"></span> </div>
+                                                class="img-circle"> <span class="profile-status busy pull-right"></span>
+                                        </div>
                                         <div class="mail-contnet">
                                             <h5>Sonu Nigam</h5> <span class="mail-desc">Ive sung a song! See
                                                 you at</span> <span class="time">9:10 AM</span>
@@ -143,8 +142,8 @@
                                     <!-- Message -->
                                     <a href="javascript:void(0)">
                                         <div class="user-img"> <img src="/assets/images/users/3.jpg" alt="user"
-                                                class="img-circle"> <span
-                                                class="profile-status away pull-right"></span> </div>
+                                                class="img-circle"> <span class="profile-status away pull-right"></span>
+                                        </div>
                                         <div class="mail-contnet">
                                             <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span>
                                             <span class="time">9:08 AM</span>
@@ -173,11 +172,12 @@
                 <!-- End Messages -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
-                {{-- <!-- mega menu -->
+                {{--
+                <!-- mega menu -->
                 <!-- ============================================================== -->
-                <li class="nav-item dropdown mega-dropdown"> <a
-                        class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false"><i class="ti-layout-width-default"></i></a>
+                <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark"
+                        href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                            class="ti-layout-width-default"></i></a>
                     <div class="dropdown-menu animated bounceInDown">
                         <ul class="mega-dropdown-menu row">
                             <li class="col-lg-3 col-xlg-2 m-b-30">
@@ -198,14 +198,12 @@
                                                     src="/assets/images/big/img3.jpg" alt="Third slide"></div>
                                         </div>
                                     </div>
-                                    <a class="carousel-control-prev" href="#carouselExampleControls"
-                                        role="button" data-slide="prev"> <span
-                                            class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-                                            class="sr-only">Previous</span> </a>
-                                    <a class="carousel-control-next" href="#carouselExampleControls"
-                                        role="button" data-slide="next"> <span
-                                            class="carousel-control-next-icon" aria-hidden="true"></span> <span
-                                            class="sr-only">Next</span> </a>
+                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                        data-slide="prev"> <span class="carousel-control-prev-icon"
+                                            aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                        data-slide="next"> <span class="carousel-control-next-icon"
+                                            aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
                                 </div>
                                 <!-- End CAROUSEL -->
                             </li>
@@ -216,9 +214,9 @@
                                     <div class="card m-b-0">
                                         <div class="card-header bg-white p-0" id="headingOne">
                                             <h5 class="mb-0">
-                                                <button class="btn btn-link" type="button"
-                                                    data-toggle="collapse" data-target="#collapseOne"
-                                                    aria-expanded="true" aria-controls="collapseOne">
+                                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                                    data-target="#collapseOne" aria-expanded="true"
+                                                    aria-controls="collapseOne">
                                                     Collapsible Group Item #1
                                                 </button>
                                             </h5>
@@ -273,7 +271,8 @@
                                 <form>
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="exampleInputname1"
-                                            placeholder="Enter Name"> </div>
+                                            placeholder="Enter Name">
+                                    </div>
                                     <div class="form-group">
                                         <input type="email" class="form-control" placeholder="Enter email">
                                     </div>
@@ -312,41 +311,33 @@
                 <li class="nav-item dropdown u-pro">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href=""
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ (Str::contains(Auth::user()->image,'http') ? Auth::user()->image:'/storage/users/' . Auth::user()->image ) }}"alt="user" class="">
+                        <img src="{{ Str::contains(Auth::user()->image, 'http') ? Auth::user()->image : '/storage/users/' . Auth::user()->image }}"
+                            alt="user" class="">
 
-                            <span
-                            class="hidden-md-down">{{ auth()->user()->name }} &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                        <span class="hidden-md-down">{{ auth()->user()->name }} &nbsp;<i
+                                class="fa fa-angle-down"></i></span> </a>
                     <div class="dropdown-menu dropdown-menu-right animated flipInY">
                         <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My
+                        <a href="{{ route('show.user.profile',auth()->user()->slug) }}" class="dropdown-item"><i class="ti-user"></i> My
                             Profile</a>
                         <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> My
-                            Balance</a>
+
                         <!-- text-->
                         <a href="javascript:void(0)" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
                         <!-- text-->
                         <div class="dropdown-divider"></div>
-                        <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account
-                            Setting</a>
+
                         <!-- text-->
                         <div class="dropdown-divider"></div>
-                        <!-- text-->
-                        {{-- <a href="pages-login.html" class="dropdown-item"><i class="fa fa-power-off"></i>
-                            Logout</a> --}}
 
-
-
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                            {{ __('Logout') }}
+                        </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
 
 
 
