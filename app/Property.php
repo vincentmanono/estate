@@ -39,5 +39,9 @@ class Property extends Model
     {
         return $this->hasManyThrough(Lease::class, Unit::class);
     }
+    public function tenantServicesRequests()
+    {
+        return $this->hasManyThrough(TenantService::class, Unit::class);
+    }
 
 }

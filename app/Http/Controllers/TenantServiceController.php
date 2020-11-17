@@ -45,7 +45,7 @@ class TenantServiceController extends Controller
     {
 
         $leases = Lease::all();
-        return view('tenantservice.create',compact('leases'));
+        return view('tenantservice.create',compact('units','leases'));
     }
 
     /**
@@ -138,7 +138,7 @@ class TenantServiceController extends Controller
 
             return redirect()->route('tenantservice.index')->with('success','You have successfully deleted the request');
         } else {
-            return back()->with('error','An error occured while trying to delete the request');
+            return back()->with('error','An error occured');
         }
 
     }

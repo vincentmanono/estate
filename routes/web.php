@@ -88,6 +88,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('applications', 'ApplicationController@index')->name('application.index')->middleware('manager');
         Route::put('/application/approvedecline/{application}', 'ApplicationController@approveDecline')->name('application.status')->middleware('manager');
         Route::resource('service', 'ServiceController');
+        Route::post('approve/tenant/request/{service}','TenantServiceController@changestatus')->name('changetenantservicestatus');
 
 
 
