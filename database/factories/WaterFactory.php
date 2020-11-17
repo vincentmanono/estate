@@ -10,9 +10,10 @@ $factory->define(Water::class, function (Faker $faker) {
 
             'amount'=>$faker->numberBetween(5000,10000),
             'pay_date'=>$faker->date(),
-            'no_months'=>$faker->numberBetween(1,12),
             'read_date'=>$faker->date(),
-            'new_reading'=>$faker->randomNumber($nmDigits=4,$strict=false),
+            'paid'=>$faker->boolean(),
+            'previous_reading'=>$faker->randomNumber(7,true),
+            'new_reading'=>$faker->randomNumber(8,true),
             'unit_id'=>function(){return App\Unit::all()->random();}
     ];
 });

@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Branch;
-use Illuminate\Http\Request;
-use App\Property;
-use App\Deposit;
-use App\Lease;
 use App\Rent;
-use Auth;
-use App\User;
 use App\Unit;
+use App\User;
+use App\Lease;
+use App\Branch;
+use App\Deposit;
+use App\Property;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {

@@ -10,6 +10,7 @@ use App\Notifications\UserCreatedNotification;
 use App\Unit;
 use App\Lease;
 use App\Property;
+use App\Water;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
@@ -52,7 +53,8 @@ class UserController extends Controller
     {
         $tenant = User::findOrFail($tenantId) ;
         $unit = Unit::findOrFail($unitId) ;
-        return view('users.userUnit',compact('unit')) ;
+        $unPaidWaterBilling = Water::where('unit_id',$unit->id)->where('paid',false) ->pluck('amount')->sum();
+        return view('users.userUnit',compact('unit','unPaidWaterBilling')) ;
 
     }
 
@@ -62,6 +64,7 @@ class UserController extends Controller
 
         if ( Auth::user()->isOwner() || Auth::user()->isManager() ) {
           $user = User::findOrFail($id);
+
         } elseif( Auth::user()->id == $id ) {
             $user = User::findOrFail($id);
         }else{
@@ -72,6 +75,23 @@ class UserController extends Controller
 
 
         return view('users.show', compact('user'));
+    }
+
+    public function showUserProfile($slug)
+    {
+        try {
+            $user = User::where('slug',$slug)->first();
+            // dd($user->image);
+            if ( Auth::user()->isTenant() && Auth::user()->slug != $slug ) {
+                  Session::flash('error',"You do not have previlagies to view other tenant profile");
+                  return back();
+              }
+
+        } catch (\Throwable $th) {
+            Session::flash('error',"You do not have previlagies to view other tenant profile");
+            return back();
+        }
+        return view('users.profile',compact('user'));
     }
 
     public function createUser()
@@ -99,22 +119,7 @@ class UserController extends Controller
         $user->password = Hash::make($password);
 
         if (file_exists($request->file('image'))) {
-
-            // Get filename with extension
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
-
-            // Get just the filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
-            // Get extension
-            $extension = $request->file('image')->getClientOriginalExtension();
-
-            // Create new filename
-            $filenameToStore = $filename . '_' . time() . '.' . $extension;
-
-            // Uplaod image
-            $path = $request->file('image')->storeAs('public/users', $filenameToStore);
-            $user->image = $filenameToStore;
+            $user->image = $this->uploadUserAvatar($request,$user) ;
         }
 
         if ($user->save()) {
@@ -167,6 +172,10 @@ class UserController extends Controller
         $user->id_no = $request->input('ID');
         $user->type = $request->input('type');
 
+        if (file_exists($request->file('image'))) {
+            $user->image = $this->uploadUserAvatar($request,$user) ;
+        }
+
 
         if($request->password != ''){
             if($request->password == $request->confirm_password){
@@ -177,40 +186,6 @@ class UserController extends Controller
                 return redirect()->back();
             }
         }
-
-        if (file_exists($request->file('avatar'))) {
-
-
-
-            $old_avatar = $user->avatar;
-            $avatar = $request->avatar;
-            if ($old_avatar != 'avatar.png' && !Str::contains(auth()->user()->avatar, 'http')) {
-                $imagepath = public_path('/storage/users') . '/' . $old_avatar;
-                File::delete($imagepath);
-            }
-
-
-
-            // Get filename with extension
-            $filenameWithExt = $request->file('avatar')->getClientOriginalName();
-
-            // Get just the filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
-            // Get extension
-            $extension = $request->file('avatar')->getClientOriginalExtension();
-
-            // Create new filename
-            $filenameToStore = $filename . '_' . time() . '.' . $extension;
-
-            // Uplaod image
-            $path = $request->file('avatar')->storeAs('public/users', $filenameToStore);
-
-            // Upload image
-            $user->image = $filenameToStore;
-        }
-
-
 
         if ( $user->save()) {
             Session::flash('success', 'User Profile updated successfully');
@@ -224,10 +199,6 @@ class UserController extends Controller
 
 
     }
-
-
-
-
 
     public function deleteUser($id)
     {
@@ -268,4 +239,39 @@ class UserController extends Controller
         Session::flash('error', 'Admin/User could not be removed! Task only allowed to Managers / Owner!');
         return redirect()->back();
     }
+
+    protected function uploadUserAvatar($request,$user)
+    {
+
+
+            $old_avatar = $user->image;
+            $avatar = $request->image;
+            if ($old_avatar != 'avatar.png' && !Str::contains(auth()->user()->image, 'http')) {
+                $imagepath = public_path('/storage/users') . '/' . $old_avatar;
+                File::delete($imagepath);
+            }
+
+
+
+            // Get filename with extension
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+
+            // Get just the filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+            // Get extension
+            $extension = $request->file('image')->getClientOriginalExtension();
+
+            // Create new filename
+            $filenameToStore = $filename . '_' . time() . '.' . $extension;
+
+            // Uplaod image
+            $path = $request->file('image')->storeAs('public/users', $filenameToStore);
+
+            // Upload image
+            return $filenameToStore;
+
+
+    }
+
 }

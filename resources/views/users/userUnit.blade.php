@@ -1,5 +1,10 @@
 @extends('layouts.admin')
 
+@section('title')
+    <title> Tenant Unit Lease </title>
+@stop
+
+
 @section('content')
     <div class="page-wrapper">
         <!-- ============================================================== -->
@@ -39,7 +44,7 @@
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-header bg-info">
-                                            <h4 class="m-b-0 text-white">  Unit Information</h4>
+                                            <h4 class="m-b-0 text-white"> Unit Information</h4>
                                         </div>
                                         <div class="card-body">
                                             <form class="form-horizontal" role="form">
@@ -49,7 +54,8 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group row">
-                                                                <label class="control-label text-right col-md-3">Unit Number:</label>
+                                                                <label class="control-label text-right col-md-3">Unit
+                                                                    Number:</label>
                                                                 <div class="col-md-9">
                                                                     <p class="form-control-static"> {{ $unit->name }} </p>
                                                                 </div>
@@ -58,10 +64,11 @@
                                                         <!--/span-->
                                                         <div class="col-md-6">
                                                             <div class="form-group row">
-                                                                <label
-                                                                    class="control-label text-right col-md-3">water Acc  number :</label>
+                                                                <label class="control-label text-right col-md-3">water Acc
+                                                                    number :</label>
                                                                 <div class="col-md-9">
-                                                                    <p class="form-control-static"> {{  $unit->water_acc_no  }} </p>
+                                                                    <p class="form-control-static">
+                                                                        {{ $unit->water_acc_no }} </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -71,19 +78,22 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group row">
-                                                                <label
-                                                                    class="control-label text-right col-md-3"> billing cycle:</label>
+                                                                <label class="control-label text-right col-md-3"> billing
+                                                                    cycle:</label>
                                                                 <div class="col-md-9">
-                                                                    <p class="form-control-static"> {{ $unit->billing_cycle }} </p>
+                                                                    <p class="form-control-static">
+                                                                        {{ $unit->billing_cycle }} </p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <!--/span-->
                                                         <div class="col-md-6">
                                                             <div class="form-group row">
-                                                                <label class="control-label text-right col-md-3">water meter:</label>
+                                                                <label class="control-label text-right col-md-3">water
+                                                                    meter:</label>
                                                                 <div class="col-md-9">
-                                                                    <p class="form-control-static">{{ $unit->water_meter }} </p>
+                                                                    <p class="form-control-static">{{ $unit->water_meter }}
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -95,7 +105,8 @@
 
                                                         <div class="col-md-6">
                                                             <div class="form-group row">
-                                                                <label class="control-label text-right col-md-3">Monthly Rent:</label>
+                                                                <label class="control-label text-right col-md-3">Monthly
+                                                                    Rent:</label>
                                                                 <div class="col-md-9">
                                                                     <p class="form-control-static"> {{ $unit->rent }} </p>
                                                                 </div>
@@ -105,10 +116,11 @@
                                                         <!--/span-->
                                                         <div class="col-md-6">
                                                             <div class="form-group row">
-                                                                <label
-                                                                    class="control-label text-right col-md-3"> electricity meter:</label>
+                                                                <label class="control-label text-right col-md-3">
+                                                                    electricity meter:</label>
                                                                 <div class="col-md-9">
-                                                                    <p class="form-control-static"> {{ $unit-> electricity_meter }} </p>
+                                                                    <p class="form-control-static">
+                                                                        {{ $unit->electricity_meter }} </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -118,9 +130,11 @@
 
                                                         <div class="col-md-6">
                                                             <div class="form-group row">
-                                                                <label class="control-label text-right col-md-3"> electricity Acc No:</label>
+                                                                <label class="control-label text-right col-md-3">
+                                                                    electricity Acc No:</label>
                                                                 <div class="col-md-9">
-                                                                    <p class="form-control-static"> {{ $unit->electricity_acc_no }} </p>
+                                                                    <p class="form-control-static">
+                                                                        {{ $unit->electricity_acc_no }} </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -128,10 +142,11 @@
                                                         <!--/span-->
                                                         <div class="col-md-6">
                                                             <div class="form-group row">
-                                                                <label
-                                                                    class="control-label text-right col-md-3">service charge:</label>
+                                                                <label class="control-label text-right col-md-3">service
+                                                                    charge:</label>
                                                                 <div class="col-md-9">
-                                                                    <p class="form-control-static"> {{ $unit->service_charge }} </p>
+                                                                    <p class="form-control-static">
+                                                                        {{ $unit->service_charge }} </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -143,97 +158,130 @@
                                                     <hr class="m-t-0 m-b-40">
                                                     <div class="row">
 
-                                                            <div class="card col-md-12 ">
-                                                                <div class="card-body">
-                                                                  <h4 class="card-title">Rent Table</h4>
-                                                                  <h6 class="card-subtitle">Monthly rent for {{ $unit->name }}</h6>
-                                                                  <div class="table-responsive m-t-40">
-                                                                    <table
-                                                                      id="myTable"
-                                                                      class="table table-bordered table-striped"
-                                                                    >
-                                                                      <thead>
-                                                                        <tr>
-                                                                          <th>Paid</th>
-                                                                          <th>expiry</th>
-                                                                          <th>Status</th>
-                                                                          <th>Description</th>
-                                                                          <th>Action</th>
-                                                                        </tr>
-                                                                      </thead>
-                                                                      <tbody>
+                                                        <div class="card col-md-12 ">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">Rent Table</h4>
+                                                                <h6 class="card-subtitle">Monthly rent for {{ $unit->name }}
+                                                                </h6>
+                                                                <div class="table-responsive m-t-40">
+                                                                    <table id="myTable"
+                                                                        class="table table-bordered table-striped">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Paid</th>
+                                                                                <th>expiry</th>
+                                                                                <th>Status</th>
+                                                                                <th>Description</th>
+                                                                                <th>Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
 
-                                                                          @foreach ($unit->rents as $rent)
-                                                                               <tr>
-                                                                          <td>{{ $rent-> paid_date}}</td>
-                                                                          <td>{{ $rent->expiry_date }}</td>
-                                                                          <td> {{ ($rent->status) ? "Active": "Used" }} </td>
-                                                                          <td>{{ Str::of($rent->description)->limit(60,"...") }}</td>
+                                                                            @foreach ($unit->rents as $rent)
+                                                                                <tr>
+                                                                                    <td>{{ $rent->paid_date }}</td>
+                                                                                    <td>{{ $rent->expiry_date }}</td>
+                                                                                    <td>
+                                                                                        @if ($rent->status)
+                                                                                        <span class="badge badge-pill badge-success">Active</span>
+                                                                                    @else
+                                                                                        <span class="badge badge-pill badge-danger">Used </span>
+                                                                                    @endif
+                                                                                    </td>
+                                                                                    <td>{{ Str::of($rent->description)->limit(60, '...') }}
+                                                                                    </td>
 
-                                                                          <td>#</td>
-                                                                        </tr>
-                                                                          @endforeach
+                                                                                    <td>#</td>
+                                                                                </tr>
+                                                                            @endforeach
 
 
 
 
-                                                                      </tbody>
+                                                                        </tbody>
                                                                     </table>
-                                                                  </div>
                                                                 </div>
-                                                              </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
 
 
 
-                                        </div>
-                                         {{--  water  --}}
-
-                                                    <div class="row">
-
-                                                        <div class="card col-md-12 ">
-                                                            <div class="card-body">
-                                                              <h4 class="card-title">Water Table</h4>
-                                                              <h6 class="card-subtitle">Monthly water bill for {{ $unit->name }}</h6>
-                                                              <div class="table-responsive m-t-40">
-                                                                <table
-                                                                  id="myTable"
-                                                                  class="table table-bordered table-striped"
-                                                                >
-                                                                  <thead>
-                                                                    <tr>
-                                                                      <th>Amount</th>
-                                                                      <th>Pay Date</th>
-                                                                      <th>No.of.Months</th>
-                                                                      <th>Read Date</th>
-                                                                      <th>New Reading</th>
-                                                                    </tr>
-                                                                  </thead>
-                                                                  <tbody>
-
-                                                                      @foreach ($unit->waters as $water)
-                                                                           <tr>
-                                                                      <td>{{ $water->amount}}</td>
-                                                                      <td>{{ $water->pay_date }}</td>
-                                                                      <td> {{ $water->no_months}} </td>
-                                                                      <td>{{ $water->read_date }}</td>
-                                                                      <td>{{ $water->new_reading }}</td>
-                                                                    </tr>
-                                                                      @endforeach
-
-
-
-
-                                                                  </tbody>
-                                                                </table>
-                                                              </div>
-                                                            </div>
-                                                          </div>
                                                 </div>
+                                                {{-- water --}}
+
+                                                <div class="row">
+
+                                                    <div class="card col-md-12 ">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Water Table</h4>
+                                                            <h6 class="card-subtitle">Monthly water bill for
+                                                                {{ $unit->name }}</h6>
+                                                            <div class="table-responsive m-t-40">
+                                                                <table id="myTable"
+                                                                    class="table table-bordered table-striped">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Amount To Pay</th>
+                                                                            <th>Pay Date</th>
+                                                                            <th>Read Date</th>
+                                                                            <th>previous reading</th>
+                                                                            <th>New Reading</th>
+                                                                            <th>Status</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+
+                                                                        @foreach ($unit->waters as $water)
+                                                                            <tr>
+                                                                                <td>KSH {{ number_format($water->amount)  }}</td>
+                                                                                <td>{{ $water->pay_date }}</td>
+                                                                                <td>{{ $water->read_date }}</td>
+                                                                                <td>{{ number_format( $water->previous_reading ) }}</td>
+                                                                                <td>{{ number_format( $water->new_reading ) }}</td>
+                                                                                <td>
+
+                                                                                    @if ($water->paid)
+                                                                                        <span class="badge badge-pill badge-success">Paid</span>
+                                                                                    @else
+                                                                                        <span class="badge badge-pill badge-danger">Not Paid</span>
+                                                                                    @endif
+
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text text-capitalize " colspan="3" >Total Amount expected to Pay </td>
+                                                                                <td class=" text text-danger" colspan="3" >KSH {{ number_format($unPaidWaterBilling) }}</td>
+                                                                            </tr>
+                                                                        @endforeach
+                                                                    <tfoot>
+
+                                                                        <tr>
+                                                                            <th>Amount To Pay</th>
+                                                                            <th>Pay Date</th>
+                                                                            <th>Read Date</th>
+                                                                            <th>previous reading</th>
+                                                                            <th>New Reading</th>
+                                                                            <th>Status</th>
+                                                                        </tr>
+
+                                                                    </tfoot>
+
+
+
+
+
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>
