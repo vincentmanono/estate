@@ -253,7 +253,8 @@
                     aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Services
                         </span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{ route('tenantservice.create') }}">Request Service</a></li>
+                            <li><a href="{{ route('tenantservice.index') }}">View Requested</a></li>
+                            <li><a href="{{ route('tenantservice.create') }}">Request</a></li>
 
                         </ul>
                 </li>

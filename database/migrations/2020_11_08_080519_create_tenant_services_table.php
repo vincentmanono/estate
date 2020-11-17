@@ -24,6 +24,8 @@ class CreateTenantServicesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
 
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
             $table->timestamps();
         });
     }
