@@ -64,6 +64,7 @@
                                                                             <th>Branch</th>
                                                                             <th>Property</th>
                                                                             <th>Unit</th>
+                                                                            <th>Status</th>
                                                                             <th>Action</th>
                                                                         </tr>
                                                                     </thead>
@@ -76,6 +77,15 @@
                                                                                     </td>
                                                                                     <td>{{ $unit->property->name }}</td>
                                                                                     <td>{{ $unit->name }}</td>
+                                                                                    <td >
+
+                                                                                        @if ($unit->status)
+                                                                                        <span class="badge badge-pill badge-success">Leased</span>
+                                                                                        @else
+                                                                                        <span class="badge badge-pill badge-info">Vacant</span>
+                                                                                        @endif
+
+                                                                                    </td>
 
                                                                                     <td class="row">
                                                                                         <a class="btn btn-info btn-sm"
@@ -102,6 +112,15 @@
                                                                                         </td>
                                                                                         <td>{{ $unit->property->name }}</td>
                                                                                         <td>{{ $unit->name }}</td>
+                                                                                        <td >
+
+                                                                                            @if ($unit->status)
+                                                                                            <span class="badge badge-pill badge-success">Leased</span>
+                                                                                            @else
+                                                                                            <span class="badge badge-pill badge-info">Vacant</span>
+                                                                                            @endif
+
+                                                                                        </td>
 
                                                                                         <td class="row">
                                                                                             <a class="btn btn-info btn-sm"
@@ -133,9 +152,10 @@
                                                                         <thead>
                                                                             <tr>
                                                                                 <th>Branch</th>
-                                                                                <th>Property</th>
-                                                                                <th>Unit </th>
-                                                                                <th>Action</th>
+                                                                            <th>Property</th>
+                                                                            <th>Unit</th>
+                                                                            <th>Status</th>
+                                                                            <th>Action</th>
                                                                             </tr>
                                                                         </thead>
                                                                     </tbody>

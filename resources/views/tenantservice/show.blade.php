@@ -57,8 +57,14 @@
                                                 <div class="p-3 b-b ">
                                                     <h4 class="box-title">Service Message</h4>
                                                     <div style="float:right; " class="row" >
-                                                         <a href="" class="btn btn-sm btn-warning" >Approve</a>
+                                                         <form action="{{ route('tenantservice.status',$service) }}" method="post">
+                                                             @csrf
+                                                             @method('PUT')
 
+                                                             <input type="number" name="status" value="1"
+                                                             hidden>
+                                                             <button type="submit" class="btn btn-success">Approve</button>
+                                                         </form>
                                                         <form action="{{ route('tenantservice.destroy',$service->id) }}" method="post">
                                                             @csrf
                                                             @method('DELETE')

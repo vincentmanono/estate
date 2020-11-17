@@ -87,6 +87,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('floor/{floor}', 'FloorController@update')->name('unit.floor.update');
         Route::get('applications', 'ApplicationController@index')->name('application.index')->middleware('manager');
         Route::put('/application/approvedecline/{application}', 'ApplicationController@approveDecline')->name('application.status')->middleware('manager');
+        Route::put('tenantservice/approvedecline/{service}','TenantServiceController@acceptDecline')->name('tenantservice.status');
         Route::resource('service', 'ServiceController');
 
 

@@ -95,6 +95,20 @@ class TenantServiceController extends Controller
         return view('tenantservice.show',compact('service'));
     }
 
+    public function acceptDecline(){
+
+        $this->validate($request, [
+            'status' => ['required']
+        ]);
+        $service = TenantService::findOrFail($id);
+        $status = $request->status ;
+        $service->update([
+            'status' => $status
+        ]);
+        $response = ($status) ? "Request Approved" : "Request Desclined";
+        return back()->with('success', $response);
+
+    }
     /**
      * Show the form for editing the specified resource.
      *

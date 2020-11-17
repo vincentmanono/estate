@@ -33,7 +33,7 @@ class ApplicationController extends Controller
 
 
 
-    }
+    } 
     public function approveDecline(Request $request,  $id)
     {
         $this->validate($request, [

@@ -68,13 +68,13 @@
                                                     <tbody>
 
                                                         @if (Auth::user()->isOwner() || Auth::user()->isTenant())
-
-                                                            @include('tenantservice/allTenantRequests',['services'=>$services])
+                                                       {{-- {{ dd($requests) }} --}}
+                                                            @include('tenantservice/alltenantservice',['requests'=>$requests])
 
                                                         @else
 
                                                             @foreach ($properties as $property)
-                                                                @include('tenantservice/allTenantRequests',['services'=>$property->tenantServicesRequests])
+                                                                @include('tenantservice/alltenantservice',['requests'=>$property->requests])
                                                             @endforeach
 
 

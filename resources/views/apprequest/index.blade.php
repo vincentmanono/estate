@@ -109,7 +109,7 @@
                                                                     <form
                                                                         action="{{ route('application.status', $application) }}"
                                                                         method="POST">
-                                                                        @method('PUT')
+                                                                        @method('PUT') 
                                                                         @csrf
                                                                         <input type="number" name="status" value="1"
                                                                             hidden>
