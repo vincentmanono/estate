@@ -67,7 +67,7 @@
 
                                                             @if (Auth::user()->id == $lease->user->id)
 
-                                                            <option value="{{ $lease->unit->id }}">{{ $lease->unit->name }}</option>
+                                                            <option value="{{ $lease->unit->id }}">{{ $lease->unit->name ."(" . $lease->unit->property->name .")"}}</option>
 
                                                             @endif
 
@@ -78,58 +78,15 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <!--/span-->
-                                                <div class="col-md-6">
-                                                   <div class="form-group has-success">
-                                                        <label class="control-label">Tenant Name</label>
-                                                        <select  name="user_id" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-
-
-
-                                                            <option value="{{ Auth::user()->id }}" selected>{{ Auth::user()->name }}</option>
-
-
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <!--/span-->
-                                            </div>
-                                            <!--/row-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group has-success">
-                                                        <label class="control-label">Property</label>
-                                                        <select  name="property_id" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-
-
-                                                            @foreach ($leases as $lease)
-
-                                                            @if (Auth::user()->id == $lease->user->id)
-
-                                                            <option value="{{ $lease->unit->property->id }}">{{ $lease->unit->property->name }}</option>
-
-                                                            @endif
-
-
-
-                                                            @endforeach
-
-                                                        </select>
-                                                        </div>
-                                                </div>
-                                                <!--/span-->
                                                 <div class="col-md-6">
                                                     <div class="form-group has-success">
                                                          <label class="control-label">Description</label>
                                                          <textarea type="text" rows="6" name="message" class="form-control"></textarea>
-                                                     </div>
-                                                 </div>
-                                                <!--/span-->
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <!--/row-->
-                                            <input type="text" name="status" value="0" hidden>
 
+                                          
 
                                         <div class="form-actions">
                                             <div class="card-body">

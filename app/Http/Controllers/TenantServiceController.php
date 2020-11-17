@@ -58,11 +58,8 @@ class TenantServiceController extends Controller
     {
         $this->validate($request,[
 
-            'user_id'=>['required'],
-            'property_id'=>['required'],
             'message'=>['required'],
             'unit_id'=>['required'],
-            'status'=>['required'],
 
 
         ]);
@@ -71,9 +68,8 @@ class TenantServiceController extends Controller
 
         $post->user_id=Auth::user()->id;//auth user id
         $post->unit_id=$request->unit_id;
-        $post->property_id=$request->property_id;
         $post->message=$request->message;
-        $post->status=$request->status;
+        $post->status=0;
 
         $validate=$post->save();
 
