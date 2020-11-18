@@ -39,6 +39,7 @@
 
 
                         <!-- Start Page Content -->
+                        <a href="{{ route('tenantservice.index') }}" class="btn btn-primary" >Back</a>
                         <!-- ============================================================== -->
                         <div class="row">
                             <div class="col-12">
@@ -50,6 +51,7 @@
                                             <div class="open-panel"><i class="ti-angle-right"></i></div>
 
                                         </div>  --}}
+
                                         <!-- .chat-left-panel -->
                                         <!-- .chat-right-panel -->
                                         <div class="chat-right-aside">
@@ -57,19 +59,49 @@
                                                 <div class="p-3 b-b ">
                                                     <h4 class="box-title">Service Message</h4>
                                                     <div style="float:right; " class="row" >
-                                                         <form action="{{ route('tenantservice.status',$service) }}" method="post">
-                                                             @csrf
-                                                             @method('PUT')
+                                                        @can('acceptDecline', $service)
 
-                                                             <input type="number" name="status" value="1"
-                                                             hidden>
-                                                             <button type="submit" class="btn btn-success">Approve</button>
-                                                         </form>
+                                                        @if ($service->status ==0)
+
+
+
+
+                                                      <form action="{{ route('tenantservice.status',$service) }}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        <input type="number" name="status" value="1"
+                                                        hidden>
+                                                        <button type="submit" class="btn  btn-success">Approve</button>
+                                                    </form>
+
+                                                      @else
+                                                      <form action="{{ route('tenantservice.status',$service) }}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        <input type="number" name="status" value="0"
+                                                        hidden>
+                                                        <button type="submit" class="btn  btn-success">Decline</button>
+                                                    </form>
+
+                                                      @endif
+
+
+
+                                                        @endcan
+
+                                                            @can('delete', $service)
+
+
                                                         <form action="{{ route('tenantservice.destroy',$service->id) }}" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" onclick="return confirm('Are you sure you want to delete this record?');" class="btn btn-danger btn-sm" style="margin-left:4%;">Delete</button>
+                                                            <button type="submit" onclick="return confirm('Are you sure you want to delete this record?');" class="btn btn-danger " style="margin-left:4%;">Delete</button>
                                                         </form>
+
+                                                            @endcan
+
                                                     </div>
 
                                                 </div>

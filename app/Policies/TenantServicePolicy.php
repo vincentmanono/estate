@@ -78,6 +78,15 @@ class TenantServicePolicy
         }
     }
 
+    public function acceptDecline(User $user, TenantService $tenantService){
+
+        if ( $user->isOwner() || $user->isManager() && $tenantService->property->user_id == $user->id) {
+            return Response::allow();
+        } else {
+            return Response::deny("You do not have permission to access this route",401);
+        }
+
+    }
     /**
      * Determine whether the user can restore the model.
      *
