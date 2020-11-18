@@ -195,4 +195,29 @@ class WaterController extends Controller
             return back()->with('error','An error occured. Try again!!!');
         }
     }
+    public function waterReadingUpdate(Request $request,$unitId ){
+        $unit = Unit::findOrFail($unitId);
+        $waterBillRate = $unit->property->water_bill_rate ;
+        $lastReading = Water::where('unit_id',$unit->id)->latest()->first();
+        $usedwater = intval($request->new_reading ) - intval( $lastReading->new_reading) ;
+        $amountToPay =  $waterBillRate * $usedwater ;
+        $request->request->add(['amount'=>$amountToPay,'previous_reading'=>$lastReading->new_reading]);
+        $unit->waters()->create($request->all());
+        return back()->with('success','You have successfully new water record');
+    }
+
+    public function waterPayment(Request $request, $waterId ){
+        $water = Water::findOrFail($waterId);
+
+        if ( $water->amount > $request->amount ) {
+           $request->session()->flash('error', "The Paid amount is less than expected amount");
+           return back();
+        }
+
+        $water->update([
+            'paid'=>1,
+            'pay_date'=> now()
+        ]);
+        return back()->with('success','You have successfully water payment');
+    }
 }

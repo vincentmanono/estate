@@ -7,6 +7,7 @@ use App\Unit;
 use App\User;
 use App\Lease;
 use App\Property;
+use App\Water;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -104,8 +105,10 @@ class UnitController extends Controller
 
         $this->authorize('view',$unit);
         $leases= $unit->leases ;
-        $rents = Rent::where('unit_id',$id)->orderBy('id','desc')->get() ;
-        return view('units.show',compact('unit','leases','rents'))->with('param','Single Unit');
+        $rents = Rent::latest()->where('unit_id',$id)->orderBy('id','desc')->get() ;
+        $waters = Water::where('unit_id',$unit->id)->paginate(12);
+        $unPaidWaterBilling = Water::where('unit_id',$unit->id)->where('paid',false) ->pluck('amount')->sum();
+        return view('units.show',compact('unit','leases','rents','waters','unPaidWaterBilling'))->with('param','Single Unit');
     }
 
     /**

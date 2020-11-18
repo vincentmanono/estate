@@ -92,7 +92,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/application/approvedecline/{application}', 'ApplicationController@approveDecline')->name('application.status')->middleware('manager');
         Route::put('tenantservice/approvedecline/{service}','TenantServiceController@acceptDecline')->name('tenantservice.status');
         Route::resource('service', 'ServiceController');
-
+        Route::put('water-reading-update/{unit}','WaterController@waterReadingUpdate')->name('water.reading') ;
+        Route::put('water-payment-update/{water}','WaterController@waterPayment')->name('water.payment') ;
 
 
     }) ;

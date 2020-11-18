@@ -249,11 +249,12 @@
 
                                                                                 </td>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <td class="text text-capitalize " colspan="3" >Total Amount expected to Pay </td>
-                                                                                <td class=" text text-danger" colspan="3" >KSH {{ number_format($unPaidWaterBilling) }}</td>
-                                                                            </tr>
+
                                                                         @endforeach
+                                                                        <tr>
+                                                                            <td class="text text-capitalize " colspan="3" >Total Amount expected to Pay </td>
+                                                                            <td class=" text text-danger" colspan="3" >KSH {{ number_format($unPaidWaterBilling) }}</td>
+                                                                        </tr>
                                                                     <tfoot>
 
                                                                         <tr>
@@ -274,6 +275,7 @@
 
                                                                     </tbody>
                                                                 </table>
+
                                                             </div>
                                                         </div>
                                                     </div>

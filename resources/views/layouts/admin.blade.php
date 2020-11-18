@@ -29,6 +29,7 @@
 <link href="{{ asset('assets/dist/css/pages/chat-app-page.css') }}" rel="stylesheet">
 
 
+
 {{--  end chat  --}}
      <!-- Editable CSS -->
      <link type="text/css" rel="stylesheet" href="{{asset('/assets/node_modules/jsgrid/jsgrid.min.css')}}" />

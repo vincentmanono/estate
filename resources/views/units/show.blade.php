@@ -2,7 +2,7 @@
 
 @section('title')
 
-<title>Chief Properties -{{ $param }}</title>
+    <title>Chief Properties -{{ $param }}</title>
 
 @endsection
 @section('content')
@@ -58,28 +58,32 @@
                                 @if ($unit->floor->count() != 0)
                                     <i class="fa fa-pencil" aria-hidden="true">Edit floor plan</i>
                                 @else
-                                             <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>   Unit Floor Plan
+                                    <i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Unit Floor Plan
                                 @endif
 
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="floorplan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                            <div class="modal fade" id="floorplan" tabindex="-1" role="dialog"
+                                aria-labelledby="modelTitleId" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title text text-center text-bold "> {{  ($unit->floor->count() > 0) ? "Add" : "Edit" }}  Unit Floor Plan</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
+                                            <h5 class="modal-title text text-center text-bold ">
+                                                {{ $unit->floor->count() > 0 ? 'Add' : 'Edit' }} Unit Floor Plan</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                                        <div class="modal-body" style="background-color: #b7e9df;" >
-                                            <div id="response" > </div>
-                                            <form id="floorStoreForm" action="{{ ($unit->floor->count() > 0) ? route('unit.floor.update',$unit->floor->id) : route('unit.floor.store',$unit->id)  }}" method="post" enctype="multipart/form-data" >
+                                        <div class="modal-body" style="background-color: #b7e9df;">
+                                            <div id="response"> </div>
+                                            <form id="floorStoreForm"
+                                                action="{{ $unit->floor->count() > 0 ? route('unit.floor.update', $unit->floor->id) : route('unit.floor.store', $unit->id) }}"
+                                                method="post" enctype="multipart/form-data">
                                                 @csrf
 
-                                                @if ( $unit->floor->count())
-                                                      @method("PUT")
+                                                @if ($unit->floor->count())
+                                                    @method("PUT")
                                                 @endif
 
                                                 <div class="d-flex flex-row">
@@ -88,53 +92,50 @@
                                                         <input id="image" class="form-control" type="file" name="image">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="kitchen">kitchen <i  aria-hidden="true"></i> </label>
+                                                        <label for="kitchen">kitchen <i aria-hidden="true"></i> </label>
                                                         <input id="kitchen" @if ($unit->floor->count())
-                                                            value="{{ $unit->floor->kitchen }}"
+                                                        value="{{ $unit->floor->kitchen }}"
                                                         @endif
-                                                         class="form-control" type="text" name="kitchen">
+                                                        class="form-control" type="text" name="kitchen">
                                                     </div>
                                                 </div>
                                                 <div class="d-flex flex-row">
-                                                     <div class="form-group mr-2">
-                                                    <label for="sitting">Bathroom <i  aria-hidden="true"></i></label>
-                                                    <input id="sitting" class="form-control"
-
-                                                    @if ($unit->floor->count())
-                                                            value="{{ $unit->floor->sitting }}"
+                                                    <div class="form-group mr-2">
+                                                        <label for="sitting">Bathroom <i aria-hidden="true"></i></label>
+                                                        <input id="sitting" class="form-control" @if ($unit->floor->count())
+                                                        value="{{ $unit->floor->sitting }}"
                                                         @endif
-                                                    type="text" name="sitting">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for=" garage"> garage <i  aria-hidden="true"></i></label>
-                                                    <input id=" garage"
-                                                    @if ($unit->floor->count())
-                                                    value="{{ $unit->floor-> garage }}"
-                                                @endif
-                                                     class="form-control" type="text" name=" garage">
-                                                    <input  type="hidden" value="{{ $unit->id }}" name="unit_id">
-                                                </div>
-
-                                                </div>
-
-
-                                               <div class="row">
-
-                                                   <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="bedroom">bedroom <i  aria-hidden="true"></i></label>
-                                                        <input id="bedroom"
-                                                        @if ($unit->floor->count())
-                                                        value="{{ $unit->floor->bedroom }}"
-                                                    @endif
-                                                         class="form-control" type="text" name="bedroom">
-                                                        <input  type="hidden" value="{{ $unit->id }}" name="unit_id">
+                                                        type="text" name="sitting">
                                                     </div>
-                                                   </div>
-                                               </div>
+                                                    <div class="form-group">
+                                                        <label for=" garage"> garage <i aria-hidden="true"></i></label>
+                                                        <input id=" garage" @if ($unit->floor->count())
+                                                        value="{{ $unit->floor->garage }}"
+                                                        @endif
+                                                        class="form-control" type="text" name=" garage">
+                                                        <input type="hidden" value="{{ $unit->id }}" name="unit_id">
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="row">
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="bedroom">bedroom <i aria-hidden="true"></i></label>
+                                                            <input id="bedroom" @if ($unit->floor->count())
+                                                            value="{{ $unit->floor->bedroom }}"
+                                                            @endif
+                                                            class="form-control" type="text" name="bedroom">
+                                                            <input type="hidden" value="{{ $unit->id }}" name="unit_id">
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
                                                     <button type="submit" class="btn btn-primary">Save Unit Floor</button>
                                                 </div>
                                             </form>
@@ -146,7 +147,8 @@
 
                             <a style="float: right" href="{{ route('unit.edit', $unit->id) }}"
                                 class="btn btn-sm btn-info">Edit Unit</a>
-                                {{--  <a href="#">Add Floor Plan</a>  --}}
+                            {{-- <a href="#">Add Floor Plan</a>
+                            --}}
                             <!-- row -->
                             <div class="row">
 
@@ -296,7 +298,7 @@
                             <!-- /row -->
                             <hr>
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-12">
                                     <h4 class="card-title">Tenant Information</h4>
 
                                     <hr>
@@ -308,7 +310,8 @@
 
                                         @if ($unit->status && $unit->leased != null)
                                             <center class="m-t-30">
-                                                <img src="/storage/user/{{ $unit->leased->user->image }}" class="img-circle" width="150" />
+                                                <img src="/storage/user/{{ $unit->leased->user->image }}" class="img-circle"
+                                                    width="150" />
                                                 <h4 class="card-title m-t-10">{{ $unit->leased->user->name }}</h4>
                                                 <h4 class="card-title m-t-10">Phone</h4>
                                                 <h6 class="card-subtitle"> <a style="color: blue"
@@ -333,7 +336,7 @@
 
 
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-12">
 
                                     <div class="row">
                                         <div class="col-12">
@@ -423,6 +426,178 @@
 
 
                                 </div>
+
+                                <div class="col-md-12">
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <!-- Start Page Content -->
+                                                    <!-- ============================================================== -->
+                                                    <div class="row">
+                                                        <div class="col-12">
+
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Unit Water Billing</h4>
+                                                                    {{-- <h6
+                                                                        class="card-subtitle">Data table example</h6>
+                                                                    --}}
+                                                                    <div style="float: right">
+
+                                                                        <!-- Button trigger modal -->
+                                                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addwater">
+                                                                          <i class="fa fa-plus" aria-hidden="true"></i> New water reading
+                                                                        </button>
+
+                                                                        <!-- Modal -->
+                                                                        <div class="modal fade" id="addwater" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                                                            <div class="modal-dialog" role="document">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title">Add new water reading</h5>
+                                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                                <span aria-hidden="true">&times;</span>
+                                                                                            </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <form action="{{ route('water.reading',$unit->id) }}" method="post">
+                                                                                            @csrf
+                                                                                            @method("put")
+                                                                                            <div class="form-group">
+                                                                                                <label for="read_date"> Reading Date</label>
+                                                                                                <input type="date" required name="read_date" class="form-control" placeholder="date of reading">
+                                                                                              </div>
+                                                                                            <div class="form-group">
+                                                                                              <label for="">New reading</label>
+                                                                                              <input type="text" required name="new_reading" class="form-control" placeholder="Water reading">
+                                                                                            </div>
+                                                                                            <button type="submit" class="btn btn-primary">Save</button>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                        <button type="button" class="btn btn-primary">Save</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="table-responsive m-t-40">
+                                                                        <table id="myTable"
+                                                                            class="table table-bordered table-striped">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>Amount To Pay</th>
+                                                                                    <th>Pay Date</th>
+                                                                                    <th>Read Date</th>
+                                                                                    <th>previous reading</th>
+                                                                                    <th>New Reading</th>
+                                                                                    <th>Status</th>
+                                                                                    <th>Action</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+
+                                                                                @foreach ($waters as $water)
+                                                                                    <tr>
+                                                                                        <td>KSH
+                                                                                            {{ number_format($water->amount) }}
+                                                                                        </td>
+                                                                                        <td>{{ $water->pay_date }}</td>
+                                                                                        <td>{{ $water->read_date }}</td>
+                                                                                        <td>{{ number_format($water->previous_reading) }}
+                                                                                        </td>
+                                                                                        <td>{{ number_format($water->new_reading) }}
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            @if ($water->paid)
+                                                                                                <span
+                                                                                                    class="badge badge-pill badge-success">Paid</span>
+                                                                                            @else
+                                                                                                <span
+                                                                                                    class="badge badge-pill badge-danger">Not
+                                                                                                    Paid</span>
+                                                                                            @endif
+
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <!-- Button trigger modal -->
+                                                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="{{ '#payment'.$water->id }}">
+                                                                                              <i class="fa fa-plus" aria-hidden="true"></i> water payment
+                                                                                            </button>
+
+                                                                                            <!-- Modal -->
+                                                                                            <div class="modal fade" id="{{ 'payment'.$water->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                                                                                <div class="modal-dialog" role="document">
+                                                                                                    <div class="modal-content">
+                                                                                                        <div class="modal-header">
+                                                                                                            <h5 class="modal-title">Add Water Billing payment</h5>
+                                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                                                </button>
+                                                                                                        </div>
+                                                                                                        <div class="modal-body">
+                                                                                                            <div>Amount Expected to be Paid KSH {{ number_format($water->amount) }} </div>
+                                                                                                            <form action="{{ route('water.payment',$water->id) }}" method="post">
+                                                                                                                @csrf
+                                                                                                                @method("put")
+                                                                                                                <div class="form-group">
+                                                                                                                  <label for="amount">Amount Ksh</label>
+                                                                                                                  <input type="text" name="amount" required min="{{ $water->amount }}" id="amount" class="form-control" placeholder="Amount">
+                                                                                                                </div>
+
+                                                                                                        </div>
+                                                                                                        <div class="modal-footer">
+                                                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                                            <button type="submit" class="btn btn-success">Save</button>
+                                                                                                        </div>
+                                                                                                    </form>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                @endforeach
+                                                                                <tr>
+                                                                                    <td class="text text-capitalize " colspan="3" >Total Amount expected to Pay </td>
+                                                                                    <td class=" text text-danger" colspan="2" >KSH {{ number_format($unPaidWaterBilling) }}</td>
+
+                                                                                </tr>
+                                                                            </tbody>
+                                                                            <tfoot>
+
+                                                                                <th>Amount To Pay</th>
+                                                                                <th>Pay Date</th>
+                                                                                <th>Read Date</th>
+                                                                                <th>previous reading</th>
+                                                                                <th>New Reading</th>
+                                                                                <th>Status</th>
+                                                                                <th>
+                                                                                    Action
+                                                                                </th>
+
+                                                                            </tfoot>
+                                                                        </table>
+                                                                        <div>
+                                                                            {{ $waters->links() }}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <!-- ============================================================== -->
+                                                    <!-- End PAge Content -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
 
@@ -457,10 +632,10 @@
 @section('extraScripts')
     <script>
         $(
-            $("#floorStoreForm").submit(()=>{
+            $("#floorStoreForm").submit(() => {
                 //event.preventDefault()
             })
         )
+
     </script>
 @stop
-
