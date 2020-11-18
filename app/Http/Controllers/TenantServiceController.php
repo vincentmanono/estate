@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\TenantService;
-use Illuminate\Http\Request;
+use Auth;
 use App\Unit;
 use App\User;
-use Auth;
 use App\Lease;
 use App\Property;
+use App\TenantService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TenantServiceRequestApprroved;
+
 class TenantServiceController extends Controller
 {
     /**
@@ -109,6 +112,7 @@ class TenantServiceController extends Controller
         $service->update([
             'status' => $status
         ]);
+        Mail::to($service->user->email)->send(new TenantServiceRequestApprroved($service));
         $response = ($status) ? "Request Approved" : "Request Declined";
         return back()->with('success', $response);
 
