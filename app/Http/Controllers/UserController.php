@@ -108,8 +108,10 @@ class UserController extends Controller
     {
         $password = "chiefproperties" . date("Y");
         $type = $request->input('type');
+        $name = $request->input('name');
         $user = new User();
-        $user->name = $request->input('name');
+        $user->name = $name ;
+        $user->slug = Str::of($name)->slug();
         $user->email = $request->input('email');
         $user->address = $request->input('address');
         $user->phone = $request->input('phone');
@@ -163,8 +165,15 @@ class UserController extends Controller
         if(!$request->hasFile('avatar') && $request->has('avatar')){
             return redirect()->back()->with('error','Image not supported');
         }
+        $name = $request->name ;
         $user = User::findOrFail($id);
-        $user->name = $request->input('name');
+        $user->slug = Str::of($name)->slug();
+        if ( $user->email != $request->input('email') && User::where('email',$request->input('email'))->count() > 0  ) {
+            Session::flash('error',"Email is already taken");
+            return back();
+        }
+
+        $user->email = $request->input('email');
         $user->email = $request->input('email');
         $user->address = $request->input('address');
         $user->phone = $request->input('phone');
