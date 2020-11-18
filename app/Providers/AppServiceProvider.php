@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Observers\UnitObserver;
 use App\Unit;
+use App\Observers\UnitObserver;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Unit::observe(UnitObserver::class) ;
+        Schema::defaultStringLength(191);
     }
 }
