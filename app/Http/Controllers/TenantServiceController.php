@@ -32,7 +32,7 @@ class TenantServiceController extends Controller
             $properties = $user->properties;
             $compact = compact('properties');
         }
-        return view('tenantservice.index',$compact);
+        return view('tenantservice.index',$compact)->with('param','Tenant Requests');
 
     }
 
@@ -45,7 +45,7 @@ class TenantServiceController extends Controller
     {
 
         $leases = Lease::all();
-        return view('tenantservice.create',compact('units','leases'));
+        return view('tenantservice.create',compact('units','leases'))->with('param','Request Service');
     }
 
     /**
@@ -91,8 +91,9 @@ class TenantServiceController extends Controller
     {
         $service =TenantService::find($id);
         $this->authorize('view',$service);
+        return view('tenantservice\show',compact('service'))->with('param','Service');
 
-        return view('tenantservice.show',compact('service'));
+        // return view('tenantservice.show',compact('service'));
     }
 
     public function acceptDecline(Request $request, $id){

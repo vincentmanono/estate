@@ -14,7 +14,7 @@ class ServiceController extends Controller
     public function index()
     {
         $services =Service::orderBy('id','Desc')->get();
-        return view('services.index',compact('services'));
+        return view('services.index',compact('services'))->with('param','Service');
     }
 
     /**
@@ -70,7 +70,7 @@ class ServiceController extends Controller
     public function show($id)
     {
         $service  =Service::find($id);
-        return view('services.show',compact('service'));
+        return view('services.show',compact('service'))->with('param','Single Service');
     }
 
     /**

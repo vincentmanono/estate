@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    <title>{{ $param }} </title>
+    <title> Chief Properties -{{ $param }} </title>
 @stop
 
 @section('content')
@@ -43,7 +43,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Properties Table</h4>
+                            <h4 class="card-title">Waters Table</h4>
                             {{-- <h6 class="card-subtitle">Data table example</h6>
                             --}}
                             <div class="table-responsive m-t-40">

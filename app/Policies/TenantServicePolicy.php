@@ -32,7 +32,7 @@ class TenantServicePolicy
      */
     public function view(User $user, TenantService $tenantService)
     {
-        if ( $user->isOwner() || $user->isManager() && $tenantService->property->user_id == $user->id || $user->isTenant() && $user->id == $tenantService->user_id ) {
+        if ( $user->isOwner() || $user->isManager() && $tenantService->unit->property->user_id == $user->id || $user->isTenant() && $user->id == $tenantService->user_id ) {
             return Response::allow();
         } else {
             return Response::deny("You do not have permission to access this route",401);
@@ -71,7 +71,7 @@ class TenantServicePolicy
      */
     public function delete(User $user, TenantService $tenantService)
     {
-        if ( $user->isOwner() || $user->isManager() && $tenantService->property->user_id == $user->id) {
+        if ( $user->isOwner() || $user->isManager() && $tenantService->unit->property->user_id == $user->id) {
             return Response::allow();
         } else {
             return Response::deny("You do not have permission to access this route",401);
@@ -80,7 +80,7 @@ class TenantServicePolicy
 
     public function acceptDecline(User $user, TenantService $tenantService){
 
-        if ( $user->isOwner() || $user->isManager() && $tenantService->property->user_id == $user->id) {
+        if ( $user->isOwner() || $user->isManager() && $tenantService->unit->property->user_id == $user->id) {
             return Response::allow();
         } else {
             return Response::deny("You do not have permission to access this route",401);

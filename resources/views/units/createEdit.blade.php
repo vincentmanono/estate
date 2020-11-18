@@ -1,4 +1,11 @@
 @extends('layouts.admin')
+
+@section('title')
+
+<title>{{ $param }}</title>
+
+@endsection
+
 @section('content')
  <!-- Page wrapper  -->
         <!-- ============================================================== -->

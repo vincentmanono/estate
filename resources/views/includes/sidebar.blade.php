@@ -87,7 +87,6 @@
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="{{ route('allTenants') }}">View All Tenant</a></li>
                             <li><a href="{{ route('createUser') }}">Add Tenant</a></li>
-
                         </ul>
                     </li>
                     <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
@@ -227,10 +226,11 @@
                         </ul>
                     </li>
                     <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                                class="ti-money"></i><span class="hide-menu">Rent
-                                Billing</span></a>
+                                class="ti-money"></i><span class="hide-menu">Billing Section</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{ route('rent.index') }}">View Rent Records</a></li>
+                            <li><a href="{{ route('rent.index') }}"> Rent Records</a></li>
+                            <li><a href="{{ route('deposit.index') }}">Deposit Records</a></li>
+                            <li><a href="{{ route('water.index') }}">Water Records</a></li>
                         </ul>
                     </li>
 

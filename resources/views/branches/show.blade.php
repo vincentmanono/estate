@@ -1,5 +1,7 @@
 @extends('layouts.admin')
-
+@section('title')
+<title>Chief Properties -Branch-Details</title>
+@endsection
 @section('content')
 
   <!-- Page wrapper  -->
@@ -58,9 +60,7 @@
                                                 <th>Type</th>
                                                 <th>Photo</th>
                                                 <th>Address</th>
-                                                <th>Landlord_No</th>
-                                                <th>Security_No</th>
-                                                {{-- <th>Status</th> --}}
+                                                <th>Manager_No</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -70,12 +70,22 @@
                                                  <tr>
                                                     <td>{{ $property->name }}</td>
                                                     <td>{{ $property->type }}</td>
-                                                    <td> <img src="../assets/images/property/prop1.jpeg" alt="iMac" width="80"> </td>
+                                                    <td> <img src="/storage/property/{{ $property->image }}" alt="iMac" width="80"> </td>
                                                     <td>{{ $property->address }}</td>
-                                                    <td><a style="color: blue;"  href="tel:{{ $property->landlord_no }}">{{ $property->landlord_no }}</a> </td>
-                                                    <td><a style="color: blue;" href="tel:{{ $property->security_no }}">{{ $property->security_no }}</a> </td>
+                                                    <td><a style="color: blue;"  href="tel:{{ $property->user->phone }}">{{ $property->user->phone }}</a> </td>
                                                     {{-- <td> <span class="label label-success font-weight-100">Paid</span> </td> --}}
-                                                    <td><a href="javascript:void(0)" class="text-dark p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-dark" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
+                                                    <td class="row"><a href="{{ route('property.edit',$property->id) }}" class="text-dark p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a>
+
+
+                                                            <form action="{{ route('property.destroy',$property->id) }}" method="post">
+                                                                @csrf
+                                                                @method('DELETE')
+
+                                                                <button href="javascript:void(0)" onclick="return confirm('Are you sure you want to delete this record?');" class="text-dark" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></button>
+
+                                                            </form>
+
+                                                    </td>
                                                 </tr>
                                                 @endforeach
 
@@ -85,9 +95,7 @@
                                                     <th>Type</th>
                                                     <th>Photo</th>
                                                     <th>Address</th>
-                                                    <th>Landlord_No</th>
-                                                    <th>Security_No</th>
-                                                    {{-- <th>Status</th> --}}
+                                                    <th>Manager_No</th>
                                                     <th>Actions</th>
                                                 </thead>
                                         <tfoot>

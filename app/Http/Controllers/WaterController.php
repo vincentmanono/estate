@@ -120,7 +120,7 @@ class WaterController extends Controller
     public function show( $id)
     {
         $water = Water::find($id);
-        return view('waters.show',compact('water'));
+        return view('waters.show',compact('water'))->with('param','Water Details');
     }
 
     /**

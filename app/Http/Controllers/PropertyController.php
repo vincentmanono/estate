@@ -25,6 +25,7 @@ class PropertyController extends Controller
     }
     public function index()
     {
+        // $user =User::where('id',Auth::user()->id)->first();
         $properties = Property::latest()->get();
 
         $this->authorize("viewAny", Property::class);

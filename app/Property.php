@@ -31,9 +31,6 @@ class Property extends Model
     public function applications(){
         return $this->hasMany(Application::class);
     }
-    public function requests(){
-        return $this->hasMany(TenantService::class);
-    }
 
     public function leases()
     {

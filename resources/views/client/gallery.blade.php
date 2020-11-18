@@ -1,4 +1,7 @@
 @extends('layouts.mainapp')
+@section('title')
+<title>Chief Properties -{{ $param }}</title>
+@endsection
 @section('content')
 
 <div class="all-title-box">

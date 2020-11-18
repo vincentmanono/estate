@@ -11,26 +11,26 @@ class PageController extends Controller
     public function index(){
         $properties=Property::all();
 
-        return view('client.index',compact('properties'));
+        return view('client.index',compact('properties'))->with('param','ChiefProperties Real Estate');
     }
 
     public function property(){
 
         $properties=Property::orderBy('id','Desc')->get();
 
-        return view('client.properties',compact('properties'));
+        return view('client.properties',compact('properties'))->with('param','Properties');
 
     }
     public function show($id){
 
         $property =Property::find($id);
-        return view('client.singleproperty',compact('property'));
+        return view('client.singleproperty',compact('property'))->with('param','Single Property');
 
     }
     public function images($id){
 
         $property =Property::find($id);
-        return view('client.gallery',compact('property'));
+        return view('client.gallery',compact('property'))->with('param','Property Images');
 
     }
 

@@ -26,7 +26,7 @@ class UnitController extends Controller
     {
         $this->authorize('viewAny',Unit::class);
         $user = User::where('id', Auth::user()->id)->first();
-        $units = [] ; 
+        $units = [] ;
         if ( $user->isOwner()) {
             $units=Unit::latest()->get();
             return view('units.index',compact('units'))->with('param','owner');
@@ -105,7 +105,7 @@ class UnitController extends Controller
         $this->authorize('view',$unit);
         $leases= $unit->leases ;
         $rents = Rent::where('unit_id',$id)->orderBy('id','desc')->get() ;
-        return view('units.show',compact('unit','leases','rents'));
+        return view('units.show',compact('unit','leases','rents'))->with('param','Single Unit');
     }
 
     /**

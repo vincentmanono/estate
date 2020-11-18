@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+<title>Chief Properties -Create Branch</title>
+@endsection
 @section('content')
 
     <div class="page-wrapper">

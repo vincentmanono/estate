@@ -50,13 +50,13 @@ class HomeController extends Controller
                     // $prev = Carbon::now()->subMonth(1)->format('Y-m-d H:i:s');
                     $rentsum = Rent::where('expiry_date','>',$now)->pluck("amount")->sum();
 
-                    return view('home',compact('propertycount','properties','depositsum','rentsum','managers','branchcount','leasecount','unleasecount'));
+                    return view('home',compact('propertycount','properties','depositsum','rentsum','managers','branchcount','leasecount','unleasecount'))->with('param',Auth::user()->type);
             }
             elseif(Auth::user()->type =='manager')
             {
 
                 $properties = Property::orderBy('id','desc')->paginate(10);
-                return view('manager',compact('properties'));
+                return view('manager',compact('properties'))->with('param',Auth::user()->type);
 
             }
             elseif(Auth::user()->type == 'tenant')
@@ -64,7 +64,7 @@ class HomeController extends Controller
 
                 $leases = Lease::all();
                 $rents = Rent::all();
-                return view('tenant',compact('leases','rents'));
+                return view('tenant',compact('leases','rents'))->with('param',Auth::user()->type);
 
             }
         }

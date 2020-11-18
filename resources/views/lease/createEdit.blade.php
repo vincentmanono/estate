@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    <title>{{ $params }}</title>
+    <title>Chief Properties -{{ $params }}</title>
 @stop
 
 @section('content')

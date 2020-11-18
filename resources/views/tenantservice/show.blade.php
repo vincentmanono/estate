@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('title')
+<title>Tenant Service</title>
+@stop
+
 @section('content')
 
 <!-- Page wrapper  -->
@@ -37,11 +41,10 @@
                     <div class="card-body">
 
 
-
                         <!-- Start Page Content -->
                         <a href="{{ route('tenantservice.index') }}" class="btn btn-primary" >Back</a>
                         <!-- ============================================================== -->
-                        <div class="row">
+                        <div class="row"></div>
                             <div class="col-12">
                                 <div class="card m-b-0">
                                     <!-- .chat-row -->
@@ -57,7 +60,22 @@
                                         <div class="chat-right-aside">
                                             <div class="chat-main-header">
                                                 <div class="p-3 b-b ">
-                                                    <h4 class="box-title">Service Message</h4>
+                                                   <div class="row">
+                                                    <h4 class="box-title" style="margin-right: 4%;">Service Message</h4>
+
+                                                    @if ($service->status == 1)
+
+                                                    <span class="badge badge-pill badge-info">Approved</span>
+
+                                                    @else
+
+                                                    <span class="badge badge-pill badge-danger">Declined</span>
+
+                                                    @endif
+                                                   </div>
+
+
+
                                                     <div style="float:right; " class="row" >
                                                         @can('acceptDecline', $service)
 
@@ -110,7 +128,7 @@
                                                 <ul class="chat-list p-3">
                                                     <!--chat Row -->
                                                     <li>
-                                                        <div class="chat-img"><img src="{{ $service->user->image }}" alt="user" /></div>
+                                                        <div class="chat-img"><img src="/storage/users/{{ $service->user->image }}" alt="user" /></div>
                                                         <div class="chat-content">
                                                             <h5>{{ $service->user->name }}</h5>
                                                             <div class="box bg-light-info">{{ $service->message }}</div>

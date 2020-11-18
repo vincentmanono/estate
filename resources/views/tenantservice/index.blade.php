@@ -74,7 +74,7 @@
                                                         @else
 
                                                             @foreach ($properties as $property)
-                                                                @include('tenantservice/alltenantservice',['requests'=>$property->requests])
+                                                                @include('tenantservice/alltenantservice',['requests'=>$property->tenantServicesRequests])
                                                             @endforeach
 
 

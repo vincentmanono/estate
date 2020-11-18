@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    <title>{{ 'All Unit' . $param }}</title>
+    <title>Chief Properties -{{ 'All Units' . $param }}</title>
 @stop
 
 @section('content')
@@ -61,7 +61,7 @@
                                     </thead>
                                     <tbody>
 
-                                        @if (Auth::User()->isOwner())
+                                        @if (Auth::User()->isOwner() || Auth::user()->isTenant())
 
                                             @foreach ($deposits as $deposit)
 
@@ -72,19 +72,26 @@
                                                     <td>{{ $deposit->user->name }}</td>
                                                     <td>{{ $deposit->status }}</td>
                                                     <td class="row">
-                                                        <a href="{{ route('deposit.edit', $deposit->id) }}"
-                                                            style="margin-right: 3%;" class=" btn btn btn-info">Edit</a>
+                                                        @can('update', $deposit)
+                                                            <a href="{{ route('deposit.edit', $deposit->id) }}"
+                                                                style="margin-right: 3%;" class=" btn btn btn-info">Edit</a>
+                                                        @endcan
 
 
-                                                        <form action="{{ route('deposit.destroy', $deposit->id) }}"
-                                                            enctype="multipart/form-data" method="post">
-                                                            @csrf
-                                                            @method('DELETE')
+                                                        @can('delete', $deposit)
 
-                                                            <button type="submit" class="btn btn-danger"
-                                                                onclick="return confirm('Are you sure you want to delete this record?');">Delete</button>
-                                                        </form>
 
+                                                            <form action="{{ route('deposit.destroy', $deposit->id) }}"
+                                                                enctype="multipart/form-data" method="post">
+                                                                @csrf
+                                                                @method('DELETE')
+
+                                                                <button type="submit" class="btn btn-danger"
+                                                                    onclick="return confirm('Are you sure you want to delete this record?');">Delete</button>
+                                                            </form>
+
+
+                                                        @endcan
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -106,9 +113,9 @@
                                                             <td>{{ $deposit->status }}</td>
                                                             <td class="row">
                                                                 @can('update', $deposit)
-                                                                     <a href="{{ route('deposit.edit', $deposit->id) }}"
-                                                                    style="margin-right: 3%;"
-                                                                    class=" btn btn btn-info">Edit</a>
+                                                                    <a href="{{ route('deposit.edit', $deposit->id) }}"
+                                                                        style="margin-right: 3%;"
+                                                                        class=" btn btn btn-info">Edit</a>
                                                                 @endcan
 
 

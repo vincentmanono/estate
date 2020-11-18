@@ -26,7 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RentSeeder::class);
         $this->call(MaintenanceSeeder::class);
         $this->call(ServiceSeeder::class);
-        $this->call(PaymentSeeder::class);
         $this->call(ApplicationSeeder::class);
         $this->call(TenantServiceSeeder::class);
 

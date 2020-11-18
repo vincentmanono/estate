@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+<title>Apartment Request</title>
+@endsection
 @section('content')
 
     <div class="page-wrapper">
@@ -109,7 +112,7 @@
                                                                     <form
                                                                         action="{{ route('application.status', $application) }}"
                                                                         method="POST">
-                                                                        @method('PUT') 
+                                                                        @method('PUT')
                                                                         @csrf
                                                                         <input type="number" name="status" value="1"
                                                                             hidden>

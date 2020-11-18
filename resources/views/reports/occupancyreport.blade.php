@@ -2,7 +2,7 @@
 
 
 @section('title')
-    <title>Chief Properties - {{ $params }}</title>
+    <title>Chief Properties - {{ $params }} </title>
 @stop
 
 @section('content')

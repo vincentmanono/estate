@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+<title> Chief Properties -Branch-Create-Edit</title>
+@endsection
 
 @section('content')
 
@@ -109,7 +112,7 @@
                                                     <option value="Inactive">Inactive</option>
 
                                                 </select>
-                                            
+
                                     </div>
                                     <button type="submit" class="btn btn-success mr-2">Create</button>
                                     <a type="submit" class="btn btn-dark" href="{{ route('allBranches') }}">Cancel</a>

@@ -116,7 +116,7 @@ class DepositController extends Controller
 
 
         if (($deposit->unit->property->user_id == auth()->user()->id) || auth()->user()->isOwner()) {
-            return view('deposits.show', compact('deposit'));
+            return view('deposits.show', compact('deposit'))->with('param','Deposit Details');
         } else {
             Session::flash('error', "You do not have previlagies to view this deposit details");
             return back();

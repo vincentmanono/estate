@@ -1,6 +1,6 @@
 @foreach ($requests as $request)
 <tr>
-    
+
     <td>{{ $request->unit->property->name }}</td>
     <td>{{ $request->unit->name }}</td>
     <td>{{ $request->user->name }}</td>
