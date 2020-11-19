@@ -56,7 +56,13 @@ class HomeController extends Controller
             {
 
                 $properties = Property::orderBy('id','desc')->paginate(10);
-                return view('manager',compact('properties'))->with('param',Auth::user()->type);
+                $propertiescount=Auth::user()->properties->count();
+                $unitscount=Unit::where('property_id',Auth()->user()->id)->count();
+                $vacantunit=Unit::where('property_id',Auth()->user()->id)->where('status','0')->count();
+                $occupiedunit=Unit::where('property_id',Auth()->user()->id)->where('status','1')->count();
+                $managerproperties=Property::where('user_id',Auth::user()->id)->latest()->paginate(6);
+
+                return view('manager',compact('properties','propertiescount','unitscount','vacantunit','occupiedunit','managerproperties'))->with('param',Auth::user()->type);
 
             }
             elseif(Auth::user()->type == 'tenant')

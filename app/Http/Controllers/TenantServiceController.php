@@ -72,7 +72,7 @@ class TenantServiceController extends Controller
         $post->user_id=Auth::user()->id;//auth user id
         $post->unit_id=$request->unit_id;
         $post->message=$request->message;
-        $post->status=0;
+        $post->status=2;
 
         $validate=$post->save();
 

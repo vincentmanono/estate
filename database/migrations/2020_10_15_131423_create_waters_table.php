@@ -11,7 +11,7 @@ class CreateWatersTable extends Migration
      * $table->foreign('')->references('')->on('')->onDelete('');
      *
      * @return void
-     */
+     */ 
     public function up()
     {
         Schema::create('waters', function (Blueprint $table) {

@@ -54,8 +54,8 @@
                                             <th>Unit Name</th>
                                             <th>Property Name</th>
                                             <th>Amount</th>
-                                            <th>No of Months</th>
                                             <th>Read Date </th>
+                                            <th>Previous Reading</th>
                                             <th>New Reading</th>
                                             <th>Action</th>
                                         </tr>
@@ -93,8 +93,8 @@
                                                 <th>Unit Name</th>
                                                 <th>Property Name</th>
                                                 <th>Amount</th>
-                                                <th>No of Months</th>
                                                 <th>Read Date </th>
+                                                <th>Previous Reading</th>
                                                 <th>New Reading</th>
                                                 <th>Action</th>
                                             </tr>

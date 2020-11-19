@@ -8,11 +8,15 @@
         @if ($request->status == 1)
             <span class="badge badge-pill badge-info">
                 Approved
-            </span></a>
-        @else
+            </span>
+        @elseif($request->status==0)
             <span class="badge badge-pill badge-danger">
-                Pending
-            </span></a>
+                Declined
+            </span>
+        @else
+        <span class="badge badge-pill badge-warning">
+            Pending
+        </span>
         @endif
     </td>
     <td class="row" >

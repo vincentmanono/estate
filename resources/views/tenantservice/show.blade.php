@@ -67,10 +67,12 @@
 
                                                     <span class="badge badge-pill badge-info">Approved</span>
 
-                                                    @else
+                                                    @elseif($service->status == 0)
 
                                                     <span class="badge badge-pill badge-danger">Declined</span>
 
+                                                    @elseif($service->status == 2)
+                                                    <span class="badge badge-pill badge-warning">Pending</span>
                                                     @endif
                                                    </div>
 
@@ -79,7 +81,7 @@
                                                     <div style="float:right; " class="row" >
                                                         @can('acceptDecline', $service)
 
-                                                        @if ($service->status ==0)
+                                                        @if ($service->status ==0 )
 
 
 
@@ -93,7 +95,7 @@
                                                         <button type="submit" class="btn  btn-success">Approve</button>
                                                     </form>
 
-                                                      @else
+                                                      @elseif($service->status ==1 )
                                                       <form action="{{ route('tenantservice.status',$service) }}" method="post">
                                                         @csrf
                                                         @method('PUT')
@@ -103,6 +105,23 @@
                                                         <button type="submit" class="btn  btn-success">Decline</button>
                                                     </form>
 
+                                                    @elseif($service->status ==2 )
+                                                    <form action="{{ route('tenantservice.status',$service) }}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        <input type="number" name="status" value="1"
+                                                        hidden>
+                                                        <button type="submit" class="btn  btn-success">Approve</button>
+                                                    </form>
+                                                    <form action="{{ route('tenantservice.status',$service) }}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        <input type="number" name="status" value="0"
+                                                        hidden>
+                                                        <button type="submit" class="btn  btn-info">Decline</button>
+                                                    </form>
                                                       @endif
 
 

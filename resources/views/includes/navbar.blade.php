@@ -33,11 +33,11 @@
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ============================================================== -->
-                <li class="nav-item">
+                {{--  <li class="nav-item">
                     <form class="app-search d-none d-md-block d-lg-block">
                         <input type="text" class="form-control" placeholder="Search & enter">
                     </form>
-                </li>
+                </li>  --}}
             </ul>
             <!-- ============================================================== -->
             <!-- User profile and search -->
@@ -76,13 +76,7 @@
                                         </div>
                                     </a>
                                     <!-- Message -->
-                                    <a href="javascript:void(0)">
-                                        <div class="btn btn-info btn-circle"><i class="ti-settings"></i></div>
-                                        <div class="mail-contnet">
-                                            <h5>Settings</h5> <span class="mail-desc">You can customize this
-                                                template as you want</span> <span class="time">9:08 AM</span>
-                                        </div>
-                                    </a>
+
                                     <!-- Message -->
                                     <a href="javascript:void(0)">
                                         <div class="btn btn-primary btn-circle"><i class="ti-user"></i></div>

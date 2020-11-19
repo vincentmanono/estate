@@ -10,7 +10,7 @@ $factory->define(TenantService::class, function (Faker $faker) {
 
         'unit_id'=>function() { return App\Unit::all()->random();},
         'user_id'=>function() { return App\User::all()->random();},
-        'status'=>$faker->boolean(),
+        'status'=>$faker->numberBetween(0,2),
         'message'=>$faker->paragraph($nbSentences = 3, $variableNbSentences = true),
     ];
 });

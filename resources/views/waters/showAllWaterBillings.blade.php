@@ -4,8 +4,8 @@
         <td>{{ $water->unit->name }}</td>
         <td> {{ $water->unit->property->name }}</td>
         <td>{{ $water->amount }}</td>
-        <td>{{ $water->no_months }}</td>
         <td>{{ $water->read_date }}</td>
+        <td>{{ $water->previous_reading }}</td>
         <td>{{ $water->new_reading }}</td>
 
         <td class="row">

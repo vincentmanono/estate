@@ -128,24 +128,6 @@
                                                                 <!--/span-->
                                                                 <div class="col-md-6">
                                                                     <div class="form-group has-success">
-                                                                        <label class="control-label">No of Months</label>
-                                                                        <input type="text" name="no_months"
-                                                                            class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <!--/span-->
-                                                            </div>
-                                                            <!--/row-->
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group has-success">
-                                                                        <label class="control-label">Date</label>
-                                                                        <input type="date" name="date" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <!--/span-->
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group has-success">
                                                                         <label class="control-label">Status</label>
                                                                         <select name="status"
                                                                             class="form-control custom-select" id="">
@@ -158,6 +140,16 @@
                                                                     </div>
                                                                 </div>
                                                                 <!--/span-->
+                                                            </div>
+                                                            <!--/row-->
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Date</label>
+                                                                        <input type="date" name="date" class="form-control">
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
 
                                                             <div class="form-actions">
@@ -246,24 +238,6 @@
                                                                 <!--/span-->
                                                                 <div class="col-md-6">
                                                                     <div class="form-group has-success">
-                                                                        <label class="control-label">No of Months</label>
-                                                                        <input type="text" name="no_months"
-                                                                            class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <!--/span-->
-                                                            </div>
-                                                            <!--/row-->
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group has-success">
-                                                                        <label class="control-label">Date</label>
-                                                                        <input type="date" name="date" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <!--/span-->
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group has-success">
                                                                         <label class="control-label">Status</label>
                                                                         <select name="status"
                                                                             class="form-control custom-select" id="">
@@ -276,6 +250,16 @@
                                                                     </div>
                                                                 </div>
                                                                 <!--/span-->
+                                                            </div>
+                                                            <!--/row-->
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Date</label>
+                                                                        <input type="date" name="date" class="form-control">
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
 
                                                             <div class="form-actions">
