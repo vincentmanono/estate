@@ -14,7 +14,6 @@ $factory->define(Property::class, function (Faker $faker) {
         'address'=>$faker->address,
         'image'=>$faker->imageUrl(),
         'year_of_construction'=>$faker->date(),
-        'actual_rent_date'=>$faker->dateTime(),
         'water_bill_rate'=>$faker->numberBetween(1,10),
         'l_r_no'=>$faker->numberBetween(1,10),
         'description'=>$faker->sentence($nbWords = 60, $variableNbWords = true),

@@ -57,7 +57,9 @@
                                         {{-- <div class="card-header bg-info">
                                             <h4 class="mb-0 text-white">Other Sample form</h4>
                                         </div> --}}
+
                                         @if ($param == 'Add Rent Records')
+
 
                                             <form action="{{ route('rent.store') }}" enctype="multipart/form-data"
                                                 method="post">
