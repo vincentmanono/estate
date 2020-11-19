@@ -99,23 +99,7 @@ class LeaseController extends Controller
         $post->unit_id=$request->unit_id;
 
         if (file_exists($request->file('file'))) {
-
-            // Get filename with extension
-            $filenameWithExt = $request->file('file')->getClientOriginalName();
-
-            // Get just the filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
-            // Get extension
-            $extension = $request->file('file')->getClientOriginalExtension();
-
-            // Create new filename
-            $filenameToStore = $extension . '_' . time() . '.' . $filename;
-
-            // Uplaod file
-            $path = $request->file('file')->storeAs('public/lease', $filenameToStore);
-           $post->file =$filenameToStore;
-
+            $post->file = $this->fileupload($request);
         }
 
         $validate=$post->save();
@@ -181,8 +165,7 @@ class LeaseController extends Controller
             'status'=>['required'],
             'date'=>['required'],
             'user_id'=>['required'],
-            'unit_id'=>['required'],
-            'file'=>['required']
+            'unit_id'=>['required']
 
         ]);
 
@@ -198,35 +181,8 @@ class LeaseController extends Controller
 
 
         if (file_exists($request->file('file'))) {
-
-
-
-            $old_avatar = $post->file;
-            $avatar = $request->file;
-            if ($old_avatar != 'avatar.pdf' && !Str::contains($avatar, 'http')) {
-                $filepath = public_path('/storage/lease') . '/' . $old_avatar;
-                File::delete($filepath);
-            }
-
-
-
-            // Get filename with extension
-            $filenameWithExt = $request->file('file')->getClientOriginalName();
-
-            // Get just the filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
-            // Get extension
-            $extension = $request->file('file')->getClientOriginalExtension();
-
-            // Create new filename
-            $filenameToStore = $extension . '_' . time() . '.' . $filename;
-
-            // Uplaod file
-            $path = $request->file('file')->storeAs('public/lease', $filenameToStore);
-
             // Upload file
-            $post->file = $filenameToStore;
+            $post->file = $this->fileupload($request,$post) ;
         }
 
         $validate=$post->save();
@@ -271,5 +227,32 @@ class LeaseController extends Controller
 
             return redirect()->back()->with('error','Lease could not be found');
         }
+    }
+
+    protected function fileupload($request , $lease = null){
+        // Get filename with extension
+            $filenameWithExt = $request->file('file')->getClientOriginalName();
+
+            // Get just the filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+            if ( $lease != null ) {
+                $old_file = $lease->file;
+                if ($old_file != null) {
+                    $imagepath = public_path('/storage/lease') . '/' . $old_file;
+                    File::delete($imagepath);
+                }
+            }
+
+
+            // Get extension
+            $extension = $request->file('file')->getClientOriginalExtension();
+
+             // Create new filename
+             $filenameToStore = $filename . '_' . time() . '.' . $extension;
+
+            // Uplaod file
+            $path = $request->file('file')->storeAs('public/lease', $filenameToStore);
+          return $filenameToStore;
     }
 }
