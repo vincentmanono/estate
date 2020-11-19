@@ -40,7 +40,6 @@ class LeaseController extends Controller
     }
     public function leaseReport()
     {
-
         $leases = Lease::all();
 
         return view('reports.occupancyreport', compact('leases'))->with('params', 'Occupancy Report');

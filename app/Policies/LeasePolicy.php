@@ -38,6 +38,9 @@ class LeasePolicy
         }
     }
 
+    // lease report
+    
+
     /**
      * Determine whether the user can create models.
      *
