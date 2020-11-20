@@ -106,13 +106,13 @@
                                                     </form>
 
                                                     @elseif($service->status ==2 )
-                                                    <form action="{{ route('tenantservice.status',$service) }}" method="post">
+                                                    <form action="{{ route('tenantservice.status',$service) }}"  method="post">
                                                         @csrf
                                                         @method('PUT')
 
                                                         <input type="number" name="status" value="1"
                                                         hidden>
-                                                        <button type="submit" class="btn  btn-success">Approve</button>
+                                                        <button type="submit"  class="btn  btn-success">Approve</button>
                                                     </form>
                                                     <form action="{{ route('tenantservice.status',$service) }}" method="post">
                                                         @csrf
@@ -151,7 +151,7 @@
                                                         <div class="chat-content">
                                                             <h5>{{ $service->user->name }}</h5>
                                                             <div class="box bg-light-info">{{ $service->message }}</div>
-                                                            <div class="chat-time">created on:<h5>{{ $service->created_at }}</h5></div>
+                                                            <div class="chat-time">created on: {{ $service->created_at }}</div>
                                                         </div>
                                                     </li>
                                                     <!--chat Row -->
