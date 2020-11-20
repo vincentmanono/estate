@@ -41,7 +41,7 @@ class RentExpiryCheck extends Command
     {
         $now =Carbon::now()->format('Y-m-d H:i:s');
         $prev = Carbon::now()->subMonth(1)->format('Y-m-d H:i:s');
-        $expiredrent = Rent::where('expiry_date',$now)->where('paid_date',)
+        $expiredrent = Rent::where('expiry_date',$now)->where('paid_date');
         return 0;
     }
 }
