@@ -15,6 +15,8 @@
     @yield('title')
     @yield('extraCss')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link href="{{asset('/assets/node_modules/datatables/media/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
     <!-- This page CSS -->
     <!-- chartist CSS -->
     <link href="{{asset('/assets/node_modules/morrisjs/morris.css')}}" rel="stylesheet">
@@ -193,7 +195,7 @@
 
      <!--stickey kit -->
      <script src="/assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js"></script>
-     <script src="/assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
+    <script src="/assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
      <!--Custom JavaScript -->
      <script src="/assets/dist/js/custom.min.js"></script>
      <!--Custom JavaScript -->
