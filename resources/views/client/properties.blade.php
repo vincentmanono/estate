@@ -61,7 +61,7 @@
                     <div class="pull-left">
                         <span class="prop-user-agent">
                             <i class="fa fa-user" aria-hidden="true">Manager</i>
-                            {{ $property->user->name }}
+                            {{ $property->user->name ?? '' }}
                         </span>
                     </div>
                     <div class="pull-right">

@@ -107,15 +107,15 @@
 
                         <div class="card">
                             <div class="card-body bg-light">
-                                <h6>Property {{$property->user->type}}</h6>
+                                <h6>Property {{$property->user->type ?? "" }}</h6>
                                 <div class="text-center">
-                                    <a href="javascript:void(0)"><img alt="img" class="thumb-lg img-circle" src="/storage/users/{{ $property->user->image }}"></a>
-                                <h4>{{$property->user->name}}</h4>
-                                    <h6>Property {{$property->user->type}}</h6> </div>
+                                    <a href="javascript:void(0)"><img alt="img" class="thumb-lg img-circle" src="/storage/users/{{ $property->user->image ?? '' }}"></a>
+                                <h4>{{$property->user->name ?? ''}}</h4>
+                                    <h6>Property {{$property->user->type ?? ''}}</h6> </div>
                             </div>
                             <div class="card-body border-top">
-                                <div class="text-center"> <i class="fa fa-phone text-danger p-r-10" aria-hidden="true"></i> <a style="color: blue" href="tel: {{$property->user->phone}}"> {{$property->user->phone}}</a>
-                                    <br> <i class="fa fa-envelope-o text-danger p-r-10 m-t-10" aria-hidden="true"></i><a style="color: blue" href="mailto:{{$property->user->email}} ">{{$property->user->email}} </a> </div>
+                                <div class="text-center"> <i class="fa fa-phone text-danger p-r-10" aria-hidden="true"></i> <a style="color: blue" href="tel: {{$property->user->phone ?? ''}}"> {{$property->user->phone ?? ''}}</a>
+                                    <br> <i class="fa fa-envelope-o text-danger p-r-10 m-t-10" aria-hidden="true"></i><a style="color: blue" href="mailto:{{$property->user->email ?? ''}} ">{{$property->user->email ?? ''}} </a> </div>
                             </div>
                            @if (Auth::user()->type =='owner')
 

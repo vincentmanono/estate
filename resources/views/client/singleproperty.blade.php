@@ -52,7 +52,7 @@
 
                             </div>
                         <br>
-                                <div class="item-body"><h3>Property {{ $property->user->type }} : {{ $property->user->name }}</h3> </a>
+                                <div class="item-body"><h3>Property {{ $property->user->type ?? '' }} : {{ $property->user->name ?? ''}}</h3> </a>
                                     <div class="info">
                                         <a href="{{ route('single.show',$property->id) }}"> <p><span>Name: {{ $property->name }}</span><p><span>Address: {{ $property->address }}</span> <span>Branch: {{ $property->branch->name }}</span> </span> <span> Type <span class="estate-x-size">{{ $property->type }}</span> </span> </p>
                                         </a>
