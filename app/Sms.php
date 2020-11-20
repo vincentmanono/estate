@@ -8,8 +8,11 @@ class Sms extends Model
 {
     protected $guarded =[];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function sendTo(){
+        return $this->belongsTo(User::class,'to');
+    }
+    public function sendFrom(){
+        return $this->belongsTo(User::class,'from');
     }
     public function unit(){
         return $this->belongsTo(Unit::class);

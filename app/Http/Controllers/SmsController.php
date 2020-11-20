@@ -8,6 +8,7 @@ use App\Jobs\SendSms;
 use App\AfricaMessage;
 use Illuminate\Http\Request;
 use AfricasTalking\SDK\AfricasTalking;
+use Illuminate\Support\Facades\Session;
 
 class SmsController extends Controller
 {
@@ -18,7 +19,8 @@ class SmsController extends Controller
      */
     public function index()
     {
-        //
+        $allsms = Sms::latest()->where('from',auth()->user()->id)->get();
+        return view('sendMessage.allSendMessages',compact('allsms')) ;
     }
 
     /**
@@ -86,6 +88,8 @@ class SmsController extends Controller
      */
     public function destroy(Sms $sms)
     {
-        //
+        $sms->delete();
+        Session::flash('success', "sms deleted");
+        return back();
     }
 }

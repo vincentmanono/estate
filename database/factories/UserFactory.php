@@ -23,7 +23,7 @@ $factory->define(User::class, function (Faker $faker) {
             'slug'=> Str::of($faker->name)->slug(),
             'email' => $faker->unique()->safeEmail,
             'address'=>$faker->address,
-            'phone'=>$faker->e164PhoneNumber,
+            'phone'=>'+2457'. random_int(10000000,999999999) ,
             'kra_pin'=>$faker->numberBetween(1,10),
             'id_no'=>$faker->numberBetween(1,10),
             'image'=>$faker->imageUrl($width = 640, $height = 480),

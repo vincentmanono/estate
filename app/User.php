@@ -105,9 +105,6 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Message', 'from', 'id');
     }
-    public function setAttribute($key, $value)
-    {
 
-    }
 
 }

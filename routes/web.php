@@ -101,7 +101,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('water-reading-update/{unit}','WaterController@waterReadingUpdate')->name('water.reading') ;
         Route::put('water-payment-update/{water}','WaterController@waterPayment')->name('water.payment') ;
         Route::get('send-sms','SmsController@create')->name('create.sms') ;
+        Route::get('all-send-sms','SmsController@index')->name('all.send.sms') ;
         Route::post('send-sms','SmsController@store')->name('store.sms') ;
+        Route::delete('send-sms//{sms}','SmsController@destroy')->name('delete.sms') ;
 
 
     }) ;

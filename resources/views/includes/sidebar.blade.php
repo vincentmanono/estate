@@ -185,6 +185,7 @@
                                 class="ti-email"></i><span class="hide-menu">SMS Notification</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="{{ route('create.sms') }}">Send SMS</a></li>
+                            <li><a href="{{ route('all.send.sms') }}">View Send SMS</a></li>
                         </ul>
                     </li>
 
