@@ -100,6 +100,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('service', 'ServiceController');
         Route::put('water-reading-update/{unit}','WaterController@waterReadingUpdate')->name('water.reading') ;
         Route::put('water-payment-update/{water}','WaterController@waterPayment')->name('water.payment') ;
+        Route::get('send-sms','MessageController@smscreate')->name('create.sms') ;
 
 
     }) ;

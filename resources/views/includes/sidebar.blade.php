@@ -176,8 +176,7 @@
                                 class="ti-email"></i><span class="hide-menu">Inbox</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="{{ route('messages.index') }}">Mailbox</a></li>
-                            <li><a href="#">Mailbox Detail</a></li>
-                            <li><a href="#">Compose Mail</a></li>
+                            <li><a href="{{ route('messages.create') }}">Compose Mail</a></li>
                         </ul>
                     </li>
 
@@ -185,7 +184,7 @@
                     <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                                 class="ti-email"></i><span class="hide-menu">SMS Notification</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="#">Send SMS</a></li>
+                            <li><a href="{{ route('create.sms') }}">Send SMS</a></li>
                         </ul>
                     </li>
 

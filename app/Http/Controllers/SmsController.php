@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Sms;
+use App\User;
 use Illuminate\Http\Request;
 
 class SmsController extends Controller
@@ -24,7 +25,8 @@ class SmsController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::latest()->get();
+        return view('sendMessage.composesms');
     }
 
     /**
