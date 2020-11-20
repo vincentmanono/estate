@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Sms;
 use App\User;
+use App\Jobs\SendSms;
+use App\AfricaMessage;
 use Illuminate\Http\Request;
+use AfricasTalking\SDK\AfricasTalking;
 
 class SmsController extends Controller
 {
@@ -26,7 +29,7 @@ class SmsController extends Controller
     public function create()
     {
         $users = User::latest()->get();
-        return view('sendMessage.composesms');
+        return view('sendMessage.composesms',compact('users'));
     }
 
     /**
@@ -35,9 +38,10 @@ class SmsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request  )
     {
-        //
+          dispatch(new SendSms($request->all())) ;
+          return back()->with('message send') ;
     }
 
     /**

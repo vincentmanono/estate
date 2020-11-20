@@ -34,7 +34,22 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        This is some text within a card block.
+                        <form action="{{ route('store.sms') }}" method="post">
+                            @csrf
+                            <div class="form-group">
+                              <label for="users"> users to Receive</label>
+                              <select  class="js-example-basic-single form-control" multiple name="phone[]" id="test" required>
+                                  @foreach ($users as $user)
+                                  <option value="{{ $user->phone }}" >{{ $user->name ."() ". $user->phone ." )"}}</option>
+                                  @endforeach
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <textarea name="message" id="message"  placeholder="Write message her..."  class="form-control" cols="30" rows="10" required ></textarea>
+
+                            </div>
+                            <button type="submit" class="btn btn-info">Send</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -51,3 +66,6 @@
     <!-- ============================================================== -->
 </div>
 @stop
+
+
+

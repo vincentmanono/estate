@@ -175,6 +175,8 @@
                 });
             });
         });
+        $('.js-example-basic-single').select2();
+        $("#test").select2();
         $('#example23').DataTable({
             dom: 'Bfrtip',
             buttons: [
@@ -200,6 +202,8 @@
      <script src="/assets/node_modules/html5-editor/bootstrap-wysihtml5.js"></script>
      <script src="/assets/node_modules/dropzone-master/dist/dropzone.js"></script>
      @yield('extraScripts')
+
+
 
 </body>
 
