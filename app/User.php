@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Cast\UserCast;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -15,6 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $fillable = [
         'name', 'email', 'password', 'address',  'phone', 'kra_pin',  'id_no', 'type' .
             'email', 'image'
@@ -35,6 +37,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'phone'=>UserCast::class
     ];
 
 
@@ -101,6 +104,10 @@ class User extends Authenticatable
     public function messagesSend()
     {
         return $this->hasMany('App\Message', 'from', 'id');
+    }
+    public function setAttribute($key, $value)
+    {
+
     }
 
 }
