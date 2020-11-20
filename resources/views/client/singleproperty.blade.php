@@ -76,16 +76,13 @@
                             <input type="text" name="name" id="first_name1" class="form-control" placeholder="name">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <select name="property_id" class="form-control" id="">
-                                <option value={{ "$property->id" }}>{{$property->name}}</option>
+                            <input type="email" name="email" id="email1" class="form-control" placeholder="Your Email">
 
-                            </select>
+
+                            <input type="text"  name="property_id" value="{{ "$property->id" }}" hidden >
 
                          </div>
                          <input type="text" name="status" value="0"  id="" hidden>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <input type="email" name="email" id="email1" class="form-control" placeholder="Your Email">
-                        </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <input type="text" name="phone" id="phone1" class="form-control" placeholder="Your Phone">
                         </div>
