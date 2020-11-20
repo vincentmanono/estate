@@ -96,4 +96,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(TenantService::class);
     }
+
+
+    public function messagesSend()
+    {
+        return $this->hasMany('App\Message', 'from', 'id');
+    }
+
 }

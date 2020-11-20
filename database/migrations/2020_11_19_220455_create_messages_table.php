@@ -20,7 +20,7 @@ class CreateMessagesTable extends Migration
             $table->string('from', 100)->nullable();
             $table->string('subject', 100)->nullable();
             $table->longText('message')->nullable();
-
+            $table->boolean('isread')->default(false);
             $table->timestamps();
         });
     }

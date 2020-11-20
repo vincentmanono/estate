@@ -1,20 +1,15 @@
 <div class="card">
     <div class="card-body">
         <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
-            </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img class="img-responsive" src="/storage/property/{{$property->image}}" alt="{{ $property->name }}">
+                    <img height="400" width="600" src="/storage/property/{{$property->image}}" alt="{{ $property->name }}">
                 </div>
 
                 @foreach ($property->images as $image)
 
                     <div class="carousel-item">
-                    <img class="img-responsive" src="/storage/property/{{ $image->image }}" alt="{{ $property->name  }}">
+                    <img height="400" width="600" src="/storage/property/{{ $image->image }}" alt="{{ $property->name  }}">
                 </div>
                 @endforeach
 

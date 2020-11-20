@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::where('to',Auth::user()->email)->latest()->get();
+        $messages = Message::where('to',Auth::user()->id)->latest()->get();
         return view('messages.index',compact('messages'))->with('param','messages');
     }
 
@@ -26,7 +27,8 @@ class MessageController extends Controller
      */
     public function create()
     {
-        return view('messages.compose');
+        $users = User::orderBy('name','desc')->get();
+        return view('messages.compose',compact('users'));
     }
 
     /**
@@ -37,7 +39,18 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        $message = Message::create($request->all());
+        // return $request->all();
+        foreach ($request->to as $key => $to) {
+
+            Message::create([
+                'to'=>$to ,
+                'from'=>Auth::user()->id,
+                'subject'=> $request->subject,
+                'message'=> $request->message,
+            ]);
+        }
+        $request->session()->flash('success', "Mail send successfully");
+        return back();
     }
 
     /**
@@ -48,7 +61,7 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        return view('messages.read',compact($message)) ;
+        return view('messages.read',compact('message')) ;
     }
 
     /**
@@ -59,7 +72,7 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        return view('messages.compose',compact($message)) ;
+        return view('messages.compose',compact('message')) ;
     }
 
     /**
@@ -84,7 +97,8 @@ class MessageController extends Controller
     public function destroy(Message $message)
     {
         $message->delete();
-        return redirect()->route('mail.index')->with('success','deleted');
+        return redirect()->route('messages.index')->with('success','deleted');
 
     }
+
 }

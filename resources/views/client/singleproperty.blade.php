@@ -32,39 +32,34 @@
     <div class="row">
         <div class="col-md-6">
 
-            <div class="service-widget">
-                <div class="property-main">
-                    <div class="property-wrap">
-                        <figure class="post-media wow fadeIn">
-                            {{--  <a href="/storage/property/{{ $property->image }}" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>  --}}
-                            <a href="{{ route('single.show',$property->id) }}"><img src="/storage/property/{{ $property->image }}" alt="" class="img-responsive">
-                            </a>
-                        </figure>
-                        <div class="item-body">
-                            <a href="{{ route('single.show',$property->id) }}"> <h3>{{ $property->name }}</h3> </a>
-                            <div class="info">
-                                <a href="{{ route('single.show',$property->id) }}"> <p><span>Name: {{ $property->name }}</span><p><span>Address: {{ $property->address }}</span> <span>Branch: {{ $property->branch->name }}</span> </span> <span> Type <span class="estate-x-size">{{ $property->type }}</span> </span> </p>
-                                </a>
+                        <div class="slideshow-container">
+
+                            <div class="mySlides">
+                                <img height="400" src="/storage/property/{{ $property->image }}" style="width:100%">
                             </div>
 
-                        </div>
-                    </div>
-                    <div class="item-foot">
-                        <div class="pull-left">
-                            <span class="prop-user-agent">
-                                <i class="fa fa-user" aria-hidden="true">Manager</i>
-                                {{ $property->user->name }}
-                            </span>
-                        </div>
-                        <div class="pull-right">
-                            <span class="prop-date">
-                                {{--  <a href="{{ route('property.images',$property->id) }}" class="btn btn-sm btn-info">More Images</a>  --}}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- end service -->
+                                @foreach ($property->images as $image)
 
+                                <div class="mySlides">
+                                    <img height="400" src="/storage/property/{{ $image->image }}" style="width:100%">
+                                </div>
+
+                                @endforeach
+
+
+                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                            </div>
+                        <br>
+                                <div class="item-body"><h3>Property {{ $property->user->type }} : {{ $property->user->name }}</h3> </a>
+                                    <div class="info">
+                                        <a href="{{ route('single.show',$property->id) }}"> <p><span>Name: {{ $property->name }}</span><p><span>Address: {{ $property->address }}</span> <span>Branch: {{ $property->branch->name }}</span> </span> <span> Type <span class="estate-x-size">{{ $property->type }}</span> </span> </p>
+                                        </a>
+                                    </div>
+                                </div>
+
+                         <br>
         </div>
 
         <div class="col-md-6">
@@ -85,6 +80,7 @@
                                 <option value={{ "$property->id" }}>{{$property->name}}</option>
 
                             </select>
+
                          </div>
                          <input type="text" name="status" value="0"  id="" hidden>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

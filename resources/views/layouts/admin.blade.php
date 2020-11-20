@@ -39,6 +39,9 @@
      <link type="text/css" rel="stylesheet" href="{{asset('/assets/node_modules/jsgrid/jsgrid-theme.min.css')}}" />
      <!-- Custom CSS -->
 
+     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
 </head>
 
 <body class="skin-blue fixed-layout">
@@ -108,6 +111,9 @@
      <script src="{{ asset('/assets/dist/js/custom.min.js')}}"></script>
      <script src="{{ asset('/assets/node_modules/datatables/datatables.min.js')}}"></script>
     {{-- table  --}}
+    <link href="{{asset('/assets/node_modules/datatables/media/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
+    <!-- wysihtml5 CSS -->
+    <link rel="stylesheet" href="/assets/node_modules/html5-editor/bootstrap-wysihtml5.css" />
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->
@@ -184,14 +190,17 @@
      <script src="{{ asset('/assets/node_modules/jsgrid/db.js')}}"></script>
     <script type="text/javascript" src="{{ asset('/assets/node_modules/jsgrid/jsgrid.min.js')}}"></script>
      <script src="{{ asset('/assets/dist/js/pages/jsgrid-init.js')}}"></script>
-     <!-- slimscrollbar scrollbar JavaScript -->
-     <script src="dist/js/perfect-scrollbar.jquery.min.js"></script>
 
      <!--stickey kit -->
      <script src="/assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <script src="/assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
      <!--Custom JavaScript -->
      <script src="/assets/dist/js/custom.min.js"></script>
+     <!--Custom JavaScript -->
+     <script src="/assets/dist/js/custom.min.js"></script>
+     <script src="/assets/node_modules/html5-editor/wysihtml5-0.3.0.js"></script>
+     <script src="/assets/node_modules/html5-editor/bootstrap-wysihtml5.js"></script>
+     <script src="/assets/node_modules/dropzone-master/dist/dropzone.js"></script>
      @yield('extraScripts')
 
 </body>
