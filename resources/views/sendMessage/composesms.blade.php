@@ -1,6 +1,11 @@
 
 @extends('layouts.admin')
 
+@section('title')
+    <title>Chief Properties - {{ $params }}</title>
+@stop
+
+
 @section('content')
 <div class="page-wrapper">
     <!-- ============================================================== -->

@@ -22,14 +22,14 @@ class UserSeeder extends Seeder
             'name'=>$name ,
             'slug' =>  Str::of($name)->slug(),
             'address'=> "",
-            'email'=>"sokoro78@gmail.com",
+            'email'=>"info@chiefproperties.co.ke",
             'phone'=> "0712468094",
             'kra_pin'=>"",
             'id_no'=>"",
             "image"=>"avater.png",
             "type"=>"owner",
             'email_verified_at'=> Carbon::now(),
-            'password'=> Hash::make("Gesare@1958")
+            'password'=> Hash::make("@chiefproperties")
         ]) ;
     }
 }

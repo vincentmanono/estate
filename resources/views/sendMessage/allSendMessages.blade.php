@@ -1,6 +1,13 @@
 
 @extends('layouts.admin')
 
+
+@section('title')
+    <title>Chief Properties - {{ $params }}</title>
+@stop
+
+
+
 @section('content')
 <div class="page-wrapper">
     <!-- ============================================================== -->
@@ -12,15 +19,15 @@
         <!-- ============================================================== -->
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="text-themecolor">Write message to System Users</h4>
+                <h4 class="text-themecolor">Written messages to System Users</h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Blank Page</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item active">sms</li>
                     </ol>
-                    <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
+                    <a href="{{ route('create.sms') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a>
                 </div>
             </div>
         </div>
@@ -39,7 +46,7 @@
 
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">lease Table</h4>
+                                        <h4 class="card-title">Written messages to System Users</h4>
                                         {{-- <h6 class="card-subtitle">
                                             Data table example</h6> --}}
                                         <a href="{{ route('home') }}" class="btn btn-primary"

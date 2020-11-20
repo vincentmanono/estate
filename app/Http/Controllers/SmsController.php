@@ -20,7 +20,7 @@ class SmsController extends Controller
     public function index()
     {
         $allsms = Sms::latest()->where('from',auth()->user()->id)->get();
-        return view('sendMessage.allSendMessages',compact('allsms')) ;
+        return view('sendMessage.allSendMessages',compact('allsms'))->with('params','sms') ;
     }
 
     /**
@@ -31,7 +31,7 @@ class SmsController extends Controller
     public function create()
     {
         $users = User::latest()->get();
-        return view('sendMessage.composesms',compact('users'));
+        return view('sendMessage.composesms',compact('users'))->with('params','create sms');
     }
 
     /**
@@ -43,7 +43,7 @@ class SmsController extends Controller
     public function store(Request $request  )
     {
           dispatch(new SendSms($request->all())) ;
-          return back()->with('message send') ;
+          return back()->with('message send')->with('params','storing sms') ;
     }
 
     /**
