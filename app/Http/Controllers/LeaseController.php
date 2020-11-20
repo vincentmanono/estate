@@ -57,7 +57,7 @@ class LeaseController extends Controller
         $user = User::find(Auth::user()->id);
 
         if ($user->isOwner()) {
-            $units = Unit::latest()->get();
+            $units = Unit::latest()->where('status',0)->get();
             $compact = compact('units', 'users');
         } else {
             $properties = $user->properties;
@@ -91,7 +91,6 @@ class LeaseController extends Controller
         $post->status = $request->status;
         $post->date = $request->date;
         $post->user_id = $request->user_id;
-        $post->unit_id = $request->unit_id;
 
         //turn unit status as Occupied
         $unit = Unit::findOrFail($request->unit_id);
@@ -105,7 +104,7 @@ class LeaseController extends Controller
         $validate = $post->save();
 
         if ($validate) {
-            return back()->with('success', 'The lease details were cuptured successfully');
+            return redirect()->route('deposit.create') ->with('success', 'The lease details were cuptured successfully');
         } else {
             return back()->with('error', 'An error occured. Please try again!!!');
         }

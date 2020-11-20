@@ -27,6 +27,7 @@
 {{--  chat  --}}
 
 <link href="{{ asset('assets/dist/css/pages/chat-app-page.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/dist/css/pages/inbox.css') }}" rel="stylesheet">
 
 
 
@@ -182,6 +183,14 @@
      <script src="{{ asset('/assets/node_modules/jsgrid/db.js')}}"></script>
     <script type="text/javascript" src="{{ asset('/assets/node_modules/jsgrid/jsgrid.min.js')}}"></script>
      <script src="{{ asset('/assets/dist/js/pages/jsgrid-init.js')}}"></script>
+     <!-- slimscrollbar scrollbar JavaScript -->
+     <script src="dist/js/perfect-scrollbar.jquery.min.js"></script>
+
+     <!--stickey kit -->
+     <script src="/assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js"></script>
+     <script src="/assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
+     <!--Custom JavaScript -->
+     <script src="/assets/dist/js/custom.min.js"></script>
      @yield('extraScripts')
 
 </body>

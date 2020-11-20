@@ -25,7 +25,6 @@ class CreatePropertiesTable extends Migration
             $table->string('year_of_construction')->nullable();
             $table->string('water_bill_rate')->nullable();
 
-            $table->dateTime('actual_rent_date')->nullable();
 
             $table->string('l_r_no')->nullable();
             $table->integer('branch_id')->nullable();

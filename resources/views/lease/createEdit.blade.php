@@ -115,10 +115,13 @@
                                                         @if (Auth::user()->isManager())
                                                             @foreach ($properties as $property)
                                                                 @foreach ($property->units as $unit)
+                                                                @if ( $unit->status == 0 )
+                                                                    <option value="{{ $unit->id }}">{{ $unit->name }} (
+                                                                        {{ $unit->property->name }} )
+                                                                    </option>
+                                                                @endif
 
-                                                                <option value="{{ $unit->id }}">{{ $unit->name }} (
-                                                                    {{ $unit->property->name }} )
-                                                                </option>
+
                                                                 @endforeach
 
                                                             @endforeach
