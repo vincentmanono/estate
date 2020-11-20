@@ -40,7 +40,7 @@ class PageController extends Controller
             'phone'=>['required'],
             'property_id'=>['required'],
             'email'=>['required'],
-            'identity'=>['required'],
+            'identity'=>['required'],//ID
             'status'=>['required']
         ]);
 
