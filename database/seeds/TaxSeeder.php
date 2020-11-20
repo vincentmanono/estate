@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class RentSeeder extends Seeder
+class TaxSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class RentSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Rent::class,15)->create();
+        //
     }
 }
