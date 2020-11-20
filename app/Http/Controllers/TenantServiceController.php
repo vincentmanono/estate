@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\Unit;
 use App\User;
 use App\Lease;
 use App\Property;
 use App\TenantService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TenantServiceRequestApprroved;
 
