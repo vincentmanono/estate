@@ -91,6 +91,7 @@ class LeaseController extends Controller
         $post->status = $request->status;
         $post->date = $request->date;
         $post->user_id = $request->user_id;
+        $post->unit_id = $request->unit_id ;
 
         //turn unit status as Occupied
         $unit = Unit::findOrFail($request->unit_id);

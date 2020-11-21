@@ -177,8 +177,6 @@
                 });
             });
         });
-        $('.js-example-basic-single').select2();
-        $("#test").select2();
         $('#example23').DataTable({
             dom: 'Bfrtip',
             buttons: [
