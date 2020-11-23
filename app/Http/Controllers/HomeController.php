@@ -67,8 +67,9 @@ class HomeController extends Controller
             }
             elseif(Auth::user()->type == 'tenant')
             {
+                $leases = Auth::user()->leases ;
 
-                $leases = Lease::all();
+
                 $rents = Rent::all();
                 return view('tenant',compact('leases','rents'))->with('param',Auth::user()->type);
 

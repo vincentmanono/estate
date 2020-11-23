@@ -122,7 +122,6 @@ class LeaseController extends Controller
     {
         $lease = Lease::find($id);
         $this->authorize('view', $lease);
-
         return view('lease.show', compact('lease'))->with('params', 'View Lease Record');
     }
 

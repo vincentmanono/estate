@@ -24,7 +24,7 @@
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active">ChiefProperties </li>
                     </ol>
                     {{--  <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>  --}}
@@ -42,7 +42,7 @@
             <div class="col-lg-3 col-sm-6 col-xs-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-uppercase">Property Name</h5>
+                        <h5 class="card-title text-uppercase">Property Leased</h5>
                         <div class="d-flex align-items-center no-block m-t-20 m-b-10">
                             <h1><i class="ti-home text-info"></i></h1>
                             <div class="ml-auto">
@@ -74,10 +74,9 @@
                                 <h3 class="text-muted">
                                     @foreach ($leases as $lease)
 
-                                    @if(Auth::user()->id == $lease->user->id)
+
 
                                     {{ $lease->unit->name }}
-                                   @endif
 
                                     @endforeach
                                 </h3>
