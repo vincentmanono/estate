@@ -310,7 +310,7 @@
 
                                         @if ($unit->status && $unit->leased != null)
                                             <center class="m-t-30">
-                                                <img src="/storage/user/{{ $unit->leased->user->image }}" class="img-circle"
+                                                <img src="/storage/users/{{ $unit->leased->user->image }}" class="img-circle"
                                                     width="150" />
                                                 <h4 class="card-title m-t-10">{{ $unit->leased->user->name }}</h4>
                                                 <h4 class="card-title m-t-10">Phone</h4>

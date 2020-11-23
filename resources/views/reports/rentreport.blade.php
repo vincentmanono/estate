@@ -82,8 +82,8 @@
                                                     @foreach ($rents as $rent)
 
                                                     <tr>
-                                                        <td>{{$rent->unit->name}}</td>
                                                         <td>{{ $rent->unit->property->name }}</td>
+                                                        <td>{{$rent->unit->name}}</td>
                                                         <td>{{$rent->amount}}</td>
                                                         <td>{{$rent->paid_date}}</td>
                                                         <td>{{$rent->expiry_date}}</td>

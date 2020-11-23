@@ -130,8 +130,8 @@
                                                             <!--/span-->
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
-                                                                    <label class="control-label">No of Months</label>
-                                                                    <input type="text" name="no_months"
+                                                                    <label class="control-label">New Reading</label>
+                                                                    <input type="text" name="new_reading"
                                                                         class="form-control">
                                                                 </div>
                                                             </div>
@@ -146,15 +146,7 @@
                                                                         class="form-control">
                                                                 </div>
                                                             </div>
-                                                            <!--/span-->
-                                                            <div class="col-md-6">
-                                                                <div class="form-group has-success">
-                                                                    <label class="control-label">New Reading</label>
-                                                                    <input type="text" name="new_reading"
-                                                                        class="form-control">
-                                                                </div>
-                                                            </div>
-                                                            <!--/span-->
+
                                                         </div>
 
                                                         <div class="form-actions">

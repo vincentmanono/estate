@@ -84,7 +84,6 @@ class WaterController extends Controller
         [
             'amount'=>['string','required'],
             'pay_date'=>['string','required'],
-            'no_months'=>['string','required'],
             'read_date'=>['string','required'],
             'new_reading'=>['string','required'],
             'unit_id'=>['string','required']
@@ -94,7 +93,6 @@ class WaterController extends Controller
 
         $post->amount= $request->amount;
         $post->pay_date= $request->pay_date;
-        $post->no_months= $request->no_months;
         $post->read_date= $request->read_date;
         $post->new_reading= $request->new_reading;
         $post->unit_id= $request->unit_id;
@@ -150,7 +148,6 @@ class WaterController extends Controller
         [
             'amount'=>['string','required'],
             'pay_date'=>['string','required'],
-            'no_months'=>['string','required'],
             'read_date'=>['string','required'],
             'new_reading'=>['string','required'],
             'unit_id'=>['string','required']
@@ -160,7 +157,6 @@ class WaterController extends Controller
 
         $post->amount= $request->amount;
         $post->pay_date= $request->pay_date;
-        $post->no_months= $request->no_months;
         $post->read_date= $request->read_date;
         $post->new_reading= $request->new_reading;
         $post->unit_id= $request->unit_id;

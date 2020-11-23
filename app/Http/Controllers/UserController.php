@@ -106,6 +106,12 @@ class UserController extends Controller
 
     public function addUser(UserRequest $request)
     {
+
+        $this->validate($request,[
+            'type'=>'required',
+
+        ]);
+
         $password = "chiefproperties" . date("Y");
         $type = $request->input('type');
         $name = $request->input('name');
