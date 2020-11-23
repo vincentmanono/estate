@@ -49,7 +49,7 @@ class MessageController extends Controller
                 'message'=> $request->message,
             ]);
         }
-        $request->session()->flash('success', "Mail send successfully");
+        $request->session()->flash('success', "Mail sent successfully");
         return back();
     }
 

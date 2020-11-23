@@ -81,7 +81,7 @@
                                                                         data-placeholder="Choose a Category" tabindex="1">
 
                                                                         <option value="" disabled selected>--select
-                                                                            -tenant-name--</option>
+                                                                            -unit-name--</option>
 
 
                                                                         @if (Auth::user()->isOwner())

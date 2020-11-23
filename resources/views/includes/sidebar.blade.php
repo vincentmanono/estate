@@ -189,13 +189,13 @@
                         </ul>
                     </li>
 
-                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+                    {{--  <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                                 class="ti-wallet"></i><span class="hide-menu">Payment Mode</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="{{ route('payment.index') }}">View Payment Modes</a></li>
                             <li><a href="{{ route('payment.create') }}">Add Payment Mode</a></li>
                         </ul>
-                    </li>
+                    </li>  --}}
 
                     <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                         class="ti-wallet"></i><span class="hide-menu">Rent Tax</span></a>

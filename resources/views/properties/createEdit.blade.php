@@ -271,7 +271,7 @@
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Property Manager</label>
                                                 <select class="form-control custom-select" name="user_id" data-placeholder="Choose a Category" tabindex="1">
-                                                <option value="{{$property->user->id}}" selected>{{$property->user->name}}</option>
+                                                <option value="{{$property->user->id ?? "" }}" selected>{{$property->user->name ?? ""}}</option>
                                                     @foreach ($users as $user)
 
 
