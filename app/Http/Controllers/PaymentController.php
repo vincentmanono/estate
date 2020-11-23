@@ -14,6 +14,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
+        $user = User::find(Auth::user()->id);
         $payments =Payment::all();
         return view('payments.index',compact('payments'));
     }
@@ -51,7 +52,7 @@ class PaymentController extends Controller
         $validate=$post->save();
 
         if($validate){
-            return back()->with('success','The payment record was successfully added');
+            return redirect()->route('payment.index')->with('success','The payment record was successfully added');
 
         }
         else{

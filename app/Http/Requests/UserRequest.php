@@ -25,6 +25,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name'=>"required|max:40|min:3|string",
+            'type'=>'required',
             'email'=>"required|email",
             'phone'=>"required|numeric|min:10",
             'address'=>"required|string",
