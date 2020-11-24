@@ -84,22 +84,8 @@ class PropertyController extends Controller
 
         if (file_exists($request->file('image'))) {
 
-            // Get filename with extension
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
 
-            // Get just the filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
-            // Get extension
-            $extension = $request->file('image')->getClientOriginalExtension();
-
-            // Create new filename
-            $filenameToStore = $filename . '_' . time() . '.' . $extension;
-
-            // Uplaod image
-            $path = $request->file('image')->storeAs('public/property', $filenameToStore);
-            $avatar  = $filenameToStore;
-            $post->image = $avatar;
+            $post->image = $this->imageUpload($request);
         }
         $validate = $post->save();
 
@@ -179,40 +165,12 @@ class PropertyController extends Controller
         $post->user_id = $request->user_id;
 
         if (file_exists($request->file('image'))) {
-
-
-
-            $old_avatar = $post->image;
-            $avatar = $request->image;
-            if ($old_avatar != 'avatar.png' && !Str::contains($avatar, 'http')) {
-                $imagepath = public_path('/storage/blog') . '/' . $old_avatar;
-                File::delete($imagepath);
-            }
-
-
-
-            // Get filename with extension
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
-
-            // Get just the filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
-            // Get extension
-            $extension = $request->file('image')->getClientOriginalExtension();
-
-            // Create new filename
-            $filenameToStore = $filename . '_' . time() . '.' . $extension;
-
-            // Uplaod image
-            $path = $request->file('image')->storeAs('public/blog', $filenameToStore);
-
-            // Upload image
-            $post->image = $filenameToStore;
+            $post->image = $this->imageUpload($request,$post);
         }
         $validate = $post->save();
 
         if ($validate) {
-            return redirect()->back()->with('success', 'You have successfully Edited the Property');
+            return redirect()->route('property.show',$post->id)->with('success', 'You have successfully Edited the Property');
         } else {
             return redirect()->back()->with('error', 'An error occured while updating the Property details!');
         }
@@ -248,5 +206,35 @@ class PropertyController extends Controller
 
             return redirect()->back()->with('error', 'Property could not be found');
         }
+    }
+
+    public function imageUpload($request, $property = null)
+    {
+        if (!empty($property)) {
+            $old_avatar = $property->image;
+            $avatar = $request->image;
+            if ($old_avatar != 'property.png' && !Str::contains($old_avatar , 'http')) {
+                $imagepath = public_path('/storage/property') . '/' . $old_avatar;
+                File::delete($imagepath);
+            }
+        }
+
+        // Get filename with extension
+        $filenameWithExt = $request->file('image')->getClientOriginalName();
+
+        // Get just the filename
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+        // Get extension
+        $extension = $request->file('image')->getClientOriginalExtension();
+
+        // Create new filename
+        $filenameToStore = $filename . '_' . time() . '.' . $extension;
+
+        // Uplaod image
+        $path = $request->file('image')->storeAs('public/property', $filenameToStore);
+
+        // Upload image
+        return $filenameToStore;
     }
 }
