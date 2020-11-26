@@ -42,6 +42,8 @@
      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
+@livewireStyles
+
 </head>
 
 <body class="skin-blue fixed-layout">
@@ -202,6 +204,8 @@
      <script src="/assets/node_modules/html5-editor/bootstrap-wysihtml5.js"></script>
      <script src="/assets/node_modules/dropzone-master/dist/dropzone.js"></script>
      @yield('extraScripts')
+
+     @livewireScripts
 
 
 

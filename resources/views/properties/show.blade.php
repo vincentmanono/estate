@@ -117,31 +117,33 @@
                                 <div class="text-center"> <i class="fa fa-phone text-danger p-r-10" aria-hidden="true"></i> <a style="color: blue" href="tel: {{$property->user->phone ?? ''}}"> {{$property->user->phone ?? ''}}</a>
                                     <br> <i class="fa fa-envelope-o text-danger p-r-10 m-t-10" aria-hidden="true"></i><a style="color: blue" href="mailto:{{$property->user->email ?? ''}} ">{{$property->user->email ?? ''}} </a> </div>
                             </div>
-                           @if (Auth::user()->type =='owner')
+
 
                            <div class="card-body border-top">
                             <div class="pd-agent-inq">
                                 <h5 class="card-title">Modify Property</h5>
                                 @can('update',  $property)
-                                <a name="" id="" class="btn btn-primary" href="{{ route('property.images.create',$property->id) }}" role="button">Add Property Images </a>
+                                <a name="" id="" class="btn btn-info" href="{{ route('property.images.create',$property->id) }}" role="button"> <i class="fa fa-picture-o" aria-hidden="true"></i>Images</a>
+                                <a name="" id="" class="btn btn-dark" href="{{ route('expense.index',$property) }}" role="button"> <i class="ti-money" ></i>Expenses</a>
 
-                                <a name="" id="" class="btn btn-warning" href="{{ route('property.edit',$property) }}" role="button">Edit Property</a>
+                                <a name="" id="" class="btn btn-success" href="{{ route('property.edit',$property) }}" role="button"> <i class="fas fa-edit "></i>Property</a>
 
                                 @endcan
                                 @can('delete',  $property)
                                                                         <a name="" id="" class="btn btn-danger mt-3"  onclick=" deleteProperty()" role="button">Delete Property</a>
-
-                                @endcan
-                                <form id="deleteproperty" action="{{route('property.destroy',$property)}}" method="post" enctype="multipart/form-data">
+                                                                          <form id="deleteproperty" action="{{route('property.destroy',$property)}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     @method('DELETE')
                                 </form>
+
+                                @endcan
+
 
 
                             </div>
                         </div>
 
-                           @endif
+
                         </div>
                         <div class="card">
                             <div class="card-body">

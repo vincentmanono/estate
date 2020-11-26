@@ -33,7 +33,7 @@
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                 <li class="breadcrumb-item active"> @if ($param == 'Add New Unit')
                                     Add unit
 
@@ -96,26 +96,17 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <!--/span-->
-                                    </div>
-                                    <!--/row-->
-                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Service Charge</label>
-                                                <input type="text" id="firstName" name="service_charge" class="form-control" >
+                                                <input type="text" id="service_charge" name="service_charge" value="{{ old('billing_cycle') }}" class="form-control @error('billing_cycle') is-invalid @enderror" >
 
                                             </div>
                                         </div>
                                         <!--/span-->
-                                        <div class="col-md-6">
-                                            <div class="form-group has-success" >
-                                                <label class="control-label">Billing Cycle</label>
-                                                <input type="text" name="billing_cycle" class="form-control @error('billing_cycle') is-invalid @enderror" value="{{ old('billing_cycle') }}" required autocomplete="billing_cycle" autofocus>
-                                            </div>
-                                        </div>
-                                        <!--/span-->
                                     </div>
+                                    <!--/row-->
+
                                     <!--/row-->
                                 </div>
 
@@ -143,18 +134,7 @@
                                           </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group has-success" >
 
-                                            <div class="form-group">
-                                                <label for="status">Unit Status</label>
-                                                <select id="status" class="form-control" name="status" required >
-                                                    <option value="0" >Vacant</option>
-                                                    <option value="1">Occupied</option>
-                                                </select>
-                                            </div>
-                                          </div>
-                                    </div>
 
                                 </div>
                                     <!--/span-->
@@ -179,41 +159,18 @@
                                           </div>
                                     </div>
                                     <!--/span-->
-                                    <div class="col-md-6">
-                                        {{-- <div class="form-group has-success" >
-                                            <label class="control-label">Property Name</label>
-                                            <select class="form-control custom-select" name="property_id"  tabindex="1">
-                                                <option value="{{ $unit->property->id }}" selected>{{ $unit->property->name }}</option>
+                                        <div class="col-md-6">
+                                            <div class="form-group has-success" >
+                                                <label class="control-label">Service Charge</label>
+                                                <input type="text" id="firstName" value="{{ $unit->service_charge }}" name="service_charge" class="form-control" >
 
-                                           @foreach ($properties as $property)
-                                           <option value="{{ $property->id }}">{{ $property->name }}</option>
-                                           @endforeach
+                                            </div>
+                                        </div>
 
-
-
-                                            </select>
-                                        </div> --}}
-                                    </div>
                                     <!--/span-->
                                 </div>
                                 <!--/row-->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group has-success" >
-                                            <label class="control-label">Service Charge</label>
-                                            <input type="text" id="firstName" value="{{ $unit->service_charge }}" name="service_charge" class="form-control" >
 
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                    <div class="col-md-6">
-                                        <div class="form-group has-success" >
-                                            <label class="control-label">Billing Cycle</label>
-                                            <input type="text" value="{{ $unit->billing_cycle }}" name="billing_cycle" class="form-control" >
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                </div>
                                 <!--/row-->
                             </div>
 

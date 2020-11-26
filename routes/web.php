@@ -106,8 +106,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('send-sms//{sms}','SmsController@destroy')->name('delete.sms') ;
         Route::get('all-properties-rent-tax','TaxController@index')->name('property.rent.tax.index') ;
         Route::delete('property-rent-tax/{tax}','TaxController@destroy')->name('property.rent.tax.delete') ;
-
-
+        Route::resource('property/{property}/expense', 'ExpenseController');
     }) ;
 
 });
