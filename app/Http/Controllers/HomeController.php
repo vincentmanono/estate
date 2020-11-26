@@ -36,7 +36,7 @@ class HomeController extends Controller
 
 
         {
-            if (Auth::user()->type == 'owner')
+            if (Auth::user()->isOwner())
             {
                     $propertycount = Property::all()->count();
                     $branchcount = Branch::all()->count();
@@ -52,20 +52,36 @@ class HomeController extends Controller
 
                     return view('home',compact('propertycount','properties','depositsum','rentsum','managers','branchcount','leasecount','unleasecount'))->with('param',Auth::user()->type);
             }
-            elseif(Auth::user()->type =='manager')
+            elseif(Auth::user()->isManager())
             {
+
+                $status = 0 ;
 
                 $properties = Property::orderBy('id','desc')->paginate(10);
                 $propertiescount=Auth::user()->properties->count();
-                $unitscount=Unit::where('property_id',Auth()->user()->id)->count();
-                $vacantunit=Unit::where('property_id',Auth()->user()->id)->where('status','0')->count();
-                $occupiedunit=Unit::where('property_id',Auth()->user()->id)->where('status','1')->count();
+
+                $vacantunit = $occupiedunit = $totalUnitsManaged = 0 ;
+                $propertiesm=Property::where('user_id',Auth::user()->id)->get();
+                foreach ($propertiesm as  $pro) {
+                    foreach ($pro->units as $key => $unit) {
+                        $totalUnitsManaged++ ;
+                        if ( $unit->status == 0) {
+                            $vacantunit++ ;
+                        }else{
+                            $occupiedunit++ ;
+
+                        }
+                    }
+                }
+
+                $unitscount  = $totalUnitsManaged ;
                 $managerproperties=Property::where('user_id',Auth::user()->id)->latest()->paginate(6);
 
-                return view('manager',compact('properties','propertiescount','unitscount','vacantunit','occupiedunit','managerproperties'))->with('param',Auth::user()->type);
+
+                return view('manager',compact('properties','unitscount','propertiescount','vacantunit','occupiedunit','managerproperties'))->with('param',Auth::user()->type);
 
             }
-            elseif(Auth::user()->type == 'tenant')
+            elseif(Auth::user()->isTenant())
             {
                 $leases = Auth::user()->leases ;
 

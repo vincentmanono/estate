@@ -15,10 +15,10 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class,10)->create();
+        factory(App\User::class,0)->create();
         $name = "sokoro78";
 
-      /*  User::create([
+       User::create([
             'name'=>$name ,
             'slug' =>  Str::of($name)->slug(),
             'address'=> "",
@@ -30,6 +30,6 @@ class UserSeeder extends Seeder
             "type"=>"owner",
             'email_verified_at'=> Carbon::now(),
             'password'=> Hash::make("@chiefproperties")
-        ]) ; */
+        ]) ;
     }
 }
