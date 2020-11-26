@@ -72,7 +72,7 @@ class UnitController extends Controller
         $this->authorize('create',Unit::class);
 
         $this->validate($request,[
-            'name'=>'required',
+            'name'=>['required','unique:units'],
             'water_acc_no'=>'string',
             'electricity_acc_no'=>'string',
             'service_charge'=>'string',

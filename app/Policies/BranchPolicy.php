@@ -44,7 +44,7 @@ class BranchPolicy
      */
     public function create(User $user)
     {
-        if ( $user->isManager() || $user->isOwner() ) {
+        if (  $user->isOwner() ) {
             return Response::allow() ;
          }
           return Response::deny("You do not have permission to access this",401) ;
@@ -60,7 +60,7 @@ class BranchPolicy
     public function update(User $user, Branch $branch)
     {
 
-        if ( $user->isManager() || $user->isOwner() ) {
+        if (  $user->isOwner() || $user->isManager() ) {
             return Response::allow() ;
          }
          return Response::deny("You do not have permission to access this",401) ;
@@ -76,7 +76,7 @@ class BranchPolicy
      */
     public function delete(User $user, Branch $branch)
     {
-        if ( $user->isManager() || $user->isOwner() ) {
+        if (  $user->isOwner() ) {
             return Response::allow() ;
          }
          return Response::deny("You do not have permission to access this",401) ;
@@ -92,7 +92,7 @@ class BranchPolicy
      */
     public function restore(User $user, Branch $branch)
     {
-        if ( $user->isManager() || $user->isOwner() ) {
+        if ( $user->isOwner() ) {
             return Response::allow() ;
          }
          return Response::deny("You do not have permission to access this",401) ;
@@ -108,7 +108,7 @@ class BranchPolicy
      */
     public function forceDelete(User $user, Branch $branch)
     {
-        if ( $user->isManager() || $user->isOwner() ) {
+        if ($user->isOwner() ) {
             return Response::allow() ;
          }
          return Response::deny("You do not have permission to access this",401) ;
