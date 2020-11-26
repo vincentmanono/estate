@@ -81,7 +81,7 @@ class PropertyPolicy
      */
     public function delete(User $user, Property $property)
     {
-        if ($user->isManager() || $user->isOwner()) {
+        if ( $user->isOwner()) {
 
             if (($user->isManager() && $user->id == $property->user_id) || $user->isOwner()) {
                 return Response::allow();
@@ -103,7 +103,7 @@ class PropertyPolicy
      */
     public function restore(User $user, Property $property)
     {
-        if ($user->isManager() || $user->isOwner()) {
+        if ( $user->isOwner()) {
 
             if (($user->isManager() && $user->id == $property->user_id) || $user->isOwner()) {
                 return Response::allow();
@@ -125,7 +125,7 @@ class PropertyPolicy
      */
     public function forceDelete(User $user, Property $property)
     {
-        if ($user->isManager() || $user->isOwner()) {
+        if ( $user->isOwner()) {
 
             if (($user->isManager() && $user->id == $property->user_id) || $user->isOwner()) {
                 return Response::allow();

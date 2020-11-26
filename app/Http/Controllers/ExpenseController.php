@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Expense;
+use App\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExpenseController extends Controller
 {
@@ -12,9 +15,13 @@ class ExpenseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Property $property)
     {
-        //
+        $user = User::find(Auth::user()->id);
+
+        $expenses = Expense::where('property_id',$property->id)->latest()->get();
+        return view('properties.expenses.index',compact('expenses','property')) ;
+
     }
 
     /**
@@ -22,9 +29,9 @@ class ExpenseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Property $property)
     {
-        //
+        // return view()
     }
 
     /**
@@ -35,7 +42,7 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $expense = Expense::create($request->all());
     }
 
     /**

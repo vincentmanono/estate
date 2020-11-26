@@ -12,7 +12,7 @@ class CreateUnitsTable extends Migration
      * @return void
      */
     public function up()
-    { 
+    {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
 
@@ -20,7 +20,6 @@ class CreateUnitsTable extends Migration
 
             // $table->string('rent_escalation')->nullable();
             $table->string('water_meter')->nullable();
-            $table->string('billing_cycle')->nullable();//monthy,quartely,bi-annually,annually
             $table->string('water_acc_no')->nullable();
             $table->string('electricity_meter')->nullable();//prepaid and post-paid
             $table->string('electricity_acc_no')->nullable();

@@ -57,7 +57,7 @@ class UnitController extends Controller
     {
         $this->authorize('create',Unit::class);
 
-        $properties =Property::all();
+        $properties = Auth::user()->properties ;
         return view('units.createEdit',compact('properties'))->with('param','Add New Unit');
     }
 
@@ -77,9 +77,7 @@ class UnitController extends Controller
             'electricity_acc_no'=>'string',
             'service_charge'=>'string',
             'property_id'=>'required',
-            'billing_cycle'=>'string',
             'rent'=> 'required',
-            'status'=>'required'
         ]);
 
 
@@ -123,7 +121,7 @@ class UnitController extends Controller
 
         $this->authorize('update',$unit);
         $unit = Unit::find($id);
-        $properties =Property::all();
+        $properties = Auth::user()->properties ;
         return view('units.createEdit',compact('unit','properties'))->with('param','Edit Unit Details');
     }
 
@@ -151,18 +149,9 @@ class UnitController extends Controller
 
         $post = Unit::find($id);
 
-        $post->name =$request->name;
-        $post->water_acc_no=$request->water_acc_no;
-        $post->electricity_acc_no=$request->electricity_acc_no;
-        $post->service_charge =$request->service_charge;
-        // $post->property_id=$request->property_id;
-        $post->billing_cycle=$request->billing_cycle;
-        $post->rent=$request->rent;
-        $post->status=$request->status;
+       $updated = $post->update($request->all());
 
-        $validate= $post->save();
-
-        if($validate){
+        if($updated){
             return back()->with('success','You have successfully Updated the unit records');
         }
         else{
