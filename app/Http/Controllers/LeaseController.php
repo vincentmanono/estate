@@ -229,6 +229,13 @@ class LeaseController extends Controller
         }
     }
 
+    public function leaseform(){
+        return view('lease');
+    }
+    public function chiefinvlease(){
+        return view('chiefinvestmentlease');
+    }
+
     protected function fileupload($request, $lease = null)
     {
         // Get filename with extension

@@ -261,7 +261,15 @@
 
 
 
+         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+                    class="ti-home"></i><span class="hide-menu">Lease</span></a>
+              <ul aria-expanded="false" class="collapse">
+                <li><a href="{{ route('lease.form') }}">Lease Form</a></li>
+                <li><a href="{{ route('chiefinv.lease') }}">Chief Investment Lease Form</a></li>
 
+              </ul>
+
+         </li>
 
 
 

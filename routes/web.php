@@ -79,7 +79,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('payment', 'PaymentController');
 
     Route::resource('messages', 'MessageController');
-
+    Route::get('leaseform','LeaseController@leaseform')->name("lease.form");
+    Route::get('chiefinvestlease','LeaseController@chiefinvlease')->name('chiefinv.lease');
 
 
     // manager
