@@ -47,7 +47,7 @@
                                             <br>
                                             <h6>TENANT’S FULL NAMES…………………………..……….. ID NO……………….TEL NO…………….POSTAL ADD ………............... </h6>
                                             <br>
-                                            <h6>PLACE OF WORK ……………………, EMPLOY’S TEL NO……………………….</h6>
+                                            <h6>PLACE OF WORK ……………………, EMPLOYER’S TEL NO……………………….</h6>
                                             <br>
                                             <h6>LEASE PERIOD IE NOT LESS THAN THREE MONTHS…………… WITH EFFECT FROM …………END DATE…………</h6>
                                             <br>

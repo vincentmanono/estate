@@ -38,9 +38,9 @@
                         <div class="card-body">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 ">
                                         <h3>
-                                            <b>
+                                            <b >
                                                 Chief Investment Company
                                             </b>
                                         </h3>
@@ -59,12 +59,12 @@
                                             Corporation with
                                             an address P.O Box 4-00600, Nairobi-Kenya 76014, (hereinafter called "Tenant").
                                         </p>
-                                        <h5>WITNESSETH: </h5>
+                                        <h5 class="headerfivelease">WITNESSETH: </h5>
                                         <p> Landlord hereby leases to Tenant and Tenant hereby leases from Landlord certain
                                             premises in a
                                             building known as: </p>
                                         <br>
-                                        <h5>149 GC
+                                        <h5 class="plotlease">149 GC
                                             <br>
                                             Green Court
                                             <br>
@@ -78,16 +78,18 @@
                                             tenants in the
                                             building certain common facilities, hallways, rest room facilities, and
                                             courtyard. </p>
-                                        <h5>1. TERM </h5>
+                                        <h5 class="headerfivelease">1. TERM </h5>
                                         <p>The term of this Master Lease shall be for a period of six (6) years, broken down
                                             into three
                                             phases of each phase renewable and review of the rent after every two years (2)
                                             commencing on:-
                                         </p>
                                         <p>
+                                           <div class="phaseslease">
                                             Phase I: Aug 1st, 2018-July 31st, 2020 } (Renewable) <br>
                                             Phase II: Aug 1st, 2020-July 31st, 2022 } (Renewable)<br>
                                             Phase III: Aug 1st, 2022-July 31st, 2024 } (Renewable)
+                                           </div>
 
                                         </p>
                                         <p>
@@ -95,7 +97,7 @@
                                             ("Expiration Date")
                                             unless sooner terminated pursuant to any provision hereof.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             2. POSSESSION
                                         </h5>
                                         <p>
@@ -127,7 +129,7 @@
                                             requirements of
                                             Landlord specified hereafter, if any.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             3. RENT, LOCK FEE, CAM CHARGES, SECURITY DEPOSIT
                                         </h5>
                                         <p>
@@ -149,7 +151,7 @@
                                             Landlord may
                                             from time to time designate in writing.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             SECURITY DEPOSIT
                                         </h5>
                                         <p>
@@ -203,7 +205,7 @@
                                             such deposit or
                                             the accounting therefore.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             4. CONDITION OF PREMISES
                                         </h5>
                                         <p>
@@ -213,7 +215,7 @@
                                             kind of changes
                                             must be well documented with a written go ahead from the landlord.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             5. USE OF PREMISES
                                         </h5>
                                         <p>
@@ -268,7 +270,7 @@
                                             hereby expressly
                                             made a part hereof, and Tenant agrees to obey all such Rules and Regulations.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             6 UTILITIES
                                         </h5>
                                         <p>
@@ -282,7 +284,7 @@
                                             by Tenant will
                                             be the sole responsibility of Tenant other than.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             N/B:
                                         </h5>
                                         <p>
@@ -291,7 +293,7 @@
                                             (Ksh.5,000.00) Respectively. Which shall be paid upon the security Deposit
                                             normally ordered.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             7 TENANT ALTERATIONS
                                         </h5>
                                         <p>
@@ -337,7 +339,7 @@
                                             shall survive
                                             the termination of this Lease.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             8. REPAIRS
                                         </h5>
                                         <p>
@@ -372,7 +374,7 @@
                                             store fronts.
 
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             9 LIENS
                                         </h5>
                                         <p>
@@ -389,7 +391,7 @@
                                             any liability for mechanics’ and material men's liens and to insure completion
                                             of the work.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             10. PERSONAL PROPERTY TAXES
                                         </h5>
 
@@ -411,7 +413,7 @@
                                             writing setting forth the amount of such taxes applicable to the Lessee's
                                             property.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             11 BUILDING SERVICES
                                         </h5>
                                         <p>
@@ -466,7 +468,7 @@
                                             local public
                                             authority, or the local public utility, as the case may be furnished the same.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             13. QUIET ENJOYMENT
                                         </h5>
                                         <p>
@@ -484,7 +486,7 @@
                                             other portions
                                             of the building not within the Premises.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             14. PARKING
                                         </h5>
                                         <p>
@@ -504,7 +506,7 @@
                                             accessing the
                                             dumpster during garbage pickup days .
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             15. ENTRY/INSPECTION BY LANDLORD
                                         </h5>
                                         <p>
@@ -544,7 +546,7 @@
                                             Premises or any
                                             portion thereof.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             16 PREMISES VACATED DURING TERM OF LEASE
                                         </h5>
                                         <p>
@@ -570,7 +572,7 @@
                                                     Breach of the
                                                     Lease terms and conditions has occurred.</b></u>
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             17 REMOVAL OF TENANT'S PROPERTY
                                         </h5>
                                         <p>
@@ -594,7 +596,7 @@
                                             Tenant to the
                                             Landlord and upon the expense incident to the removal and said effects.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             18 EMINENT DOMAIN
                                         </h5>
                                         <p>
@@ -630,7 +632,7 @@
                                             adversely affect
                                             in any way the amount of Landlord's award.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             19 SALE BY LANDLORD
                                         </h5>
                                         <p>
@@ -646,7 +648,7 @@
                                             sale, and the Tenant
                                             agrees to attorney to the purchaser or assignee.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             20. DAMAGE TO PROPERTY / INJURY TO PERSONS
                                         </h5>
                                         <p>
@@ -724,7 +726,7 @@
                                             Subrogation Rights.
 
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             21 INDEMNIFICATION AND INSURANCE
                                         </h5>
                                         <p>
@@ -770,7 +772,7 @@
                                             Tenant or others on
                                             behalf of Tenant.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             23. INABILITY TO PERFORM
                                         </h5>
                                         <p>
@@ -802,7 +804,7 @@
                                             reasonable
                                             period of time.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             24. DEFAULT AND REMEDIES
                                         </h5>
                                         <p>
@@ -874,7 +876,7 @@
                                             others on behalf of
                                             Tenant.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             25 RIGHT OF LANDLORD TO PERFORM
                                         </h5>
                                         <p>
@@ -905,7 +907,7 @@
                                             nonpayment thereof by the Tenant as in the case of default by the Tenant in the
                                             payment of rent.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             26 DEFAULT AND REMEDIES
                                         </h5>
                                         <p>
@@ -970,7 +972,7 @@
                                             terminate such tenancy. Such holding over shall not constitute an extension of
                                             this Lease.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             27 ATTORNEY'S FEES
                                         </h5>
                                         <p>
@@ -988,7 +990,7 @@
                                             Landlord shall pay
                                             to Tenant all reasonable attorney's fees.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             28. WAIVER
                                         </h5>
                                         <p>
@@ -1008,7 +1010,7 @@
                                             not be the
                                             exclusion of any other remedy.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             29. NOTICE
                                         </h5>
                                         <p>
@@ -1024,7 +1026,7 @@
                                             mail receipt
                                             shall be conclusive evidence of such service.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             30. SUBLETTING AND ASSIGNMENT
                                         </h5>
                                         <p>
@@ -1061,7 +1063,7 @@
                                             hereunder, Tenant shall pay Landlord a fee of thirty thousand Kenya Shillings
                                             (Ksh. 30,000.00) .
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             31. ESTOPPEL
                                         </h5>
                                         <p>
@@ -1099,7 +1101,7 @@
                                             not be affected
                                             by the disability of Tenant.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             32. MISCELLANEOUS PROVISIONS
                                         </h5>
                                         <p>
@@ -1147,7 +1149,7 @@
                                             applicable.
 
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             33. SUCCESSORS AND ASSIGNS
                                         </h5>
                                         <p>
@@ -1159,7 +1161,7 @@
                                             all of the parties hereto shall be jointly and severally liable hereunder.
 
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             34 BUILDING NAME
                                         </h5>
                                         <p>
@@ -1167,7 +1169,7 @@
                                             the name of the
                                             building.
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             35. EXHIBITS
                                         </h5>
                                         <p>
@@ -1180,7 +1182,7 @@
                                             Prepared and signed by the
                                         </p>
                                         <p><u><b> LANDLORD </b></u></p>
-                                        <p> CHIEF INVESTMENT COMPANY <br>
+                                        <p > CHIEF INVESTMENT COMPANY <br>
                                             Agent for Chief……………………………….……) LANDLORD <br>
                                             Signature…………………………………………….) <br>
                                             This…………….Day of………….……20…………)
@@ -1193,7 +1195,7 @@
                                                 </b>
                                             </u>
                                         </p>
-                                        <h5>
+                                        <h5 class="headerfivelease">
                                             The TENANT
                                         </h5>
                                         <p>
