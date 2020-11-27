@@ -43,6 +43,7 @@ class ExpenseController extends Controller
     public function store(Request $request)
     {
         $expense = Expense::create($request->all());
+        return back()->with('success','Expense Added') ;
     }
 
     /**
@@ -51,9 +52,11 @@ class ExpenseController extends Controller
      * @param  \App\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function show(Expense $expense)
+    public function show($propertyId , $expenseId)
     {
-        //
+        $expense = Expense::findOrFail($expenseId) ;
+        
+        return view('properties.expenses.show',compact('expense') );
     }
 
     /**
@@ -74,9 +77,13 @@ class ExpenseController extends Controller
      * @param  \App\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Expense $expense)
+    public function update(Request $request,  $expenseId,$propertyId)
     {
-        //
+        // return $expenseId ;
+        $expense = Expense::findOrFail($expenseId) ;
+        $expense->update($request->all());
+        return redirect()->route('expense.show',[$expense->id,$expense->property->id]) ->with('success',"expense updated");
+
     }
 
     /**

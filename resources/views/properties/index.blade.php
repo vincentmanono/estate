@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    <title>All Properties</title>
+@endsection
 @section('content')
 
 
