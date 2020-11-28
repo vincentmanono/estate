@@ -20,6 +20,7 @@ class LeaseController extends Controller
      */
     public function index()
     {
+        // return view('lease/pdf/chiefinvestmentlease') ;
         $leases = Lease::all();
 
 
@@ -274,23 +275,46 @@ class LeaseController extends Controller
         return view('lease/signfile',compact('lease')) ;
     }
 
-    public function signlease(Request $request)
+    public function signlease(Request $request,$leaseId)
     {
         $folderPath = "upload/";
         $signed = $request->signed ;
-  
+
+        $lease =  Lease::find($leaseId);
+
+        $user = User::find($request->user);
         $image_parts = explode(";base64,", $signed);
             
         $image_type_aux = explode("image/", $image_parts[0]);
-          
+
+      
         $image_type = $image_type_aux[1];
           
         $image_base64 = base64_decode($image_parts[1]);
           
         $file = $folderPath . uniqid() . '.'.$image_type;
-          
+        $name = Str::random(45);
         file_put_contents($file, $image_base64);
-        echo "Signature Uploaded Successfully.";
+
+        if ( $user->isTenant() ) {
+            $lease->update([
+                'tenantSignature' =>  'upload/'.$file
+            ]);
+            
+        } else {
+            $lease->update([
+                'managerSignature' =>  'upload/'.$file
+            ]);
+        }
+
+        
+        return redirect()->route('lease.show',$leaseId)->with('success', "Signature Uploaded Successfully.") ;
+    }
+
+    public function createLeaseform($lease)
+    {
+        
+       
     }
 
 
