@@ -29,7 +29,7 @@
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active">Lease Document</li>
                     </ol>
-                    <a href="{{ route('lease.edit',$lease->id) }}" type="button" class="btn btn-info d-none d-lg-block m-l-15"> <i class="ti-marker-alt">Update Lease</i> </a>
+                    {{--  <a href="{{ route('lease.edit',$lease->id) }}" type="button" class="btn btn-info d-none d-lg-block m-l-15"> <i class="ti-marker-alt">Update Lease</i> </a>  --}}
                 </div>
             </div>
         </div>
