@@ -73,7 +73,7 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group has-success">
                                                                         <label class="control-label">Unit Name</label>
-                                                                        <select name="unit_id"
+                                                                        <select required name="unit_id"
                                                                             class="form-control custom-select"
                                                                             data-placeholder="Choose a Category"
                                                                             tabindex="1">
@@ -96,7 +96,7 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group has-success">
                                                                         <label class="control-label">Tenant Name</label>
-                                                                        <select name="user_id"
+                                                                        <select required name="user_id"
                                                                             class="form-control custom-select"
                                                                             data-placeholder="Choose a Category"
                                                                             tabindex="1">
@@ -121,7 +121,7 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group has-success">
                                                                         <label class="control-label">Amount</label>
-                                                                        <input type="type" name="amount"
+                                                                        <input required type="type" name="amount"
                                                                             class="form-control">
                                                                     </div>
                                                                 </div>
@@ -129,7 +129,7 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group has-success">
                                                                         <label class="control-label">Status</label>
-                                                                        <select name="status"
+                                                                        <select required name="status"
                                                                             class="form-control custom-select" id="">
 
                                                                             <option value="">--select-status--</option>
@@ -146,7 +146,7 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group has-success">
                                                                         <label class="control-label">Date</label>
-                                                                        <input type="date" name="date" class="form-control">
+                                                                        <input required type="date" name="date" class="form-control">
                                                                     </div>
                                                                 </div>
 
@@ -179,7 +179,7 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group has-success">
                                                                         <label class="control-label">Unit Name</label>
-                                                                        <select name="unit_id"
+                                                                        <select required name="unit_id"
                                                                             class="form-control custom-select"
                                                                             data-placeholder="Choose a Category"
                                                                             tabindex="1">
@@ -206,7 +206,7 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group has-success">
                                                                         <label class="control-label">Tenant Name</label>
-                                                                        <select name="user_id"
+                                                                        <select required name="user_id"
                                                                             class="form-control custom-select"
                                                                             data-placeholder="Choose a Category"
                                                                             tabindex="1">
@@ -231,7 +231,7 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group has-success">
                                                                         <label class="control-label">Amount</label>
-                                                                        <input type="type" name="amount"
+                                                                        <input required type="type" name="amount"
                                                                             class="form-control">
                                                                     </div>
                                                                 </div>
@@ -239,7 +239,7 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group has-success">
                                                                         <label class="control-label">Status</label>
-                                                                        <select name="status"
+                                                                        <select required name="status"
                                                                             class="form-control custom-select" id="">
 
                                                                             <option value="">--select-status--</option>
@@ -256,7 +256,7 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group has-success">
                                                                         <label class="control-label">Date</label>
-                                                                        <input type="date" name="date" class="form-control">
+                                                                        <input required type="date" name="date" class="form-control">
                                                                     </div>
                                                                 </div>
 
@@ -298,7 +298,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Unit Name</label>
-                                                                    <select name="unit_id"
+                                                                    <select required name="unit_id"
                                                                         class="form-control custom-select"
                                                                         data-placeholder="Choose a Category" tabindex="1">
 
@@ -319,11 +319,11 @@
                                                             <!--/span-->
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
-                                                                    <input type="hidden" value="{{ $deposit->user->id }}"
+                                                                    <input required type="hidden" value="{{ $deposit->user->id }}"
                                                                         name="user_id">
 
                                                                     <label class="control-label">Amount</label>
-                                                                    <input type="type" value="{{ $deposit->amount }}"
+                                                                    <input required type="type" value="{{ $deposit->amount }}"
                                                                         name="amount" class="form-control">
 
 
@@ -336,7 +336,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Date</label>
-                                                                    <input type="date" value="{{ $deposit->date }}"
+                                                                    <input required type="date" value="{{ $deposit->date }}"
                                                                         name="date" class="form-control">
                                                                 </div>
                                                             </div>
@@ -344,7 +344,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Status</label>
-                                                                    <select name="status" class="form-control custom-select"
+                                                                    <select required name="status" class="form-control custom-select"
                                                                         id="">
                                                                         <option value="{{ $deposit->status }}" selected>
                                                                             {{ $deposit->status }}
