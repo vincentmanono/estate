@@ -289,6 +289,8 @@ class LeaseController extends Controller
         $folderPath = "signature/";
         $signed = $request->signed ;
 
+
+
         $lease =  Lease::find($leaseId);
 
         $user = User::find($request->user);
@@ -316,16 +318,16 @@ class LeaseController extends Controller
             ]);
         }
 
-       return   $this->createLeaseform($lease) ;
+       return   $this->createLeaseform($lease, $signed) ;
 
 
         return redirect()->route('lease.show',$leaseId)->with('success', "Signature Uploaded Successfully.") ;
     }
 
-    public function createLeaseform($lease)
+    public function createLeaseform($lease, $signed)
     {
 
-        $pdf = PDF::loadView('lease\pdf\chiefinvestmentlease',compact('lease'));
+        $pdf = PDF::loadView('lease\pdf\chiefinvestmentlease',compact('lease','signed'));
         $tenant = User::find($lease->user->id) ;
         $tenant = $tenant->slug . $lease->id ;
         $namefile =  now() . '.pdf';

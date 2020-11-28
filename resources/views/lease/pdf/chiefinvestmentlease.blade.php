@@ -1225,7 +1225,7 @@
                                         Agent for Chief {{ $lease->unit->property->user->name }} ) LANDLORD <br>
                                         Signature
 
-                                        <img src="/{{ $lease->managerSignature ?? '' }}" alt="{{ $lease->unit->property->user->name }}">
+                                        <img src="{{  $signed }}" alt="{{ $lease->unit->property->user->name }}">
 
                                         <br>
                                         This day {{ $lease->created_at->format("d-M-Y") }} )
