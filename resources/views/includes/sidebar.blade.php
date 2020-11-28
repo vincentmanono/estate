@@ -148,7 +148,7 @@
                     <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                                 class="ti-agenda"></i><span class="hide-menu">Reports Information</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            
+
                             <li><a href="{{ route('occupancy.report') }}">Occupancy Report</a></li>
                             <li><a href="{{ route('tenant.report') }}">Tenant Report</a> </li>
 

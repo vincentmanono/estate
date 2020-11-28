@@ -7,10 +7,12 @@ use App\User;
 use App\Lease;
 use App\Branch;
 use App\Property;
+// use Barryvdh\DomPDF\PDF;
 use Illuminate\support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\QueryException;
+use  PDF;
 
 class PropertyController extends Controller
 {
@@ -31,6 +33,15 @@ class PropertyController extends Controller
         $this->authorize("viewAny", Property::class);
 
         return view('properties.index', compact('properties'))->with('param','all properties');
+    }
+    public function pdfconv(Request $request){
+        $properties = Property::all();
+        $this->authorize("viewAny", Property::class);
+        $pdf = PDF::loadView('propdfconv',compact('properties'));
+        $pdf->save(storage_path().'_properties.pdf');
+               return $pdf->download('properties.pdf');
+
+
     }
 
     /**

@@ -1170,15 +1170,16 @@
                                 Signature……………………………………………..) <br>
                                 ID NO…………….……………..…………….………)
 
+
                             </p>
 
 
                         </div>
-                        
+
 
                         <a name="" id="" class="btn btn-info" href="{{ route('showpadsign',$lease->id) }}" role="button"> Click here to sign</a>
-                        
-                        
+
+
 
                     </div>
                 </div>.

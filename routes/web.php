@@ -84,7 +84,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('leaseform','LeaseController@leaseform')->name("lease.form");
     Route::get('chiefinvestlease','LeaseController@chiefinvlease')->name('chiefinv.lease');
 
-
     // manager
     Route::middleware(['manager'])->prefix('manager')->group( function () {
         Route::get('property/{property}' , 'ManagerController@property')->name('manager.property');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Unit;
 use App\User;
 use App\Lease;
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Storage;
 
 class LeaseController extends Controller
 {
@@ -126,7 +128,7 @@ class LeaseController extends Controller
         if ( $lease->file == null || Str::of( $lease->file)->contains("http")  ) {
             session()->flash('error', "Please Sign your lease form");
         }
-        
+
         return view('lease.show', compact('lease'))->with('params', 'View Lease Record');
     }
 
@@ -271,50 +273,65 @@ class LeaseController extends Controller
     public function showpadsign($leaseId)
     {
         $lease = Lease::find($leaseId);
-        
+
         return view('lease/signfile',compact('lease')) ;
     }
 
     public function signlease(Request $request,$leaseId)
     {
-        $folderPath = "upload/";
+
+        if( ! is_dir( public_path('signature')  ))
+        {
+
+            mkdir(public_path('signature')) ;
+
+        }
+        $folderPath = "signature/";
         $signed = $request->signed ;
 
         $lease =  Lease::find($leaseId);
 
         $user = User::find($request->user);
         $image_parts = explode(";base64,", $signed);
-            
+
         $image_type_aux = explode("image/", $image_parts[0]);
 
-      
+
         $image_type = $image_type_aux[1];
-          
+
         $image_base64 = base64_decode($image_parts[1]);
-          
+
         $file = $folderPath . uniqid() . '.'.$image_type;
         $name = Str::random(45);
         file_put_contents($file, $image_base64);
 
         if ( $user->isTenant() ) {
             $lease->update([
-                'tenantSignature' =>  'upload/'.$file
+                'tenantSignature' =>  $file
             ]);
-            
+
         } else {
             $lease->update([
-                'managerSignature' =>  'upload/'.$file
+                'managerSignature' =>  $file
             ]);
         }
 
-        
+       return   $this->createLeaseform($lease) ;
+
+
         return redirect()->route('lease.show',$leaseId)->with('success', "Signature Uploaded Successfully.") ;
     }
 
     public function createLeaseform($lease)
     {
-        
-       
+
+        $pdf = PDF::loadView('lease\pdf\chiefinvestmentlease',compact('lease'));
+        $tenant = User::find($lease->user->id) ;
+        $tenant = $tenant->slug . $lease->id ;
+        $namefile =  now() . '.pdf';
+       $filepath =  $pdf->save(public_path($tenant.".pdf"))->setPaper('a4', 'landscape')->setWarnings(false) ->stream('properties.pdf')  ;
+       return $filepath ;
+
     }
 
 
