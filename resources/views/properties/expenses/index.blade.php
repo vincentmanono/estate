@@ -24,7 +24,10 @@
                     @if (Auth::user()->isOwner() || Auth::user()->isManager())
 
                     <a href="{{ route('property.create') }}" type="button"
-                        class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a>
+                        class="btn btn-info d-none d-lg-block m-l-15"
+
+                        type="button"  data-toggle="modal" data-target="#addexpense"
+                        ><i class="fa fa-plus-circle"></i> Create New</a>
 
                     @endif
                 </div>

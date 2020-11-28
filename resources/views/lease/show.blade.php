@@ -2,6 +2,10 @@
 @section('title')
 <title>Chief Properties -{{ $params }}</title>
 @endsection
+
+
+
+
 @section('content')
 
 
@@ -44,9 +48,9 @@
                                                     <embed src="/storage/lease/{{ $lease->file }}" type="application/pdf" width="100%" height="600px" />
 
                         @else
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Tenant has not submitted Lease form yet.</strong>
-                            </div>
+
+                            @include('lease.chiefinvestmentlease')
+
                         @endif
 
 
@@ -70,3 +74,4 @@
 
 
 @endsection
+

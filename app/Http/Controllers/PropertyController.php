@@ -30,7 +30,7 @@ class PropertyController extends Controller
 
         $this->authorize("viewAny", Property::class);
 
-        return view('properties.index', compact('properties'));
+        return view('properties.index', compact('properties'))->with('param','all properties');
     }
 
     /**

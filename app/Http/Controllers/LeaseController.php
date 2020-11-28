@@ -122,6 +122,10 @@ class LeaseController extends Controller
     {
         $lease = Lease::find($id);
         $this->authorize('view', $lease);
+        if ( $lease->file == null || Str::of( $lease->file)->contains("http")  ) {
+            session()->flash('error', "Please Sign your lease form");
+        }
+        
         return view('lease.show', compact('lease'))->with('params', 'View Lease Record');
     }
 
@@ -263,4 +267,31 @@ class LeaseController extends Controller
         $path = $request->file('file')->storeAs('public/lease', $filenameToStore);
         return $filenameToStore;
     }
+    public function showpadsign($leaseId)
+    {
+        $lease = Lease::find($leaseId);
+        
+        return view('lease/signfile',compact('lease')) ;
+    }
+
+    public function signlease(Request $request)
+    {
+        $folderPath = "upload/";
+        $signed = $request->signed ;
+  
+        $image_parts = explode(";base64,", $signed);
+            
+        $image_type_aux = explode("image/", $image_parts[0]);
+          
+        $image_type = $image_type_aux[1];
+          
+        $image_base64 = base64_decode($image_parts[1]);
+          
+        $file = $folderPath . uniqid() . '.'.$image_type;
+          
+        file_put_contents($file, $image_base64);
+        echo "Signature Uploaded Successfully.";
+    }
+
+
 }
