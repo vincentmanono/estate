@@ -26,7 +26,7 @@
 
                     </ul>
                 </li>
-                @if (Auth::user()->type == 'manager' || Auth::user()->type == 'owner')
+                @if (Auth::user()->isManager()|| Auth::user()->isOwner())
 
 
 
@@ -158,6 +158,7 @@
                                 <ul aria-expanded="false" class="collapse">
 
                                     <li><a href="{{ route('rent.report') }}">Rent Report</a></li>
+                                    <li><a href="{{ route('search.tax') }}">Tax Report</a></li>
 
                                     <li><a href="{{ route('deposit.report') }}"> Deposit Report</a></li>
 

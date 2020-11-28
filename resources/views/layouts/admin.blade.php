@@ -26,6 +26,14 @@
     <link href="{{asset('/assets/dist/css/style.min.css')}}" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
     <link href="{{asset('/assets/dist/css/pages/dashboard1.css')}}" rel="stylesheet">
+   
+    <link rel="stylesheet" href="{{ asset('/assets/node_modules/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/node_modules/bootstrap-select/bootstrap-select.min.css') }}">
+    
+    <link href="/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="/assets/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    <link href="/assets/node_modules/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+
 {{--  chat  --}}
 
 <link href="{{ asset('assets/dist/css/pages/chat-app-page.css') }}" rel="stylesheet">
@@ -202,6 +210,22 @@
      <script src="/assets/node_modules/html5-editor/wysihtml5-0.3.0.js"></script>
      <script src="/assets/node_modules/html5-editor/bootstrap-wysihtml5.js"></script>
      <script src="/assets/node_modules/dropzone-master/dist/dropzone.js"></script>
+
+     <script src="/assets/node_modules/switchery/dist/switchery.min.js"></script>
+    <script src="/assets/node_modules/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="/assets/node_modules/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="/assets/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js" type="text/javascript"></script>
+    <script src="/assets/node_modules/dff/dff.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/node_modules/multiselect/js/jquery.multi-select.js"></script>
+
+    <script >
+        $(
+             $("#property").select2();
+        )
+       
+    </script>
+
      @yield('extraScripts')
 
   

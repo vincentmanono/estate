@@ -130,7 +130,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group has-success" >
                                             <label class="control-label">Service Charge</label>
-                                            <input required type="text" id="service_charge" name="service_charge" value="{{ old('billing_cycle') }}" class="form-control @error('billing_cycle') is-invalid @enderror" >
+                                            <input required type="text" disabled id="service_charge" name="service_charge" value="{{ old('billing_cycle') }}" class="form-control @error('billing_cycle') is-invalid @enderror" >
 
                                         </div>
                                     </div>
@@ -162,7 +162,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Service Charge</label>
-                                                <input type="text" id="firstName" value="{{ $unit->service_charge }}" name="service_charge" class="form-control" >
+                                                <input type="text" disabled id="firstName" value="{{ $unit->service_charge }}" name="service_charge" class="form-control" >
 
                                             </div>
                                         </div>
@@ -242,4 +242,8 @@
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
+@endsection
+
+@section('extraScripts')
+    <script src="{{ asset('assets/custom.js') }}"></script>
 @endsection

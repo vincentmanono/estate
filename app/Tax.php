@@ -13,4 +13,9 @@ class Tax extends Model
         return $this->belongsTo(Property::class);
     }
 
+    protected $casts = [
+        'created_at' => 'date'
+
+    ];
+
 }

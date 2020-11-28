@@ -15,13 +15,13 @@ class CreateTaxesTable extends Migration
     {
         Schema::create('taxes', function (Blueprint $table) {
             $table->id();
-            $table->double('amount', 15, 8)->nullable()->default(123.4567);
-
+            $table->double('total_rent', 15, 8)->nullable();
+            $table->double('total_service', 15, 8)->nullable();
+            $table->double('taxable_amount', 15, 8)->nullable();
+            $table->double('tax', 15, 8)->nullable();
             $table->integer('property_id')->unsigned()->nullable();
-
+            $table->double('gross', 15, 8)->nullable();
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
-
-
             $table->timestamps();
         });
     }

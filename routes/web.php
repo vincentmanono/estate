@@ -109,6 +109,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('all-properties-rent-tax','TaxController@index')->name('property.rent.tax.index') ;
         Route::delete('property-rent-tax/{tax}','TaxController@destroy')->name('property.rent.tax.delete') ;
         Route::resource('property/{property}/expense', 'ExpenseController');
-    }) ;
+        Route::get('tax-report-search','ReportController@searchTax')->name('search.tax');
+        Route::get('tax-report','ReportController@taxSearched')->name('taxSearched');
+
+        }) ;
 
 });
