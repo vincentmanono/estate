@@ -192,7 +192,7 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="form-body">
-                                        <h3 class="card-title">Enter lease Details</h3>
+                                        <h3 class="card-title">Edit lease Details</h3>
                                         <hr>
                                         <div class="row p-t-20">
                                             <div class="col-md-6">
