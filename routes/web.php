@@ -76,6 +76,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('lease/tenant/{lease}','LeaseController@showpadsign')->name('showpadsign');
 
+    Route::post('lease/tenant/{lease}/sign','LeaseController@signlease')->name('signlease');
 
     Route::resource('payment', 'PaymentController');
 

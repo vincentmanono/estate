@@ -19,6 +19,8 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <!-- Styles -->
 </head>
 <body>
@@ -29,10 +31,14 @@
                 <div class="col-12 signing">
                             
                     <canvas id="myCanvas" ></canvas><br><br>
-                    <input class="btn btn-success" type="button" value="Reset" id='resetSign'>
-                    <button id="send" class="btn btn-success">Submit</button>
-
-                    <textarea id="signature64" name="signed" style="display: none"></textarea>
+                    <form id="signform" action="{{ route('signlease',$lease->id) }}" method="post">
+                        @csrf
+                        <input type="hidden" name="user" value="{{ auth()->user()->id }}" >
+                        <textarea id="signature64" name="signed" style="display: none"></textarea>
+                        <input class="btn btn-success" type="button" value="Reset" id='resetSign'>
+                        <button type="submit" id="send" class="btn btn-success">Submit</button>
+                    </form>
+                   
               
             
             </div>
@@ -79,6 +85,10 @@
             
         </main>
     </div>
+    <script >
+        var url = @json( route('signlease',$lease->id) )
+        var user = @json( auth()->user()->id )
+    </script>
 
     <script src="{{ asset('assets/Canvas-Signature-Pad-Sign/sign.js') }}"></script>
     <script src="{{ asset('assets/Canvas-Signature-Pad-Sign/custome.js') }}"></script>
