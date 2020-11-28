@@ -54,7 +54,7 @@ class CalculateMonthlyRentTax extends Command
 
         $taxableAmount  = $monthrentsum - $totalservicecharge ;
 
-        $tax = $taxableAmount * 0.01 ;
+        $tax = $taxableAmount * 0.1 ;
         $gross = $taxableAmount - $tax ;
         $property->taxs()->create([
             'total_rent'=> $monthrentsum,

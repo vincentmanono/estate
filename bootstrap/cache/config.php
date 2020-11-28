@@ -1,16 +1,16 @@
 <?php return array (
   'app' => 
   array (
-    'name' => 'chiefproperties',
+    'name' => 'ChiefProperties',
     'env' => 'local',
     'debug' => true,
-    'url' => 'https://chiefproperties.co.ke',
+    'url' => 'http://localhost',
     'asset_url' => NULL,
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:Cyfg+R0I4TiOQ8WZXcezMMPeBf0M2XGk2LcqnOVXlmA=',
+    'key' => 'base64:14qMFTkMZqFld0jGa/npwMeDKh/7M7EnIycMYIitUDw=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -177,7 +177,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/opt/lampp/htdocs/work/estate/storage/framework/cache/data',
+        'path' => 'C:\\xampp\\htdocs\\pavihamjobs\\estate\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -254,7 +254,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => '/opt/lampp/htdocs/work/estate/database/database.sqlite',
+        'database' => 'C:\\xampp\\htdocs\\pavihamjobs\\estate\\database\\database.sqlite',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -343,13 +343,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/opt/lampp/htdocs/work/estate/storage/app',
+        'root' => 'C:\\xampp\\htdocs\\pavihamjobs\\estate\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/opt/lampp/htdocs/work/estate/storage/app/public',
-        'url' => 'https://chiefproperties.co.ke/storage',
+        'root' => 'C:\\xampp\\htdocs\\pavihamjobs\\estate\\storage\\app/public',
+        'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
       's3' => 
@@ -365,7 +365,7 @@
     ),
     'links' => 
     array (
-      '/opt/lampp/htdocs/work/estate/public/storage' => '/opt/lampp/htdocs/work/estate/storage/app/public',
+      'C:\\xampp\\htdocs\\pavihamjobs\\estate\\public\\storage' => 'C:\\xampp\\htdocs\\pavihamjobs\\estate\\storage\\app/public',
     ),
   ),
   'flare' => 
@@ -429,13 +429,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => '/opt/lampp/htdocs/work/estate/storage/logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\pavihamjobs\\estate\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => '/opt/lampp/htdocs/work/estate/storage/logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\pavihamjobs\\estate\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -485,7 +485,7 @@
       ),
       'emergency' => 
       array (
-        'path' => '/opt/lampp/htdocs/work/estate/storage/logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\pavihamjobs\\estate\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -500,8 +500,8 @@
         'host' => 'smtp.mailtrap.io',
         'port' => '2525',
         'encryption' => 'tls',
-        'username' => 'c708f99f0d1599',
-        'password' => '0caa8ab3698e89',
+        'username' => 'b53a18741f677b',
+        'password' => '19859250b890a8',
         'timeout' => NULL,
         'auth_mode' => NULL,
       ),
@@ -534,15 +534,15 @@
     ),
     'from' => 
     array (
-      'address' => 'info@chiefproperties.co.ke',
-      'name' => 'chiefproperties',
+      'address' => 'manonovincent95@gmail.com',
+      'name' => 'ChiefProperties',
     ),
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/opt/lampp/htdocs/work/estate/resources/views/vendor/mail',
+        0 => 'C:\\xampp\\htdocs\\pavihamjobs\\estate\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -621,7 +621,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/opt/lampp/htdocs/work/estate/storage/framework/sessions',
+    'files' => 'C:\\xampp\\htdocs\\pavihamjobs\\estate\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -659,8 +659,8 @@
   array (
     'paths' => 
     array (
-      0 => '/opt/lampp/htdocs/work/estate/resources/views',
+      0 => 'C:\\xampp\\htdocs\\pavihamjobs\\estate\\resources\\views',
     ),
-    'compiled' => '/opt/lampp/htdocs/work/estate/storage/framework/views',
+    'compiled' => 'C:\\xampp\\htdocs\\pavihamjobs\\estate\\storage\\framework\\views',
   ),
 );
