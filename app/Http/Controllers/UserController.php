@@ -162,7 +162,7 @@ class UserController extends Controller
             Session::flash('error',"You do not have previlagies to update owner profile");
             return back();
         }
-        if ( $user->isManager() && ! Auth::user()->id !== $id  ) {
+        if ( $user->isManager() &&  Auth::user()->id != $id  ) {
             Session::flash('error',"You do not have previlagies to update this profile");
             return back();
         }

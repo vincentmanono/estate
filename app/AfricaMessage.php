@@ -22,6 +22,6 @@ trait AfricaMessage
             'message' =>$message
         ]);
         return $result ;
-
+        // $request->session()->flash('success', $value);
     }
 }

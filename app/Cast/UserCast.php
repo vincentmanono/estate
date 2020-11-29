@@ -19,7 +19,7 @@ class UserCast implements CastsAttributes
     public function get($model, string $key, $value, array $attributes)
     {
 
-        if (! Str::of($value)->contains('+') ) {
+        if (Str::of($value)->contains('+') ) {
            return $value;
         } else {
             return "+254" . intval($value) ;
@@ -38,7 +38,11 @@ class UserCast implements CastsAttributes
      */
     public function set($model, string $key, $value, array $attributes)
     {
-        return $value ;
+        if ( Str::of($value)->contains('+') ) {
+            return $value;
+         } else {
+             return "+254" . intval($value) ;
+         }
 
     }
 }

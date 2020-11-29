@@ -44,8 +44,8 @@
                 <div class="card">
                     <div class="card-body">
 
-                        @if ( ! Str::of( $lease->file)->contains("http") )
-                                                    <embed src="/storage/lease/{{ $lease->file }}" type="application/pdf" width="100%" height="600px" />
+                        @if ( Str::of( $lease->file)->contains("pdf")  )
+                            <embed src="/storage/lease/{{ $lease->file }}" type="application/pdf" width="100%" height="600px" />
 
                         @else
 
