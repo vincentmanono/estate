@@ -15,21 +15,37 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class,10)->create();
+        // factory(App\User::class,10)->create();
         $name = "sokoro78";
 
-    //    User::create([
-    //         'name'=>$name ,
-    //         'slug' =>  Str::of($name)->slug(),
-    //         'address'=> "",
-    //         'email'=>"info@chiefproperties.co.ke",
-    //         'phone'=> "0712468094",
-    //         'kra_pin'=>"",
-    //         'id_no'=>"",
-    //         "image"=>"avater.png",
-    //         "type"=>"owner",
-    //         'email_verified_at'=> Carbon::now(),
-    //         'password'=> Hash::make("@chiefproperties")
-    //     ]) ;
+       User::create([
+            'name'=>$name ,
+            'slug' =>  Str::of($name)->slug(),
+            'address'=> "",
+            'email'=>"info@chiefproperties.co.ke",
+            'phone'=> "0712468094",
+            'kra_pin'=>"",
+            'id_no'=>"",
+            "image"=>"avater.png",
+            "type"=>"owner",
+            'email_verified_at'=> Carbon::now(),
+            'password'=> Hash::make("@chiefproperties")
+        ]) ;
+
+        $nametwo = "Alex Mayakakano" ;
+        User::create([
+            'name'=>$nametwo ,
+            'slug' =>  Str::of($nametwo)->slug(),
+            'address'=> "",
+            'email'=>"alexmayakakano@gmail.com",
+            'phone'=> "0714310254",
+            'kra_pin'=>"0714310254",
+            'id_no'=>"0714310254",
+            "image"=>"avater.png",
+            "type"=>"manager",
+            'email_verified_at'=> Carbon::now(),
+            'password'=> Hash::make("chiefproperties2020")
+        ]) ;
+
     }
 }
