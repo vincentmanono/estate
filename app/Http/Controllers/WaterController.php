@@ -7,6 +7,7 @@ use App\User;
 use App\Water;
 use App\Property;
 use Illuminate\Http\Request;
+use App\Jobs\NewWaterBilling;
 use Illuminate\Support\Facades\Auth;
 
 class WaterController extends Controller
@@ -195,10 +196,17 @@ class WaterController extends Controller
         $unit = Unit::findOrFail($unitId);
         $waterBillRate = $unit->property->water_bill_rate ;
         $lastReading = Water::where('unit_id',$unit->id)->latest()->first();
-        $usedwater = intval($request->new_reading ) - intval( $lastReading->new_reading) ;
+        if($lastReading != null){
+            $lastReading = $lastReading->new_reading ;
+        }else{
+            $lastReading = 0 ;
+        }
+        $newReading = intval($request->new_reading )  ;
+        $usedwater = $newReading - intval( $lastReading) ;
         $amountToPay =  $waterBillRate * $usedwater ;
-        $request->request->add(['amount'=>$amountToPay,'previous_reading'=>$lastReading->new_reading]);
-        $unit->waters()->create($request->all());
+        $request->request->add(['amount'=>$amountToPay,'previous_reading'=>$lastReading]);
+       $waterData = $unit->waters()->create($request->all());
+        dispatch( new NewWaterBilling($waterData) );
         return back()->with('success','You have successfully new water record');
     }
 

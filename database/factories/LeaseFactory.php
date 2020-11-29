@@ -12,9 +12,6 @@ $factory->define(Lease::class, function (Faker $faker) {
         'date'=>$faker->date(),
         'user_id'=>function(){return App\User::all()->random();},
         'unit_id'=>function(){return App\Unit::where('status',true)->get()->random();},
-        'file'=>$faker->url(),
-        'tenantSignature'=>$faker->url(),
-        'managerSignature'=>$faker->url()
 
     ];
 });
