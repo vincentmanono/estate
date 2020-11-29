@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Unit;
 use App\User;
 use App\Lease;
@@ -10,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Storage;
+
 
 class LeaseController extends Controller
 {
@@ -308,13 +311,27 @@ class LeaseController extends Controller
         }
 
         
+
+        $this->createLeaseform($lease,$signed);
         return redirect()->route('lease.show',$leaseId)->with('success', "Signature Uploaded Successfully.") ;
     }
 
-    public function createLeaseform($lease)
+    public function createLeaseform($lease,$signature)
     {
-        
+        $pdf = PDF::loadView('lease.pdf.chiefinvestmentlease', compact( 'signature', 'lease'));
        
+        $output = $pdf->output();
+            $name = Str::random(20);
+
+            $folder = '/leasepdfs';
+            $filePath = $folder . '/' . $name . '.' . 'pdf';
+            // Storage::put(filePath, $contents);
+            Storage::put($filePath, $output);
+            
+
+        //    $lease->update([
+        //        'file'=>$filePath
+        //    ]);
     }
 
 

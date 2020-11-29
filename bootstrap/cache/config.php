@@ -40,6 +40,7 @@
       23 => 'App\\Providers\\AuthServiceProvider',
       24 => 'App\\Providers\\EventServiceProvider',
       25 => 'App\\Providers\\RouteServiceProvider',
+      26 => 'Barryvdh\\Snappy\\ServiceProvider',
     ),
     'aliases' => 
     array (
@@ -79,6 +80,8 @@
       'URL' => 'Illuminate\\Support\\Facades\\URL',
       'Validator' => 'Illuminate\\Support\\Facades\\Validator',
       'View' => 'Illuminate\\Support\\Facades\\View',
+      'PDF' => 'Barryvdh\\Snappy\\Facades\\SnappyPdf',
+      'SnappyImage' => 'Barryvdh\\Snappy\\Facades\\SnappyImage',
     ),
   ),
   'auth' => 
@@ -636,6 +639,33 @@
     'secure' => NULL,
     'http_only' => true,
     'same_site' => 'lax',
+  ),
+  'snappy' => 
+  array (
+    'pdf' => 
+    array (
+      'enabled' => true,
+      'binary' => '/opt/lampp/htdocs/work/estate/vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64',
+      'timeout' => false,
+      'options' => 
+      array (
+      ),
+      'env' => 
+      array (
+      ),
+    ),
+    'image' => 
+    array (
+      'enabled' => true,
+      'binary' => '/opt/lampp/htdocs/work/estate/vendor/h4cc/wkhtmltoimage-amd64/bin/wkhtmltoimage-amd64',
+      'timeout' => false,
+      'options' => 
+      array (
+      ),
+      'env' => 
+      array (
+      ),
+    ),
   ),
   'tinker' => 
   array (
