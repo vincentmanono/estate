@@ -30,6 +30,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('rent:expiryChack')->daily() ;
         $schedule->command('rent:monthlyCollection')->monthly() ;
+        $schedule->command('rent:AlmostExpired')->monthlyOn(25, '15:00');
 
     }
 
