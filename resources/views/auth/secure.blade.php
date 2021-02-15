@@ -11,8 +11,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('/assets/images/favicon.png')}}">
-    @yield('title')
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
+    @section('title')
+    <title> {{config('app.name') }}    </title>
+                      
+   @show
+   
 
     <!-- page css -->
     <link href="/assets/dist/css/pages/login-register-lock.css" rel="stylesheet">
