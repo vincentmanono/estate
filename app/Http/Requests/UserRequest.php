@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
         return [
             'name'=>"required|max:40|min:3|string",
             'type'=>'required',
-            'email'=>"required|email",
+            'email'=>"required|string| email |max:255 ",
             'phone'=>"required|numeric|min:10",
             'address'=>"required|string",
             'ID'=>"required|string|max:20",

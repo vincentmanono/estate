@@ -57,7 +57,14 @@ class UnitController extends Controller
     {
         $this->authorize('create',Unit::class);
 
-        $properties = Auth::user()->properties ;
+
+        if ( Auth::user()->isOwner() ) {
+            $properties = Property::latest()->get();
+        } else {
+            $properties = Auth::user()->properties ;
+        }
+
+
         return view('units.createEdit',compact('properties'))->with('param','Add New Unit');
     }
 

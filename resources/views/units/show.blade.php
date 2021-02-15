@@ -222,29 +222,26 @@
                                                     <div class="col-md-7 border-bottom">
                                                         <div class="p-20">
                                                             <div class="d-flex no-block align-items-center">
-                                                                <span><img
-                                                                        src="{{ asset('/assets/images/property/pro-bath.png') }}"></span>
+                                                                <span><i class="fas fa-bath"></i></span>
                                                                 <span class="p-10 text-muted">Bathrooms</span>
                                                                 <span
                                                                     class="badge badge-pill badge-secondary ml-auto">{{ $unit->floor->sitting }}</span>
 
                                                             </div>
                                                             <div class="d-flex no-block align-items-center">
-                                                                <span><img src="/assets/images/property/pro-bed.png"></span>
+                                                                <span><i class="fas fa-bed"></i></span>
                                                                 <span class="p-10 text-muted">Bedrooms</span>
                                                                 <span
                                                                     class="badge badge-pill badge-secondary ml-auto">{{ $unit->floor->bedroom }}</span>
                                                             </div>
                                                             <div class="d-flex no-block align-items-center">
-                                                                <span><img
-                                                                        src="../assets/images/property/pro-garage.png"></span>
+                                                                <span><i class="fas fa-house-user"></i></span>
                                                                 <span class="p-10 text-muted">Kitchen</span>
                                                                 <span
                                                                     class="badge badge-pill badge-secondary ml-auto">{{ $unit->floor->kitchen }}</span>
                                                             </div>
                                                             <div class="d-flex no-block align-items-center">
-                                                                <span><img
-                                                                        src="../assets/images/property/pro-garage.png"></span>
+                                                                <span><i class="fas fa-warehouse"></i></span>
                                                                 <span class="p-10 text-muted">Garage</span>
                                                                 <span
                                                                     class="badge badge-pill badge-secondary ml-auto">{{ $unit->floor->garage }}</span>

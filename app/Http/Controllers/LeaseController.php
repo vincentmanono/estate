@@ -80,8 +80,7 @@ class LeaseController extends Controller
             'status' => ['required'],
             'date' => ['required'],
             'user_id' => ['required'],
-            'unit_id' => ['required'],
-            'file' => ['required'],
+            'unit_id' => ['required']
 
         ]);
 
@@ -98,14 +97,11 @@ class LeaseController extends Controller
         $unit->status = true;
         $unit->save();
 
-        if (file_exists($request->file('file'))) {
-            $post->file = $this->fileupload($request);
-        }
 
         $validate = $post->save();
 
         if ($validate) {
-            return redirect()->route('deposit.create')->with('success', 'The lease details were cuptured successfully');
+            return redirect()->route('lease.show',$post->id)->with('success', 'The lease details were cuptured successfully');
         } else {
             return back()->with('error', 'An error occured. Please try again!!!');
         }
@@ -273,8 +269,11 @@ class LeaseController extends Controller
     public function signlease(Request $request, $leaseId)
     {
         if (!is_dir(public_path('signature'))) {
+            $path =  public_path().'signature' ;
 
-            mkdir(public_path('signature'));
+            File::mkdir($path);
+
+            // mkdir(public_path('signature'));
 
         }
         $folderPath = "signature/";

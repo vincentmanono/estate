@@ -174,13 +174,7 @@
 
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group has-success">
-                                                <label class="control-label">lease File</label> <br>
-                                                <input required type="file" src="" alt="" name="file">
 
-                                            </div>
-                                        </div>
 
                                         <div class="form-actions">
                                             <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i>
@@ -262,13 +256,7 @@
                                                 </div>
                                             </div>
                                             <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="file">Lease file</label>
-                                                    <input required id="file" class="form-control" type="file" name="file">
-                                                </div>
 
-                                            </div>
                                             <!--/span-->
                                         </div>
                                         <!--/row-->
