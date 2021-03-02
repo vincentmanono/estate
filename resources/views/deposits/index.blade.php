@@ -27,9 +27,13 @@
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item active">deposit</li>
                         </ol>
+                        @can('create', App\Deposit::class)
                         <a href="{{ route('deposit.create') }}" type="button"
-                            class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New</a>
-                    </div>
+                        class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New</a>
+
+                        @endcan
+
+                        </div>
                 </div>
             </div>
             <!-- ============================================================== -->

@@ -80,8 +80,9 @@
 
                                                         @endif
 
-
-
+                                                        @if (Auth::user()->isOwner() || Auth::user()->isTenant())
+                                                         {{ $requests->links() }}
+                                                        @endif
                                                         <thead>
                                                             <tr>
                                                                 <th>Property</th>
@@ -91,6 +92,7 @@
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
+
                                                     </tbody>
                                                 </table>
                                             </div>

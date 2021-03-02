@@ -148,7 +148,7 @@
         <!-- ============================================================== -->
         <!-- .row  -->
         <div class="row">
-            <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
+            {{-- <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
                 <div class="card bg-light">
                     <div class="row no-gutters align-items-center">
                         <div class="col-md-12">
@@ -209,8 +209,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+            </div> --}}
+            <div class=" col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">RECENT PROPERTIES</h5>

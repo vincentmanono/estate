@@ -27,7 +27,7 @@ class LeaseController extends Controller
         $this->authorize('viewAny', Lease::class);
         if ($user->isOwner() || $user->isTenant()) {
 
-            $leases = ($user->isOwner()) ? Lease::latest()->get() :  $user->leases;
+            $leases = ($user->isOwner()) ? Lease::latest()->get() :  $user->leases()->latest()->get();
             // dd($rents);
             $compact = compact('leases');
         } else {

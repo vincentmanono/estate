@@ -30,10 +30,10 @@ class DepositController extends Controller
             $deposits = Deposit::latest()->get();
             return view('deposits.index', compact('deposits'))->with('param', 'Deposit');
         } elseif ($user->isManager()) {
-            $properties = $user->properties;
+            $properties = $user->properties()->latest()->get();
             return view('deposits.index', compact('properties'))->with('param', 'Deposit');
         } else {
-            $deposits = $user->deposits;
+            $deposits = $user->deposits()->latest()->get();
             return view('deposits.index', compact('deposits'))->with('param', 'Deposit');
         }
     }

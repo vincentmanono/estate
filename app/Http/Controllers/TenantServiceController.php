@@ -23,11 +23,12 @@ class TenantServiceController extends Controller
     {
 
         $user =User::where('id',Auth::user()->id)->first();
+
         $this->authorize('viewAny',TenantService::class);
         if ($user->isOwner() || $user->isTenant()) {
             $services=TenantService::latest()->get();
 
-            $requests = ($user->isOwner()) ? TenantService::latest()->get() :  $user->requests ;
+            $requests = ($user->isOwner()) ? TenantService::latest()->paginate(30) :  $user->requests()->latest()->paginate(30) ;
             // dd($rents);
             $compact = compact('requests');
 
@@ -47,8 +48,8 @@ class TenantServiceController extends Controller
     public function create()
     {
 
-        $leases = Lease::all();
-        return view('tenantservice.create',compact('units','leases'))->with('param','Request Service');
+        $leases = auth()->user()->leases ;
+        return view('tenantservice.create',compact('leases'))->with('param','createRequestService');
     }
 
     /**
@@ -92,7 +93,7 @@ class TenantServiceController extends Controller
      */
     public function show( $id)
     {
-        $service =TenantService::find($id);
+        $service =TenantService::findOrFail($id);
         $this->authorize('view',$service);
         return view('tenantservice\show',compact('service'))->with('param','Service');
 

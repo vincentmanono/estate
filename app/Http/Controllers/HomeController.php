@@ -75,7 +75,8 @@ class HomeController extends Controller
                 }
 
                 $unitscount  = $totalUnitsManaged ;
-                $managerproperties=Property::where('user_id',Auth::user()->id)->latest()->paginate(6);
+                $managerproperties =Property::where('user_id',Auth::user()->id)->with('tenantServicesRequests') ->latest()->paginate(6);
+
 
 
                 return view('manager',compact('properties','unitscount','propertiescount','vacantunit','occupiedunit','managerproperties'))->with('param',Auth::user()->type);

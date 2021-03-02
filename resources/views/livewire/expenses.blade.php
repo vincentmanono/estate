@@ -28,7 +28,7 @@
                                     <td>
                                         <a href="http://"> <i class="fa fa-eye" aria-hidden="true"></i> </a>
                                         <a href=""> <i class="fa fa-pencil-square" aria-hidden="true"></i> </a>
-                                        <a href="http://"> <i class="fa fa-trash" aria-hidden="true"></i></i> </a>
+                                        <a href="#" wire:click="deleteExpense({{ $expense->id }})" > <i class="fa fa-trash" aria-hidden="true"></i></i> </a>
 
 
 

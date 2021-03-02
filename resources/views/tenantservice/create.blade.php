@@ -42,9 +42,9 @@
                                 <div class="col-lg-12">
                                     <div class="card">
 
-                                        @if ($param == 'Create Tenant Request')
-                                            <form action="{{ route('tenantservice.store') }}" enctype="multipart/form-data"
-                                                method="post">
+                                        @if ($param == 'createRequestService')
+                                            <form action="{{ route('tenantservice.store') }}"
+                                                enctype="multipart/form-data" method="post">
                                                 @csrf
                                                 @method('POST')
                                                 <div class="card-body">
@@ -103,82 +103,98 @@
                                             </form>
                                         @else
 
-                                        <form action="{{ route('tenantservice.update',$service->id) }}" enctype="multipart/form-data"
-                                        method="post">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="card-body">
-                                            <div class="row pt-3">
-                                                <div class="col-md-6">
-                                                   <div class="form-group has-success">
-                                                        <label class="control-label">Unit Name</label>
-                                                        <select  name="unit_id" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                            <form action="{{ route('tenantservice.update', $service->id) }}"
+                                                enctype="multipart/form-data" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="card-body">
+                                                    <div class="row pt-3">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group has-success">
+                                                                <label class="control-label">Unit Name</label>
+                                                                <select name="unit_id" class="form-control custom-select"
+                                                                    data-placeholder="Choose a Category" tabindex="1">
 
 
-                                                            @foreach ($leases as $lease)
-
-                                                            @if (Auth::user()->id == $lease->user->id)
-
-                                                            <option value="{{ $lease->unit->id }}">{{ $lease->unit->name ."(" . $lease->unit->property->name .")"}}</option>
-
-                                                            @endif
 
 
-                                                    <!--/span-->
-                                                </div>
-                                                <!--/row-->
-                                                <div class="row">
 
-                                                    <!--/span-->
-                                                    <div class="col-md-12">
-                                                        <div class="form-group has-success">
-                                                            <label class="control-label">Description</label>
-                                                            <textarea type="text" rows="6" name="message" class="form-control @error('message') is-invalid @enderror" name="message"  required>{{ $service->message }}</textarea>
+                                                                    @foreach ($leases as $lease)
 
+
+                                                                            <option value="{{ $lease->unit->id }}">
+                                                                                {{ $lease->unit->name . '(' . $lease->unit->property->name . ')' }}
+                                                                            </option>
+
+
+                                                                    @endforeach
+
+
+                                                                    <!--/span-->
+                                                            </div>
+                                                            <!--/row-->
+                                                            <div class="row">
+
+                                                                <!--/span-->
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group has-success">
+                                                                        <label class="control-label">Description</label>
+                                                                        <textarea type="text" rows="6" name="message"
+                                                                            class="form-control @error('message') is-invalid @enderror"
+                                                                            name="message"
+                                                                            required>{{ $service->message }}</textarea>
+
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group has-success">
+                                                                    <label class="control-label">Description</label>
+                                                                    <textarea type="text" rows="6" name="message"
+                                                                        class="form-control"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="form-actions">
+                                                            <div class="card-body">
+                                                                <button type="submit" class="btn btn-success"> <i
+                                                                        class="fa fa-check"></i> Request</button>
+                                                                <a href="{{ route('home') }}" type="button"
+                                                                    class="btn btn-dark">Cancel</a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <!--/span-->
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group has-success">
-                                                         <label class="control-label">Description</label>
-                                                         <textarea type="text" rows="6" name="message" class="form-control"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            </form>
 
 
-
-                                        <div class="form-actions">
-                                            <div class="card-body">
-                                                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Request</button>
-                                                <a href="{{ route('home') }}" type="button" class="btn btn-dark">Cancel</a>
-                                            </div>
-                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
+
+
+
                     </div>
                 </div>
-
-
-
-
-
             </div>
         </div>
-    </div>
-    </div>
-    <!-- ============================================================== -->
-    <!-- End PAge Content -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Right sidebar -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- End Right sidebar -->
-    <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- End Right sidebar -->
+        <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
