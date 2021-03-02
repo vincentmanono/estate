@@ -1,5 +1,6 @@
 <?php
 
+use App\Tax;
 use Illuminate\Database\Seeder;
 
 class TaxSeeder extends Seeder
@@ -11,6 +12,6 @@ class TaxSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Tax::class,100)->create();
     }
 }

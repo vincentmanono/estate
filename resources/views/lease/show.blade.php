@@ -2,6 +2,10 @@
 @section('title')
 <title>Chief Properties -{{ $params }}</title>
 @endsection
+
+
+
+
 @section('content')
 
 
@@ -25,7 +29,7 @@
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active">Lease Document</li>
                     </ol>
-                    <a href="{{ route('lease.edit',$lease->id) }}" type="button" class="btn btn-info d-none d-lg-block m-l-15"> <i class="fa fa-upload" aria-hidden="true">Learm Form</i> </a>
+                    {{--  <a href="{{ route('lease.edit',$lease->id) }}" type="button" class="btn btn-info d-none d-lg-block m-l-15"> <i class="ti-marker-alt">Update Lease</i> </a>  --}}
                 </div>
             </div>
         </div>
@@ -40,13 +44,13 @@
                 <div class="card">
                     <div class="card-body">
 
-                        @if ( ! Str::of( $lease->file)->contains("http") )
-                                                    <embed src="/storage/lease/{{ $lease->file }}" type="application/pdf" width="100%" height="600px" />
+                        @if ( Str::of( $lease->file)->contains("pdf")  )
+                            <embed src="/storage/lease/{{ $lease->file }}" type="application/pdf" width="100%" height="600px" />
 
                         @else
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Tenant as havent submited Lease form yet</strong>
-                            </div>
+
+                            @include('lease.chiefinvestmentlease')
+
                         @endif
 
 
@@ -70,3 +74,4 @@
 
 
 @endsection
+

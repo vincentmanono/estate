@@ -51,5 +51,8 @@ $app->singleton(
 | from the actual running of the application and sending responses.
 |
 */
+$app->register(\Barryvdh\DomPDF\ServiceProvider::class);
+// To change the configuration, copy the config file to your config folder and enable it in bootstrap/app.php:
 
+// $app->configure('dompdf');
 return $app;

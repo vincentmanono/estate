@@ -88,9 +88,10 @@
 
                                                 <div class="form-group has-success">
                                                     <label class="control-label">Tenant Name</label>
-                                                    <select class="form-control custom-select" name="user_id"
+                                                    <select required class="form-control custom-select" name="user_id"
                                                         data-placeholder="Choose a Category" tabindex="1">
 
+                                                        <option value="">----select-tenant-----</option>
 
                                                         @foreach ($users as $user)
 
@@ -107,7 +108,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group has-success">
                                                     <label class="control-label">Unit Name</label>
-                                                    <select class="form-control custom-select" name="unit_id"
+                                                    <select required class="form-control custom-select" name="unit_id"
                                                         data-placeholder="Choose a Category" tabindex="1">
 
                                                         <option value="">--select-unit-name--</option>
@@ -145,7 +146,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group has-success">
                                                     <label class="control-label">Date Leased</label>
-                                                    <input type="date" id="firstName" name="date" class="form-control">
+                                                    <input required type="date" id="firstName" name="date" class="form-control">
 
                                                 </div>
                                             </div>
@@ -153,8 +154,10 @@
                                             <div class="col-md-6">
                                                 <div class="form-group has-success">
                                                     <label class="control-label">Lease Status</label>
-                                                    <select class="form-control custom-select" name="status"
+                                                    <select required class="form-control custom-select" name="status"
                                                         data-placeholder="Choose a Category" tabindex="1">
+
+                                                        <option value="">-----select-lease-status-----</option>
 
                                                         <option value="1">Active</option>
                                                         <option value="0">Inactive</option>
@@ -174,7 +177,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success">
                                                 <label class="control-label">lease File</label> <br>
-                                                <input type="file" src="" alt="" name="file">
+                                                <input required type="file" src="" alt="" name="file">
 
                                             </div>
                                         </div>
@@ -192,14 +195,14 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="form-body">
-                                        <h3 class="card-title">Enter lease Details</h3>
+                                        <h3 class="card-title">Edit lease Details</h3>
                                         <hr>
                                         <div class="row p-t-20">
                                             <div class="col-md-6">
-                                                <input type="hidden" name="user_id" value="{{ $lease->user_id }}">
+                                                <input required type="hidden" name="user_id" value="{{ $lease->user_id }}">
                                                 <div class="form-group has-success">
                                                     <label class="control-label">Unit Name</label>
-                                                    <select class="form-control custom-select" name="unit_id"
+                                                    <select required class="form-control custom-select" name="unit_id"
                                                         data-placeholder="Choose a Category" tabindex="1">
 
 
@@ -235,7 +238,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group has-success">
                                                     <label class="control-label">Date Leased</label>
-                                                    <input type="date" id="firstName" value="{{ $lease->date }}" name="date"
+                                                    <input required type="date" id="firstName" value="{{ $lease->date }}" name="date"
                                                         class="form-control">
 
                                                 </div>
@@ -247,7 +250,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group has-success">
                                                     <label class="control-label">Lease Status</label>
-                                                    <select class="form-control custom-select" name="status"
+                                                    <select required class="form-control custom-select" name="status"
                                                         data-placeholder="Choose a Category" tabindex="1">
                                                         <option value="{{ $lease->status }}">
                                                             {{ $lease->status ? 'Active' : 'Inactive' }}
@@ -262,7 +265,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="file">Lease file</label>
-                                                    <input id="file" class="form-control" type="file" name="file">
+                                                    <input required id="file" class="form-control" type="file" name="file">
                                                 </div>
 
                                             </div>

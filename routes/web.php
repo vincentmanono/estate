@@ -74,13 +74,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('lease','LeaseController');
     Route::resource('tenantservice', 'TenantServiceController');
 
+    Route::get('lease/tenant/{lease}','LeaseController@showpadsign')->name('showpadsign');
 
+    Route::post('lease/tenant/{lease}/sign','LeaseController@signlease')->name('signlease');
 
     Route::resource('payment', 'PaymentController');
 
     Route::resource('messages', 'MessageController');
-
-
+    Route::get('leaseform','LeaseController@leaseform')->name("lease.form");
+    Route::get('chiefinvestlease','LeaseController@chiefinvlease')->name('chiefinv.lease');
 
     // manager
     Route::middleware(['manager'])->prefix('manager')->group( function () {
@@ -107,6 +109,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('all-properties-rent-tax','TaxController@index')->name('property.rent.tax.index') ;
         Route::delete('property-rent-tax/{tax}','TaxController@destroy')->name('property.rent.tax.delete') ;
         Route::resource('property/{property}/expense', 'ExpenseController');
-    }) ;
+        Route::get('tax-report-search','ReportController@searchTax')->name('search.tax');
+        Route::get('tax-report','ReportController@taxSearched')->name('taxSearched');
+
+        }) ;
 
 });

@@ -14,7 +14,7 @@ class CalculateMonthlyRentTax extends Command
      *
      * @var string
      */
-    protected $signature = 'rent:montlyTax';
+    protected $signature = 'rent:monthlyCollection';
 
     /**
      * The console command description.
@@ -40,12 +40,29 @@ class CalculateMonthlyRentTax extends Command
      */
     public function handle()
     {
+        $totalservicecharge = $taxableAmount = 0 ;
        $constantDate = Carbon::now()->subMonth()->format('Y-m-d H:i:s') ;
        $properties = Property::latest()->get();
        foreach ($properties as $key => $property) {
         $monthrentsum = $property->monthlyrent($constantDate)->sum('amount') ;
-        $monthtax = $monthrentsum  * 0.1 ;
-        $property->taxs()->create(['amount'=>$monthtax]) ;
+
+        foreach ($property->units as $key => $unit) {
+            if ($unit->status) {
+                $totalservicecharge += $unit->service_charge ;
+            }
+        }
+
+        $taxableAmount  = $monthrentsum - $totalservicecharge ;
+
+        $tax = $taxableAmount * 0.1 ;
+        $gross = $taxableAmount - $tax ;
+        $property->taxs()->create([
+            'total_rent'=> $monthrentsum,
+            'total_service'=>$totalservicecharge,
+            'taxable_amount'=> $taxableAmount,
+            'tax'=>$tax,
+            'gross'=>$gross
+        ]) ;
 
        }
 

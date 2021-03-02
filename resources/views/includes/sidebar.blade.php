@@ -26,7 +26,7 @@
 
                     </ul>
                 </li>
-                @if (Auth::user()->type == 'manager' || Auth::user()->type == 'owner')
+                @if (Auth::user()->isManager()|| Auth::user()->isOwner())
 
 
 
@@ -148,7 +148,7 @@
                     <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                                 class="ti-agenda"></i><span class="hide-menu">Reports Information</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="#">Total collections Report</a></li>
+
                             <li><a href="{{ route('occupancy.report') }}">Occupancy Report</a></li>
                             <li><a href="{{ route('tenant.report') }}">Tenant Report</a> </li>
 
@@ -158,6 +158,7 @@
                                 <ul aria-expanded="false" class="collapse">
 
                                     <li><a href="{{ route('rent.report') }}">Rent Report</a></li>
+                                    <li><a href="{{ route('search.tax') }}">Total collections Report</a></li>
 
                                     <li><a href="{{ route('deposit.report') }}"> Deposit Report</a></li>
 
@@ -261,7 +262,15 @@
 
 
 
+         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+                    class="ti-home"></i><span class="hide-menu">Lease</span></a>
+              <ul aria-expanded="false" class="collapse">
+                <li><a href="{{ route('lease.form') }}">Lease Form</a></li>
+                <li><a href="{{ route('chiefinv.lease') }}">Chief Investment Lease Form</a></li>
 
+              </ul>
+
+         </li>
 
 
 

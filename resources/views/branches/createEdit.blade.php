@@ -61,13 +61,13 @@
                                     <div class="form-group">
                                         <label>Branch Name</label>
                                         <div class="input-group mb-3">
-                                            <input type="text"  class="form-control" value="{{ $branch->name}}" name="name" placeholder="Name" aria-label="Username">
+                                            <input type="text" required class="form-control" value="{{ $branch->name}}" name="name" placeholder="Name" aria-label="Username">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Branch Status</label>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" value="{{ $branch->status}}" name="status" placeholder="Active/Inactive" aria-label="Email">
+                                            <input required type="text" class="form-control" value="{{ $branch->status}}" name="status" placeholder="Active/Inactive" aria-label="Email">
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-success mr-2">Submit</button>
@@ -100,14 +100,14 @@
                                     <div class="form-group">
                                         <label>Branch Name</label>
                                         <div class="input-group mb-3">
-                                            <input type="text"  class="form-control" name="name" placeholder="Name" aria-label="Username">
+                                            <input type="text" required  class="form-control" name="name" placeholder="Name" aria-label="Username">
                                         </div>
                                     </div>
                                     <div class="form-group">
 
                                             <div class="form-group">
                                                 <label class="control-label">Branch</label>
-                                                <select class="form-control custom-select" name="status" data-placeholder="Choose a Category" tabindex="1">
+                                                <select required class="form-control custom-select" name="status" data-placeholder="Choose a Category" tabindex="1">
                                                     <option value="Active">Active</option>
                                                     <option value="Inactive">Inactive</option>
 

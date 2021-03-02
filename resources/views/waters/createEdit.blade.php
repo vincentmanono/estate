@@ -72,7 +72,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Unit Name</label>
-                                                                    <select name="unit_id"
+                                                                    <select required name="unit_id"
                                                                         class="form-control custom-select"
                                                                         data-placeholder="Choose a Category" tabindex="1">
 
@@ -113,7 +113,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Amount</label>
-                                                                    <input type="text" name="amount" class="form-control">
+                                                                    <input required type="text" name="amount" class="form-control">
 
                                                                 </div>
                                                             </div>
@@ -124,14 +124,14 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Pay Date</label>
-                                                                    <input type="date" name="pay_date" class="form-control">
+                                                                    <input required type="date" name="pay_date" class="form-control">
                                                                 </div>
                                                             </div>
                                                             <!--/span-->
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">New Reading</label>
-                                                                    <input type="text" name="new_reading"
+                                                                    <input required type="text" name="new_reading"
                                                                         class="form-control">
                                                                 </div>
                                                             </div>
@@ -142,7 +142,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Read Date</label>
-                                                                    <input type="date" name="read_date"
+                                                                    <input required type="date" name="read_date"
                                                                         class="form-control">
                                                                 </div>
                                                             </div>
@@ -177,7 +177,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Unit Name</label>
-                                                                    <select name="unit_id"
+                                                                    <select required name="unit_id"
                                                                         class="form-control custom-select"
                                                                         data-placeholder="Choose a Category" tabindex="1">
 
@@ -197,7 +197,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Amount</label>
-                                                                    <input type="text" value="{{ $water->amount }}"
+                                                                    <input required type="text" value="{{ $water->amount }}"
                                                                         name="amount" class="form-control">
 
                                                                 </div>
@@ -209,7 +209,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Pay Date</label>
-                                                                    <input type="date" value="{{ $water->pay_date }}"
+                                                                    <input required type="date" value="{{ $water->pay_date }}"
                                                                         name="pay_date" class="form-control">
                                                                 </div>
                                                             </div>
@@ -217,7 +217,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">No of Months</label>
-                                                                    <input type="text" value="{{ $water->no_months }}"
+                                                                    <input required type="text" value="{{ $water->no_months }}"
                                                                         name="no_months" class="form-control">
                                                                 </div>
                                                             </div>
@@ -228,7 +228,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Read Date</label>
-                                                                    <input type="date" value="{{ $water->read_date }}"
+                                                                    <input required type="date" value="{{ $water->read_date }}"
                                                                         name="read_date" class="form-control">
                                                                 </div>
                                                             </div>
@@ -236,7 +236,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">New Reading</label>
-                                                                    <input type="text" value="{{ $water->new_reading }}"
+                                                                    <input required type="text" value="{{ $water->new_reading }}"
                                                                         name="new_reading" class="form-control">
                                                                 </div>
                                                             </div>

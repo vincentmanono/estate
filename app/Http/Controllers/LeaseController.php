@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Lease;
 use App\Unit;
 use App\User;
-use App\Lease;
-use Illuminate\Support\Str;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use PDF;
 
 class LeaseController extends Controller
 {
@@ -20,8 +22,8 @@ class LeaseController extends Controller
      */
     public function index()
     {
+        // return view('lease/pdf/chiefinvestmentlease') ;
         $leases = Lease::all();
-
 
         $user = User::find(Auth::user()->id);
         $this->authorize('viewAny', Lease::class);
@@ -34,8 +36,6 @@ class LeaseController extends Controller
             $properties = $user->properties;
             $compact = compact('properties');
         }
-
-
 
         return view('lease.index', $compact)->with('param', "All lease Records");
     }
@@ -58,7 +58,7 @@ class LeaseController extends Controller
         $user = User::find(Auth::user()->id);
 
         if ($user->isOwner()) {
-            $units = Unit::latest()->where('status',0)->get();
+            $units = Unit::latest()->where('status', 0)->get();
             $compact = compact('units', 'users');
         } else {
             $properties = $user->properties;
@@ -81,18 +81,17 @@ class LeaseController extends Controller
             'date' => ['required'],
             'user_id' => ['required'],
             'unit_id' => ['required'],
-            'file' => ['required']
+            'file' => ['required'],
 
         ]);
 
         $post = new Lease();
         $this->authorize('create', Lease::class);
 
-
         $post->status = $request->status;
         $post->date = $request->date;
         $post->user_id = $request->user_id;
-        $post->unit_id = $request->unit_id ;
+        $post->unit_id = $request->unit_id;
 
         //turn unit status as Occupied
         $unit = Unit::findOrFail($request->unit_id);
@@ -106,7 +105,7 @@ class LeaseController extends Controller
         $validate = $post->save();
 
         if ($validate) {
-            return redirect()->route('deposit.create') ->with('success', 'The lease details were cuptured successfully');
+            return redirect()->route('deposit.create')->with('success', 'The lease details were cuptured successfully');
         } else {
             return back()->with('error', 'An error occured. Please try again!!!');
         }
@@ -122,6 +121,10 @@ class LeaseController extends Controller
     {
         $lease = Lease::find($id);
         $this->authorize('view', $lease);
+        if ($lease->file == null || Str::of($lease->file)->contains("http")) {
+            session()->flash('error', "Please Sign your lease form");
+        }
+
         return view('lease.show', compact('lease'))->with('params', 'View Lease Record');
     }
 
@@ -145,7 +148,6 @@ class LeaseController extends Controller
             $compact = compact('lease', 'units');
         }
 
-
         return view('lease.createEdit', $compact)->with('params', 'Edit Lease Record');
     }
 
@@ -156,17 +158,17 @@ class LeaseController extends Controller
      * @param  \App\Lease  $lease
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $id)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'status' => ['required'],
             'date' => ['required'],
             'user_id' => ['required'],
-            'unit_id' => ['required']
+            'unit_id' => ['required'],
 
         ]);
 
-        $post =  Lease::find($id);
+        $post = Lease::find($id);
 
         $this->authorize('update', $post);
 
@@ -174,8 +176,6 @@ class LeaseController extends Controller
         $post->date = $request->date;
         $post->user_id = $request->user_id;
         $post->unit_id = $request->unit_id;
-
-
 
         if (file_exists($request->file('file'))) {
             // Upload file
@@ -208,25 +208,33 @@ class LeaseController extends Controller
             $unit->status = false;
             $unit->save();
 
-
             $old_avatar = $del->file;
             if ($old_avatar != 'avatar.pdf') {
-                $imagepath = public_path('/storage/lease/')  . $old_avatar;
+                $imagepath = public_path('/storage/lease/') . $old_avatar;
                 File::delete($imagepath);
                 // Storage::delete('Property/'. $old_avatar );
             }
 
             if ($del->delete()) {
 
-                return redirect()->route('lease.index')->with('success', "Lease deleted successfully");;
+                return redirect()->route('lease.index')->with('success', "Lease deleted successfully");
             } else {
 
-                return back()->with('error', 'An error occurred please try gain!!');;
+                return back()->with('error', 'An error occurred please try gain!!');
             }
         } catch (QueryException $ex) {
 
             return redirect()->back()->with('error', 'Lease could not be found');
         }
+    }
+
+    public function leaseform()
+    {
+        return view('lease');
+    }
+    public function chiefinvlease()
+    {
+        return view('chiefinvestmentlease');
     }
 
     protected function fileupload($request, $lease = null)
@@ -245,7 +253,6 @@ class LeaseController extends Controller
             }
         }
 
-
         // Get extension
         $extension = $request->file('file')->getClientOriginalExtension();
 
@@ -256,4 +263,73 @@ class LeaseController extends Controller
         $path = $request->file('file')->storeAs('public/lease', $filenameToStore);
         return $filenameToStore;
     }
+    public function showpadsign($leaseId)
+    {
+        $lease = Lease::find($leaseId);
+
+        return view('lease/signfile', compact('lease'));
+    }
+
+    public function signlease(Request $request, $leaseId)
+    {
+        if (!is_dir(public_path('signature'))) {
+
+            mkdir(public_path('signature'));
+
+        }
+        $folderPath = "signature/";
+        $signed = $request->signed;
+
+        $lease = Lease::find($leaseId);
+
+        $user = User::find($request->user);
+        $image_parts = explode(";base64,", $signed);
+
+        $image_type_aux = explode("image/", $image_parts[0]);
+
+        $image_type = $image_type_aux[1];
+
+        $image_base64 = base64_decode($image_parts[1]);
+
+        $file = $folderPath . uniqid() . '.' . $image_type;
+        $name = Str::random(45);
+        file_put_contents($file, $image_base64);
+
+        if ($user->isTenant()) {
+            $lease->update([
+                'tenantSignature' => $signed,
+            ]);
+
+        } else {
+            $lease->update([
+                'managerSignature' => $signed,
+            ]);
+        }
+
+        $this->createLeaseform($lease, $signed);
+        return redirect()->route('lease.show', $leaseId)->with('success', "Signature Uploaded Successfully.");
+    }
+
+    public function createLeaseform($lease, $signed)
+    {
+
+        if ($lease->tenantSignature != null && $lease->managerSignature != null) {
+            $pdf = PDF::loadView('lease.pdf.chiefinvestmentlease', compact('lease'));
+
+            $output = $pdf->output();
+            $name = Str::random(20);
+
+            $folder = 'public/lease';
+
+            $filePath = $folder . '/' . $name . '.' . 'pdf';
+            $filename = $name . '.' . 'pdf';
+            // Storage::put(filePath, $contents);
+            Storage::put($filePath, $output);
+            $lease->update([
+                'file' => $filename,
+            ]);
+        }
+
+    }
+
 }

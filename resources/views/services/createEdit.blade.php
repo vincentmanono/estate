@@ -60,7 +60,7 @@
                             <label for="uname" class="col-sm-3 control-label">Name</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="name" placeholder="name">
+                                    <input required type="text" class="form-control" name="name" placeholder="name">
                                     <div class="input-group-append"><span class="input-group-text"><i class=""></i></span></div>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                             <label for="email2" class="col-sm-3 control-label">Email</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <input type="email" class="form-control" name="email" placeholder="Email">
+                                    <input required type="email" class="form-control" name="email" placeholder="Email">
                                     <div class="input-group-append"><span class="input-group-text"><i class=""></i></span></div>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                             <label for="email2" class="col-sm-3 control-label">Phone</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="phone" placeholder="Phone">
+                                    <input required type="text" class="form-control" name="phone" placeholder="Phone">
                                     <div class="input-group-append"><span class="input-group-text"><i class=""></i></span></div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                             <label for="email2" class="col-sm-3 control-label">Type</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="type" placeholder="Type" >
+                                    <input required type="text" class="form-control" name="type" placeholder="Type" >
                                     <div class="input-group-append"><span class="input-group-text"><i class=""></i></span></div>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
                             <label for="uname" class="col-sm-3 control-label">Name</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="name" value="{{ $service->name }}" placeholder="name">
+                                    <input required type="text" class="form-control" name="name" value="{{ $service->name }}" placeholder="name">
                                     <div class="input-group-append"><span class="input-group-text"><i class=""></i></span></div>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                             <label for="email2" class="col-sm-3 control-label">Email</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <input type="email" class="form-control" name="email" value="{{ $service->email }}" placeholder="Email">
+                                    <input required type="email" class="form-control" name="email" value="{{ $service->email }}" placeholder="Email">
                                     <div class="input-group-append"><span class="input-group-text"><i class=""></i></span></div>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
                             <label for="email2" class="col-sm-3 control-label">Phone</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" value="{{ $service->phone }}" name="phone" placeholder="Phone">
+                                    <input required type="text" class="form-control" value="{{ $service->phone }}" name="phone" placeholder="Phone">
                                     <div class="input-group-append"><span class="input-group-text"><i class=""></i></span></div>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
                             <label for="email2" class="col-sm-3 control-label">Type</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" value="{{ $service->type }}" name="type" placeholder="Type" >
+                                    <input required type="text" class="form-control" value="{{ $service->type }}" name="type" placeholder="Type" >
                                     <div class="input-group-append"><span class="input-group-text"><i class=""></i></span></div>
                                 </div>
                             </div>

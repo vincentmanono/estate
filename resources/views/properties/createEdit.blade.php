@@ -69,14 +69,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Property Name</label>
-                                                <input type="text" id="firstName" name="name" class="form-control" >
+                                                <input required type="text" id="firstName" name="name" class="form-control" >
                                               </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Date of Certificate of Occupation</label>
-                                                <input type="date" name="date_of_cert_of_occupation" id="lastName" class="form-control form-control-danger" >
+                                                <input required type="date" name="date_of_cert_of_occupation" id="lastName" class="form-control form-control-danger" >
                                                  </div>
                                         </div>
                                         <!--/span-->
@@ -86,7 +86,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Address</label>
-                                                <input type="text" id="firstName" name="address" class="form-control" >
+                                                <input required type="text" id="firstName" name="address" class="form-control" >
 
                                             </div>
                                         </div>
@@ -94,7 +94,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Year of Construction</label>
-                                                <input type="date" name="year_of_construction" class="form-control" >
+                                                <input required type="date" name="year_of_construction" class="form-control" >
                                             </div>
                                         </div>
                                         <!--/span-->
@@ -104,8 +104,10 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Branch</label>
-                                                <select class="form-control custom-select" name="branch_id" data-placeholder="Choose a Category" tabindex="1">
-                                                   @foreach ($branches as $branch)
+                                                <select required class="form-control custom-select" name="branch_id" data-placeholder="Choose a Category" tabindex="1">
+
+                                                    <option value="">-----select-branch---</option>
+                                                    @foreach ($branches as $branch)
 
                                                 <option value="{{$branch->id}}">{{$branch->name}}</option>
 
@@ -118,7 +120,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Property Manager</label>
-                                                <select class="form-control custom-select" name="user_id" data-placeholder="Choose a Category" tabindex="1">
+                                                <select required class="form-control custom-select" name="user_id" data-placeholder="Choose a Category" tabindex="1">
 
                                                     <option value="">--select-manager--</option>
                                                     @foreach ($users as $user)
@@ -139,14 +141,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label>Post Code</label>
-                                                <input type="text" class="form-control">
+                                                <input required type="text" class="form-control">
                                             </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label>Country</label>
-                                                <select class="form-control custom-select">
+                                                <select required class="form-control custom-select">
                                                     <option>--Select your Country--</option>
                                                     <option>India</option>
                                                     <option>Sri Lanka</option>
@@ -162,7 +164,7 @@
                                         <div class="form-group has-success" >
                                             <label class="control-label">Water Billing Rate</label>
 
-                                            <input type="text" class="form-control" name="water_bill_rate" id="">
+                                            <input required type="text" class="form-control" name="water_bill_rate" id="">
                                             </select>
                                         </div>
                                     </div>
@@ -171,7 +173,7 @@
                                         <div class="form-group has-success" >
                                             <label class="control-label">L-R Number</label>
 
-                                           <input type="text" name="l_r_no" class="form-control" id="">
+                                           <input required type="text" name="l_r_no" class="form-control" id="">
                                         </div>
                                     <!--/span-->
 
@@ -184,14 +186,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group has-success" >
                                             <label class="control-label">Property Image</label> <br>
-                                            <input type="file" src="" alt="" name="image">
+                                            <input required type="file" src="" alt="" name="image">
 
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group has-success" >
                                             <label class="control-label">Type</label>
-                                            <select class="form-control custom-select" name="type" data-placeholder="Choose a Category" tabindex="1">
+                                            <select required class="form-control custom-select" name="type" data-placeholder="Choose a Category" tabindex="1">
 
                                             <option value="">--select-type--</option>
                                             <option value="residential">residential</option>
@@ -220,14 +222,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Property Name</label>
-                                                <input type="text" id="firstName" name="name"  value="{{$property->name}}" class="form-control" >
+                                                <input required type="text" id="firstName" name="name"  value="{{$property->name}}" class="form-control" >
                                               </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Date of Certificate of Occupation</label>
-                                                <input type="date" name="date_of_cert_of_occupation" value="{{$property->date_of_cert_of_occupation}}" id="lastName" class="form-control " >
+                                                <input required type="date" name="date_of_cert_of_occupation" value="{{$property->date_of_cert_of_occupation}}" id="lastName" class="form-control " >
                                                  </div>
                                         </div>
                                         <!--/span-->
@@ -237,7 +239,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Address</label>
-                                            <input type="text" id="firstName" name="address" value="{{$property->address}}" class="form-control" >
+                                            <input required type="text" id="firstName" name="address" value="{{$property->address}}" class="form-control" >
 
                                             </div>
                                         </div>
@@ -245,7 +247,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Year of Construction</label>
-                                            <input type="date" value="{{$property->year_of_construction}}" name="year_of_construction" class="form-control" >
+                                            <input required type="date" value="{{$property->year_of_construction}}" name="year_of_construction" class="form-control" >
                                             </div>
                                         </div>
                                         <!--/span-->
@@ -255,7 +257,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Branch</label>
-                                                <select class="form-control custom-select" name="branch_id"  data-placeholder="Choose a Category" tabindex="1">
+                                                <select required class="form-control custom-select" name="branch_id"  data-placeholder="Choose a Category" tabindex="1">
                                                 <option value="{{$property->branch->id}}" selected>{{$property->branch->name}}</option>
                                                    @foreach ($branches as $branch)
 
@@ -270,7 +272,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Property Manager</label>
-                                                <select class="form-control custom-select" name="user_id" data-placeholder="Choose a Category" tabindex="1">
+                                                <select required class="form-control custom-select" name="user_id" data-placeholder="Choose a Category" tabindex="1">
                                                 <option value="{{$property->user->id ?? "" }}" selected>{{$property->user->name ?? ""}}</option>
                                                     @foreach ($users as $user)
 
@@ -291,7 +293,7 @@
                                         <div class="form-group has-success" >
                                             <label class="control-label">Water Billing Rate</label>
 
-                                        <input type="text" class="form-control" value="{{$property->water_bill_rate}}" name="water_bill_rate" id="">
+                                        <input required type="text" class="form-control" value="{{$property->water_bill_rate}}" name="water_bill_rate" id="">
                                             </select>
                                         </div>
                                     </div>
@@ -300,7 +302,7 @@
                                         <div class="form-group has-success" >
                                             <label class="control-label">L-R Number</label>
 
-                                        <input type="text" name="l_r_no" value="{{$property->l_r_no}}" class="form-control" id="">
+                                        <input required type="text" name="l_r_no" value="{{$property->l_r_no}}" class="form-control" id="">
                                         </div>
                                     <!--/span-->
 
@@ -313,14 +315,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group has-success" >
                                             <label class="control-label">Property Image</label><br>
-                                        <input type="file" src="" alt="" value="{{old('image')}}" name="image">
+                                        <input required type="file" src="" alt="" value="{{old('image')}}" name="image">
 
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group has-success" >
                                             <label class="control-label">Type</label>
-                                            <select class="form-control custom-select" name="type" data-placeholder="Choose a Category" tabindex="1">
+                                            <select required required class="form-control custom-select" name="type" data-placeholder="Choose a Category" tabindex="1">
                                             <option value="{{$property->type}}" selected>{{$property->type}}</option>
                                             <option value="residential">residential</option>
                                             <option value="commercial">commercial</option>

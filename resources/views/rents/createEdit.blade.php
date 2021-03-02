@@ -76,7 +76,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Unit Name</label>
-                                                                    <select name="unit_id"
+                                                                    <select required name="unit_id"
                                                                         class="form-control custom-select"
                                                                         data-placeholder="Choose a Category" tabindex="1">
 
@@ -114,7 +114,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Tenant Name</label>
-                                                                    <select name="user_id"
+                                                                    <select required name="user_id"
                                                                         class="form-control custom-select"
                                                                         data-placeholder="Choose a Category" tabindex="1">
 
@@ -137,14 +137,14 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Amount</label>
-                                                                    <input type="type" name="amount" class="form-control">
+                                                                    <input required type="type" name="amount" class="form-control">
                                                                 </div>
                                                             </div>
                                                             <!--/span-->
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Paid Date</label>
-                                                                    <input type="date" name="paid_date"
+                                                                    <input required type="date" name="paid_date"
                                                                         class="form-control">
                                                                 </div>
                                                             </div>
@@ -155,7 +155,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">ExpiryDate</label>
-                                                                    <input type="date" name="expiry_date"
+                                                                    <input required type="date" name="expiry_date"
                                                                         class="form-control">
                                                                 </div>
                                                             </div>
@@ -163,7 +163,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Description</label>
-                                                                    <textarea type="text" rows="6" name="description"
+                                                                    <textarea required type="text" rows="6" name="description"
                                                                         class="form-control"></textarea>
                                                                 </div>
                                                             </div>
@@ -198,7 +198,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Unit Name</label>
-                                                                    <select name="unit_id"
+                                                                    <select required name="unit_id"
                                                                         class="form-control custom-select"
                                                                         data-placeholder="Choose a Category" tabindex="1">
 
@@ -214,7 +214,7 @@
                                                                         @endforeach
 
                                                                     </select>
-                                                                    <input type="hidden" name="user_id"
+                                                                    <input required type="hidden" name="user_id"
                                                                         value="{{ $rent->user->id }}">
                                                                 </div>
                                                             </div>
@@ -222,7 +222,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Amount</label>
-                                                                    <input type="type" value="{{ $rent->amount }}"
+                                                                    <input required type="type" value="{{ $rent->amount }}"
                                                                         name="amount" class="form-control">
                                                                 </div>
                                                             </div>
@@ -233,7 +233,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label"> Date Paid</label>
-                                                                    <input type="date" value="{{ $rent->paid_date }}"
+                                                                    <input required type="date" value="{{ $rent->paid_date }}"
                                                                         name="paid_date" class="form-control">
                                                                 </div>
                                                             </div>
@@ -241,7 +241,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group has-success">
                                                                     <label class="control-label">Expiry Date</label>
-                                                                    <input type="date" value="{{ $rent->expiry_date }}"
+                                                                    <input required type="date" value="{{ $rent->expiry_date }}"
                                                                         name="expiry_date" class="form-control">
                                                                 </div>
                                                             </div>

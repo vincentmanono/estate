@@ -83,7 +83,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Property Name</label>
-                                                <select class="form-control custom-select" name="property_id"  tabindex="1">
+                                                <select class="form-control custom-select" name="property_id"  tabindex="1" required>
 
                                                     <option value="">--select-property--</option>
 
@@ -96,13 +96,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group has-success" >
-                                                <label class="control-label">Service Charge</label>
-                                                <input type="text" id="service_charge" name="service_charge" value="{{ old('billing_cycle') }}" class="form-control @error('billing_cycle') is-invalid @enderror" >
 
-                                            </div>
-                                        </div>
                                         <!--/span-->
                                     </div>
                                     <!--/row-->
@@ -133,7 +127,13 @@
                                             <input type="number" id="rent" name="rent" class="form-control @error('rent') is-invalid @enderror" value="{{ old('rent') }}" required autocomplete="rent" autofocus>
                                           </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group has-success" >
+                                            <label class="control-label">Service Charge</label>
+                                            <input required type="text" disabled id="service_charge" name="service_charge" value="{{ old('billing_cycle') }}" class="form-control @error('billing_cycle') is-invalid @enderror" >
 
+                                        </div>
+                                    </div>
 
 
                                 </div>
@@ -162,7 +162,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-success" >
                                                 <label class="control-label">Service Charge</label>
-                                                <input type="text" id="firstName" value="{{ $unit->service_charge }}" name="service_charge" class="form-control" >
+                                                <input type="text" disabled id="firstName" value="{{ $unit->service_charge }}" name="service_charge" class="form-control" >
 
                                             </div>
                                         </div>
@@ -242,4 +242,8 @@
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
+@endsection
+
+@section('extraScripts')
+    <script src="{{ asset('assets/custom.js') }}"></script>
 @endsection

@@ -18,18 +18,18 @@ class UserSeeder extends Seeder
         factory(App\User::class,10)->create();
         $name = "sokoro78";
 
-       User::create([
-            'name'=>$name ,
-            'slug' =>  Str::of($name)->slug(),
-            'address'=> "",
-            'email'=>"info@chiefproperties.co.ke",
-            'phone'=> "0712468094",
-            'kra_pin'=>"",
-            'id_no'=>"",
-            "image"=>"avater.png",
-            "type"=>"owner",
-            'email_verified_at'=> Carbon::now(),
-            'password'=> Hash::make("@chiefproperties")
-        ]) ;
+    //    User::create([
+    //         'name'=>$name ,
+    //         'slug' =>  Str::of($name)->slug(),
+    //         'address'=> "",
+    //         'email'=>"info@chiefproperties.co.ke",
+    //         'phone'=> "0712468094",
+    //         'kra_pin'=>"",
+    //         'id_no'=>"",
+    //         "image"=>"avater.png",
+    //         "type"=>"owner",
+    //         'email_verified_at'=> Carbon::now(),
+    //         'password'=> Hash::make("@chiefproperties")
+    //     ]) ;
     }
 }
